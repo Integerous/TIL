@@ -12,7 +12,7 @@
 * 작성할 시간이 부족할 경우 제목만 달아두고 48시간 내에 완성한다.
 ## 분류
 ### Concepts
-  - [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
+* [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
 ### Java
 ### Spring
 ### Cloud
