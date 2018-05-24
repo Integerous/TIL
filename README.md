@@ -9,7 +9,7 @@
 * 폴더와 파일명은 영문으로 작성한다. (확장자`.md`)
 * 내용에 오류가 있을 수 있음을 명시한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
-* 작성할 시간이 부족할 경우 제목만 달아두고 48시간 내에 완성한다.
+
 ## 분류
 ### Concepts
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
