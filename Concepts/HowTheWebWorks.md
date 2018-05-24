@@ -1,5 +1,5 @@
-> 어느 스타트업 면접에서 웹의 동작 원리에 대해 질문을 받았는데, 제대로 답변하지 못하고 Controller-Service-Dao-DB 정도로만 대답했다. 그래서 시작!
-# 웹의 동작원리(How the web works)
+> 면접에서 웹의 동작 원리에 대해 질문을 받았는데, 제대로 답변하지 못하고 Controller-Service-Dao-DB 정도로만 대답했다. 그래서 시작!
+# 웹의 동작 원리(How the web works)
 0. Web은 분산환경을 기반으로 한다. 분산환경은 Client-Server 구조.
 1. 클라이언트가 URL을 입력하면,
 2. 브라우져가 DNS서버로 가서 요청한 URL의 실제 주소(IP)를 찾는다.
@@ -22,9 +22,8 @@
 6. 이후에 서버는 웹사이트의 데이터들을 데이터 패킷이라는 작은 덩어리로 뭉쳐서 브라우져에 전송한다.
 7. 브라우져는 이 데이터패킷들을 조립해서 완전한 웹사이트를 클라이언트에게 보여준다.
 
-
-
 ## *Reference
 - https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works
+- https://d2.naver.com/helloworld/59361
+- https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
 - http://hoonmaro.tistory.com/26
-- http://asfirstalways.tistory.com/334
