@@ -7,6 +7,8 @@
 2. 브라우져가 DNS서버로 가서 요청한 URL의 실제 주소(IP)를 찾는다.
 3. 브라우져는 서버에 웹사이트의 사본을 요청하는 HTTP 요청메세지를 보낸다.
 4. 이러한 메세지와 데이터들은 TCP/IP 연결을 통해 클라이언트와 서버 사이에 전송된다.
+    - *TCP는 한쪽 노드에서 다른 쪽 노드로 파일을 보내는 프로토콜(파일 분할하여 전송가능)*
+    - *IP는 한 호스트에서 목적지 호스트까지 패킷을 옮기고 이동하기 위한 기반 프로토콜*
     - 서버 사이드는 웹서버 - 웹어플리케이션서버(WAS) - 데이터베이스로 구성된다.
       - **웹서버**
         - 브라우져의 요청을 받고 결과를 응답하는 역할
@@ -25,6 +27,7 @@
 7. 브라우져는 이 데이터패킷들을 조립해서 완전한 웹사이트를 클라이언트에게 보여준다.
 
 ## *Reference
+- Kathy Sierra, 『Head First Servlet & JSP』, O'REILLY, p44
 - https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works
 - https://d2.naver.com/helloworld/59361
 - https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
