@@ -13,6 +13,7 @@
 ## 분류
 ### Concepts
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
+* [Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowTheWebWorks.md)
 ### Java
 ### Spring
 ### Cloud
