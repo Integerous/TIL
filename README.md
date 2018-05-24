@@ -24,3 +24,4 @@
 ### Linux
 ### Algorithm
 ### Tools
+### Seminar
