@@ -21,6 +21,7 @@ C++ 코드 수백만 줄 분량의 WebKit이나 Gecko 같은 오픈소스 렌더
   - **UI Backend** - 플랫폼에서 명시하지 않은 일반적인 인터페이스로서 콤보 박스와 창 등 기본적인 장치(위젯)를 그림. OS 사용자 인터페이스 체계를 사용.
   - **JavaScript Interpreter** - 자바스크립트 코드를 파싱하고 실행.
   - **Data Storage** - 자료를 저장하는 계층. 브라우저는 쿠키 같이 모든 종류의 데이터를 로컬에 저장할 필요가 있고, localStorage, IndexedDB, WebSQL 그리고 FileSystem 등의 저장 매커니즘을 지원한다.  
+  
 ![Browser components](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/layers.png)  
 ### Rendering Engine
   - 종류
@@ -33,7 +34,7 @@ C++ 코드 수백만 줄 분량의 WebKit이나 Gecko 같은 오픈소스 렌더
     - 문서의 내용은 보통 8kb 단위로 전송된다.
     - 다음은 Rendering Engine의 기본 동작 과정  
       
-    ![Rendering Engine Basic Flow](https://d2.naver.com/content/images/2015/06/helloworld-59361-2.png)  
+    ![Rendering Engine Basic Flow](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/flow.png)  
       
     - Rendering Engine은 HTML 문서를 파싱하고 **"content tree"** 라 불리우는 하나의 tree안에 요소들을 DOM nodes로 변환한다.
     - 그리고 외부 CSS 파일들과 style 요소에 포함된 style data를 파싱한다.
