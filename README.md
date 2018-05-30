@@ -17,7 +17,8 @@
 * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowBrowsersWork.md)
 ### Java
 ### Spring
-* [로그인정보 유지하기 @SessionAttributes](https://github.com/Integerous/TIL/blob/master/Spring/SessionAttributes.md)
+* [@Transient](https://github.com/Integerous/TIL/blob/master/Spring/%40Transient.md)
+* [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/SessionAttributes.md)
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
 ### Servlet & JSP
 ### Cloud
