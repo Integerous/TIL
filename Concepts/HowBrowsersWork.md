@@ -24,12 +24,12 @@ C++ 코드 수백만 줄 분량의 WebKit이나 Gecko 같은 오픈소스 렌더
   
 ![Browser components](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/layers.png)  
 ### Rendering Engine
-  - 종류
+  - **종류**
     - 파이어폭스는 모질라에서 만든 Gecko 엔진 사용.
     - 사파리와 크롬은 Webkit 엔진 사용.
       - Webkit은 원래 리눅스 플랫폼에서 동작하기 위해 제작된 오프소스 엔진이다.
       - 그런데 애플이 Mac과 Windows에서 사파리 브라우저를 지원하기 위해 수정을 가했다.(webkit.org)
-  - 동작 과정
+  - **동작 과정**
     - Rendering Engine은 네트워크 계층으로부터 요청한 문서를 얻는 것으로 시작.
     - 문서의 내용은 보통 8kb 단위로 전송된다.
     - 다음은 Rendering Engine의 기본 동작 과정  
@@ -45,6 +45,14 @@ C++ 코드 수백만 줄 분량의 WebKit이나 Gecko 같은 오픈소스 렌더
     - 이러한 과정이 점진적으로 진행되는 점을 이해하는 것이 중요하다.
     - 더 나은 UX를 위해서 Redering Engine은 최대한 빨리 컨텐츠를 화면에 뿌려야하므로 모든 HTML이 파싱되는 것을 기다리지 않고 render tree의 빌드와 layout이 시작된다.
     - 네트워크로 부터 나머지 컨텐츠들이 전송될 동안 일부 컨텐트는 파싱되어 화면에 표시하는 것이다.
+  - **동작 과정 예시**  
+    - WebKit main flow  
+    ![WebKit main flow](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/webkitflow.png)  
+      
+    - Mozilla's Gecko rendering engine main flow  
+    ![Mozilla's Gecko rendering engine main flow](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/image008.jpg)  
+      
+    - 위에 표에서 처럼, **WebKit과 Gecko는 살짝 다른 용어를 사용하지만 기본적으로 흐름은 같다.**
 ## *Reference
 - https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
 - https://d2.naver.com/helloworld/59361
