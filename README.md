@@ -21,7 +21,7 @@
 * [@RequestParam](https://github.com/Integerous/TIL/blob/master/Spring/%40RequestParam.md)
 * [@RestController](https://github.com/Integerous/TIL/blob/master/Spring/%40RestController.md)
 * [@Transient](https://github.com/Integerous/TIL/blob/master/Spring/%40Transient.md)
-* [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/SessionAttributes.md)
+* [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/%40SessionAttributes.md)
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
 ### Servlet & JSP
 ### Node.js
