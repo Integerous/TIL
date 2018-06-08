@@ -30,16 +30,14 @@ public class ArticleController {
 	/**
 	 * 게시판 리스트 
 	 * @param article
-	 * @param board
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/list")
-	public String listArticle(Article article, Board board, Model model) {
+	public String listArticle(Article article, Model model) {
 		
 		List<Article> articles = boardService.listArticle(article);
 		model.addAttribute("articles", articles);
-		model.addAttribute("1", board);
 		
 		return "fp/article/list";
 	}
