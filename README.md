@@ -10,7 +10,7 @@
 * 내용에 오류가 있을 수 있음을 명시한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
-## 분류
+# 분류
 ### Concepts
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
 * [Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowTheWebWorks.md)
