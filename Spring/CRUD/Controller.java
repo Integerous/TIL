@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.cashcloud.model.Article;
 import kr.cashcloud.model.ArticleKey;
@@ -38,13 +38,13 @@ public class ArticleController {
 		
 		List<Article> articles = boardService.listArticle(article);
 		model.addAttribute("articles", articles);
-		
+	
 		return "fp/article/list";
 	}
 	
 	
 	/**
-	 * 게시물 등록 
+	 * 게시물 등록 폼 
 	 * @return
 	 */
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
@@ -53,6 +53,11 @@ public class ArticleController {
 		return "fp/article/insert";
 	}
 	
+	/**
+	 * 게시물 등록
+	 * @param article
+	 * @return
+	 */
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertArticle(Article article) {
 		
@@ -114,13 +119,20 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value = "/update2")
-	public String updatByPrimaryKey(@ModelAttribute("toUpdate") Article toUpdate) {
+	public String updatByPrimaryKey(@ModelAttribute("toUpdate") Article toUpdate
+			, RedirectAttributes rttr) {
 		
-		//update에는 artcSeq와 boardSeq가 필요하므로
+		//수정 폼으로부터 artcSeq 값 들어오는지 테스트
+		Long temp = toUpdate.getArtcSeq();
+		System.out.println("-------------------------------");
+		System.out.println(temp);
+		
+		//최초 등록시 boardSeq값 넣었지만 update는 artcSeq와 boardSeq를 참조해서 하므로 boardSeq 강제로 추가ㅋ 
 		toUpdate.setBoardSeq(1);
+		
 		boardService.updateByPrimaryKey(toUpdate);
 		
-		return "redirect:list";
+		return "redirect:detail?boardSeq=" + toUpdate.getBoardSeq() + "&artcSeq=" + toUpdate.getArtcSeq();
 	}
 	
 	
@@ -128,9 +140,6 @@ public class ArticleController {
 	 * 게시물 삭제 
 	 * @param boardSeq
 	 * @param artcSeq
-	 * @param article
-	 * @param model
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value= "/delete")
@@ -140,6 +149,7 @@ public class ArticleController {
 		ArticleKey key = new ArticleKey();
 		key.setArtcSeq(artcSeq);
 		key.setBoardSeq(boardSeq);
+		
 		boardService.deleteByPrimaryKey(key);
 		
 		return "redirect:list";
