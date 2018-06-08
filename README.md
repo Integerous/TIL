@@ -4,7 +4,7 @@
 * Sharpen the saw. Renew yourself regulary !
 
 세미나에서 알게된 [김남준](https://github.com/namjunemy)님의 TIL에 영감을 받아 시작하였다.
-## 작성 규칙
+# 작성 규칙
 * 한 번에 완벽하게 작성하겠다는 욕심은 버리고 꾸준히 개선한다.
 * 폴더와 파일명은 영문으로 작성한다. (확장자`.md`)
 * 내용에 오류가 있을 수 있음을 명시한다.
@@ -12,8 +12,9 @@
 
 # 분류
 ### Concepts
+* [[번역] Web API Design]()
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
-* [Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowTheWebWorks.md)
+* [[번역] Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowTheWebWorks.md)
 * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowBrowsersWork.md)
 ### Java
 ### Spring
