@@ -1,8 +1,11 @@
 package kr.cashcloud.web;
 
+
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+import kr.cashcloud.model.ArtcCmnt;
 import kr.cashcloud.model.Article;
 import kr.cashcloud.model.ArticleKey;
-import kr.cashcloud.model.Board;
 import kr.cashcloud.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,10 +40,28 @@ public class ArticleController {
 	@RequestMapping("/list")
 	public String listArticle(Article article, Model model) {
 		
+		//각 게시물의 댓글 개수 리스트에 뿌리기위해
+		int cmntSize = boardService.listArtcCmnt(article).size();
+		article.setCmntCnt(cmntSize);
+		
 		List<Article> articles = boardService.listArticle(article);
 		model.addAttribute("articles", articles);
 	
 		return "fp/article/list";
+	}
+	
+	/**
+	 * 신규 게시물 리스트(대시보드용)
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/newList")
+	public String listNewArticle(Model model) {
+		
+		List<Article> newArticles = boardService.listNewArticle();
+		model.addAttribute("newArticles", newArticles);
+		
+		return "fp/article/newList";
 	}
 	
 	
@@ -69,6 +91,49 @@ public class ArticleController {
 		return "redirect:list";
 	}
 	
+	/**
+	 * 답변글 등록 폼 
+	 * @return
+	 */
+	@RequestMapping(value="/insertCmnt", method = RequestMethod.GET)
+	public String insertArtcCmntDWR(@RequestParam(value="boardSeq", defaultValue="1") int boardSeq
+			, @RequestParam(value="artcSeq", defaultValue="1") long artcSeq
+			, Article article
+			, Model model) {
+		
+		Article artc = boardService.selectArticle(article);		
+		model.addAttribute("toReply", artc);
+		
+		return "fp/article/insertCmnt";
+	}
+	/**
+	 * 답변글 등록 
+	 * @param cmnt
+	 * @return
+	 */
+	@RequestMapping(value="/insertCmnt", method = RequestMethod.POST)
+	public String insertArtcCmntDWR(ArtcCmnt cmnt
+			, @ModelAttribute("toReply") Article toReply ) {
+		
+		Long artcSeq = toReply.getArtcSeq();
+		System.out.println("---------------");
+		System.out.println(artcSeq);
+		
+		
+		int cmntSeq = (int) (new Date().getTime());
+		
+		cmnt.setBoardSeq(1);
+		cmnt.setMemSeq((long) 2);
+		cmnt.setCmntSeq(cmntSeq);
+		cmnt.setAdminId("Ryan");
+		cmnt.setUseCond("01"); //이게 지금 null로 들어가서 notnull 잠시 해제해둠
+		
+		boardService.insertArtcCmntDWR(cmnt);
+		
+		return "redirect:detail?boardSeq="+toReply.getBoardSeq()+"&artcSeq="+toReply.getArtcSeq();
+	}
+	
+
 	
 	/**
 	 * 게시물 상세 
@@ -85,11 +150,12 @@ public class ArticleController {
 			, Model model) {
 		
 		Article artc = boardService.selectArticle(article);
-		
-		model.addAttribute("article", artc);
+
+		model.addAttribute("artc", artc);
 		
 		return "fp/article/detail";
 	}
+	
 	
 	
 	/**
@@ -154,6 +220,7 @@ public class ArticleController {
 		
 		return "redirect:list";
 	}
+	
 	
 
 }
