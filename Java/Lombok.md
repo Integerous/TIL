@@ -12,4 +12,5 @@
 
 # Reference
 - https://projectlombok.org/features/all
+- http://blog.naver.com/PostView.nhn?blogId=rlagyska3319&logNo=220824619962&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
 - http://wonwoo.ml/index.php/post/1607
