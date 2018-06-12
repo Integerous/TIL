@@ -11,7 +11,7 @@
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
 # 분류
-### Concepts
+### ETC
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/Concepts/MyBatisGenerator.md)
 * [[번역] Web API Design]()
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
