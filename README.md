@@ -12,11 +12,11 @@
 
 # 분류
 ### ETC
-* [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/Concepts/MyBatisGenerator.md)
+* [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [[번역] Web API Design]()
-* [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/Concepts/RESTful%20API.md)
-* [[번역] Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowTheWebWorks.md)
-* [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/Concepts/HowBrowsersWork.md)
+* [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
+* [[번역] Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
+* [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
 ### Java
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
 ### Spring
