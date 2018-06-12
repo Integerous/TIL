@@ -18,6 +18,7 @@
 * [[번역] Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
 * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
 ### Java
+* [DWR](https://github.com/Integerous/TIL/blob/master/Java/DWR.md)
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
 ### Spring
 * [게시판 기본 CRUD](https://github.com/Integerous/TIL/tree/master/Spring/CRUD)
