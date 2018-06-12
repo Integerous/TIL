@@ -59,7 +59,7 @@ vo(model), mapper(dao), xml(query)을 생성해준다.
 ~~~
 
 
-#Reference
+# Reference
 - http://www.mybatis.org/generator/
 - http://www.mybatis.org/generator/configreference/xmlconfig.html
 - http://www.mybatis.org/generator/configreference/javaTypeResolver.html
