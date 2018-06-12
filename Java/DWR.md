@@ -2,7 +2,9 @@
 # DWR (Direct Web Remoting)
 > Easy Ajax for JAVA
 > 서버의 Java와 브라우저의 Javascript가 서로 쉽게 상호작용하고 콜할 수 있도록 하는 Java 라이브러리
-
+### DWR을 이루고있는 2가지
+  - Request를 처리하고 브라우저에 Response를 보내는 서버에서 동작하는 Java Servlet.
+  - Request를 보내고 웹페이지를 업데이트할 수 있는 브라우저에서 동작하는 JavaScript.
 # 사용 순서
 1. DWR JAR file 설치
     - dwr.jar 파일을 [다운로드](http://directwebremoting.org/dwr/downloads/index.html)받아 WEB-INF/lib 디렉토리에 추가한다.
