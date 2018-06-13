@@ -3,8 +3,8 @@
 >>>
 
 # 목차
+0. [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
 1. **소개**
-    - [서문]()
 2. **시스템 구조**
 3. **프로세스 개념**
 4. **멀티쓰레드 프로그래밍**
