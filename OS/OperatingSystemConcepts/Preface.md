@@ -22,3 +22,6 @@
 
 책의 구성은 우리의 수년 간의 운영체제 강의 경험과 IEEE와 ACM가 제공하는 커리큘럼 가이드라인이 반영되었다. 
 또한, 이전 버전 책의 독자들과 학생들로 부터 받은 많은 의견과 제안들에 더불어, 검토자들에 의해 제공된 피드백들에 대한 답변 또한 제공하였다.
+
+# Reference
+- Abraham Silberschatz, Peter B. Galvin, Greg Gagne, *『OPERATING SYSTEM CONCEPTS 9th Edition』*, WILEY, ISBN: 978-11180-9375-7
