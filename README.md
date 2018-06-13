@@ -41,3 +41,5 @@
 ### Tools
 ### Seminar
 ### Operating System
+* 공룡책
+  * [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
