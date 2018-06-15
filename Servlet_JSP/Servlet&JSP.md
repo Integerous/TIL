@@ -61,3 +61,12 @@
   - web.xml에 기술하지 않고 Servlet 파일에 직접 기술할 수도 있다.
     1. Servlet Class 생성
     2. @WebInitParam 에 초기화 파라미터 기술
+      ~~~java
+      @WebServlet(urlPatterns={"/ServletInitParam"}, initParams={@WebInitParam(name="id", value="ryanHan")
+      , @WebInitParam(....), @WebInitParam(....) ...} 
+      ~~~
+    3. ServletConfig 메소드 이용해서 데이터 불러오기
+    ~~~java
+    String id = request.getInitParameter("id");
+    String pw = request.getInitParameter("pw");
+    ~~~
