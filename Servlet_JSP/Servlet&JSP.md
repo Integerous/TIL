@@ -90,13 +90,6 @@
     String id = getServletContext().getInitParameter("id");
     String pw = getServletContext().getInitParameter("pw");
     ~~~
-## JSP 태그 종류
-  - <%@   지시자, 페이지 속성   %>
-  - <%--   주석, 소스보기로 안보임   --%>
-  - <%!   선언, 변수 메서드 선언   %>
-  - <%=   표현식, 결과값 출력   %>
-  - <%   스크립틀릿, java code   %>
-  - <jsp:action>   자바 빈 연결   </jsp:action>
 ## JSP 동작 원리
   1. 클라이언트가 웹브라우져로 hello.jsp 요청하면
   2. JSP 컨테이너가 JSP파일을 Servlet파일(.java)로 변환
@@ -111,3 +104,49 @@
     - 서블릿 객체 : page, config
     - 세션 객체 : session
     - 예외 객체 : exception
+## JSP 태그 종류
+  - <%@   지시자, 페이지 속성   %>
+  - <%--   주석, 소스보기로 안보임   --%>
+  - <%!   선언, 변수 메서드 선언   %>
+  - <%=   표현식, 결과값 출력   %>
+  - <%   스크립틀릿, java code   %>
+  - <jsp:action>   자바 빈 연결   </jsp:action>
+## JSP 지시자 태그 <%@ %>
+  - JSP 페이지의 전체적인 속성을 지정할 때 사용
+  - 종류
+    - page: 해당 페이지의 전체적인 속성 지정
+    - include: 별도의 페이지를 현재 페이지에 삽입
+    - taglib: 태그 라이브러리의 태그 사용'
+### <%@ page %>
+  - 주로 사용되는 언어 및 import문에 많이 사용
+  ~~~jsp
+  <%@ page import="java.util.arrays"%>
+  <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+  ~~~
+### <%@ include %>
+  - file 속성 사용
+  ~~~jsp
+  <%@ include file="example.jsp"%>
+  ~~~
+## JSP Request 객체
+~~~jsp
+<body>
+<%!
+  String name, id, pw;
+  String[] hobbys;
+%>
+<%
+  request.setCharacterEncoding("UTF-8");
+  
+  name = request.getParameter("name");
+  id = request.getParameter("id");
+  pw = request.getParameter("pw");
+  
+  hobbys= request.getParameterValues("hobby");
+%>
+이름 : <%= name %> <br/>
+아이디 : <%= id %> <br/>
+비밀번호 : <%= pw %> <br/>
+취미 : <%= Arrays.toString(hobbys) %>
+</body>
+~~~
