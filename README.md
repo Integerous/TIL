@@ -30,7 +30,7 @@
 * [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/%40SessionAttributes.md)
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
 ### Servlet & JSP
-* [Servlet & JSP](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
+* [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
 ### Node.js
 * [Node.js 기초](https://github.com/Integerous/TIL/tree/master/Node.js)
 * [Hello World](https://github.com/Integerous/TIL/blob/master/Node.js/HelloWorld.md)
