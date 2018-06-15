@@ -97,3 +97,17 @@
   - <%=   표현식, 결과값 출력   %>
   - <%   스크립틀릿, java code   %>
   - <jsp:action>   자바 빈 연결   </jsp:action>
+## JSP 동작 원리
+  1. 클라이언트가 웹브라우져로 hello.jsp 요청하면
+  2. JSP 컨테이너가 JSP파일을 Servlet파일(.java)로 변환
+  3. Servlet파일은 컴파일 된 후 Class파일(.class)로 변환
+    - Servlet을 이미 생성했다면 다시 생성하지않고 바로 Run
+  4. 요청한 클라이언트에게 html 형태로 응답
+## JSP 내부 객체
+  - 개발자가 객체를 생성하지 않아도 바로 사용할 수 있는 객체가 내부 객체
+  - 내부 객체는 JSP컨테이너에 의해 Servlet으로 변환될 때 자동으로 객체가 생성된다.
+  - 내부 객체의 종류
+    - 입출력 객체 : request, response
+    - 서블릿 객체 : page, config
+    - 세션 객체 : session
+    - 예외 객체 : exception
