@@ -23,6 +23,41 @@
 ## Servlet 생명 주기
   - 서블릿은 최초 요청시 객체가 만들어져 메모리에 로딩되고, 그 이후의 요청에는 기존 객체를 재활용한다. 때문에 속도가 빠르다.
     - 서블릿 객체 생성 (최초에 한 번)
+      - 선처리 할 경우 (@PostConstruct)
     - Init() 호출 (최초에 한 번)
     - Service(), doGet(), doPost() 호출 (요청 시 매 번)
     - destroy() 호출 (마지막 한 번. 자원해제: servlet수정, 서버 재가동 등)
+      - 후처리 할 경우 (@PreDestroy)
+## Servlet 초기화 파라미터
+  - 특정 servlet이 생성될 때 초기에 필요한 데이터들이 있다.(예를 들어 특정 경로 및 아이디 정보)
+  - 이러한 데이터들을 초기화 파라미터라고 하며, web.xml에 기술하고 ServletConfig 클래스를 이용해서 접근(사용)한다.
+      1. Servlet Class 생성
+      ~~~xml
+    <servlet>
+      <servlet-name>ServletInitParam</servlet-name>
+      <servlet-class>com.my.practice.ServletInitParam</servlet-class>
+      ~~~
+      2. web.xml 파일에 초기화 파라미터 기술
+      ~~~xml
+    <init-param>
+      <param-name>id</param-name>
+      <param-value>ryanHan</param-value>
+    </init-param>
+    <init-param>
+      <param-name>pw</param-name>
+      <param-value>11111</param-value>
+    </init-param>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>ServletInitParam</servlet-name>
+      <url-pattern>/initParam</url-pattern>
+    </servlet-mapping>
+    ~~~
+    3. ServletConfig 메소드 이용해서 데이터 불러오기
+    ~~~java
+    String id = request.getInitParameter("id");
+    String pw = request.getInitParameter("pw");
+    ~~~
+  - web.xml에 기술하지 않고 Servlet 파일에 직접 기술할 수도 있다.
+    1. Servlet Class 생성
+    2. @WebInitParam 에 초기화 파라미터 기술
