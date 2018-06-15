@@ -70,3 +70,23 @@
     String id = request.getInitParameter("id");
     String pw = request.getInitParameter("pw");
     ~~~
+## Servlet Context를 활용한 데이터 공유
+  - Servlet 초기화 파라미터와 달리 여러 Servlet에서 특정 데이터를 공유해야할 경우,
+  - context parameter를 이용해서 web.xml에 기술하고 Servlet에서 공유하면서 사용할 수 있다.
+    1. Servlet Class 생성
+    2. web.xml에 context parameter 기술
+    ~~~xml
+    <context-param>
+      <param-name>id</param-name>
+      <param-value>ryanHan</param-value>
+    </context-param>
+    <context-param>
+      <param-name>pw</param-name>
+      <param-value>11111</param-value>
+    </context-param>
+    ~~~
+    3. ServletContext 메소드 이용해서 데이터 불러오기
+    ~~~java
+    String id = getServletContext().getInitParameter("id");
+    String pw = getServletContext().getInitParameter("pw");
+    ~~~
