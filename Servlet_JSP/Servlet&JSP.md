@@ -150,3 +150,20 @@
 취미 : <%= Arrays.toString(hobbys) %>
 </body>
 ~~~
+## JSP Response 객체
+~~~jsp
+<body>
+<%!
+  int age;
+%>
+<%
+  String str = request.getParameter("age");
+  age = Integer.parseInt(str);
+  
+  if(age >= 20)
+    response.sendRedirect("pass.jsp?age=" +age);
+  else
+    response.sendRedirect("ng.jsp?age=" +age);
+%>
+<%= age %>
+</body>
