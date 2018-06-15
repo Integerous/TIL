@@ -90,3 +90,10 @@
     String id = getServletContext().getInitParameter("id");
     String pw = getServletContext().getInitParameter("pw");
     ~~~
+## JSP 태그 종류
+  - <%@   지시자, 페이지 속성   %>
+  - <%--   주석, 소스보기로 안보임   --%>
+  - <%!   선언, 변수 메서드 선언   %>
+  - <%=   표현식, 결과값 출력   %>
+  - <%   스크립틀릿, java code   %>
+  - <jsp:action>   자바 빈 연결   </jsp:action>
