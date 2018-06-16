@@ -62,7 +62,7 @@ public class MemberPreparer implements ViewPreparer {
 		}
 ~~~
 
-## 04. 해당하는 .jsp 페이지에 ${member.name} 등으로 Member 정보 사용하기
+## 04. 해당하는 .jsp 페이지에 EL Member 정보 사용하기
 `<a href=""> ${member.name} 님 안녕하세요 :)</a>`
 
 # *Reference
