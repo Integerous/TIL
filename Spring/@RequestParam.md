@@ -2,6 +2,9 @@
 
 # @RequestParam
 - Http 요청 파라미터를 메서드의 파라미터로 전달받을 때 사용
+- Servlet 에서 request.getParameter()와 유사하다.
+  - 예를 들어, @RequestParam("bno")는 request.getParameter("bno")처럼 동작한다.
+  - Servlet의 HttpServletRequest와 다른 점은 문자열, 숫자, 날짜 등의 형 변환이 가능하다는 것.
 
 - 메서드(@RequestParam(PARAM) Obj )  
 메서드(@RequestParam Map )
