@@ -94,7 +94,7 @@
   1. 클라이언트가 웹브라우져로 hello.jsp 요청하면
   2. JSP 컨테이너가 JSP파일을 Servlet파일(.java)로 변환
   3. Servlet파일은 컴파일 된 후 Class파일(.class)로 변환
-    - Servlet을 이미 생성했다면 다시 생성하지않고 바로 Run
+      - Servlet을 이미 생성했다면 다시 생성하지않고 바로 Run
   4. 요청한 클라이언트에게 html 형태로 응답
 ## JSP 내부 객체
   - 개발자가 객체를 생성하지 않아도 바로 사용할 수 있는 객체가 내부 객체
@@ -167,3 +167,44 @@
 %>
 <%= age %>
 </body>
+~~~
+
+## 쿠키 Cookie
+- 웹 브라우저에서 서버로 요청을 보내면 서버에서는 로직을 수행하고 웹브라우저에 응답한다
+- 그리고 서버는 웹브라우저와의 관계를 종료한다. (http 프로토콜의 무상태성)
+- 연결이 끊겼을 때 어떤 정보를 지속적으로 사용하기 위한 수단으로 쿠키 사용
+- 쿠키는 서버에서 생성하여 클라이언트 단에 특정 정보를 저장한다.
+- 그리고 서버에 요청할 때 마다 쿠키의 속성값을 참조하거나 변경할 수 있다.
+- 쿠키의 용량은 4kb로 제한되며, 300개 까지 데이터 정보를 가질 수 있다.
+
+## 쿠키 문법
+1. 쿠키 생성 (쿠키 클래스 생성)
+2. 속성 설정 (setter 이용)
+3. Response 객체에 쿠키 탑재 (response.addCookie() 이용)
+- Cookie cookie = new Cookie("cookieName","cookieValue")
+- cookie.setMaxAge(60*60) 60초 * 60
+- response.addCookie(cookie);
+
+## 세션 Session
+- 쿠키와 마찬가지로 서버와의 관계를 유지하기 위한 수단
+- 쿠키와 달리 서버 상의 객체로 존재
+- jsp파일을 통해서만 접근이 가능하기 때문에 보안에 좋고, 저장할 수 있는 데이터의 한계가 없다.
+- 브라우저 하나 당 하나의 Session 객체가 생성되고 고유의 id 값이 있다.
+
+## 세션 문법 
+1. 클라이언트 요청
+2. WAS의 컨테이너에서 자동으로 session 생성
+3. session 이라는 내부 객체의 메서드를 사용해서 세션의 속성값 설정
+- session.setAttribute("mySessionName","mySessionValue") - 세션에 데이터 저장
+- session.getAttribute("mySessionName") - **get으로 받아오면 무조건 Object형으로 온다!**
+  - Object obj1 = session.getAttribute("mySessionName");
+  - String mySessionName = (String)obj1; - **이렇게 형변환 해서 써야한다**
+- getAttributeNames() - 세션에 저장되어있는 모든 데이터의 이름 (유니크한 키값)을 얻는다.
+- getId() - 자동생성된 세션의 유니크한 아이디를 얻는다.
+- isNew() - 세션이 최초 생성되었는지, 이전에 생성된 세션인지 구분한다.
+- getMaxInactiveInterval() - 세션의 유효시간을 얻는다. 가장 최근 요청 시점을 기준으로 카운트.
+  - (apache-tomcat-9.0 - conf - web.xml에 30분으로 설정되어있다.
+- removeAttribute() - 세션에서 특정 데이터를 제거한다.
+- invalidate() - 세션의 모든 데이터를 삭제한다.
+## 쿠키 Cookie저장
+## 쿠키 Cookie
