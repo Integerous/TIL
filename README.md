@@ -11,33 +11,18 @@
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
 # 분류
-- ETC
-- Java
-- Spring
-- Servlet & JSP
-- Node.js
-- Go
-- Cloud
-- Database
-- SQL
-- Linux
-- Algorithm
-- Operating System
-- Tools
-- Seminar
-
-### ETC
+## ETC
 * [CDATA](https://github.com/Integerous/TIL/blob/master/ETC/CDATA.md)
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [[번역] Web API Design]()
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
 * [[번역] Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
 * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
-### Java
+## Java
 * [입/출력](https://github.com/Integerous/TIL/blob/master/Java/IO.md)
 * [DWR](https://github.com/Integerous/TIL/blob/master/Java/DWR.md)
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
-### Spring
+## Spring
 * [게시판 기본 CRUD](https://github.com/Integerous/TIL/tree/master/Spring/CRUD)
 * [@ModelAttribute](https://github.com/Integerous/TIL/blob/master/Spring/%40ModelAttribute.md)
 * [@RequestParam](https://github.com/Integerous/TIL/blob/master/Spring/%40RequestParam.md)
@@ -45,20 +30,21 @@
 * [@Transient](https://github.com/Integerous/TIL/blob/master/Spring/%40Transient.md)
 * [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/%40SessionAttributes.md)
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
-### Servlet & JSP
+## Servlet & JSP
 * [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
-### Node.js
+## Node.js
 * [Node.js 기초](https://github.com/Integerous/TIL/tree/master/Node.js)
 * [Hello World](https://github.com/Integerous/TIL/blob/master/Node.js/HelloWorld.md)
-### Go
+## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
-### Cloud
-### Database
-### SQL
+## Cloud
+## Database
+## SQL
 * [SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
-### Linux
-### Algorithm
-### Tools
-### Seminar
-### Operating System
+## Linux
+## Algorithm
+## Operating System
 * 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
+## Tools
+## Seminar
+
