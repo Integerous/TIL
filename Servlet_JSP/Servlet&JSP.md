@@ -262,11 +262,11 @@
 
 ## 데이터베이스 연결 순서
 1. JDBC드라이버 로드 - DriverManager
-  - `Class.forName("oracle.jdbc.driver.OracleDriver");` => 메모리에 OracleDriver가 로드된다.
+    - `Class.forName("oracle.jdbc.driver.OracleDriver");` => 메모리에 OracleDriver가 로드된다.
 2. 데이터베이스 연결 - Connection
-  - `DriverManager.getConnection(JDBC URL, 계정아이디, 비밀번호);` => Connection 객체 생성
+    - `DriverManager.getConnection(JDBC URL, 계정아이디, 비밀번호);` => Connection 객체 생성
 3. SQL문 실행 - Statement
-  - `connection.createStatment();` => Statement 객체를 통해 SQL문이 실행된다.
+    - `connection.createStatment();` => Statement 객체를 통해 SQL문이 실행된다.
 4. 데이터베이스 연결 해제 - ResultSet
   - `statement.executeQuery(), statement.executeUpdate() => SQL문의 결과값을 ResultSet 객체로 받는다.(executeQuery()의 경우)
     - statement.executeQuery() - SQL문 실행 후 여러 개의 결과값이 나올 때 사용 (select), 반환형은 resultSet
