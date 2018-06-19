@@ -183,7 +183,10 @@
 3. Response 객체에 쿠키 탑재 (response.addCookie() 이용)
 - Cookie cookie = new Cookie("cookieName","cookieValue")
 - cookie.setMaxAge(60*60) 60초 * 60
+- 삭제할때는 cookie.setMaxAge(0)
+- 삭제하고나서 response.addCookie()를 해줘야함
 - response.addCookie(cookie);
+- Cookie[] cookies = request.getCookies();
 
 ## 세션 Session
 - 쿠키와 마찬가지로 서버와의 관계를 유지하기 위한 수단
@@ -206,5 +209,82 @@
   - (apache-tomcat-9.0 - conf - web.xml에 30분으로 설정되어있다.
 - removeAttribute() - 세션에서 특정 데이터를 제거한다.
 - invalidate() - 세션의 모든 데이터를 삭제한다.
-## 쿠키 Cookie저장
-## 쿠키 Cookie
+
+## 예외 페이지
+1. page 지시자를 사용한 예외 처리
+  - 예외가 발생할 수 있는 페이지
+  ~~~jsp
+  <%@ page errorPage = "errorPage.jsp"%>
+  ~~~
+  에러 날 경우 errorPage.jsp를 보여주는 지시자
+  
+  - 예외 페이지
+  ~~~jsp
+  <%@ page isErrorPage = "true"%> - default값은 false. 이게 있어야 밑의 exception객체와 메서드를 사용할 수 있다.
+  <% response.setStatus(200); %> - 200은 정상적인 페이지라는 의미인데 이 설정이 없으면 웹페이지에서 500으로 처리할 때가 있어서 200을 설정해준다
+  <%= exception.getMessage()%>
+  ~~~
+2.  web.xml을 활용한 예외 처리
+~~~xml
+<errorPage>
+  <errorCode> 404 </errorCode>
+  <location> /error404.jsp </location>
+</errorPage>
+<errorPage>
+  <errorCode> 500 </errorCode>
+  <location> /error500.jsp </location>
+</errorPage>
+~~~
+
+## Bean
+- Java 언어의 데이터(속성)와 기능(메서드)로 이루어진 클래스
+- 반복적인 작업을 효율적으로 하기 위해 Bean을 사용한다.
+- jsp 페이지를 만들고 액션태그를 사용하여 빈을 사용한다.
+- Bean을 만든다는 것은 데이터 객체를 만들기 위한 클래스를 만드는 것.
+
+## Bean 관련 액션태그
+1. useBean - 특정 빈을 사용한다고 명시할 때 사용.
+  - `<jsp:useBean id="student" class="com.ryemha.ex.Student" scope="page"/>`
+  - id는 Student student = new Student(); 할 때의 student
+  - Scope
+    - page : 페이지 내에서만 사용 가능
+    - request : 요청된 페이지 내에서만 사용 가능
+    - session : 웹브라우저의 생명주기와 동일하게 사용 가능
+    - application : 웹 어플리케이션 생명주기와 동일하게 사용 가능
+2. setProperty - setter 역할. 데이터 값을 설정할 때 사용.
+  - `<jsp:setProperty name="student" property="name" value="홍길동"/>`
+3. getProperty - getter 역할. 데이터 값을 가져올 때 사용
+  - `<jsp:getProperty name="student" property="name"/>`
+  
+## JDBC
+- Java 프로그램에서 SQL문을 실행하여 데이터를 관리하기 위한 Java API
+- 다양한 데이터베이스에 대해서 별도의 프로그램을 만들 필요 없이, JDBC를 이용하면 하나의 프로그램으로 데이터베이스를 관리할 수 있다.
+
+## 데이터베이스 연결 순서
+1. JDBC드라이버 로드 - DriverManager
+  - `Class.forName("oracle.jdbc.driver.OracleDriver");` => 메모리에 OracleDriver가 로드된다.
+2. 데이터베이스 연결 - Connection
+  - `DriverManager.getConnection(JDBC URL, 계정아이디, 비밀번호);` => Connection 객체 생성
+3. SQL문 실행 - Statement
+  - `connection.createStatment();` => Statement 객체를 통해 SQL문이 실행된다.
+4. 데이터베이스 연결 해제 - ResultSet
+  - `statement.executeQuery(), statement.executeUpdate() => SQL문의 결과값을 ResultSet 객체로 받는다.(executeQuery()의 경우)
+    - statement.executeQuery() - SQL문 실행 후 여러 개의 결과값이 나올 때 사용 (select), 반환형은 resultSet
+    - statement.executeUpdate() - SQL문 실행 후 테이블의 내용만 변경되는 경우 사용 (insert, delete, update), 반환형은 int
+5. close();
+
+## PreparedStatement 객체
+- SQL문 실행을 위해 사용하는 Statement 객체는 중복코드가 많아지는 단점이 있다. PreparedStatement 객체는 이러한 단점을 개선한다.
+~~~java
+Class.forName(driver);
+connection = DriverManager.getConnection(url,uid,upw);
+int n;
+String query = "insert into memberforpre (id, pw, name, phone) values (?,?,?,?)";
+preparedStatement = connection.preparedStatement(query);
+
+preparedStatement.setString(1, "abc");
+preparedStatement.setString(2, "123");
+preparedStatement.setString(3, "홍길동");
+preparedStatement.setString(4, "010-1234-5678");
+n = preparedStatement.executeUpdate();
+~~~
