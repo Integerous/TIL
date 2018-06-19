@@ -288,3 +288,33 @@ preparedStatement.setString(3, "홍길동");
 preparedStatement.setString(4, "010-1234-5678");
 n = preparedStatement.executeUpdate();
 ~~~
+
+## DBCP (Data Base Connection Pool)
+- 클라이언트에서 다수의 요청이 발생할 경우 데이터베이스에 부하가 발생
+- 이러한 문제를 해결하기 위해 미리 커넥션 객체들을 만들어 놓는 커넥션 풀 기법 사용
+
+## DBCP 사용하기
+- tomcat container가 데이터베이스 인증을 하도록 context.xml 파일을 열어 아래의 코드를 추가한다.
+~~~xml
+<Resource
+          auth = "Container"
+          driverClassName = "oracle.jdbc.driver.OracleDriver"
+          url = "jdbc:oracle:thin:@localhost:1521:xe"
+          username = "scott"
+          password = "tiger"
+          name = "jdbc/Oracle11g"
+          maxActive = "50"
+          maxWait = "1000"
+          />
+~~~
+- 직접 OracleDriver를 로드하던 방식에서 커넥션 풀을 활용하는 방식으로 사용
+  - 직접 driver 로드할 때
+    - `Class.forName("oracle.jdbc.driver.OracleDriver");`
+  - 커넥션 풀 활용
+    ~~~java
+    private DataSource dataSource;
+    Context context = new InitialContext();
+    dataSource = (DataSource)context.lookup("java:comp/env/jdbc/Oracle11g");
+    //connection = DriverManager.getConnection(url, uri, urw); 이렇게 쓰던걸 아래처럼
+    connection = datdSource.getConnection();
+    ~~~
