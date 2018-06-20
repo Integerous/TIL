@@ -328,3 +328,13 @@ n = preparedStatement.executeUpdate();
 - `${paramValues }` : 요청 파라미터(배열)를 참조하는 객체
 - `${initParam }` : 초기화 파라미터를 참조하는 객체
 - `${cookie }` : cookie 객체를 참조하는 객체
+
+## 요청 위임
+- Servlet 또는 JSP에서 요청을 받은 후, 다른 컴포넌트로 요청을 위임할 수 있다.
+- 이러한 요청 방법에는 2가지가 있다.
+  - RequestDispatcher 클래스
+  - HttpServletResponse 클래스
+- RequestDispatcher 클래스
+  - 요청 받은 요청객체(request)를 위임하는 컴포넌트에 동일하게 전달
+- HttpServletResponse 클래스
+  - 요청 받은 요청객체(request)를 위임받은 컴포넌트에 전달하는 것이 않고, 새로운 요청객체(request)를 생성.
