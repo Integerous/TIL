@@ -171,7 +171,7 @@
 
 ## 쿠키 Cookie
 - 웹 브라우저에서 서버로 요청을 보내면 서버에서는 로직을 수행하고 웹브라우저에 응답한다
-- 그리고 서버는 웹브라우저와의 관계를 종료한다. (http 프로토콜의 무상태성)
+- 그리고 서버는 웹브라우저와의 관계를 종료한다. ([http 프로토콜의 무상태성](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md))
 - 연결이 끊겼을 때 어떤 정보를 지속적으로 사용하기 위한 수단으로 쿠키 사용
 - 쿠키는 서버에서 생성하여 클라이언트 단에 특정 정보를 저장한다.
 - 그리고 서버에 요청할 때 마다 쿠키의 속성값을 참조하거나 변경할 수 있다.
@@ -318,3 +318,13 @@ n = preparedStatement.executeUpdate();
     //connection = DriverManager.getConnection(url, uri, urw); 이렇게 쓰던걸 아래처럼
     connection = datdSource.getConnection();
     ~~~
+
+## EL 내장객체
+- `${pageScope }` : 페이지 객체를 참조하는 객체
+- `${requestScope }` : request 객체를 참조하는 객체
+- `${sessionScope }` : session 객체를 참조하는 객체
+- `${applicationScope }` : application 객체를 참조하는 객체
+- `${param }` : 요청 파라미터를 참조하는 객체
+- `${paramValues }` : 요청 파라미터(배열)를 참조하는 객체
+- `${initParam }` : 초기화 파라미터를 참조하는 객체
+- `${cookie }` : cookie 객체를 참조하는 객체
