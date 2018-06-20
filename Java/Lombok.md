@@ -8,6 +8,7 @@
 >Lombok Project에서 소개한 [Lombok의 주요 기능 리스트](https://projectlombok.org/features/all)가 가장 유용한 정보였다.
 ## @Data
   - ~사실 @Data 이것만 사용해도 무방한 것 같다.~ [손권남님이 작성한 Lombok 사용시 주의사항 읽어보기](https://projectlombok.org/features/all)
+  - 실무에서는 가급적 @Getter @Setter @ToString 만 사용하는 것이 좋다.
   - @Data는 밑에 설명할 @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode을 한꺼번에 설정해준다.
   - 클래스 레벨에서 @Data 어노테이션을 붙여주면, 모든 필드를 대상으로 접근자와 설정자가 자동으로 생성되고, final 또는 @NonNull 필드 값을 파라미터로 받는 생성자가 만들어지며, toStirng, equals, hashCode 메소드가 자동으로 만들어진다.
 # 동작 원리
