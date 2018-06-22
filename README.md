@@ -22,7 +22,10 @@
 * [입/출력](https://github.com/Integerous/TIL/blob/master/Java/IO.md)
 * [DWR](https://github.com/Integerous/TIL/blob/master/Java/DWR.md)
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
+## Servlet & JSP
+* [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
 ## Spring
+* [AOP](https://github.com/Integerous/TIL/blob/master/Spring/AOP.md)
 * [게시판 기본 CRUD](https://github.com/Integerous/TIL/tree/master/Spring/CRUD)
 * [@ModelAttribute](https://github.com/Integerous/TIL/blob/master/Spring/%40ModelAttribute.md)
 * [@RequestParam](https://github.com/Integerous/TIL/blob/master/Spring/%40RequestParam.md)
@@ -30,8 +33,6 @@
 * [@Transient](https://github.com/Integerous/TIL/blob/master/Spring/%40Transient.md)
 * [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/%40SessionAttributes.md)
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
-## Servlet & JSP
-* [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
 ## Node.js
 * [Node.js 기초](https://github.com/Integerous/TIL/tree/master/Node.js)
 * [Hello World](https://github.com/Integerous/TIL/blob/master/Node.js/HelloWorld.md)
