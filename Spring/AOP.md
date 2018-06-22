@@ -93,5 +93,5 @@ public class LogAop {
     - @Pointcut("bean(*ker)") // ~ker로 끝나는 bean에만 적용
   ~~~
   
-  # Reference
-  - 신입 개발자를 위한 Spring Framework 강의
+# *Reference
+- [신입 개발자를 위한 Spring Framework 강의](https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%94%84%EB%A7%81-%EA%B0%95%EC%A2%8C/)
