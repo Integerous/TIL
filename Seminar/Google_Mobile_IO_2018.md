@@ -2,10 +2,10 @@
 >Google I/O 2018 최신 기술 총 정리
 >>Tian Lim VP of UX &Product for Paly
 
-## #IMakeApps 
+### #IMakeApps 
 g.co/play/imakeapps
 
-## AI for Everyone
+### AI for Everyone
 1. Making product more useful
   - suggested actions  brighten
   - color pop
@@ -132,18 +132,18 @@ Bring back churned users
 >Google Assistant, 내 비즈니스에 어떻게 활용해야 할까
 >>이주연(Strategic Partnership Development Manager, Google)
 
-### 구글 Assistant 업데이트 16가지 중 중요한 4가지
-1. 구글 assistant가 어디까지 왔는지
+## 구글 Assistant 업데이트 16가지 중 중요한 4가지
+### 1. 구글 assistant가 어디까지 왔는지
   - 총 5억대 이상의 Device에서 구글 Assistant를 사용한다.
   
-2. 구글 assistant를 접할 수 있는 distribution 채널들
+### 2. 구글 assistant를 접할 수 있는 distribution 채널들
   - 보통 스마트스피커를 생각하지만 다양한 채널들이 있다.
   - Voice, Visual, Touch를 사용하는 Smart Display
   - Smart Display는 스마트스피커에 시각적 정보가 추가된 device이다.
   - 지금까지는 챗봇같은 형식으로 대화했지만 이제는 일상생활에 필요한 정보들을 My Day라는 형태로 필요한 정보를 한 화면에 표시하는 형태로 진화할 것이다.
   - Google Maps에도 Google Assistant가 들어갈 것이다. 하지만 아직 한국에서는 일정이 잡혀있지 않다.
   
-3. 구글 assistant가 얼마나 사람과 대화하기위해 어떤 기술들을 발전시켜왔는지
+### 3. 구글 assistant가 얼마나 사람과 대화하기위해 어떤 기술들을 발전시켜왔는지
   - 새로운 종류의 Voice 6가지가 추가되었다.
     - 특히 John Legend의 목소리
     - 특정 사람의 목소리를 구글에서 트레이닝 시켜서 앞으로 연예인이나 특정인의 목소리를 구글 Assistant에서 사용하게 될 것이다.
@@ -156,7 +156,7 @@ Bring back churned users
     - Family Link를 이용해서 아이가 사용하는 중이라면 대화할때 please를 붙이도록 할 수 있다.
   - Google Duplex
   
-4. assistant와 연동할 수 있는 방법들과 추가된 기능들
+### 4. assistant와 연동할 수 있는 방법들과 추가된 기능들
   - 구글 Assistant 연동 방식
     - Vertical Program(=Direct Actions)
       - 예를 들어 음악 스트리밍 서비스를 사용중이라면 서비스를 설정해 둘 수 있다. 설정을 해두었다면 구글 Assistant한테 벅스한테 비틀즈의 렛잇비를 틀어줘라 할 필요없이 그냥 비틀즈의 렛잇비를 틀어달라고 하면 된다.
@@ -215,10 +215,10 @@ Bring back churned users
 - Getting things done
   - 사용자가 브랜드와 상호 작용 할 수 있는 새로운 방법 제공
 
-### 현대적인 Chatbot 개념
+- 현대적인 Chatbot 개념
   - Intent, Entity, Context를 파악해서 그에 맞게 응답한다.
 
-### 아들이 영어단어 암기 프로그램을 만들어 달라했다.
+- 아들이 영어단어 암기 프로그램을 만들어 달라했다.
   - Chatbot(Dialogflow + Google Assistant 활용)
     - 문제풀이 대화식으로 진행
     - 컴퓨터, 모바일 어디서나 사용가능
@@ -252,3 +252,7 @@ Bring back churned users
     - Video Intelligence API
       - 영상을 분석해서 엔티티를 추출하고 레이블과 해당 내용이 나온 장면을 분석
       - 감시 카메라에 활용
+
+# Session 6
+>모바일 개발자를 위한 ML kit: Machine Learning SDK 소개
+>>신정규(Founder & CEO, Lablup Inc.)
