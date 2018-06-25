@@ -144,3 +144,70 @@ Bring back churned users
   - 속도는 측정을 안해봤고, 전력소모가 굉장히 적다.
 2. 전산학을 전공한 개발자입니다. AI를 입문하기에 가장 좋은 프로젝트나 강의가 무엇일까요?
   - 고등학생인 자녀가 집에서 AI를 공부하고 있는데, 구글에서 제공하는 클래스 코스와 Deeplaerning.ai 라는 곳의 코스가 좋다.
+
+
+# Session 2
+>Google Assistant, 내 비즈니스에 어떻게 활용해야 할까
+>>이주연(Strategic Partnership Development Manager, Google)
+
+## 구글 Assistant 업데이트 16가지 중 중요한 4가지
+1. 구글 assistant가 어디까지 왔는지
+  - 총 5억대 이상의 Device에서 구글 Assistant를 사용한다.
+  
+2. 구글 assistant를 접할 수 있는 distribution 채널들
+  - 보통 스마트스피커를 생각하지만 다양한 채널들이 있다.
+  - Voice, Visual, Touch를 사용하는 Smart Display
+  - Smart Display는 스마트스피커에 시각적 정보가 추가된 device이다.
+  - 지금까지는 챗봇같은 형식으로 대화했지만 이제는 일상생활에 필요한 정보들을 My Day라는 형태로 필요한 정보를 한 화면에 표시하는 형태로 진화할 것이다.
+  - Google Maps에도 Google Assistant가 들어갈 것이다. 하지만 아직 한국에서는 일정이 잡혀있지 않다.
+  
+3. 구글 assistant가 얼마나 사람과 대화하기위해 어떤 기술들을 발전시켜왔는지
+  - 새로운 종류의 Voice 6가지가 추가되었다.
+    - 특히 John Legend의 목소리
+    - 특정 사람의 목소리를 구글에서 트레이닝 시켜서 앞으로 연예인이나 특정인의 목소리를 구글 Assistant에서 사용하게 될 것이다.
+  - Continued Conversation
+    - 언제나 서비스 이름을 불러서 사용해야했다.(Hey google) 하지만 앞으로는 그렇게 매번 부를 필요없다.
+    - 즉 문맥을 이해하고 지난 대화에 이어서 자연스럽게 대화를 이어나갈 수 있게 된다.
+  - Multiple Action
+    - 한 문장에 2가지 이상의 문장을 넣는 것 (케빈듀란트가 이적했을때 캘리포니아 주지사는 누구였니? 그리고 듀란트는 어디로 이적했니? 라는 질문에 한문장으로 대답하는 것)
+  - Pretty Please
+    - Family Link를 이용해서 아이가 사용하는 중이라면 대화할때 please를 붙이도록 할 수 있다.
+  - Google Duplex
+  
+4. assistant와 연동할 수 있는 방법들과 추가된 기능들
+  - 구글 Assistant 연동 방식
+    1. Vertical Program(=Direct Actions)
+      - 예를 들어 음악 스트리밍 서비스를 사용중이라면 서비스를 설정해 둘 수 있다. 설정을 해두었다면 구글 Assistant한테 벅스한테 비틀즈의 렛잇비를 틀어줘라 할 필요없이 그냥 비틀즈의 렛잇비를 틀어달라고 하면 된다.
+    2. Conversational Actions
+      - ex) Hey Google, talk to California Surf Report 이후에는 그 서비스와 직접 대화하는 형태
+    3. Content Actions (AMP/SDM) (새로 추가)
+    4. App Actions (새로 추가)
+      - 기존에 가지고있는 android intent(명령어)를 Assistant에 적용하는 것
+      - 아직 한국에서는 진행하고있지 않다.
+  - 3rd Party연동을 위한 새로운 기능들 (미국 기준)
+    1. 루틴
+      - Good morning
+      - Leaving home
+      - Commuting to work
+      - Commuting to home
+      - I'm Home
+      - Bedtime
+      - Todoist
+    2. 데일리 업데이트 / 푸쉬 노티피케이션
+      - 매일 리마인드 받고싶은 것들(오늘의 명언 등)을 푸시받는다.
+    3. 액션 링크
+      - 이미 가지고 있는 본인의 웹사이트, sns에 url링크를 걸어서 구글 Assistant로의 이동
+    4. 멀티 서베이스 대화
+      - 음성 대화에서 사용자가 더 자세한 내용을 보여달라고 했을때 자세한 내용을 사용자의 다른 device로 보내줄 수 있는 것
+    5. 결제 (재화 서비스 구매/ 예약 / 디지털 굿즈 구매)
+      - 스타벅스의 경우 단순히 결제하는 것에 멈추지 않고, 유저가 평소에 먹는 것과 픽업 장소를 기억하고 제안한다.
+      - 예약 서비스도 구글 Assistant에서 진행할 수 있게 될 것
+
+## Question
+  - 한국에서 구글 Assistant가 언제 상용화/활성화 되나요?
+    - 2018년 하반기에 다양한 발표가 있을 예정
+  
+  
+  
+  
+  
