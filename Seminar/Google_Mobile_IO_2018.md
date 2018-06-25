@@ -5,7 +5,7 @@
 ## #IMakeApps 
 g.co/play/imakeapps
 
-##AI for Everyone
+## AI for Everyone
 1. Making product more useful
   - suggested actions  brighten
   - color pop
@@ -20,26 +20,20 @@ g.co/play/imakeapps
   - Wind Down
     - 수면 전 사용에 화면을 흑백으로 바꿔서 수면에 도움이 되도록 하는 기능
 
-## Android App Bundle
+### Android App Bundle
 Avertage APK size is getting bigger
 Upload and android App Bundle > Dynamic Delivery > Optimized APK for each device
 
 # Keynote 2
 >모바일 개발자를 위한 I/O 2018 : Android의 새로운 기능 소개
->>
 
-지난 10년간 안드로이드의 발전은 스마트폰에 국한되지 않았다.
-## Kotlin
-35%의 프로 개발자들이 코들린을 사용하고 있다. 그중 95%는 매우 만족했다.
-
-## State of Kotlin
+### State of Kotlin
 70만 이상의 사용자
 110개의 유저그룹
 1200 talks 
 14000멤버의 슬랙
 
-17000멤버 슬랙
-30 코틀린나잇
+17000멤버의 슬랙
 1000 등록자 KotlinConf 2018
 
 48% 다른 언어에서 코틀린으로 완전히 바꿨따.
@@ -51,27 +45,16 @@ Upload and android App Bundle > Dynamic Delivery > Optimized APK for each device
 스택오버플로우에서 코틀린이 75.1%로 가장 사랑받는 언어였다.
 Baeldung 2018 서베이
 
-## What we're working on
+### What we're working on
 1. Speed improvemetns
 2. Toolling support
 3. Language evolution
 4. Multi-platform support
 
-Kotlin/JVM
-  -desktop, 
-Kotlin/JS
-Kotlin/Native
-  - ios, macos, linux, windows raspberry p
-
-
-Conversion rate decreases as apps get larger
-
-
-## Android app Bundle
+### Android app Bundle
 새로운 퍼블리싱 포맷이고co/androidappbub
 
-
-## Google Play Instant for game developers
+### Google Play Instant for game developers
 >Benjamin Frenkel
 >>ANdroid Product Manager
 
@@ -85,14 +68,14 @@ Conversion rate decreases as apps get larger
 
 Bring back churned users
 
-## 게임 출시 단계별 인스턴트 사용 전략
+### 게임 출시 단계별 인스턴트 사용 전략
 1. Upcoming launches
   - Core gameplay preview
   - 설치된 게임에서 초반에 사용할 수 있는 아이템들보다 더 많은 아이템들을 인스턴트에서 사용하게 하므로서 게임의 재미를 더욱 느끼게 한다. 
 3. Late stage games
   - Game highlights
 
-## Tools for game developers
+### Tools for game developers
 - Instant apps framework
   1. Raised size limit to 10mb for games
   2. enanled progressive download
@@ -101,17 +84,16 @@ Bring back churned users
 - Unity Beta program (available now)
 
 
-# Android Jetpack
+### Android Jetpack
 - Backwords compatible
 - Less boilerplate code
 - Opinionated
 - Integrated with IDE
 
-## Android Slices
+### Android Slices
 >g.co/slices
 
-## App Actions
-
+### App Actions
 
 # Session 1
 >[패널토크] Google AI: 누구나 사용할 수 있는 AI의 미래
@@ -150,7 +132,7 @@ Bring back churned users
 >Google Assistant, 내 비즈니스에 어떻게 활용해야 할까
 >>이주연(Strategic Partnership Development Manager, Google)
 
-## 구글 Assistant 업데이트 16가지 중 중요한 4가지
+### 구글 Assistant 업데이트 16가지 중 중요한 4가지
 1. 구글 assistant가 어디까지 왔는지
   - 총 5억대 이상의 Device에서 구글 Assistant를 사용한다.
   
@@ -176,16 +158,16 @@ Bring back churned users
   
 4. assistant와 연동할 수 있는 방법들과 추가된 기능들
   - 구글 Assistant 연동 방식
-    1. Vertical Program(=Direct Actions)
+    - Vertical Program(=Direct Actions)
       - 예를 들어 음악 스트리밍 서비스를 사용중이라면 서비스를 설정해 둘 수 있다. 설정을 해두었다면 구글 Assistant한테 벅스한테 비틀즈의 렛잇비를 틀어줘라 할 필요없이 그냥 비틀즈의 렛잇비를 틀어달라고 하면 된다.
-    2. Conversational Actions
+    - Conversational Actions
       - ex) Hey Google, talk to California Surf Report 이후에는 그 서비스와 직접 대화하는 형태
-    3. Content Actions (AMP/SDM) (새로 추가)
-    4. App Actions (새로 추가)
+    - Content Actions (AMP/SDM) (새로 추가)
+    - App Actions (새로 추가)
       - 기존에 가지고있는 android intent(명령어)를 Assistant에 적용하는 것
       - 아직 한국에서는 진행하고있지 않다.
   - 3rd Party연동을 위한 새로운 기능들 (미국 기준)
-    1. 루틴
+    - 루틴
       - Good morning
       - Leaving home
       - Commuting to work
@@ -193,24 +175,23 @@ Bring back churned users
       - I'm Home
       - Bedtime
       - Todoist
-    2. 데일리 업데이트 / 푸쉬 노티피케이션
+    - 데일리 업데이트 / 푸쉬 노티피케이션
       - 매일 리마인드 받고싶은 것들(오늘의 명언 등)을 푸시받는다.
-    3. 액션 링크
+    - 액션 링크
       - 이미 가지고 있는 본인의 웹사이트, sns에 url링크를 걸어서 구글 Assistant로의 이동
-    4. 멀티 서베이스 대화
+    - 멀티 서베이스 대화
       - 음성 대화에서 사용자가 더 자세한 내용을 보여달라고 했을때 자세한 내용을 사용자의 다른 device로 보내줄 수 있는 것
-    5. 결제 (재화 서비스 구매/ 예약 / 디지털 굿즈 구매)
+    - 결제 (재화 서비스 구매/ 예약 / 디지털 굿즈 구매)
       - 스타벅스의 경우 단순히 결제하는 것에 멈추지 않고, 유저가 평소에 먹는 것과 픽업 장소를 기억하고 제안한다.
       - 예약 서비스도 구글 Assistant에서 진행할 수 있게 될 것
 
-## Question
+### Question
   - 한국에서 구글 Assistant가 언제 상용화/활성화 되나요?
     - 2018년 하반기에 다양한 발표가 있을 예정
 
 # Session 3
 >Android Things: Android 앱 개발 기술로 쉽게 IoT 만들기
 >>장인선(Software Engineer, Google)
-
 
 # Session 4
 >Kotlin으로 코딩 시작하기
@@ -220,11 +201,11 @@ Bring back churned users
 >Dialogflow와 ML API를 활용한 챗봇 개발
 >>정명훈(Customer Engineer, Google Cloud)
 
-## 챗봇이 급성장하고 있는 이유?
+### 챗봇이 급성장하고 있는 이유?
 - 스마트 디바이스의 증가
 - 브랜드 참여도 전환
 
-## 3가지 주요 사용 사례
+### 3가지 주요 사용 사례
 - Customer Service
   - 콜센터에서 콜 1통에 드는 비용은 몇 천원에 달한다.
   - 콜센터의 콜을 줄일 수 있다면 획기적으로 비용을 절감할 수 있을 것
@@ -234,17 +215,17 @@ Bring back churned users
 - Getting things done
   - 사용자가 브랜드와 상호 작용 할 수 있는 새로운 방법 제공
 
-## 현대적인 Chatbot 개념
+### 현대적인 Chatbot 개념
   - Intent, Entity, Context를 파악해서 그에 맞게 응답한다.
 
-## 아들이 영어단어 암기 프로그램을 만들어 달라했다.
+### 아들이 영어단어 암기 프로그램을 만들어 달라했다.
   - Chatbot(Dialogflow + Google Assistant 활용)
     - 문제풀이 대화식으로 진행
     - 컴퓨터, 모바일 어디서나 사용가능
     - 대화를 통해 재미 유도 => 자연스럽게 음성 기능 추가
     - Google Sheets에 단어/문제/정답 입력
 
-## Dialogflow
+### Dialogflow
   - 거의 챗봇개발의 표준이 되었다.
   - 한국어 지원이 잘된다.
   - Assistant와 Dialogflow를 같이 사용하면 백엔드를 Dialogflow가 맡게 된다.
@@ -254,7 +235,7 @@ Bring back churned users
     - 예문을 쭉 입력하고 머신러닝을 돌린다.
   - 사전 구축된 에이전트(Built-in agent)가 첫 시작을 쉽게 해준다.
   
-## Google ML API
+### Google ML API
   - TensorFlow
   - Cloud ML
     - Data scientis
@@ -271,11 +252,3 @@ Bring back churned users
     - Video Intelligence API
       - 영상을 분석해서 엔티티를 추출하고 레이블과 해당 내용이 나온 장면을 분석
       - 감시 카메라에 활용
-    
-    
-    
-    
-    
-    
-    
-    
