@@ -216,3 +216,66 @@ Bring back churned users
 >Kotlin으로 코딩 시작하기
 >>Hadi Hariri(VP of Developer Advocacy, Jetbrains)
 
+# Session 5
+>Dialogflow와 ML API를 활용한 챗봇 개발
+>>정명훈(Customer Engineer, Google Cloud)
+
+## 챗봇이 급성장하고 있는 이유?
+- 스마트 디바이스의 증가
+- 브랜드 참여도 전환
+
+## 3가지 주요 사용 사례
+- Customer Service
+  - 콜센터에서 콜 1통에 드는 비용은 몇 천원에 달한다.
+  - 콜센터의 콜을 줄일 수 있다면 획기적으로 비용을 절감할 수 있을 것
+- Transactions
+  - 사용자의 프로필을 기준으로 맞춤화된 오퍼
+  - 보험사에서 Diaflow를 활용하여 상담량을 획기적으로 증가시켰다.
+- Getting things done
+  - 사용자가 브랜드와 상호 작용 할 수 있는 새로운 방법 제공
+
+## 현대적인 Chatbot 개념
+  - Intent, Entity, Context를 파악해서 그에 맞게 응답한다.
+
+## 아들이 영어단어 암기 프로그램을 만들어 달라했다.
+  - Chatbot(Dialogflow + Google Assistant 활용)
+    - 문제풀이 대화식으로 진행
+    - 컴퓨터, 모바일 어디서나 사용가능
+    - 대화를 통해 재미 유도 => 자연스럽게 음성 기능 추가
+    - Google Sheets에 단어/문제/정답 입력
+
+## Dialogflow
+  - 거의 챗봇개발의 표준이 되었다.
+  - 한국어 지원이 잘된다.
+  - Assistant와 Dialogflow를 같이 사용하면 백엔드를 Dialogflow가 맡게 된다.
+  - 규칙 기반이 아니라 문장을 분석해서 머신러닝 학습을 시킨다.
+    - 전통적인 규칙기반은 모든 정보를 입력해야했는데 그것은 불가능했기 때문에 한계가 있었다.
+    - 때문에 머신러닝 기반으로 40% 정도 향상된 성능을 발휘한다.
+    - 예문을 쭉 입력하고 머신러닝을 돌린다.
+  - 사전 구축된 에이전트(Built-in agent)가 첫 시작을 쉽게 해준다.
+  
+## Google ML API
+  - TensorFlow
+  - Cloud ML
+    - Data scientis
+  - Pre-built Models
+    - App Developer
+    - Translation API
+    - Natural Language API (자연어 처리)
+      - 입력된 문장에 대한 감성 분석, 문법적 분석, 엔티티 추출등을 지원하며, 한국어, 영어, 중국어, 일어 등 여러가지 언어를 지원
+      - 학습에 필요한 데이터 입력할때 자연어 처리 API를 사용하면 좋다.
+    - Speech API (음성인식)
+      - 음성을 인식해서 Text로 변환해주는 API. 구문힌트나 인식모드 등을 통해 정확도 향상
+    - Vision API (사진 분석, 텍스트 인식)
+      - 사진을 분석해서 엔티티나 text, 사람 및 표정, 장소(랜드마크), 부적절한 이미지 등 검색
+    - Video Intelligence API
+      - 영상을 분석해서 엔티티를 추출하고 레이블과 해당 내용이 나온 장면을 분석
+      - 감시 카메라에 활용
+    
+    
+    
+    
+    
+    
+    
+    
