@@ -210,3 +210,9 @@ Bring back churned users
 # Session 3
 >Android Things: Android 앱 개발 기술로 쉽게 IoT 만들기
 >>장인선(Software Engineer, Google)
+
+
+# Session 4
+>Kotlin으로 코딩 시작하기
+>>Hadi Hariri(VP of Developer Advocacy, Jetbrains)
+
