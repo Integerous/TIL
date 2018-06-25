@@ -206,8 +206,7 @@ Bring back churned users
 ## Question
   - 한국에서 구글 Assistant가 언제 상용화/활성화 되나요?
     - 2018년 하반기에 다양한 발표가 있을 예정
-  
-  
-  
-  
-  
+
+# Session 3
+>Android Things: Android 앱 개발 기술로 쉽게 IoT 만들기
+>>장인선(Software Engineer, Google)
