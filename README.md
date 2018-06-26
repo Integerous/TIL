@@ -25,7 +25,7 @@
 ## Servlet & JSP
 * [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
 ## Spring
-* [ModelAndView를 이용한 데이터 전달](https://github.com/Integerous/TIL/blob/master/Spring/ModelAndView.md)
+* [Model, ModelMap, ModelAndView 차이](https://github.com/Integerous/TIL/blob/master/Spring/Model_ModelMap_ModelAndView.md)
 * [AOP](https://github.com/Integerous/TIL/blob/master/Spring/AOP.md)
 * [게시판 기본 CRUD](https://github.com/Integerous/TIL/tree/master/Spring/CRUD)
 * [@ModelAttribute](https://github.com/Integerous/TIL/blob/master/Spring/%40ModelAttribute.md)
