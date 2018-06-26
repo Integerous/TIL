@@ -12,6 +12,7 @@
 
 # 분류
 ## ETC
+* [StringUtils](https://github.com/Integerous/TIL/blob/master/ETC/StringUtils.md)
 * [CDATA](https://github.com/Integerous/TIL/blob/master/ETC/CDATA.md)
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [[번역] Web API Design]()
