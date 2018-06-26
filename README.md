@@ -17,8 +17,8 @@
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [[번역] Web API Design]()
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
-* [[번역] Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
-* [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
+* [Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
+* [[번역] Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
 ## Java
 * [입/출력](https://github.com/Integerous/TIL/blob/master/Java/IO.md)
 * [DWR](https://github.com/Integerous/TIL/blob/master/Java/DWR.md)
