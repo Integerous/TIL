@@ -41,7 +41,9 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
-* [CodeWars 001 - Multiples of 3 or 5](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/1_Multiples_of_3or5.md)
+* [CodeWars 001 - Multiples of 3 or 5 (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/1_Multiples_of_3or5.md)
+* [CodeWars 002 - Get the middle character (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/002-Get_the_middle_character.md)
+* [CodeWars 003 - String repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
 ## Cloud
 ## Database
 ## SQL
