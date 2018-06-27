@@ -52,5 +52,5 @@
 * 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
 ## Tools
 ## Seminar
-* [Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
+* [[2018.06.25]Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
 
