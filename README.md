@@ -41,12 +41,13 @@
 * [Hello World](https://github.com/Integerous/TIL/blob/master/Node.js/HelloWorld.md)
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
+## Algorithm
+* [CodeWars 001 - Multiples of 3 or 5](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/1_Multiples_of_3or5.md)
 ## Cloud
 ## Database
 ## SQL
 * [SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
 ## Linux
-## Algorithm
 ## Operating System
 * 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
 ## Tools
