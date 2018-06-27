@@ -3,11 +3,10 @@
 * 인생은 마라톤! 꾸준한 성장을 위해 개발 경험과 학습 내용을 기록한다.
 * Sharpen the saw. Renew yourself regulary !
 
-세미나에서 알게된 [김남준](https://github.com/namjunemy)님의 TIL에 영감을 받아 시작하였다.
+세미나에서 알게된 [김남준](https://github.com/namjunemy)님의 TIL을 참고하여 시작하였다.
 # 작성 규칙
-* 한 번에 완벽하게 작성하겠다는 욕심은 버리고 꾸준히 개선한다.
+* 한 번에 완벽하게 작성하기보다 꾸준히 개선한다.
 * 폴더와 파일명은 영문으로 작성한다. (확장자`.md`)
-* 내용에 오류가 있을 수 있음을 명시한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
 # 분류
@@ -52,5 +51,5 @@
 * 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
 ## Tools
 ## Seminar
-* [[2018.06.25]Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
+* [[2018.06.25] Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
 
