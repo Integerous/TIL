@@ -59,7 +59,7 @@ public class Kata {
 ## Result & Review
 >Time-out! 시간 초과로 실패!
 - 세상에서 제일 썩은 코드를 작성했다.
-- toCharArray()의 존재를 몰랐다.
+- split()과 toCharArray()의 존재를 몰랐다.
 - ASCII Table에서 알파벳은 각각 해당하는 10진수 값이 정해져있는 사실을 잊고 있었다.
 - 밑의 Clever 코드가 import 없이 풀어서 매우 마음에 든다.
 
