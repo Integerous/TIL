@@ -41,6 +41,7 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
+* [CodeWars 006 - Most Digits (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/006-Most_digits.md)
 * [CodeWars 005 - Redex Validate PIN Code (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/005-Regex_validate_PIN_code.md)
 * [CodeWars 004 - Tribonacci Sequence (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/004-Tribonacci_sequence.md)
 * [CodeWars 003 - String Repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
