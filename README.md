@@ -41,9 +41,10 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
-* [CodeWars 004 - Tribonacci sequence (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/004-Tribonacci_sequence.md)
-* [CodeWars 003 - String repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
-* [CodeWars 002 - Get the middle character (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/002-Get_the_middle_character.md)
+* [CodeWars 005 - Redex Validate PIN Code](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/005-Regex_validate_PIN_code.md)
+* [CodeWars 004 - Tribonacci Sequence (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/004-Tribonacci_sequence.md)
+* [CodeWars 003 - String Repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
+* [CodeWars 002 - Get The Middle Character (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/002-Get_the_middle_character.md)
 * [CodeWars 001 - Multiples of 3 or 5 (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/1_Multiples_of_3or5.md)
 
 ## Cloud
