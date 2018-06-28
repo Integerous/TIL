@@ -41,6 +41,7 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
+* [CodeWars 008 - The Highest Profit Wins! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/008-The_highest_profit_wins.md)
 * [CodeWars 007 - Highest Scoring Word (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/007-Highest_scoring_word.md)
 * [CodeWars 006 - Most Digits (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/006-Most_digits.md)
 * [CodeWars 005 - Redex Validate PIN Code (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/005-Regex_validate_PIN_code.md)
