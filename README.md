@@ -41,6 +41,7 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
+* [CodeWars 010 - Two Fighters, One Winner (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/010-TwoFighters_OneWinner.md)
 * [CodeWars 009 - Odd or Even? (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/009-Odd_or_even%3F.md)
 * [CodeWars 008 - The Highest Profit Wins! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/008-The_highest_profit_wins.md)
 * [CodeWars 007 - Highest Scoring Word (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/007-Highest_scoring_word.md)
