@@ -41,6 +41,7 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
+* [CodeWars 014 - Simple Encryption #1 - Alternating Split (6kyu)]()
 * [CodeWars 013 - Count All the Sheep (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/013-Count_all_the_sheep.md)
 * [CodeWars 012 - Isograms (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/012-Isograms.md)
 * [CodeWars 011 - Find the Odd (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/011-Find_the_odd_int.md)
