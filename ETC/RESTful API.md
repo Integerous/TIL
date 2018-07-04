@@ -4,6 +4,7 @@
 그런데 나는 RESTful API의 의미조차 모르고 있었다! 그래서 시작!
 # 1. REST 란?
 * REpresentational State Transfer.
+ - 하나의 URI는 하나의 고유한 Resource를 대표하도록 설계된다는 개념
 * 웹의 장점을 최대한 활용할 수 있는 네트워크 기반의 아키텍쳐.
   * (웹의 장점이 무엇인지 공부하고 추가할것)
 * ㅉㅉㅉ(World Wide Web)과 같은 분산 시스템을 위한 소프트웨어 아키텍쳐.
