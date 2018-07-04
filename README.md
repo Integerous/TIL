@@ -41,6 +41,7 @@
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 ## Algorithm
+* [CodeWars 015 - Square Every Digit (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/015-Square_every_digit.md)
 * [CodeWars 014 - Simple Encryption #1 - Alternating Split (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/014-Alternating_split.md)
 * [CodeWars 013 - Count All the Sheep (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/013-Count_all_the_sheep.md)
 * [CodeWars 012 - Isograms (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/012-Isograms.md)
