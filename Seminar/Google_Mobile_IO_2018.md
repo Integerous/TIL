@@ -7,18 +7,18 @@ g.co/play/imakeapps
 
 ### AI for Everyone
 1. Making product more useful
-  - suggested actions  brighten
-  - color pop
-  - Adaptive battery
-    - 30% 사용량 감소
+    - suggested actions  brighten
+    - color pop
+    - Adaptive battery
+      - 30% 사용량 감소
 2. Helping others inovate
-  - TPU 3.0
-  - Helping diagnose diabetic retinopathy
+    - TPU 3.0
+    - Helping diagnose diabetic retinopathy
 3. Deigital Well-Being
-  - Dashboard
-  - App Timer
-  - Wind Down
-    - 수면 전 사용에 화면을 흑백으로 바꿔서 수면에 도움이 되도록 하는 기능
+    - Dashboard
+    - App Timer
+    - Wind Down
+      - 수면 전 사용에 화면을 흑백으로 바꿔서 수면에 도움이 되도록 하는 기능
 
 ### Android App Bundle
 Avertage APK size is getting bigger
@@ -28,31 +28,21 @@ Upload and android App Bundle > Dynamic Delivery > Optimized APK for each device
 >모바일 개발자를 위한 I/O 2018 : Android의 새로운 기능 소개
 
 ### State of Kotlin
-70만 이상의 사용자
-110개의 유저그룹
-1200 talks 
-14000멤버의 슬랙
-
-17000멤버의 슬랙
-1000 등록자 KotlinConf 2018
-
-48% 다른 언어에서 코틀린으로 완전히 바꿨따.
-5000명 이상의 회사중 20%가 코틀린 사용한다.
-2%의 사용자가 그들의 첫번째 언어로 코틀린을 선택했따
-
-어플리케이션 타입은 모바일이 60%
-
-스택오버플로우에서 코틀린이 75.1%로 가장 사랑받는 언어였다.
-Baeldung 2018 서베이
+70만 이상의 사용자  
+110개의 유저그룹  
+1200 talks  
+17000멤버의 슬랙  
+1000명 이상의 KotlinConf 2018 등록자  
+48% 다른 언어에서 코틀린으로 완전히 바꾸었다.  
+5000명 이상의 회사중 20%가 코틀린 사용한다.  
+2%의 사용자가 그들의 첫번째 언어로 코틀린을 선택했다.  
+스택오버플로우에서 코틀린이 75.1%로 가장 사랑받는 언어였다.  
 
 ### What we're working on
 1. Speed improvemetns
 2. Toolling support
 3. Language evolution
 4. Multi-platform support
-
-### Android app Bundle
-새로운 퍼블리싱 포맷이고co/androidappbub
 
 ### Google Play Instant for game developers
 >Benjamin Frenkel
@@ -66,15 +56,6 @@ Baeldung 2018 서베이
 - 최대 20% 까지 user acquisitions가 증가했다.
 - Pre-registration coming soon
 
-Bring back churned users
-
-### 게임 출시 단계별 인스턴트 사용 전략
-1. Upcoming launches
-  - Core gameplay preview
-  - 설치된 게임에서 초반에 사용할 수 있는 아이템들보다 더 많은 아이템들을 인스턴트에서 사용하게 하므로서 게임의 재미를 더욱 느끼게 한다. 
-3. Late stage games
-  - Game highlights
-
 ### Tools for game developers
 - Instant apps framework
   1. Raised size limit to 10mb for games
@@ -82,7 +63,6 @@ Bring back churned users
   3. added gaem engine, NDK, and OpenGL ES
 - Unity plug-in (coming soon)
 - Unity Beta program (available now)
-
 
 ### Android Jetpack
 - Backwords compatible
@@ -92,8 +72,6 @@ Bring back churned users
 
 ### Android Slices
 >g.co/slices
-
-### App Actions
 
 # Session 1
 >[패널토크] Google AI: 누구나 사용할 수 있는 AI의 미래
