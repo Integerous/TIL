@@ -46,6 +46,7 @@
   * [Recursion 01](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion01.md)
   * [Recursion 02](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion02.md)
 - **CodeWars**
+  * [CodeWars 016 - Make a Function that does arithmetic! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/016-Make_a_function_that_does_arithmetic.md)
   * [CodeWars 015 - Square Every Digit (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/015-Square_every_digit.md)
   * [CodeWars 014 - Simple Encryption #1 - Alternating Split (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/014-Alternating_split.md)
   * [CodeWars 013 - Count All the Sheep (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/013-Count_all_the_sheep.md)
