@@ -43,6 +43,7 @@ public class SquareDigit {
 >Time : 1885ms
 - StringBuilder를 처음으로 사용해보았다. 좋다.
 - Best Practice 코드는 보기에 깔끔하지만 String 객체 사용으로 퍼포먼스가 떨어지는 것 같다.
+  - Java에서 String은 immutable(불변)의 속성을 가진다. 때문에 새로운 문자열(String)을 더할 때마다 새로운 인스턴스를 생성하기 때문에 비효율적이다.
 - Clever#1 코드를 보니 Lambda를 빨리 공부해야겠다.
 - Clever#2 코드가 arithmetic한 해결책이라 가장 옳은 답이라고들 한다.
 - Clever#3 코드를 보며 Recursion을 사용해야 하는 상황을 익히면 좋을 것 같다.
