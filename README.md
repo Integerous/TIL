@@ -20,7 +20,7 @@
 * [Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
 * [[번역] Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
 ## Java
-* [문자열 연결방법 비교](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
+* [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
 * [입/출력](https://github.com/Integerous/TIL/blob/master/Java/IO.md)
 * [DWR](https://github.com/Integerous/TIL/blob/master/Java/DWR.md)
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
