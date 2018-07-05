@@ -46,7 +46,7 @@ System.out.println(sb);
 ~~~
 
 ## 4. 성능 비교
-![성능비교](https://docs.google.com/spreadsheets/d/1dV4Pbe2_ZCsc9TDBYsN9u69a2a3xSjCAzxKR7I6fxzg/pubchart?oid=1847999196&format=image)
+![성능비교](https://docs.google.com/spreadsheets/d/1dV4Pbe2_ZCsc9TDBYsN9u69a2a3xSjCAzxKR7I6fxzg/pubchart?oid=1847999196&format=image)  
 출처 : http://futurecreator.github.io/2018/06/02/java-string-concatenation/
 
 
