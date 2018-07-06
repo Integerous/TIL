@@ -10,6 +10,9 @@
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
 # 분류
+## Seminar
+* [2018.06.25 - Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
+* [2018.07.06 - 공개SW Grand Challenge](https://github.com/Integerous/TIL/blob/master/Seminar/OpenSWGrandChallenge2018.md)
 ## ETC
 * [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
 * [StringUtils](https://github.com/Integerous/TIL/blob/master/ETC/StringUtils.md)
@@ -41,6 +44,14 @@
 * [Hello World](https://github.com/Integerous/TIL/blob/master/Node.js/HelloWorld.md)
 ## Go
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
+## Cloud
+## Database
+## SQL
+* [SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
+## Linux
+## Operating System
+* 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
+## Tools
 ## Algorithm
 - **영리한 프로그래밍을 위한 알고리즘 강의**
   * [Recursion 01 - Recursion?](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion01.md)
@@ -63,15 +74,4 @@
   * [CodeWars 003 - String Repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
   * [CodeWars 002 - Get The Middle Character (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/002-Get_the_middle_character.md)
   * [CodeWars 001 - Multiples of 3 or 5 (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/1_Multiples_of_3or5.md)
-
-## Cloud
-## Database
-## SQL
-* [SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
-## Linux
-## Operating System
-* 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
-## Tools
-## Seminar
-* [2018.06.25 - Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
 
