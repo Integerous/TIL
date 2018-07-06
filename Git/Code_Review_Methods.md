@@ -27,4 +27,6 @@ B 저장소에 생성될 작업용 브랜치 = ryantest1 branch
 11. A 저장소의 최신화된 ryan 브랜치와 local의 구식 ryan 브랜치의 버전을 맞춰주어야 함
   - ryan 브랜치로 이동 -> `git checkout ryan`
   - local에서 A 저장소를 원격저장소로 추가 -> `git remote add upstream(이름명명가능) A저장소url`
-  - upstream의 ryan 브랜치만 내 local로 가져오기 `git fet
+  - upstream의 ryan 브랜치만 내 local로 가져오기 `git fetch upstream ryan`
+12. upstream의 ryan의 코드로 local의 ryan 업데이트하기 -> `git rebase upstream/ryan`
+
