@@ -37,3 +37,9 @@ B 저장소에 생성될 작업용 브랜치 = ryantest1 branch
   - A 저장소에서 local로 fetch
   - rebase를 통해 A 저장소의 최신화된 ryan 브랜치로 local 브랜치를 최신화
   
+
+>카카오의 코드리뷰
+http://tech.kakao.com/2016/02/04/code-review/
+
+>네이버의 Gerrit을 이용한 코드리뷰
+https://d2.naver.com/helloworld/6033708
