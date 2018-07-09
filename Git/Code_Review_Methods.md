@@ -50,6 +50,8 @@ B 저장소에 생성될 작업용 브랜치 = ryantest1 branch
   - 즉, 커밋트리에 관한 입맛에 맞게 사용하면 된다.
 
 
+https://medium.com/axisj/github-fork-%EC%97%90%EC%84%9C-pull-request-%EA%B9%8C%EC%A7%80-%EA%B7%B8%EB%A6%AC%EA%B3%A0-merge-a22bdd097283
+
 
 
 >git 초보를 위한 pull request 방법  
