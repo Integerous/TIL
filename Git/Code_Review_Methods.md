@@ -36,10 +36,22 @@ B 저장소에 생성될 작업용 브랜치 = ryantest1 branch
   - A 저장소에서 merge
   - A 저장소에서 local로 fetch
   - rebase를 통해 A 저장소의 최신화된 ryan 브랜치로 local 브랜치를 최신화
-  
 
->카카오의 코드리뷰
+>git 초보를 위한 pull request 방법  
+https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/
+
+>Pull Request를 이용한 개발 흐름의 적용  
+https://blog.outsider.ne.kr/1199
+
+>git 명령어 실습  
+https://learngitbranching.js.org/
+
+>카카오의 코드리뷰  
 http://tech.kakao.com/2016/02/04/code-review/
 
->네이버의 Gerrit을 이용한 코드리뷰
+>네이버의 Gerrit을 이용한 코드리뷰  
 https://d2.naver.com/helloworld/6033708
+
+>코드리뷰 가이드라인  
+http://flyburi.com/m/576
+
