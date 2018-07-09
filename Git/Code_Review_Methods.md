@@ -37,13 +37,28 @@ B 저장소에 생성될 작업용 브랜치 = ryantest1 branch
   - A 저장소에서 local로 fetch
   - rebase를 통해 A 저장소의 최신화된 ryan 브랜치로 local 브랜치를 최신화
 
+14. history가 꼬였을 때(내가 작업하는 중에 누군가 원격 저장소에 최신버전을 푸시했을 때) 해결 방법
+  - 나의 작업을 원격 브랜치의 최신 상태를 기반으로 하게 만든다.
+  - 방법은 여러 가지지만 가장 간단한 방법은 `rebase` 이다.
+  - `git fetch; git rebase origin/master; git push`
+  - 간단하게는 `git pull --rebase; git push;`
+
+15. master 브랜치에 있을때만 push와 pull을 수행하면, master는 항상 원격 브랜치의 상태와 항상 최신의 상태로 유지될 수 있다.
+16. 새로운 작업들을 원격 저장소로 push하기 위해서는 저장소의 최근 변경들을 합치기만 하면 된다.
+  - 이 말은 rebase와 merge 둘 다 사용가능하다는 것인데 어떤 것을 사용해야 하는가?
+  - rebase는 커밋트리가 깔끔하게 한 줄로 정리된다. 때문에 이력 보존이 안된다.
+  - 즉, 커밋트리에 관한 입맛에 맞게 사용하면 된다.
+
+
+
+
 >git 초보를 위한 pull request 방법  
 https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/
 
 >Pull Request를 이용한 개발 흐름의 적용  
 https://blog.outsider.ne.kr/1199
 
->git 명령어 실습  
+>git 실습  
 https://learngitbranching.js.org/
 
 >카카오의 코드리뷰  
