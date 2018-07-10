@@ -60,8 +60,55 @@ https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/
 >Pull Request를 이용한 개발 흐름의 적용  
 https://blog.outsider.ne.kr/1199
 
->git 실습  
-https://learngitbranching.js.org/
+# git 실습  
+>https://learngitbranching.js.org/
+
+## 고급 3. 원격 저장소 추적하기  
+$git checkout -b foo origin/master    // 로컬브랜치 foo를 생성하고 원격브랜치 origin/master를 추적하게 설정  
+$git branch -u origin/master foo    // foo 브랜치가 origin/master를 추적하도록 설정  
+$git branch -u origin/master    // foo가 현재 작업중인 브랜치라면 생략가능  
+
+
+
+
+
+
+# Git & GitHub Crash Course For Beginners  
+>https://www.youtube.com/watch?v=SWYqp7iY_Tc
+
+$ git init    // Initialize local git repository
+$ git add <file>    // Add file(s) to index
+$ git status    // Check status of working tree
+$ git commit    // Commit changes in index
+$ git push    // Push to remote repository
+$ git pull    // Pull latest from remote repository
+$ git clone   // Clone repository into a new directory
+
+- 사용 시작
+$ touch index.html  
+$ touch app.js  
+$ git init  
+$ git config --global user.name 'Ryan Han'  
+$ git config --global user.email 'ryanhan@cloudcash.kr'  
+$ git add index.html  
+$ git status  
+$ git rm --cached index.html    // to unstage  
+$ git status  
+$ git add \*.html   // 모든 html파일 add  
+$ git add .     // 모든 파일 add  
+$ git commit -m 'changed index.html'  
+$ git branch login  
+$ git commit -m 'another change'  
+$ git checkout login  
+$ git checkout master    
+$ git merge login  
+$ git remote    // remote repositorys 확인  
+$ git remote add origin https:/github.com/integerous/myappsample.git  
+$ git remote
+$ git push -u origin master
+
+
+
 
 >카카오의 코드리뷰  
 http://tech.kakao.com/2016/02/04/code-review/
