@@ -64,15 +64,20 @@ https://blog.outsider.ne.kr/1199
 >https://learngitbranching.js.org/
 
 ## 고급 3. 원격 저장소 추적하기  
-$git checkout -b foo origin/master    // 로컬브랜치 foo를 생성하고 원격브랜치 origin/master를 추적하게 설정  
-$git branch -u origin/master foo    // foo 브랜치가 origin/master를 추적하도록 설정  
-$git branch -u origin/master    // foo가 현재 작업중인 브랜치라면 생략가능  
+- `$git checkout -b foo origin/master` - 로컬브랜치 foo를 생성하고 원격브랜치 origin/master를 추적하게 설정  
+- `$git branch -u origin/master foo` - foo 브랜치가 origin/master를 추적하도록 설정  
+- `$git branch -u origin/master` - foo가 현재 작업중인 브랜치라면 생략가능  
 
+## 고급 4. git push의 인자들
+- `$git push <remote> <place>` - place 인자는 git에게 '어디서부터 오는 커밋인지', '어디로 가는 커밋인지', 두 저장소 간 동기화 작업을 할 장소지정. <remote>와 <place>를 모두 지정했기 때문에 git은 현재 체크아웃한 브랜치는 무시하고 명령 수행  
+- `$git push origin master` - 내 저장소의 master 브랜치에서 모든 커밋을 수집하고, origin의 master 브랜치로 가서 부족한 커밋을 채워넣는다.
+- `$git push origin <source>:<destination>` - 커밋의 근원이 되는 source와 목적지가 되는 destination을 다르게 하고싶을 때
+- `$git push origin foo^:master` - foo의 부모위치에서 원격으로 커밋을 업로드하고 destination인 master 브랜치를 갱신
+- `$git push origin master:newBranch` - push할 destination이 없는 경우 newBranch처럼 새 브랜치명 적으면 만들어줌
 
-
-
-
-
+## 고급 5. git fetch의 인자들
+- `$git fetch origin foo` - 원격저장소의 foo브랜치에서 현재 로컬에 없는 커밋들을 가져와 로컬의 'origin/foo' 브랜치 아래에 추가. 즉, 커밋들을 foo 브랜치에서만 내려받은 후 로컬의 origin/foo 브랜치에만 적용
+  
 # Git & GitHub Crash Course For Beginners  
 >https://www.youtube.com/watch?v=SWYqp7iY_Tc
 
