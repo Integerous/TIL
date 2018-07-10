@@ -67,8 +67,9 @@ $git push myfork featureBv2
 --squash 옵션은 해당 브랜치의 모든 커밋들을 하나의 커밋으로 합쳐서 merge한다. 이때, merge 커밋은 만들지 않고, 수정할 부분도 수정한 후에 merge 할 수 있다. `--no-commit` 옵션을 추가하면 커밋을 합쳐놓고 자동으로 커밋하지 않는다.
 21. 프로젝트 저장소의 Master브랜치와 develop브랜치 두 가지를 두고, master브랜치는 아주 안정적인 버전을 릴리즈 할 때 사용하고, develop 브랜치는 새로 수정된 코드를 통합할 때 사용한다. 릴리즈 할 수준이 되면 master 브랜치를 develop 브랜치까지 fast-forward시킨다.
 22. 더 나아가 integrate 브랜치를 추가할 수 있다. master - develop - integrate - feature 브랜치를 만들어 feature에서 작업한 것을 integrate에 merge하여 feature 브랜치가 검증되면 develop 브랜치에 merge 한다. 그리고 develop 브랜치에서 충분히 안정성이 검증되면 그때 master 브랜치에 merge한다.
-
-
+23. feature 브랜치는 develop/master 브랜치에 merge되면 저장소에서 삭제한다.
+24. history를 한 줄로 관리하려면 merge보다 rebase나 cherry-pick을 사용할 수 있다. feature 브랜치에서 작업을 마치고 master/develop 브랜치에 merge 할 때 master/develop 브랜치를 기반으로 rebase한다.
+25. 릴리즈 버전은 언제든 돌아갈 수 있도록 태그를 다는 것이 좋다. 그리고 배포할 릴리즈 버전이 준비되었다면, git을 사용하지 않는 사람을 위해 소스코드 스냅샷을 압축한다. `$git archive`명령으로 압축할 수 있다.
 
 
 
