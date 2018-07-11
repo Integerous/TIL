@@ -150,7 +150,8 @@ $ git remote
 $ git push -u origin master
 
 
-
+>터미널 꾸미기  
+https://beomi.github.io/2017/07/07/Beautify-ZSH/
 
 >카카오의 코드리뷰  
 http://tech.kakao.com/2016/02/04/code-review/
