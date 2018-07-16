@@ -112,6 +112,7 @@
   * [Recursion 01 - Recursion?](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion01.md)
   * [Recursion 02 - Recursive Thinking](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion02.md)
   * [Recursion 03 - Designing Recursion](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion03.md)
+  * [Recursion 04 - Maze](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion04-Maze.md)
 - **CodeWars**
   * [CodeWars 016 - Make a Function that does arithmetic! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/016-Make_a_function_that_does_arithmetic.md)
   * [CodeWars 015 - Square Every Digit (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/015-Square_every_digit.md)
