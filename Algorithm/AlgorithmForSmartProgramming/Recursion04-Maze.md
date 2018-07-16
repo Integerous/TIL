@@ -5,7 +5,7 @@
   1. 현재 위치가 출구이거나
   2. 이웃한 셀들 중 하나에서 현재 위치를 지나지 않고 출구까지 가는 경로가 있거나
 
-## 2. Peudo Code (Decision Problem (답이 yes/no인 문제))
+## 2. Pseudo Code (Decision Problem (답이 yes/no인 문제))
 ~~~java
 boolean findPath(x,y)
   if (x,y) is the exit
