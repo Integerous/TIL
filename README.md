@@ -113,6 +113,7 @@
   * [Recursion 02 - Recursive Thinking](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion02.md)
   * [Recursion 03 - Designing Recursion](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion03.md)
   * [Recursion 04 - Maze](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion04-Maze.md)
+  * [Recursion 05 - Counting Cells in a Blob](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion05-CountingCells.md)
 - **CodeWars**
   * [CodeWars 017 - Arithmetic Progression](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/017-Arithmetic_progression.md)
   * [CodeWars 016 - Make a Function that does arithmetic! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/016-Make_a_function_that_does_arithmetic.md)
