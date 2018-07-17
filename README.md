@@ -4,8 +4,6 @@
 * 한 번에 완벽하게 작성하기보다 꾸준히 업데이트 한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
-세미나에서 알게된 [김남준](https://github.com/namjunemy)님의 TIL을 참고하여 시작하였다.
-
 # INDEX
 - [Seminar](#m1)
 - [ETC](#m2)
@@ -114,6 +112,7 @@
   * [Recursion 03 - Designing Recursion](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion03.md)
   * [Recursion 04 - Maze](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion04-Maze.md)
   * [Recursion 05 - Counting Cells in a Blob](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion05-CountingCells.md)
+  * [Recursion 06 - N-Queens Problem](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion06-nQueens.md)
 - **CodeWars**
   * [CodeWars 017 - Arithmetic Progression](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/017-Arithmetic_progression.md)
   * [CodeWars 016 - Make a Function that does arithmetic! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/016-Make_a_function_that_does_arithmetic.md)
