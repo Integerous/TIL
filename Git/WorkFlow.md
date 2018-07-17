@@ -31,6 +31,7 @@
     - $git branch -d ryanwork1
 16. 이후 작업은 다시 pull로 CCproject을 local로 동기화한 후 작업용 브랜치를 만드는 6번부터 반복한다.
 
+## 기타
 - $git log —branches —graph —decorate —oneline 명령으로 gui비슷하게 볼 수 있다.
 - 이전 버전으로 되돌아가는 방법 reset과 revert 차이는 여기서 확인
     - https://www.popit.kr/%EA%B0%9C%EB%B0%9C%EB%B0%94%EB%B3%B4%EB%93%A4-git-back-to-the-future/
