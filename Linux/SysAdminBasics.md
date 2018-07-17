@@ -1,5 +1,5 @@
 # Linux SysAdmin Basics
->https://www.youtube.com/watch?v=bju_FdCo42w&list=PLtK75qxsQaMLZSo7KL-PmiRarU7hrpnwK
+>https://www.youtube.com/watch?v=bju_FdCo42w&list=PLtK75qxsQaMLZSo7KL-PmiRarU7hrpnwK  
 >튜토리얼 내용 중 내가 몰랐던(잊었던) 부분만 정리
 
 - `ls /`  root의 파일리스트
