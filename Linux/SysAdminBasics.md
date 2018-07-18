@@ -59,3 +59,14 @@
 
 
 ## 3. Package Management with apt-get
+
+- `sudo apt-get update` = 사용 가능한 패키지들의 **리스트**를 업데이트
+- `sudo apt-get upgrade` = 내 우분투에 있는 패키지들을 최신버전으로 업데이트
+- `sudo apt-get install something`
+- `apt-cache search editor` = editor 들 검색
+- `cat /etc/apt/sources.list` = 소프트웨어 저장소들 리스트
+- 찾을 수 없는 소프트웨어는 PPA로 받을 수 있다.
+  - `sudo add-apt-repository ppa:cassou/emacs`  
+  `sudo apt-get update`  
+  `sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg`
+- 
