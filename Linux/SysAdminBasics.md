@@ -15,4 +15,22 @@
 - `w` 또는 `who` = 사용자들 확인
 - `mkdir -p 경로1/경로2/경로3...` = 여러 단계의 경로 생성
   - `rm -r 경로1` = 경로 삭제 (경로 안의 모든 경로 삭제)
-  
+- `cp`  = 파일 복사
+
+## Shell Features -- Pipes and Redirection
+
+### Redirection
+>standard in = 0  
+>standard out = 1  
+>standard error = 2
+
+- `echo "this should be in a file" 1> somefile.txt` = 파일생성하면서 내용 넣기 (1 생략 가능)
+- `echo "this should be line 2" >> somefile.txt` = 파일에 내용 추가
+- `ls -alh somfile.txt >> list.txt` = list.txt 파일 생성하면서 `ls -alh somefile.txt` 명령의 결과를 내용으로 넣기
+- `ls -alh someeflajdfaldkjfw 2> err.txt` = `ls -alh some someeflajdfaldkjfw`명령의 결과(에러 메세지)를 err.txt에 넣기
+- `echo "this is the message text" > message.txt`,  
+`mail -s "this is the subject" ryan < message.txt` = message.txt 파일의 내용을 "제목"의 제목으로 ryan에게 보내기
+
+### Pipe
+- `A | B` = A의 결과를 B에 넣는다.
+  - ex) `ps aux | less`
