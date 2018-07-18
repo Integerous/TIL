@@ -68,3 +68,34 @@
   - `sudo add-apt-repository ppa:cassou/emacs`  
   `sudo apt-get update`  
   `sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg`
+
+
+## 4. Linux File Permissions
+>d / rwx / rwx / rwx  
+>directory or not / owner / owner group / another
+- 권한 변경 (read=4, write=2, execute=1)
+  - `chmod 755 filename`
+  - `chmod xxx -R directory`
+
+### 기본 권한 설정하기
+- `nano /etc/login.defs` 에서 UMASK를 찾으면 `UMASK 022`로 설정되어있다.  
+금지된 권한이 표시되므로 `UMASK 022`는 권한이 `755` 로 설정된 것이다.
+
+## 5. Basic Linux Access Control
+
+### User Account Management
+- `whoami` = 현재 사용자 확인
+- `id` = 사용자 및 그룹 확인
+- `sudo -i` = root 계정으로 전환
+- `tail /etc/shadow`
+- `tail 또는 less /etc/group`
+- `useradd -m -d /home/testuser -s /bin/bash ryan`
+  - `-m` = 홈 디렉토리 만들기
+  - `-d` = define where the directory is
+  - `/home/testuser` = 홈 디렉토리
+  - `-s /bin/bash` = ?
+  - `man newusers`로 도움말 확인
+- `passwd ryan` = ryan 사용자의 비밀번호 설정 
+- `usermod -L ryan` = ryan 사용자 잠금
+- `usermod -U ryan` = ryan 사용자 잠금 해제
+- `userdel ryan` = ryan 사용자 삭제
