@@ -1,6 +1,7 @@
 # Linux SysAdmin Basics
 >[tutoriaLinux](https://www.youtube.com/watch?v=bju_FdCo42w&list=PLtK75qxsQaMLZSo7KL-PmiRarU7hrpnwK) 유튜브 영상으로 학습하며, 익숙하지 않은 명령어들 정리
 
+## 1. Basics
 - `rmdir 디렉토리명` 디렉토리 삭제
   - 디렉토리가 비어있지 않을 경우 `rm -r 디렉토리명`으로 삭제
 - `ctrl + a` = 명령 첫부분으로 가기
@@ -17,7 +18,7 @@
   - `rm -r 경로1` = 경로 삭제 (경로 안의 모든 경로 삭제)
 - `cp`  = 파일 복사
 
-## Shell Features -- Pipes and Redirection
+## 2. Shell Features -- Pipes and Redirection
 
 ### Redirection
 >standard in = 0  
@@ -34,3 +35,19 @@
 ### Pipe
 - `A | B` = A의 결과를 B에 넣는다.
   - ex) `ps aux | less`
+- `prog1 | prog2 | prog3` = prog1의 결과를 2에 넣고 2의 결과를 3에 넣는다.
+- `prog1 && prog2` = prog1 명령이 성공이면 prog2 명령 실행
+  - ex) `ls file.txt && echo "astonishing success."`
+
+- `cat file.txt`
+    ~~~
+    ryan:we  
+    user:love  
+    someone:linux
+    ~~~
+- `cat file.txt | cut -d: -f2`
+    ~~~
+    we
+    love
+    linux
+    ~~~
