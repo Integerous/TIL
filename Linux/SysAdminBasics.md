@@ -51,3 +51,11 @@
     love
     linux
     ~~~
+- `cat file.txt | sort -bf` = 첫 공백, 대소문자 무시하고 정렬
+- `cat file.txt | uniq` = 중복되지 않는 내용만 보기
+- `wc file.txt` = print newline, word, and byte counts for each file
+- `cat file.txt | grep someone` = file.txt에서 someone이 들어간 부분 찾기
+- `grep someone ./*` = "someone"이 들어간 현재경로의 모든 파일 찾기
+
+
+## 3. Package Management with apt-get
