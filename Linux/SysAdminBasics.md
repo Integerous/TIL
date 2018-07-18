@@ -1,8 +1,6 @@
 # Linux SysAdmin Basics
->https://www.youtube.com/watch?v=bju_FdCo42w&list=PLtK75qxsQaMLZSo7KL-PmiRarU7hrpnwK  
->튜토리얼 내용 중 내가 몰랐던(잊었던) 부분만 정리
+>[tutoriaLinux](https://www.youtube.com/watch?v=bju_FdCo42w&list=PLtK75qxsQaMLZSo7KL-PmiRarU7hrpnwK) 유튜브 영상으로 학습하며, 익숙하지 않은 명령어들 정리
 
-- `ls /`  root의 파일리스트
 - `rmdir 디렉토리명` 디렉토리 삭제
   - 디렉토리가 비어있지 않을 경우 `rm -r 디렉토리명`으로 삭제
 - `ctrl + a` = 명령 첫부분으로 가기
@@ -14,3 +12,7 @@
 - `shutdown -r` = restart
   - `shutdown -h now` = halt now
   - `shutdown -h +60` = 한시간뒤에 종료
+- `w` 또는 `who` = 사용자들 확인
+- `mkdir -p 경로1/경로2/경로3...` = 여러 단계의 경로 생성
+  - `rm -r 경로1` = 경로 삭제 (경로 안의 모든 경로 삭제)
+  
