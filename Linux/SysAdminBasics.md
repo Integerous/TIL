@@ -38,7 +38,6 @@
 - `prog1 | prog2 | prog3` = prog1의 결과를 2에 넣고 2의 결과를 3에 넣는다.
 - `prog1 && prog2` = prog1 명령이 성공이면 prog2 명령 실행
   - ex) `ls file.txt && echo "astonishing success."`
-
 - `cat file.txt`
     ~~~
     ryan:we  
@@ -69,4 +68,3 @@
   - `sudo add-apt-repository ppa:cassou/emacs`  
   `sudo apt-get update`  
   `sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg`
-- 
