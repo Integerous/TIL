@@ -87,7 +87,7 @@
 >김현수 이사
 >>한국레드햇 시니어 솔루션 아키텍트
 
-실습은 [워크샵 깃헙 저장소](https://github.com/hguerrero/3scale-api-workshop)의 안내에 따라 진행
+## 실습은 [워크샵 깃헙 저장소](https://github.com/hguerrero/3scale-api-workshop)를 보면서 진행
 
 ### API 개발 라이프사이클
 1. Strategy
