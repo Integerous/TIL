@@ -27,7 +27,7 @@
 ## Seminar 
 * [2018.06.25 - Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
 * [2018.07.06 - 공개SW Grand Challenge](https://github.com/Integerous/TIL/blob/master/Seminar/OpenSWGrandChallenge2018.md)
-
+* [2018.07.19 - Red Hat API 2.0 Best Practices Workshop](https://github.com/Integerous/TIL/blob/master/Seminar/RedHat_API2.0_BestPractices_Workshop.md)
 <a name="m2">
  
 ## ETC
