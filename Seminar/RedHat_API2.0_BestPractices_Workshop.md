@@ -87,19 +87,21 @@
 >김현수 이사
 >>한국레드햇 시니어 솔루션 아키텍트
 
+실습은 [워크샵 깃헙 저장소](https://github.com/hguerrero/3scale-api-workshop)의 안내에 따라 진행
+
 ### API 개발 라이프사이클
 1. Strategy
 2. Design
-  - 어떤식으로 인풋과 아웃풋을 받을 것인지
-  - APICURIO 오픈소스 활용
+    - 어떤식으로 인풋과 아웃풋을 받을 것인지
+    - APICURIO 오픈소스 활용
 3. Mock
-  - Microcks로 제작
+    - Microcks로 제작
 4. Test
 5. Implement
 6. Deploy
-  - Ansible
+    - Ansible
 7. Secure (제어)
-  - 접근제어 등
+    - 접근제어 등
 8. Manage
 9. Discover
 10. Develop
@@ -112,15 +114,12 @@
 2. API Deployment - Deploying APIs to OpenShift
 3. API Management - Take Control of APIs
 
-### 1.API Design
-
-API Develop Portal
-
 
 # Hands-On 세션 2: API를 배포하고 관리하는 방법
 >김현수 이사
 >>한국레드햇 시니어 솔루션 아키텍트
 
-1. API Security - Securing APIs with OpenID Connect and REd Hat Single Sign on
-2. API Developers - 
-3. API Consumption - Connect
+### 세션2 과정
+1. API Security
+2. API Developers
+3. API Consumption
