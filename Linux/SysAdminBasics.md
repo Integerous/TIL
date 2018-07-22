@@ -87,6 +87,9 @@
 - `whoami` = 현재 사용자 확인
 - `id` = 사용자 및 그룹 확인
 - `sudo -i` = root 계정으로 전환
+  - `su -` = 비밀번호 치고 root 계정으로 전환
+  - `sudo su -` = 비밀번호 안치고 전환
+- `su - ryan` = ryan 계정으로 전환
 - `tail /etc/shadow`
 - `tail 또는 less /etc/group`
 - `useradd -m -d /home/testuser -s /bin/bash ryan`
@@ -99,3 +102,10 @@
 - `usermod -L ryan` = ryan 사용자 잠금
 - `usermod -U ryan` = ryan 사용자 잠금 해제
 - `userdel ryan` = ryan 사용자 삭제
+
+## 6. Process
+
+### Process Signals
+>Signals are how processes coummunicate information about themselves to each other and to the kernal
+- `kill (process id)` = 해당 프로세스 종료
+- `sudo killall cupsd` = cupsd로 시작하는 모든 프로세스를 종료 
