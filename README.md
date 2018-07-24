@@ -12,7 +12,7 @@
 - [Spring Framework](#m5)
 - [Node.js](#m6)
 - [Go](#m7)
-- [Cloud](#m8)
+- [AWS](#m8)
 - [Database](#m9)
 - [SQL](#m10)
 - [Linux](#m11)
@@ -79,7 +79,7 @@
 
 <a name="m8">
 
-## Cloud 
+## AWS
 
 <a name="m9">
 
