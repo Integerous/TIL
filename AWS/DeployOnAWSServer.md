@@ -29,5 +29,10 @@
  5. 환경변수에 path 설정
     - `cd ~`
     - `vi .bash_profile`
-    - 
- 
+    - `PATH=$PATH:~/java/bin` 작성하고 esc - :wq
+    - `source .bash_profile` 명령으로 환경변수 파일 리로드
+    - java -version
+6. Git 설치 및 clone
+    - `git --version` 으로 git 설치 확인
+    - 설치 안되어있을 경우, `sudo apt-get update` 후에 `sudo apt-get install git 명령으로 git 설치
+    - `git clone 저장소 주소` 
