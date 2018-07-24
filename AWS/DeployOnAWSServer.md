@@ -1,12 +1,11 @@
 # AWS 서버에 자바 소스코드 배포 및 재배포
->[박재성님 유튜브 강의](https://www.youtube.com/watch?v=--bUO7KNFJ4&t=1047s)를 들으며 실습한 내용
->>회사 고객센터용 카카오톡 챗봇을 만들며 진행한 실습
+>회사 고객센터용 카카오톡 챗봇을 만들기 위해 [박재성님 유튜브 강의](https://www.youtube.com/watch?v=--bUO7KNFJ4&t=1047s)를 들으며 실습한 내용
 
 
 ## 절차
 ### 1. AWS EC2 인스턴스 생성
 ### 2. 생성한 인스턴스(서버)에 접속
-- 퍼블릭 DNS를 사용하여 인스턴스에 연결 `ssh -i "chatbot-kakao.pem" ubuntu@ec2-52-78-235-134.ap-northeast-2.compute.amazonaws.com`
+- 퍼블릭 DNS를 사용하여 인스턴스에 연결 `ssh -i "chatbot-kakao.pem" ubuntu@ec2~~~~~~~~.ap-northeast-2.compute.amazonaws.com`
 - Private Key 파일이 공개적으로 표시되어 있을 경우 `chmod 400 chatbot-kakao.pem` 명령 입력
 - `sudo locale-gen ko_KR.UTF-8` 혹은 `sudo apt-get install language-pack-ko` 명령으로 인코딩
 ### 3. 자바 설치
