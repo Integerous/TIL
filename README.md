@@ -94,6 +94,7 @@
 
 ## Linux 
 * [Linux SysAdmin Basics](https://github.com/Integerous/TIL/blob/master/Linux/SysAdminBasics.md)
+* [리눅스 ssh 로그아웃시 프로세스 유지하기](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md)
 <a name="m12">
  
 ## Operating System 
