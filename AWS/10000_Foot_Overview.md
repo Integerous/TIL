@@ -12,14 +12,18 @@
 - EC2 (Elastic Compute Cloud)
 - EC2 Container Service
 - Elastic Beanstalk
+  - Automatically handles the deployment, from capacity provisioning, load balancing, auto-scaling to application health monitoring based on the code you upload to it
 - Lambda
+  - Run code without having to worry about provisioning any underlying resources (such as virtual machines, databases, etc.)
 - Lightsail
 - Batch
 
 ### Storage
 - S3 (Simple Storage Service)
+  - Offers durable, available storage for flat files
 - EFS (Elastic File System)
 - Glacier
+  - Would be the best choice for long term data archival
 - Snowball
 - Storage Gateway
 
@@ -27,7 +31,8 @@
 - RDS
 - DynamoDB
 - Elasticache
-- Red Shift
+- RedShift
+  - RedShift is used primarily for data warehousing
 
 ### Migration
 - AWS Migration Hub
@@ -39,7 +44,9 @@
 ### Networking & Content Delivery
 - VPC
 - CloudFront
+  - CloudFront is used a CDN to distribute content around the world
 - Route53
+  - Highly scaleable DNS service
 - API Gateway
 - Direct Connect
 
@@ -51,3 +58,103 @@
 - CodePipeline
 - X-Ray
 - Cloud9
+
+### Management Tools
+- CloudWatch
+- CloudFormation
+  - Automated provisioning engine designed to deploy entire cloud environments via a JSON script
+- CloudTrail
+  - If you need to supply auditors with logs detailing the individual users that provision specifix resources on your AWS platform.
+- Config
+- OpsWork
+  - If you need a configuration management service that enables your system administrators to configure and operate yor web applications using Chef.
+- Service Catalog
+- Systems Manager
+- Trusted Advisor
+- Managed Services
+
+### Media Services
+- Elastic Transcoder
+  - If your digital media agency needs to convert their media files in to different formats to suit different devices.
+- MediaConvert
+- MediaLive
+- MediaPackage
+- MediaStore
+- MediaTailor
+
+### Machine Learning
+- SageMaker
+- Comprehend
+- DeepLens
+- Lex
+- Machine Learning
+- Polly
+- Rekognition
+- Amazon Translate
+- Amazon Trascribe
+
+### Analytics
+- Athena
+- EMR
+- CloudSearch
+- ElasticSearchService
+- Kinesis
+  - Kinesis is used for collating large amounts of data streamed from multiple sources
+- Kinesis Video Streams
+- QuickSight
+- Data Pipeline
+- Glue
+
+### Security & Identity & Compliance
+- IAM (Identity Access Management)
+  - If you need to add users to your AWS account and set password rotation policies for these new users.
+- Cognito
+- GuardDuty
+- Inspector
+- Macie
+- Certificate Manager
+- CloudHSM
+- Directory Service
+- WAF
+- Shield
+- Artifact
+
+### Mobile Services
+- Mobile Hub
+- Pinpoint
+- AWS AppSync
+- Device Farm
+- Mobile Analytics
+
+### AR & VR
+- Sumerian
+
+### Application Integration
+- Step Functions
+- Amazon MQ
+- SNS
+- SQS
+- SWF
+
+### Customer Engagement
+- Connect
+- Simple Email Service
+
+### Business Productivity
+- Alexa For Business
+- Chime
+- Work Docs
+- WorkMail
+
+### Desktop & App Streaming
+- Workspaces
+- AppStream 2.0
+
+### Internet of Things
+- iOT
+- iOT Device Management
+- Amazon FreeRTOS
+- Greengrass
+
+### Game Development
+- GameLift
