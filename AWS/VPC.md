@@ -19,4 +19,17 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
 
 ### Default VPC
 - 사용하기 쉽고, 인스턴스를 즉시 배포할 수 있게한다.
-- Default VPC의 모든 서브넷들은 인터넷으로 통하는 route가 있다.
+- Default VPC의 모든 서브넷들은 인터넷에 연결할 수 있다.
+- 프라이빗 서브넷이 없다.
+- 각각의 EC2 인스턴스는 퍼블릭 IP와 프라이빗IP를 모두 가지고 있다
+
+### Custom VPC
+- 프라이빗 서브넷이 있다.
+- 각각의 EC2 인스턴스는 프라이빗 IP만 가지고 있다.
+
+## VPC Peering
+- 프라이빗 IP주소들을 이용해서 VPC 끼리 다이렉트 네트워크 루트로 연결한다.
+- 인스턴스들은 같은 프라이빗 네트워크에 있는 것처럼 여겨진다.
+- 다른 AWS 계정의 VPC와도 연결할 수 있고, 같은 계정의 VPC와도 연결할 수 있다.
+- VPC 들간에 연결되어있지 않으면
+![VPC Transitive Peering](C:\Users\한정수\Desktop\잡동사니\VPCtransitivePeering.png)
