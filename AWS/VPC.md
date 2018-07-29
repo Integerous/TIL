@@ -31,5 +31,18 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
 - 프라이빗 IP주소들을 이용해서 VPC 끼리 다이렉트 네트워크 루트로 연결한다.
 - 인스턴스들은 같은 프라이빗 네트워크에 있는 것처럼 여겨진다.
 - 다른 AWS 계정의 VPC와도 연결할 수 있고, 같은 계정의 VPC와도 연결할 수 있다.
-- VPC 들간에 연결되어있지 않으면
-![VPC Transitive Peering](C:\Users\한정수\Desktop\잡동사니\VPCtransitivePeering.png)
+- VPC A와 B, A와 C가 연결되어있어도 B와 C가 연결되어있지 않으면 연결되지 않는다. (we don't have transitive peering in VPC)  
+![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPCtransitivePeering.png?raw=true)
+
+## Summary
+- VPC는 AWS 내의 논리적 데이터센터라 생각하면 된다.
+- 구성
+  - Internet Gateways 또는 Virtual Private Gateways
+  - Route Tables
+  - Network Acess Control Lists
+  - Subnets
+  - Security Groups
+- 1 Subnet = 1 Availability Zone
+- Security Groups는 Stateful 하다.(네트워크 연결 상태를 추적할 수 있다.)
+- Network Access Control Lists는 Stateless 하다.
+- NO TRANSITIVE PEERING
