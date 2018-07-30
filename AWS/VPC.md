@@ -48,7 +48,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
 - Network Access Control Lists는 Stateless 하다.
 - NO TRANSITIVE PEERING
 
-## VPC 실습
+## VPC 실습 1
 ### 1. **VPC 만들기**
   - Your VPCs 로 이동
   - Create VPC
@@ -114,7 +114,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - next next
   - Add tag ( Name / WebServer01)
   - next
-  - Security group 생성
+  - Security group 생성 (강의에서는 Web-DMZ)
     - SSH / 22 / 0.0.0.0/0
     - HTTP / 80 / 0.0.0.0/0, ::/0
   - Keypair 선택 후 시작
@@ -125,4 +125,25 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - Keypair는 위에꺼랑 같은 것
 ### 13. **ssh로 접속**
 ### 14. **현재까지 상태**  
-![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet3.png?raw=true)
+![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet3.png?raw=true)  
+### 15. **이후에 해야할 것**
+  - 두 개의 보안그룹은 각각 Public 과 Default고,
+  - 두 개의 서브넷은 각각 Public과 Private 이다.
+  - 그래서 두 개의 인스턴스는 서로 다른 보안그룹과 AZ 때문에 서로 연결할 수 없는 상태이다.
+  - 그러므로 이후에는 연결할 수 있도록.
+
+## VPC 실습 2
+>실습 1에 이어 Public 서브넷을 통해 Private 서브넷에 접속하도록 하는 것이 핵심
+### 1. 인스턴스명 및 보안그룹 수정
+  - MyPrivateServer -> MyMySQL
+  - Security group 생성
+    - 그룹이름,descripting 설정 (강의에서는 My-RDS-SG)
+    - VPC 선택 (acloudguruVPC)
+    - add rule
+      - SSH / 22 / 10.0.1.0/24
+      - MYSQL/Aurora / 3306 / 10.0.1.0/24
+      - HTTP / 80 / 10.0.1.0/24
+      - HTTPS / 443 / 10.0.1.0/24
+      - All ICMP-IPv4 / 0 - 65535 / 10.0.1.0/24
+  - 인스턴스로 가서 -> MyMySQL 선택 -> action -> change security group 선택 -> My-RDS-SG로 변경
+### 2. Public 서버에서 Private 서버로 접속하기
