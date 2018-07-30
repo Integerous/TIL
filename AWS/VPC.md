@@ -47,3 +47,31 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
 - Security Groups는 Stateful 하다.(네트워크 연결 상태를 추적할 수 있다.)
 - Network Access Control Lists는 Stateless 하다.
 - NO TRANSITIVE PEERING
+
+### VPC 실습
+1. VPC로 이동
+2. Your VPCs
+3. Create VPC
+4. Name tag 및 IPv4 CIDR block 설정 (가장 큰 범위는 10.0.0.0/16)
+5. IPv6 CIDR block = Amazon provided IPv6 CIDR block 으로 설정해야 나중에 더 많은 옵션이 생긴다.
+6. Tenancy 선택
+    - Default: 다른 고객과 하드웨어를 공유한다.(Multi tenant environment)
+    - Dedicate: 독립된 하드웨어를 사용하므로 더 비싸다.
+  
+7. Subnet 만들기
+    - Subnets로 이동
+    - Create Subnets
+    - VPC 선택
+    - Name tag 설정(강사는 CIDR block range와 AZ을 나타내기위해 `10.0.1.0 - us-east-1a` 라고 설정한다.)
+    - Availability Zone 설정
+    - IPv4 CIDR block 설정 (10.0.1.0/24)
+    - IPv6 CIDR block 선택 (강사는 안함)
+    - Yes, Create 클릭
+8. 각 서브넷 CIDR 블록에서 첫 4개의 IP 주소와 마지막 IP 주소는 사용자가 사용할 수 없으므로 인스턴스에 할당할 수 없습니다. 예를 들어 10.0.0.0/24 CIDR 블록의 서브넷에서는 다음 5개 IP 주소가 예약되어 있습니다.
+    - 10.0.0.0: 네트워크 주소.
+    - 10.0.0.1: AWS에서 VPC 라우터용으로 예약한 주소.
+    - 10.0.0.2: AWS에서 예약한 주소. DNS 서버의 IP 주소는 항상 VPC 네트워크 범위를 기초로 2를 더한 것입니다. 그러나 에서는 각 서브넷 범위를 기초로 2를 더한 것도 예약합니다. CIDR 블록이 여러 개인 VPC의 경우, DNS 서버의 IP 주소가 기본 CIDR에 위치합니다. 자세한 내용은 Amazon DNS 서버 단원을 참조하십시오.
+    - 10.0.0.3: AWS에서 앞으로 사용하려고 예약한 주소.
+    - 10.0.0.255: 네트워크 브로드캐스트 주소. VPC에서는 브로드캐스트를 지원하지 않으므로, 이 주소를 예약합니다.
+9. 두번째 Subnet 만들기
+    - IPv4 CIDR block 설정 (10.0.2.0/24)
