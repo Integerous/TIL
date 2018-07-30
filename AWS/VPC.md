@@ -48,7 +48,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
 - Network Access Control Lists는 Stateless 하다.
 - NO TRANSITIVE PEERING
 
-### VPC 실습
+## VPC 실습
 1. **VPC 만들기**
     - Your VPCs 로 이동
     - Create VPC
@@ -97,4 +97,19 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - Add another route (::/0 , target = 위와 동일) 로 IPv6도 설정해준다.
     - 이제 이 route에 연결되는 모든 서브넷은 Public 서브넷이 된다.
 10. **Subnet을 Route Table과 연결하기**
+    - Route Tables -> 밑에 Subnet Associations 클릭
+    - Edit
+    - Public Subnet으로 사용할 서브넷(10.0.1.0)을 선택하고 Save. (나머지 한 서브넷은 Private이 된다.)
+    - Subnets로 가서 오른쪽 끝부분에 Auto-assign Public IP을 확인하면 새로 추가한 서브넷들은 No로 되어있다.
+    - Public Subnet으로 사용할 서브넷을 선택하고
+    - Subnet Actions -> Modify auto-assign IP settings -> Enable auto-assign public IPv4 address 체크
+    - Save
+11. **EC2 생성**
+    - EC2로 이동
+    - Launch Instance 클릭
+    - Amazon Linux AMI 클릭
+    - Network를 Default VPC에서 Custom VPC로 변경
+    
+    
+11. **Subnets로 가서 오른쪽 끝부분에 Auto-assign Public IP**
     - 
