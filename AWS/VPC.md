@@ -64,7 +64,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - Create Subnets
     - VPC 선택
     - Name tag 설정(강사는 CIDR block range와 AZ을 나타내기위해 `10.0.1.0 - us-east-1a` 라고 설정한다.)
-    - Availability Zone 설정
+    - Availability Zone 설정 (us-east-1a)
     - IPv4 CIDR block 설정 (10.0.1.0/24)
     - IPv6 CIDR block 선택 (강사는 안함)
     - Yes, Create 클릭
@@ -75,7 +75,8 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - 10.0.0.3: AWS에서 앞으로 사용하려고 예약한 주소.
     - 10.0.0.255: 네트워크 브로드캐스트 주소. VPC에서는 브로드캐스트를 지원하지 않으므로, 이 주소를 예약합니다.
 5. **두번째 Subnet 만들기**
-    - IPv4 CIDR block 설정 (10.0.2.0/24)  
+    - IPv4 CIDR block 설정 (10.0.2.0/24)
+    - AZ 설정 (us-east-1b)
 6. **현재까지 상태**    
 ![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet2.png?raw=true)
 7. **Internet Gateway 만들기**
@@ -104,12 +105,23 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - Public Subnet으로 사용할 서브넷을 선택하고
     - Subnet Actions -> Modify auto-assign IP settings -> Enable auto-assign public IPv4 address 체크
     - Save
-11. **EC2 생성**
+11. **Public 서브넷을 위한 EC2 생성**
     - EC2로 이동
     - Launch Instance 클릭
     - Amazon Linux AMI 클릭
     - Network를 Default VPC에서 Custom VPC로 변경
-    
-    
-11. **Subnets로 가서 오른쪽 끝부분에 Auto-assign Public IP**
-    - 
+    - Subnet 선택 (10.0.1.0) 
+    - next next
+    - Add tag ( Name / WebServer01)
+    - next
+    - Security group 생성
+      - SSH / 22 / 0.0.0.0/0
+      - HTTP / 80 / 0.0.0.0/0, ::/0
+    - Keypair 선택 후 시작
+12. **Private 서브넷을 위한 EC2 생성**
+    - Subnet 선택 (10.0.2.0)
+    - Add tag ( Name / MyPrivateServer )
+    - Security 그룹은 default로
+    - Keypair는 위에꺼랑 같은 것
+13. **ssh로 접속**
+    - ssh ec2-user@~~~~
