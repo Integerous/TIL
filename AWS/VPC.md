@@ -89,6 +89,12 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - Create Route Table
     - Name tag (강의에서는 MyInternetRouteOut) 및 VPC 설정
     - Yes, Create
-9. Route Table의 인터넷 연결 설정하기
+9. **Route Table의 인터넷 연결 설정하기**
     - 새로 생성한 Route Table 선택
-    - 밑의 Routes
+    - 밑의 Routes 선택하고 Edit 클릭
+    - Add another route (0.0.0.0/0 , target = 좀전에 생성한 Interent Gateway)
+    - Save
+    - Add another route (::/0 , target = 위와 동일) 로 IPv6도 설정해준다.
+    - 이제 이 route에 연결되는 모든 서브넷은 Public 서브넷이 된다.
+10. **Subnet을 Route Table과 연결하기**
+    - 
