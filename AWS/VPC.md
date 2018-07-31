@@ -147,3 +147,5 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
       - All ICMP-IPv4 / 0 - 65535 / 10.0.1.0/24
   - 인스턴스로 가서 -> MyMySQL 선택 -> action -> change security group 선택 -> My-RDS-SG로 변경
 ### 2. Public 서버에서 Private 서버로 접속하기
+
+## NAT Instances & NAT Gateways
