@@ -146,6 +146,24 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
       - HTTPS / 443 / 10.0.1.0/24
       - All ICMP-IPv4 / 0 - 65535 / 10.0.1.0/24
   - 인스턴스로 가서 -> MyMySQL 선택 -> action -> change security group 선택 -> My-RDS-SG로 변경
-### 2. Public 서버에서 Private 서버로 접속하기
-
+### 2. ssh로 Public 서버에서 Private 서버로 접속해보기 (실무에서는 절대 하지 말 것)
+  - ping 10.0.2.143
+  - nano mypvk.pem -> 키 내용 복붙
+  - chmod 400 mypvk.pem
+  - ssh ec2-user@10.0.2.143 -i mypvk.pem
+  
 ## NAT Instances & NAT Gateways
+### 1. NAT Instance
+  - EC2로 이동
+  - 인스턴스 시작하기
+  - Community AMIs 선택
+  - nat 검색
+  - amzn-ami-vpc-nat-hvm~.gp2 선택
+  - VPC 와 Subnet 선택
+  - Tag 설정 Name / NAT-INSTANCE
+  - 보안그룹 web-DMZ 선택
+  - 시작
+  - 보안그룹 web-DMZ에 Https / 443 / 0.0.0.0,::/0 추가
+  - NAT-INSTANCE 선택 후, Actions - Networking - Change Source/Dest. Check 선택
+    - 각각의 EC2 인스턴스는 디폴트로 source/destination을 체크한다. 이것은 인스턴스가 주고 받는 모든 트래픽의 source 또는 destination이 되어야한다는 뜻이다. 하지만 NAT 인스턴스는 스스로가 source/destination이 아니더라도 반드시 트래픽을 주고받을 수 있어야 한다. 그러므로 NAT 인스턴스의 source/destination checks를 반드시 disable it 해야한다.
+  
