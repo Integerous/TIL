@@ -17,7 +17,7 @@
 - [SQL](#m10)
 - [Linux](#m11)
 - [Operating System](#m12)
-- [Tools](#m13)
+- [Git](#m13)
 - [Algorithm](#m14)
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -104,9 +104,8 @@
 
 <a name="m13">
 
-## Tools 
-* Git
-  - [Github을 활용한 코드 리뷰 Workflow](https://github.com/Integerous/TIL/blob/master/Git/WorkFlow.md)
+## Git 
+* [Github을 활용한 코드 리뷰 Workflow](https://github.com/Integerous/TIL/blob/master/Git/WorkFlow.md)
 <a name="m14">
 
 ## Algorithm 
