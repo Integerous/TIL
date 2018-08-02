@@ -1,4 +1,5 @@
 # 코드리뷰 workflow
+>Githup pull-request를 활용하는 코드리뷰를 사내에 도입하기 위해 작성한 코드리뷰 절차
 1. CloudCash 저장소(원본저장소) 생성
 2. Develop 브랜치 생성 (깃헙에서)
 3. Develop 브랜치를 각자의 저장소로 Fork (깃헙에서)
