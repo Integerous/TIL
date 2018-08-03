@@ -285,3 +285,4 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - You can associate a network ACL with multiple subnets; however, a subnet can be associated with only one network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed
   - Network ACLs contain a numbered list of rules that is evaluated in order, starting with the lowest numbered rule
   - Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa)
+  - Block IP Addresses using network ACLs not Security Groups
