@@ -48,7 +48,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
 - Network Access Control Lists는 Stateless 하다.
 - NO TRANSITIVE PEERING
 
-## VPC 실습 1
+# VPC 실습 1
 ### 1. **VPC 만들기**
   - Your VPCs 로 이동
   - Create VPC
@@ -132,7 +132,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - 그래서 두 개의 인스턴스는 서로 다른 보안그룹과 AZ 때문에 서로 연결할 수 없는 상태이다.
   - 그러므로 이후에는 연결할 수 있도록.
 
-## VPC 실습 2
+# VPC 실습 2
 >실습 1에 이어 Public 서브넷을 통해 Private 서브넷에 접속하도록 하는 것이 핵심
 ### 1. 인스턴스명 및 보안그룹 수정
   - MyPrivateServer -> MyMySQL
@@ -152,7 +152,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - chmod 400 mypvk.pem
   - ssh ec2-user@10.0.2.143 -i mypvk.pem
   
-## NAT Instances & NAT Gateways
+# Network Address Translation(NAT) / NAT Instances & NAT Gateways
 ### 1. NAT Instance 설정하기
   - EC2로 이동
   - 인스턴스 시작하기
@@ -188,53 +188,100 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - EC2 인스턴스로 이동
 
 ### 4. NAT Gateway와 NAT Instance 비교
-  - Availability
+  - **Availability**
     - NAT Gateway : 독립적인 아키텍쳐를 구축하기 위해 각각의 AZ에 NAT Gateway를 생성할 수 있다.
     - NAT Instance : 인스턴스들 간의 failover(시스템 대체 작동)를 관리하기 위해 script 사용
-  - Bandwidth
+  - **Bandwidth**
     - NAT Gateway : 10Gbps 까지 지원
     - NAT Instance : 인스턴스 타입의 대역폭에 따라 다름
-  - Maintenance
+  - **Maintenance**
     - NAT Gateway : AWS에 의해 관리된다.
     - NAT Instance : 직접 관리해야한다. (ex 소프트웨어를 업데이트하거나 인스턴스에 OS patch)  
-  - Performance
+  - **Performance**
     - NAT Gateway : 소프트웨어가 NAT 트래픽을 핸들링하기 위해 최적화되어있다.
     - NAT Instance : A generic Amazon Linux AMI that's configured to perform NAT
-  - Cost
+  - **Cost**
     - NAT Gateway : 사용한 NAT 게이트웨이의 수, 사용시간, NAT 게이트웨이를 통해 보낸 데이터의 크기에 따라 요금이 부과된다.
     - NAT Instance : 사용한 NAT 인스턴스의 수, 사용시간, 인스턴스의 타입과 사이즈에 따라 요금이 부과된다.
-  - Type and Size
+  - **Type and Size**
     - NAT Gateway : Uniform offering - 타입과 사이즈를 결정할 필요없다.
     - NAT Instance : 예상되는 워크로드에 따라 알맞는 인스턴스 타입과 사이즈를 선택해야한다.
-  - Public IP Addresses
+  - **Public IP Addresses**
     - NAT Gateway : 생성시에 NAT Gateway와 연결시킬 수 있는 Elastic IP address를 선택한다.
     - NAT Instance : Elastic IP address 또는 Public IP address를 사용한다.
-  - Private IP Addresses
+  - **Private IP Addresses**
     - NAT Gateway : 게이트웨이를 생성할 때 서브넷의 IP주소 범위에서 자동으로 선택된다.
     - NAT Instance : 인스턴스를 런칭할때 서브넷의 IP주소 범위에서 특정 private IP주소를 할당한다.
-  - Security Groups
+  - **Security Groups**
     - NAT Gateway : NAT Gateway와 연결할 수 없다. 대신 보안그룹을 NAT 게이트웨이 뒤의 리소스와 연결하여 인바운드/아웃바운드 트래픽을 제어할 수 있다.
     - NAT Instance : NAT Instance와 그 뒤의 리소스와 연결하여 인바운드/아웃바운드 트래픽을 제어한다.
-  - Network ACLs
+  - **Network ACLs**
     - NAT Gateway : 네트워크 ACL을 사용하여 NAT 게이트웨이가 위치하고 있는 서브넷에서 보내고 받는 트래픽을 제어한다.
     - NAT Instance : 네트워크 ACL을 사용하여 NAT 인스턴스가 위치하고 있는 서브넷에서 보내고 받는 트래픽을 제어한다.
-  - Flow Logs
+  - **Flow Logs**
     - NAT Gateway : 트래픽을 캡쳐하기 위해 flow logs를 사용한다.
     - NAT Instance : 트래픽을 캡쳐하기 위해 flow logs를 사용한다.
-  - Port Forwarding
+  - **Port Forwarding**
     - NAT Gateway : 지원하지 않는다.
     - NAT Instance : 포트포워딩을 위해 수동으로 설정을 커스터마이징 해야한다.
-  - Bastion Servers
+  - **Bastion Servers**
     - NAT Gateway : 지원하지 않는다.
     - NAT Instance : bastion 서버로서 사용한다.
-  - Traffic Metrics
+  - **Traffic Metrics**
     - NAT Gateway : NAT 게이트웨이의 CloudWatch 지표를 확인.
     - NAT Instance : 인스턴스의 CloudWatch 지표 확인
-  - Timeout behavior
+  - **Timeout behavior**
     - NAT Gateway : 연결 제한시간이 초과하면 NAT 게이트웨이는 연결을 계속하려하는 NAT 게이트웨이 뒤의 리소스로 RST 패킷을 반환한다.(FIN 패킷 안보냄)
     - NAT Instance : 연결 제한시간이 초과하면 NAT 인스턴스는 NAT 인스턴스 뒤의 리소스로 FIN 패킷을 전송하여 연결을 닫는다.
-  - IP fragmentation
+  - **IP fragmentation**
     - NAT Gateway : UDP 프로토콜에서 IP 조각화된 패킷의 전달을 지원한다. TCP 및 ICMP 프로토콜에 대해서는 조각화를 지원하지 않고, 이러한 프로토콜의 조각화된 패킷은 삭제된다.
     - NAT Instance : UDP, TCP 및 ICMP 프로토콜에 대해 IP 조각화된 패킷의 재수집을 지원한다.
 
-### 5.
+### 5. NAT Gateway 구성 모습
+![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet4.png?raw=true)  
+
+### 6. 정리
+  - **NAT Instance**
+    - When creating a NAT instance, Disable Source/Destination Check on the Instance
+    - NAT instances must be in a public subnet
+    - There must be a route out of the private subnet to the NAT instance, in order for this to work
+    - The amount of traffic that NAT insatnaces can support depends on the instance size. If you are bottlenecking, increase the instance size
+    - You can create high availability using Autoscaling Groups, multiple subnets in different AZs, and a script to automate failover
+    - Behind a Security Group
+  - **NAT Gateway**
+    - Preferred by the enterprise
+    - Scale automatically up to 10Gbps
+    - No need to patch
+    - Not associated with security groups
+    - Automatically assigned a public ip address
+    - Remember to update your route tables
+    - No need to disable Source/Destination Checks
+    - More secure than a NAT instance
+      - Do not have SSH access to your NAT Gateway
+
+# Network Access Control Lists vs. Security Groups
+## 1. Network ACL 설정
+  - VPC 이동
+  - Network ACLs 이동
+  - Create Network ACL 클릭
+    - Name tag : MyWebNACL , VPC 선택하고 생성
+  - Inbound Rules 수정
+    - Edit 클릭
+    - Rule #는 100부터 시작, 100번은 IPv4, 101번은 IPv6.
+    - Rule은 번호 순서대로 적용된다. 예를 들어 100번에 열어두고 99번에 닫아두면 99번이 우선 적용된다.
+    - 100 HTTP(80) 0.0.0.0/0
+    - 200 HTTPS(443) 0.0.0.0/0
+    - 300 SSH(22) 0.0.0.0/0
+  - Outbound Rules 수정
+    - 100 HTTP(80) 0.0.0.0/0
+    - 200 HTTPS(443) 0.0.0.0/0
+    - 300 Custom(1024-65535) 0.0.0.0/0
+  - Subnet Association 이동
+    - 서브넷과 연결
+## 2. Exam Tips - Network ACLs
+  - Your VPC automatically comes a default network ACL, and by default it allows all outbound and inbound traffic
+  - You can create custom network ACLs, By default, each custom network ACL denies all inbound and outbound traffic until you add rules
+  - Each subnet in your VPC must be associated with a network ACL. If you don't explicitly associate a subnet with a network ACL, the subnet is automatically associated with the default network ACL
+  - You can associate a network ACL with multiple subnets; however, a subnet can be associated with only one network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed
+  - Network ACLs contain a numbered list of rules that is evaluated in order, starting with the lowest numbered rule
+  - Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa)
