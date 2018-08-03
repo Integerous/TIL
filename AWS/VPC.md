@@ -197,4 +197,33 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - Maintenance
     - NAT Gateway : AWS에 의해 관리된다.
     - NAT Instance : 직접 관리해야한다. (ex 소프트웨어를 업데이트하거나 인스턴스에 OS patch)  
-  
+  - Performance
+    - NAT Gateway : 소프트웨어가 NAT 트래픽을 핸들링하기 위해 최적화되어있다.
+    - NAT Instance : A generic Amazon Linux AMI that's configured to perform NAT
+  - Cost
+    - NAT Gateway : 사용한 NAT 게이트웨이의 수, 사용시간, NAT 게이트웨이를 통해 보낸 데이터의 크기에 따라 요금이 부과된다.
+    - NAT Instance : 사용한 NAT 인스턴스의 수, 사용시간, 인스턴스의 타입과 사이즈에 따라 요금이 부과된다.
+  - Type and Size
+    - NAT Gateway : Uniform offering - 타입과 사이즈를 결정할 필요없다.
+    - NAT Instance : 예상되는 워크로드에 따라 알맞는 인스턴스 타입과 사이즈를 선택해야한다.
+  - Public IP Addresses
+    - NAT Gateway : 생성시에 NAT Gateway와 연결시킬 수 있는 Elastic IP address를 선택한다.
+    - NAT Instance : Elastic IP address 또는 Public IP address를 사용한다.
+  - Private IP Addresses
+    - NAT Gateway : 게이트웨이를 생성할 때 서브넷의 IP주소 범위에서 자동으로 선택된다.
+    - NAT Instance : 인스턴스를 런칭할때 서브넷의 IP주소 범위에서 특정 private IP주소를 할당한다.
+  - Security Groups
+    - NAT Gateway : NAT Gateway와 연결할 수 없다. 대신 보안그룹을 NAT 게이트웨이 뒤의 리소스와 연결하여 인바운드/아웃바운드 트래픽을 제어할 수 있다.
+    - NAT Instance : NAT Instance와 그 뒤의 리소스와 연결하여 인바운드/아웃바운드 트래픽을 제어한다.
+  - Network ACLs
+    - NAT Gateway : 네트워크 ACL을 사용하여 NAT 게이트웨이가 위치하고 있는 서브넷에서 보내고 받는 트래픽을 제어한다.
+    - NAT Instance : 네트워크 ACL을 사용하여 NAT 인스턴스가 위치하고 있는 서브넷에서 보내고 받는 트래픽을 제어한다.
+  - Flow Logs
+    - NAT Gateway : 트래픽을 캡쳐하기 위해 flow logs를 사용한다.
+    - NAT Instance : 트래픽을 캡쳐하기 위해 flow logs를 사용한다.
+  - Port Forwarding
+    - NAT Gateway : 지원하지 않는다.
+    - NAT Instance : 포트포워딩을 위해 수동으로 설정을 커스터마이징 해야한다.
+  - Traffic Metrics
+    - NAT Gateway : 
+    - NAT instance : 
