@@ -224,6 +224,17 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - Port Forwarding
     - NAT Gateway : 지원하지 않는다.
     - NAT Instance : 포트포워딩을 위해 수동으로 설정을 커스터마이징 해야한다.
+  - Bastion Servers
+    - NAT Gateway : 지원하지 않는다.
+    - NAT Instance : bastion 서버로서 사용한다.
   - Traffic Metrics
-    - NAT Gateway : 
-    - NAT instance : 
+    - NAT Gateway : NAT 게이트웨이의 CloudWatch 지표를 확인.
+    - NAT Instance : 인스턴스의 CloudWatch 지표 확인
+  - Timeout behavior
+    - NAT Gateway : 연결 제한시간이 초과하면 NAT 게이트웨이는 연결을 계속하려하는 NAT 게이트웨이 뒤의 리소스로 RST 패킷을 반환한다.(FIN 패킷 안보냄)
+    - NAT Instance : 연결 제한시간이 초과하면 NAT 인스턴스는 NAT 인스턴스 뒤의 리소스로 FIN 패킷을 전송하여 연결을 닫는다.
+  - IP fragmentation
+    - NAT Gateway : UDP 프로토콜에서 IP 조각화된 패킷의 전달을 지원한다. TCP 및 ICMP 프로토콜에 대해서는 조각화를 지원하지 않고, 이러한 프로토콜의 조각화된 패킷은 삭제된다.
+    - NAT Instance : UDP, TCP 및 ICMP 프로토콜에 대해 IP 조각화된 패킷의 재수집을 지원한다.
+
+### 5.
