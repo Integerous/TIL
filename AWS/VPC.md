@@ -153,7 +153,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - ssh ec2-user@10.0.2.143 -i mypvk.pem
   
 ## NAT Instances & NAT Gateways
-### 1. NAT Instance
+### 1. NAT Instance 설정하기
   - EC2로 이동
   - 인스턴스 시작하기
   - Community AMIs 선택
@@ -166,4 +166,35 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - 보안그룹 web-DMZ에 Https / 443 / 0.0.0.0,::/0 추가
   - NAT-INSTANCE 선택 후, Actions - Networking - Change Source/Dest. Check 선택
     - 각각의 EC2 인스턴스는 디폴트로 source/destination을 체크한다. 이것은 인스턴스가 주고 받는 모든 트래픽의 source 또는 destination이 되어야한다는 뜻이다. 하지만 NAT 인스턴스는 스스로가 source/destination이 아니더라도 반드시 트래픽을 주고받을 수 있어야 한다. 그러므로 NAT 인스턴스의 source/destination checks를 반드시 disable it 해야한다.
+  
+  - VPC - Route Tables 로 이동
+  - Default Route 테이블을 선택하고 여기에서 NAT 인스턴스에 의해 Route out 되도록 하기 위해 밑에 Routes 클릭해서 Add another route 클릭
+  - Destiantion에 0.0.0.0/0 넣고 Target에는 MyIGW가 아닌 NAT 인스턴스 선택. 이로써 NAT 인스턴스에서 바깥세상으로 나가는 Route out 설정된 것.
+### 2. NAT 인스턴스의 한계
+- NAT 인스턴스로 구성하는것은 단일 인스턴스에 단일 AZ이기 때문에 병목현상에 취약하고, 문제발생시 Private Subnet 안의 모든 서비스가 인터넷 엑세스를 잃게 된다.
+- Auto scaling group에 추가하거나 multiple AZ과 multiple Route out to internet을 가질 수 있지만, 점점 복잡해질 뿐이다.
+- 다행히 아마존이 NAT Gateway를 출시했고, 이를 통해 단일 인스턴스와 단일 AZ에 의존하는 것에서 벗어날 수 있다.
+
+### 3. NAT Gateway 설정하기
+  - VPC로 이동
+  - NAT Gateway는 IPv4로 동작하고, Egress Only Internet Gateway는 IPv6로 동작한다.
+  - NAT Gateway 선택 및 Create NAT Gateway 클릭
+  - Subnet은 커스텀 VPC의 퍼블릭 서브넷 선택
+  - Create New EIP 클릭
+  - Create a NAT Gateway 클릭 (생성되는데 15분정도 소요)
+  - NAT Gateways로 가서 만든 NAT Gateway의 Status가 available이 되면 Route Tables로 이동
+  - Default Route Table 선택 및 밑의 Routes 클릭
+  - Add another route (Destination: 0.0.0.0/0  Target: NAT Gateway) 및 save.
+  - EC2 인스턴스로 이동
+
+### 4. NAT Gateway와 NAT Instance 비교
+  - Availability
+    - NAT Gateway : 독립적인 아키텍쳐를 구축하기 위해 각각의 AZ에 NAT Gateway를 생성할 수 있다.
+    - NAT Instance : 인스턴스들 간의 failover(시스템 대체 작동)를 관리하기 위해 script 사용
+  - Bandwidth
+    - NAT Gateway : 10Gbps 까지 지원
+    - NAT Instance : 인스턴스 타입의 대역폭에 따라 다름
+  - Maintenance
+    - NAT Gateway : AWS에 의해 관리된다.
+    - NAT Instance : 직접 관리해야한다. (ex 소프트웨어를 업데이트하거나 인스턴스에 OS patch)  
   
