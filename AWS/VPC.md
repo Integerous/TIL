@@ -153,6 +153,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - ssh ec2-user@10.0.2.143 -i mypvk.pem
   
 # Network Address Translation(NAT) / NAT Instances & NAT Gateways
+
 ### 1. NAT Instance 설정하기
   - EC2로 이동
   - 인스턴스 시작하기
@@ -170,6 +171,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - VPC - Route Tables 로 이동
   - Default Route 테이블을 선택하고 여기에서 NAT 인스턴스에 의해 Route out 되도록 하기 위해 밑에 Routes 클릭해서 Add another route 클릭
   - Destiantion에 0.0.0.0/0 넣고 Target에는 MyIGW가 아닌 NAT 인스턴스 선택. 이로써 NAT 인스턴스에서 바깥세상으로 나가는 Route out 설정된 것.
+
 ### 2. NAT 인스턴스의 한계
 - NAT 인스턴스로 구성하는것은 단일 인스턴스에 단일 AZ이기 때문에 병목현상에 취약하고, 문제발생시 Private Subnet 안의 모든 서비스가 인터넷 엑세스를 잃게 된다.
 - Auto scaling group에 추가하거나 multiple AZ과 multiple Route out to internet을 가질 수 있지만, 점점 복잡해질 뿐이다.
@@ -331,6 +333,32 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - Traffic to the reserved IP address for the default VPC router
     
 # NAT vs Bastion
->Bastion은 점프박스로서 
-    - Flow log 생성 화면으로 돌아가기점프
-    - Flow log 생성 화면으로 돌아가기
+
+## Bastion host
+  - Bastion host는 외부에서 접근이 차단되어있는 Private Subnet에 배포된 인스턴스에 SSH로 접근하기 위한 일종의 Proxy 역할을 하는 서버.  
+  - Bastion의 logging을 관리하면 Private Subnet에 접속하는 모든 기록을 관리할 수 있다.
+  - Bastion host는 Public Subnet에 위치하도록 EC2 instance를 생성한다.
+  - 외부 사용자의 특정 IP만 허용하여 Bastion host에 접속 가능하도록 네트워크 ACL과 Security Group을 설정한다.
+  
+## SSH Tunneling
+>SSH Tunneling을 이용해서 외부에서 Private Instance에 접속하는 방법
+
+1. Local PC에서 Bastion host에 SSH 할때, -L 옵션을 이용하여 접속한다.  
+`ssh -i key.pem -L 22:(접속타겟 인스턴스 Private IP):22 ec2-user@(Bastion host Public IP)`
+    - SSH를 이용해 Bastion host에 접속할 때 Local 터널링으로 접속하는 명령어
+    - -L 옵션인 `22:(접속타겟 인스턴스 Private IP):22` 의 의미는 `로컬 포트 22번으로 접속타겟 인스턴스의 22번 포트로 접속하겠다`
+2. 터미널을 하나 더 열어서 `ssh -i key.pem ec2-user@localhost`
+    - 위의 명령어로 접속하면 자동으로 타겟 인스턴스로 SSH Tunneling되어 접속된다.
+3. 이 방법으로 Private Subnet에 위치한 모든 서버에 접속가능
+
+## NAT vs Bastion Exam Tips
+  - A NAT is used to provide internet traffic to EC2 instances in private subnets
+  - A Bastion is used to securely administer EC2 instances (using SSH or RDP) in private subnets
+
+
+
+# *Reference
+- https://aws.amazon.com/
+- https://aws.amazon.com/ko/solutions/case-studies/peoplefund/
+- https://www.udemy.com/aws-certified-solutions-architect-associate/learn/v4/t/lecture/2050704?start=0
+- http://bluese05.tistory.com/48
