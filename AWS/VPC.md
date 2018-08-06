@@ -333,7 +333,7 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
     - Traffic to the reserved IP address for the default VPC router
     
 # NAT vs Bastion
-
+![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet5.png?raw=true)
 ## Bastion host
   - Bastion host는 외부에서 접근이 차단되어있는 Private Subnet에 배포된 인스턴스에 SSH로 접근하기 위한 일종의 Proxy 역할을 하는 서버.  
   - Bastion의 logging을 관리하면 Private Subnet에 접속하는 모든 기록을 관리할 수 있다.
