@@ -355,7 +355,10 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - A NAT is used to provide internet traffic to EC2 instances in private subnets
   - A Bastion is used to securely administer EC2 instances (using SSH or RDP) in private subnets
 
-
+# VPC Endpoint
+![]
+## 프라이빗 네트워크로 Endpoint S3에 접근하기
+![]
 
 # *Reference
 - https://aws.amazon.com/
