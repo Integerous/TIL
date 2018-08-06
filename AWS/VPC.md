@@ -356,9 +356,9 @@ VPC는 클라우드 내의 **가상 데이터 센터**.
   - A Bastion is used to securely administer EC2 instances (using SSH or RDP) in private subnets
 
 # VPC Endpoint
-![]
+![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet7.png?raw=true)
 ## 프라이빗 네트워크로 Endpoint S3에 접근하기
-![]
+![](https://github.com/Integerous/TIL/blob/master/AWS/img/VPC%20with%20Public%20&%20Private%20Subnet6.png?raw=true)
 
 # *Reference
 - https://aws.amazon.com/
