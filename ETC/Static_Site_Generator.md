@@ -11,7 +11,14 @@
 
 ## 3. Hugo! 너로 정했다!
 
+
 ## 4. Hugo + Github Page 만들어가는 과정
+
+### 4-1. Hugo 설치
+나도 멋깔나게 `brew install hugo`를 mac 터미널에 입력해서 설치하고 싶었다. (맥북 너무 사고싶다ㅠ)  
+하지만 현실은 Windows.
+[Windows에서 Hugo설치](https://gohugo.io/getting-started/installing#windows) 이 영상 하나면 설치는 쉽다. (젊은 형아가 영어로 설명해줌)
+
 
 ## *Reference
 - [Jekyll, Hexo, Hugo 간단 비교 글](http://tadakichi.tistory.com/188)
