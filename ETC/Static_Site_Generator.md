@@ -51,8 +51,20 @@
 
 ### 4-7. 컨텐츠 업로드 (블로그에)
 - Linux는 http://gohugo.io/tutorials/github-pages-blog/ 의 deploy.sh 파일을 사용
-- 
+- `C:\Hugo\blog`로 이동
+- `$ hugo -t 테마이름` 명령을 통해 테마가 적용된 블로그 내용을 public에 생성한다.
+- `$ cd public` public 디렉토리로 이동하여
+- `$ git add .` 수정된 파일들을 index에 올린다.
+- `$ git commit -m "커밋메세지"` 변경 내용을 commit하고
+- `$ git push origin master` commit을 Integerous.github.io에 푸시
+- `blog 저장소`에도 변경내용 푸시
+  - `$ git add .`
+  - `$ git commit -m "커밋메세지"`
+  - `$ git push origin master`
 
 
 ## *Reference
+- [Hosting on Github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
 - [Jekyll, Hexo, Hugo 간단 비교 글](http://tadakichi.tistory.com/188)
+- [Github Page에 Hugo 올리기](https://github.com/sabzil/blog/blob/master/content/post/tips/hugo.md)
+-
