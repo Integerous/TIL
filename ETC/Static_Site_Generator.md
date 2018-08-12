@@ -47,7 +47,12 @@
   - 이렇게 함으로써 `hugo` 명령으로 `public`에 웹사이트를 만들 때, 만들어진 `public` 디렉토리는 다른 remote origin을 가질 것이다.
 
 ### 4-6. 컨텐츠 생성
+- `$ hugo new post/test1.md` 명령으로 파일을 생성하면 `\content\post\test1.md`
+
+### 4-7. 컨텐츠 업로드 (블로그에)
+- Linux는 http://gohugo.io/tutorials/github-pages-blog/ 의 deploy.sh 파일을 사용
+- 
+
 
 ## *Reference
 - [Jekyll, Hexo, Hugo 간단 비교 글](http://tadakichi.tistory.com/188)
-
