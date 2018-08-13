@@ -137,5 +137,5 @@
   * [CodeWars 004 - Tribonacci Sequence (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/004-Tribonacci_sequence.md)
   * [CodeWars 003 - String Repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
   * [CodeWars 002 - Get The Middle Character (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/002-Get_the_middle_character.md)
-  * [CodeWars 001 - Multiples of 3 or 5 (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/1_Multiples_of_3or5.md)
+  * [CodeWars 001 - Multiples of 3 or 5 (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/001-Multiples_of_3or5.md)
 
