@@ -1,3 +1,5 @@
+[![HitCount](http://hits.dwyl.io/integerous/TIL.svg)](http://hits.dwyl.io/integerous/TIL)
+
 # Today I Learned (TIL)
 * 나는 망각의 동물이었다.(금붕어급)
 * 인생은 마라톤! 꾸준한 성장을 위해 개발 경험과 학습 내용을 기록한다.
