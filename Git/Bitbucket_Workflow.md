@@ -1,16 +1,41 @@
-# Cloudcash workflow with Bitbucket
+# Cloudcash Workflow
 
-## 해결해야 할 문제
-- 특정 branch만 fork되지 않는 문제
-- 특정 branch만 로컬로 clone하기
-  - `git clone <url> --branch <branch> --single-branch [<folder>]`
-  - 또는 `git clone -b <branchName> <remoteRepoUrl>`
-  - 또는 전체를 클론해와서 해당 브랜치로 checkout하기
-  - `git clone <url>` , `git checkout -b develop`
-- Pull Request 와 Issue 생성 시 템플릿 생성/사용 불가능 문제
-  - Issue 중 버그 리포트의 경우
-    - 템플릿을 활용하여 server log, response body 등 필요한 정보들을 템플릿에 강제하여 정보 누락을 방지할 수 있고,
-    - 마크다운 문법을 템플릿에 적용해놓으면 훨씬 빠르게 리포트 작성 가능하며, 일관된 문서작성 가능. 또한 정제된 리포트 자체를 데이터로 활용 가능.
+## 전체 흐름
+  ~~~
+  0. 최초 설정
+  1. Issue 등록
+  2. Issue 작업
+  3. Pull Request
+  4. PR Review
+  5. Issue 반영
+  (번외 #1) CI/CD Tool
+  (번외 #2) 해결해야 할 문제
+  ~~~
+  
+## 0. 최초 설정
+## 1. Issue 등록
+>새로운 추가될 가능, 개선 해야할 기능, 버그 등 모든 활동을 Issue로 등록하고 그 Issue를 기반으로 작업을 진행합니다.  
+>Issue 등록은 템플릿을 사용하는 방법이 효율적이지만, 현재 Bitbucket에서는 템플릿 기능을 제공하지는 않는 것으로 보입니다.
+
+## 2. Issue 작업
+## 3. Pull Request (이하 PR)
+## 4. PR Review
+## 5. Issue 반영
+## (번외 #1) CI/CD Tool
+>Bitbucket에서는 클라우드에서 사용하는 CI/CD 도구인 Pipelines을 제공하지만 한달에 50분만 무료입니다.  
+>가장 보편적으로 사용하는 오픈소스 CI/CD 도구인 Jenkins를 기준으로 작성했습니다.
+## (번외 #2) 해결해야 할 문제
+1. Bitbucket에서 특정 branch만 fork되지 않는 문제 해결
+    - 전체 Repository를 fork 해온 후,
+    - `develop` branch만 local로 clone 후 작업하여 `develop` branch만 Pull Request. 
+    - 주의할 점은, 각 개인 원격 Repository에 함께 fork 되어온 `master` branch에 작업하지 않을 것.
+2. Pull Request 와 Issue 생성 시 템플릿 생성/사용 불가능 문제 해결
+  - 팀 내에서 공용 템플릿 작성하여 Issue 등록 시 직접 복사/붙여넣기 하여 사용
+  - 템플릿 사용의 장점
+    - 버그 리포트의 경우 템플릿을 활용하여 server log, response body 등 필요한 정보들을 템플릿에 강제하여 정보 누락을 방지할 수 있고,
+    - 마크다운 문법을 템플릿에 적용해놓으면 훨씬 빠르게 리포트 작성 가능하며, 일관된 문서작성 가능. 또한 리포트 자체를 데이터로 활용 가능.
+  - 템플릿 사용의 단점
+    - 기능이 제공되지 않으면 손수 복사/붙여넣기로 사용하기 번거롭다.
 
 
 1. CloudCash 저장소(원본저장소) 생성
