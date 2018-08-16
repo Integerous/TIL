@@ -35,6 +35,7 @@
 >Issue 등록은 템플릿을 사용하는 방법이 효율적이지만, 현재 Bitbucket에서는 템플릿 기능을 제공하지는 않는 것으로 보입니다.
 
 - Bitbucket에서 Issue 등록
+- Issue 등록시 사내메신져/이메일로 알람이 가도록 설정해야함
 
 # 2. Issue 작업
 6. Local에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 작업용 branch를 따로 생성
@@ -48,8 +49,10 @@
     - `$ git push origin ryanwork1` - 반드시 개인 원격저장소(origin)의 작업용 브랜치(ryanwork1)에 push 
     
 # 3. Pull Request (이하 PR)
-10. `프로젝트 저장소`로 ***Pull Request*** (Bitbucket에서)
-11. 관리자는 코드 리뷰 후 develop 브랜치로 Merge (깃헙에서)
+10. `개인 원격저장소 작업용 브랜치`에서 `프로젝트 저장소 develop 브랜치`로 ***Pull Request*** (Bitbucket에서)
+
+# 4. PR Review
+11. 관리자는 코드 리뷰 후 develop 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
 12. — 다른 팀원이 원본저장소에 커밋 추가했을시 — 
 13. 설정된 원격저장소(CloudCash저장소)의 develop 브랜치로 부터 local의 develop브랜치 동기화. (우선 HEAD가 develop으로 가도록하고!)
     - $git checkout develop
@@ -62,11 +65,12 @@
     - $git branch -d ryanwork1
 15. 이후 작업은 다시 pull로 CCproject을 local로 동기화한 후 작업용 브랜치를 만드는 6번부터 반복한다.
 
-# 4. PR Review
 # 5. Issue 반영
+
 # (번외 #1) CI/CD Tool
 >Bitbucket에서는 클라우드에서 사용하는 CI/CD 도구인 Pipelines을 제공하지만 한달에 50분만 무료입니다.  
 >가장 보편적으로 사용하는 오픈소스 CI/CD 도구인 Jenkins를 기준으로 작성했습니다.
+
 # (번외 #2) 해결해야 할 문제
 1. Bitbucket에서 특정 branch만 fork되지 않는 문제 해결
     - 전체 Repository를 fork 해온 후,
