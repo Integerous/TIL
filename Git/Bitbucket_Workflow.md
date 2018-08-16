@@ -12,19 +12,62 @@
   (번외 #2) 해결해야 할 문제
   ~~~
   
-## 0. 최초 설정
-## 1. Issue 등록
+# 0. 최초 설정
+### 0.1. 프로젝트 관리자
+- Bitbucket에 `프로젝트 저장소` 생성
+- 작업용 `develop` 브랜치 생성 (`master` 브랜치는 배포용)
+
+### 0.2. 프로젝트 팀원
+1. `프로젝트 저장소`를 각자의 원격 저장소로 ***Fork*** (Bitbucket에서)
+2. 각자의 작업 환경에 local 저장소로 사용할 경로 선택 또는 생성
+3. 각자의 원격 저장소에서 각자의 local 저장소로 `develop` 브랜치만 ***Clone***
+    - `$ git clone -b develop --single-branch branchURL(반드시 본인 원격저장소 URL)`
+4. 모든 브랜치 확인
+    - `$ git branch -a`
+    - 현재 local 저장소에는 `develop` 브랜치만 존재해야 한다. 
+5. `프로젝트 저장소`의 최신화된 `develop` 브랜치와 local의 `develop` 브랜치를 동기화하기 위해 원격저장소 설정
+    - `$ git remote add cloudcash-ryan(별명) 프로젝트저장소URL` -> 본인 원격저장소URL로 하지 말것.
+    - `$ git remote -v` 로 원격저장소 확인
+    - 확인 결과 `cashcloud`(프로젝트 저장소)와 `origin`(개인 원격저장소)만 나와야 한다.
+
+# 1. Issue 등록
 >새로운 추가될 가능, 개선 해야할 기능, 버그 등 모든 활동을 Issue로 등록하고 그 Issue를 기반으로 작업을 진행합니다.  
 >Issue 등록은 템플릿을 사용하는 방법이 효율적이지만, 현재 Bitbucket에서는 템플릿 기능을 제공하지는 않는 것으로 보입니다.
 
-## 2. Issue 작업
-## 3. Pull Request (이하 PR)
-## 4. PR Review
-## 5. Issue 반영
-## (번외 #1) CI/CD Tool
+- Bitbucket에서 Issue 등록
+
+# 2. Issue 작업
+6. Local에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 작업용 branch를 따로 생성
+    - `$ git checkout -b ryanwork1`
+7. 작업
+8. 변경된 내용 확인
+    - `$ git status`
+9. 변경된 내용 ***add, commit, push***
+    - `$ git add .`
+    - `$ git commit -m '커밋내용'`
+    - `$ git push origin ryanwork1` - 반드시 개인 원격저장소(origin)의 작업용 브랜치(ryanwork1)에 push 
+    
+# 3. Pull Request (이하 PR)
+10. `프로젝트 저장소`로 ***Pull Request*** (Bitbucket에서)
+11. 관리자는 코드 리뷰 후 develop 브랜치로 Merge (깃헙에서)
+12. — 다른 팀원이 원본저장소에 커밋 추가했을시 — 
+13. 설정된 원격저장소(CloudCash저장소)의 develop 브랜치로 부터 local의 develop브랜치 동기화. (우선 HEAD가 develop으로 가도록하고!)
+    - $git checkout develop
+    - $git fetch CCproject(별명) develop
+    - $git branch -a 로 브랜치 확인
+    - $git merge CCproject/develop
+    - 또는 merge 대신 $git rebase CCproject/develop
+    - 또는 Pull로 한번에 동기화 $git pull CCproject develop
+14. Merge 된 이후에는 ryanwork1 브랜치 삭제
+    - $git branch -d ryanwork1
+15. 이후 작업은 다시 pull로 CCproject을 local로 동기화한 후 작업용 브랜치를 만드는 6번부터 반복한다.
+
+# 4. PR Review
+# 5. Issue 반영
+# (번외 #1) CI/CD Tool
 >Bitbucket에서는 클라우드에서 사용하는 CI/CD 도구인 Pipelines을 제공하지만 한달에 50분만 무료입니다.  
 >가장 보편적으로 사용하는 오픈소스 CI/CD 도구인 Jenkins를 기준으로 작성했습니다.
-## (번외 #2) 해결해야 할 문제
+# (번외 #2) 해결해야 할 문제
 1. Bitbucket에서 특정 branch만 fork되지 않는 문제 해결
     - 전체 Repository를 fork 해온 후,
     - `develop` branch만 local로 clone 후 작업하여 `develop` branch만 Pull Request. 
