@@ -1,7 +1,7 @@
 # Model, Model Map, ModelAndView 차이
-  - Model은 interface
-  - Model Map은 Class
-  - ModelAndView는 ModelMap과 View 객체를 위한 Container. 컨트롤러가 이 둘을 하나의 값으로 리턴할 수 있다.
+  - `Model`은 interface
+  - `Model Map`은 Class
+  - `ModelAndView`는 ModelMap과 View 객체를 위한 Container. 컨트롤러가 이 둘을 하나의 값으로 리턴할 수 있다.
 ## 예시
 ### 1. Model
 ~~~java
