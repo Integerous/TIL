@@ -93,7 +93,7 @@
 <a name="m10">
 
 ## SQL 
-* [SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
+* [생소했던 SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
 
 <a name="m11">
 
