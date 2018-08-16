@@ -1,4 +1,4 @@
-# Cloudcash Workflow
+# Cloudcash Dev Team Workflow
 
 ## 전체 흐름
   ~~~
@@ -32,38 +32,52 @@
 
 # 1. Issue 등록
 >새로운 추가될 가능, 개선 해야할 기능, 버그 등 모든 활동을 Issue로 등록하고 그 Issue를 기반으로 작업을 진행합니다.  
->Issue 등록은 템플릿을 사용하는 방법이 효율적이지만, 현재 Bitbucket에서는 템플릿 기능을 제공하지는 않는 것으로 보입니다.
 
 - Bitbucket에서 Issue 등록
-- Issue 등록시 사내메신져/이메일로 알람이 가도록 설정해야함
+  - 개발 항목 선택
+  - 개발 담당자 선정
+  - 개발 일정 수립
+  - 개발 내용 기재
+
+- Issue 등록시 Telegram / 이메일로 팀원들에게 자동 알림
 
 # 2. Issue 작업
-6. Local에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 작업용 branch를 따로 생성
+>등록된 Issue를 기반으로 branch를 생성하여 개발 작업 실행
+
+6. Local에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 branch를 따로 생성
     - `$ git checkout -b ryanwork1`
-7. 작업
-8. 변경된 내용 확인
+7. 분석/설계 및 개발
+8. 개발 내용 확인
     - `$ git status`
-9. 변경된 내용 ***add, commit, push***
+9. 개발 내용 ***add, commit, push***
     - `$ git add .`
     - `$ git commit -m '커밋내용'`
     - `$ git push origin ryanwork1` - 반드시 개인 원격저장소(origin)의 작업용 브랜치(ryanwork1)에 push 
-    
+10. Jenkins로 자동 빌드 후 Test code 실행 및 Test coverage 표시
+    - 테스트 통과 실패 시, 코드 재작성 및 테스트
+
 # 3. Pull Request (이하 PR)
 10. `개인 원격저장소 작업용 브랜치`에서 `프로젝트 저장소 develop 브랜치`로 ***Pull Request*** (Bitbucket에서)
 
 # 4. PR Review
 11. 관리자는 코드 리뷰 후 develop 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
-12. — 다른 팀원이 원본저장소에 커밋 추가했을시 — 
-13. 설정된 원격저장소(CloudCash저장소)의 develop 브랜치로 부터 local의 develop브랜치 동기화. (우선 HEAD가 develop으로 가도록하고!)
-    - $git checkout develop
-    - $git fetch CCproject(별명) develop
-    - $git branch -a 로 브랜치 확인
-    - $git merge CCproject/develop
-    - 또는 merge 대신 $git rebase CCproject/develop
-    - 또는 Pull로 한번에 동기화 $git pull CCproject develop
-14. Merge 된 이후에는 ryanwork1 브랜치 삭제
-    - $git branch -d ryanwork1
-15. 이후 작업은 다시 pull로 CCproject을 local로 동기화한 후 작업용 브랜치를 만드는 6번부터 반복한다.
+12. Merge 된 이후에는 작업용 브랜치 직접 삭제 혹은
+    - `$ git branch -d ryanwork1`
+    
+
+# 5. 저장소 Update
+>`프로젝트 저장소`가 다른 팀원에 의해 업데이트 되었을 때는 local 저장소를 업데이트 해야한다.
+>>새로운 작업을 하기 전 Local 저장소를 업데이트하는 습관 필요.
+
+12. 팀원들에 의해 업데이트된 `프로젝트 저장소`의 `develop` 브랜치로 부터 Local의 `develop` 브랜치 동기화. 
+    - 우선 HEAD가 `develop` 브랜치에 위치하도록 `$ git checkout develop`
+    - `$ git fetch 프로젝트저장소(별명) develop`
+    - `$ git branch -a` 로 브랜치 확인
+    - `$ git merge 프로젝트저장소(별명)/develop`
+    - 또는 merge 대신 `$ git rebase 프로젝트저장소(별명)/develop`
+    - 또는 Pull로 한번에 동기화 `$ git pull 프로젝트저장소(별명) develop`
+
+15. 이후 작업은 작업용 브랜치를 만드는 6번 부터 진행한다.
 
 # 5. Issue 반영
 
@@ -82,7 +96,7 @@
     - 버그 리포트의 경우 템플릿을 활용하여 server log, response body 등 필요한 정보들을 템플릿에 강제하여 정보 누락을 방지할 수 있고,
     - 마크다운 문법을 템플릿에 적용해놓으면 훨씬 빠르게 리포트 작성 가능하며, 일관된 문서작성 가능. 또한 리포트 자체를 데이터로 활용 가능.
   - 템플릿 사용의 단점
-    - 기능이 제공되지 않으면 손수 복사/붙여넣기로 사용하기 번거롭다.
+    - Bitbucket에서는 기능이 제공되지 않아 복사/붙여넣기로 사용해야해서 번거롭다.
 
 
 1. CloudCash 저장소(원본저장소) 생성
