@@ -12,6 +12,42 @@
     - 템플릿을 활용하여 server log, response body 등 필요한 정보들을 템플릿에 강제하여 정보 누락을 방지할 수 있고,
     - 마크다운 문법을 템플릿에 적용해놓으면 훨씬 빠르게 리포트 작성 가능하며, 일관된 문서작성 가능. 또한 정제된 리포트 자체를 데이터로 활용 가능.
 
+
+1. CloudCash 저장소(원본저장소) 생성
+2. Develop 브랜치 생성 (깃헙에서)
+3. Develop 브랜치를 각자의 저장소로 Fork (깃헙에서)
+4. 각자의 저장소에서 각자의 local 로 develop 브랜치만 Clone
+    - $git clone -b develop - -single-branch branchURL(반드시 본인저장소URL ! )
+5. 모든 브랜치 확인
+    - $git branch -a
+6. (최초 1회만)CloudCash 저장소의 최신화된 develop브랜치와 local의 develop브랜치를 동기화해주기 위해 원격저장소 설정
+    - $git remote add CCproject(별명) CloudCash저장소URL -> 본인저장소URL로 하지 말것.
+    - $git remote -v 로 원격저장소 확인
+7. Local에서 develop 브랜치는 master브랜치라 생각하고 작업용 브랜치 생성
+    - $git checkout -b ryanwork1
+8. 작업
+9. 변경된 내용 확인 $git status
+10. 변경된 내용 add, commit, push
+    - $git add .
+    - $git commit -m '커밋내용'
+    - $git push origin ryanwork1
+11. CloudCash 저장소로 Pull Request (깃헙에서)
+12. 관리자는 코드 리뷰 후 develop 브랜치로 Merge (깃헙에서)
+13. — 다른 팀원이 원본저장소에 커밋 추가했을시 — 
+14. 설정된 원격저장소(CloudCash저장소)의 develop 브랜치로 부터 local의 develop브랜치 동기화. (우선 HEAD가 develop으로 가도록하고!)
+    - $git checkout develop
+    - $git fetch CCproject(별명) develop
+    - $git branch -a 로 브랜치 확인
+    - $git merge CCproject/develop
+    - 또는 merge 대신 $git rebase CCproject/develop
+    - 또는 Pull로 한번에 동기화 $git pull CCproject develop
+15. Merge 된 이후에는 ryanwork1 브랜치 삭제
+    - $git branch -d ryanwork1
+16. 이후 작업은 다시 pull로 CCproject을 local로 동기화한 후 작업용 브랜치를 만드는 6번부터 반복한다.
+
+
+
+
 ~~~
 프로젝트 원본 저장소 = A 저장소
 ryan의 저장소 = B 저장소
