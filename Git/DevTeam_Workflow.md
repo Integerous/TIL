@@ -114,8 +114,8 @@
 10. 이후 작업은 `개인 local 저장소`를 최신화하는 1번 부터 진행한다.
 
 # 5. Issue 반영
-    - Bitbucket에서 Issue close
-    - Trello 이슈 카드 이동
+- Bitbucket에서 Issue close
+- Trello 이슈 카드 이동
     
 # (번외 #1) CI/CD Tool
 >CI/CD Tool 선택된 후 작성 예정
