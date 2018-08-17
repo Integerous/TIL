@@ -25,13 +25,13 @@
 
 ## 0.2. 프로젝트 팀원
 1. `프로젝트 저장소`를 `개인 원격 저장소`로 ***Fork*** (Bitbucket에서)
-2. 각자의 컴퓨터에 `개인 로컬 저장소`로 사용할 경로 선택 또는 생성
-3. `개인 원격 저장소`에서 `개인 로컬 저장소`로 `develop` 브랜치만 ***Clone***
+2. 각자의 컴퓨터에 `개인 local 저장소`로 사용할 경로 선택 또는 생성
+3. `개인 원격 저장소`에서 `개인 local 저장소`로 `develop` 브랜치만 ***Clone***
     - `$ git clone -b develop --single-branch branchURL(반드시 본인 원격저장소 URL)`
 4. 모든 브랜치 확인
     - `$ git branch -a`
-    - 현재 `개인 로컬 저장소`에는 `develop` 브랜치만 존재해야 한다. 
-5. `프로젝트 저장소`의 최신화된 `develop` 브랜치와 `개인 로컬 저장소`의 `develop` 브랜치를 동기화하기 위해 ***Remote***(원격저장소) 설정
+    - 현재 `개인 local 저장소`에는 `develop` 브랜치만 존재해야 한다. 
+5. `프로젝트 저장소`의 최신화된 `develop` 브랜치와 `개인 local 저장소`의 `develop` 브랜치를 동기화하기 위해 ***Remote***(원격저장소) 설정
     - `$ git remote add cloudcash-ryan(별명) 프로젝트저장소URL` -> 본인 원격저장소URL로 하지 말것.
     - `$ git remote -v` 로 원격저장소 확인
     - 확인 결과 `cashcloud`(프로젝트 저장소)와 `origin`(개인 원격 저장소)만 나와야 한다.
@@ -40,7 +40,7 @@
 ### 저장소
 1. `프로젝트 저장소` - Bitbucket에 관리자가 생성한 `프로젝트 저장소`.
 2. `개인 원격 저장소` - 각 개인이 Bitbucket의 `프로젝트 저장소`를 개인 계정으로 fork 해온 저장소.
-3. `개인 로컬 저장소` - 각 개인의 컴퓨터에 `개인 원격 저장소`로부터 clone 해온 저장소.
+3. `개인 local 저장소` - 각 개인의 컴퓨터에 `개인 원격 저장소`로부터 clone 해온 저장소.
 ### 브랜치
 1. `master 브랜치` - develop  브랜치에서 충분히 검증된 버전을 `배포하는 브랜치`
 2. `develop 브랜치` - 각 팀원들의 feature 브랜치를 `통합하고 테스트하는 브랜치`
@@ -50,9 +50,9 @@
 -----------------------------------
 # Workflow 요약 (최초 설정 후)
 
-1. `개인 로컬 저장소` 최신화
-    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 로컬 저장소`에 ***pull**** 혹은 ***fetch & merge*** 하여 최신화
-    - 작업 시작 전 `개인 로컬 저장소`를 최신화하는 습관 필요
+1. `개인 local 저장소` 최신화
+    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull**** 혹은 ***fetch & merge*** 하여 최신화
+    - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
 2. `feature` 브랜치 생성
     - `feature` 브랜치의 이름은 등록된 Issue 기반으로 생성하여 `브랜치명 = 작업명`이 되도록하여 브랜치에 정체성 부여
 3. 작업    
@@ -77,7 +77,7 @@
 >등록된 Issue를 기반으로 branch를 생성하여 개발 작업 실행
 
 1. `feature`브랜치 생성
-    - `개인 로컬 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
+    - `개인 local 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
     - `$ git checkout -b ryanwork1`
 2. 분석/설계 및 개발
 3. 개발 내용 확인
@@ -85,7 +85,7 @@
 4. 개발 내용 ***add, commit, push***
     - `$ git add .`
     - `$ git commit -m '커밋내용'`
-    - `$ git push origin ryanwork1` - 반드시 개인 원격저장소(origin)의 작업용 브랜치(ryanwork1)에 push 
+    - `$ git push origin ryanwork1` - 반드시 `개인 원격 저장소`(origin)의 작업용 `feature` 브랜치(ryanwork1)에 push 
 5. Jenkins로 자동 빌드 후 Test code 실행 및 Test coverage 표시
     - 테스트 통과 실패 시, 코드 재작성 및 테스트
 
@@ -99,10 +99,10 @@
     
 
 # 5. 저장소 Update
->`프로젝트 저장소`가 다른 팀원에 의해 업데이트 되었을 때는 local 저장소를 업데이트 해야한다.
->>새로운 작업을 하기 전 Local 저장소를 업데이트하는 습관 필요.
+>`프로젝트 저장소`가 다른 팀원에 의해 업데이트 되었을 때는 `개인 local 저장소`를 업데이트 해야한다.
+>>새로운 작업을 하기 전 `개인 local 저장소`를 업데이트하는 습관 필요.
 
-9. 팀원들에 의해 업데이트된 `프로젝트 저장소`의 `develop` 브랜치로 부터 Local의 `develop` 브랜치 동기화. 
+9. 팀원들에 의해 업데이트된 `프로젝트 저장소`의 `develop` 브랜치로 부터 `개인 local 저장소`의 `develop` 브랜치 동기화. 
     - 우선 HEAD가 `develop` 브랜치에 위치하도록 `$ git checkout develop`
     - `$ git fetch 프로젝트저장소(별명) develop`
     - `$ git branch -a` 로 브랜치 확인
