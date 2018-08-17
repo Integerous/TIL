@@ -74,7 +74,7 @@
 >등록된 Issue를 기반으로 branch를 생성하여 개발 작업 실행
 
 1. `개인 local 저장소` 최신화
-    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull**** 혹은 ***fetch & merge*** 하여 최신화
+    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull*** 혹은 ***fetch & merge*** 하여 최신화
     - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
 2. `feature`브랜치 생성
     - `개인 local 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
@@ -87,13 +87,13 @@
     - `$ git add .`
     - `$ git commit -m '커밋내용'`
     - `$ git push origin ryanwork1` - 반드시 `개인 원격 저장소`(origin)의 작업용 `feature` 브랜치(ryanwork1)에 push 
-6. Jenkins로 자동 빌드 후 Test code 실행 및 Test coverage 표시
-    - 테스트 통과 실패 시, 코드 재작성 및 테스트
 
 # 3. Pull Request (이하 PR)
 6. `개인 원격 저장소 feature 브랜치`에서 `프로젝트 저장소 develop 브랜치`로 ***Pull Request*** (Bitbucket에서)
     - Pull Request 시, 어떤 Issue에 대한 PR인지 작성해야한다.
+    - CI/CD 도구 활용
     - Merge 되면 `feature` 브랜치를 close 하도록 체크
+    
 # 4. PR Review
 7. 관리자는 코드 리뷰 후 develop 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
 8. Merge 된 이후에는 `feature` 브랜치 close 되도록 설정 안했다면 직접 삭제 
@@ -121,7 +121,7 @@
 >CI/CD Tool 선택된 후 작성 예정
 
 # (번외 #2) 함께 결정해야 할 사항들
-1. 어떤 CI/CD 툴을 사용할 것인지
+1. 어떤 CI/CD 툴을 사용할 것인지.
 2. Trello에 [테스트 보드](https://trello.com/b/SnsW6FEh/bitbucket-%EC%97%B0%EB%8F%99-%ED%85%8C%EC%8A%A4%ED%8A%B8)처럼 프로젝트 진행과정을 관리 할 것인지. (현재 Trello는 내용 저장의 용도로만 사용중)
 
 
