@@ -96,12 +96,12 @@
     - Merge 되면 `feature` 브랜치를 close 하도록 체크
     
 # 4. PR Review
-7. 관리자는 코드 리뷰 후 develop 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
+7. 관리자는 코드 리뷰 후 `프로젝트 저장소`의 `develop` 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
 8. Merge 된 이후에 `feature` 브랜치가 close 되도록 설정 안했다면 직접 브랜치 삭제 
     - `$ git branch -d ryanwork1`
 
 # 5. Issue 반영
-- Bitbucket에서 Issue close
+- Bitbucket에서 Issue close 혹은 PR과 연동하여 자동으로 Issue close.(Bitbucket에서는 PR과 연동불가)
 - Trello 이슈 카드 이동
 
 # 6. 저장소 Update
