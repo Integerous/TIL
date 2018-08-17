@@ -79,7 +79,7 @@
 <a name="m7">
 
 ## Git
-* [Dev Team 협업 Workflow](https://github.com/Integerous/TIL/blob/master/Git/DevTeam_Workflow.md)
+* [Dev Team 협업 Workflow (Bitbucket + Trello + Telegram)](https://github.com/Integerous/TIL/blob/master/Git/DevTeam_Workflow.md)
 * [Github을 활용한 코드 리뷰 Workflow](https://github.com/Integerous/TIL/blob/master/Git/WorkFlow.md)
 
 <a name="m8">
