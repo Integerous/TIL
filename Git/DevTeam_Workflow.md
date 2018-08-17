@@ -1,5 +1,5 @@
 # Dev Team Workflow
->협업 환경 = Bitbucket + Trello + Telegram
+>협업 환경 = Git + Bitbucket + Trello + Telegram
 ## 전체 흐름
   ~~~
   0. 최초 설정 (+ Workflow 요약)
