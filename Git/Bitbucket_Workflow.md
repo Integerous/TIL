@@ -51,10 +51,7 @@
 # Workflow 요약 (최초 설정 후)
 
 1. `개인 local 저장소` 최신화
-    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull**** 혹은 ***fetch & merge*** 하여 최신화
-    - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
 2. `feature` 브랜치 생성
-    - `feature` 브랜치의 이름은 등록된 Issue 기반으로 생성하여 `브랜치명 = 작업명`이 되도록하여 브랜치에 정체성 부여
 3. 작업    
 4. 작업한 `feature` 브랜치를 `개인 원격 저장소`에 ***push***
 5. `개인 원격 저장소`에 push한 `feature` 브랜치를 `프로젝트 저장소`의 `develop` 브랜치로 ***Pull Reqeust***
@@ -76,17 +73,21 @@
 # 2. Issue 작업
 >등록된 Issue를 기반으로 branch를 생성하여 개발 작업 실행
 
-1. `feature`브랜치 생성
+1. `개인 local 저장소` 최신화
+    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull**** 혹은 ***fetch & merge*** 하여 최신화
+    - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
+2. `feature`브랜치 생성
     - `개인 local 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
     - `$ git checkout -b ryanwork1`
-2. 분석/설계 및 개발
-3. 개발 내용 확인
+    - `feature` 브랜치의 이름은 등록된 Issue 기반으로 생성하여 `브랜치명 = 작업명`이 되도록하여 브랜치에 정체성 부여
+3. 분석/설계 및 개발
+4. 개발 내용 확인
     - `$ git status`
-4. 개발 내용 ***add, commit, push***
+5. 개발 내용 ***add, commit, push***
     - `$ git add .`
     - `$ git commit -m '커밋내용'`
     - `$ git push origin ryanwork1` - 반드시 `개인 원격 저장소`(origin)의 작업용 `feature` 브랜치(ryanwork1)에 push 
-5. Jenkins로 자동 빌드 후 Test code 실행 및 Test coverage 표시
+6. Jenkins로 자동 빌드 후 Test code 실행 및 Test coverage 표시
     - 테스트 통과 실패 시, 코드 재작성 및 테스트
 
 # 3. Pull Request (이하 PR)
