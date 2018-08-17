@@ -112,19 +112,19 @@
     - 또는 merge 대신 `$ git rebase 프로젝트저장소(별명)/develop`
     - 또는 Pull로 한번에 동기화 `$ git pull 프로젝트저장소(별명) develop`
 
-10. 이후 작업은 작업용 브랜치를 만드는 1번 부터 진행한다.
+10. 이후 작업은 `개인 local 저장소`를 최신화하는 1번 부터 진행한다.
 
 # 5. Issue 반영
     - Bitbucket에서 Issue close
     - Trello 이슈 카드 이동
-    - 
+    
 # (번외 #1) CI/CD Tool
 >CI/CD Tool 선택된 후 작성 예정
 
 # (번외 #2) 함께 결정해야 할 사항들
 1. 어떤 CI/CD 툴을 사용할 것인지
 2. Trello에 [테스트 보드](https://trello.com/b/SnsW6FEh/bitbucket-%EC%97%B0%EB%8F%99-%ED%85%8C%EC%8A%A4%ED%8A%B8)처럼 프로젝트 진행과정을 관리 할 것인지. (현재 Trello는 내용 저장의 용도로만 사용중)
-3. 
+
 
 ## Reference
 - [Learn about code review in Bitbucket](https://www.atlassian.com/git/tutorials/learn-about-code-review-in-bitbucket-cloud)
