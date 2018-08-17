@@ -8,6 +8,7 @@
   3. Pull Request
   4. PR Review
   5. Issue 반영
+  6. 저장소 Update
   (번외 #1) CI/CD Tool
   (번외 #2) 함께 결정해야 할 사항들
   ~~~
@@ -74,7 +75,7 @@
 >등록된 Issue를 기반으로 branch를 생성하여 개발 작업 실행
 
 1. `개인 local 저장소` 최신화
-    - 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull*** 혹은 ***fetch & merge*** 하여 최신화
+    - 다른 팀원에 의해 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull*** 혹은 ***fetch & merge*** 하여 최신화
     - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
 2. `feature`브랜치 생성
     - `개인 local 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
@@ -96,10 +97,14 @@
     
 # 4. PR Review
 7. 관리자는 코드 리뷰 후 develop 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
-8. Merge 된 이후에는 `feature` 브랜치 close 되도록 설정 안했다면 직접 삭제 
+8. Merge 된 이후에 `feature` 브랜치가 close 되도록 설정 안했다면 직접 브랜치 삭제 
     - `$ git branch -d ryanwork1`
-    
-# 5. 저장소 Update
+
+# 5. Issue 반영
+- Bitbucket에서 Issue close
+- Trello 이슈 카드 이동
+
+# 6. 저장소 Update
 >`프로젝트 저장소`가 다른 팀원에 의해 업데이트 되었을 때는 `개인 local 저장소`를 업데이트 해야한다.
 >>새로운 작업을 하기 전 `개인 local 저장소`를 업데이트하는 습관 필요.
 
@@ -111,11 +116,8 @@
     - 또는 merge 대신 `$ git rebase 프로젝트저장소(별명)/develop`
     - 또는 Pull로 한번에 동기화 `$ git pull 프로젝트저장소(별명) develop`
 
-10. 이후 작업은 `개인 local 저장소`를 최신화하는 1번 부터 진행한다.
+10. 이후 작업은 다시 1번 부터 진행한다.
 
-# 5. Issue 반영
-- Bitbucket에서 Issue close
-- Trello 이슈 카드 이동
     
 # (번외 #1) CI/CD Tool
 >CI/CD Tool 선택된 후 작성 예정
