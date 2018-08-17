@@ -125,5 +125,5 @@
 2. Trello에 [테스트 보드](https://trello.com/b/SnsW6FEh/bitbucket-%EC%97%B0%EB%8F%99-%ED%85%8C%EC%8A%A4%ED%8A%B8)처럼 프로젝트 진행과정을 관리 할 것인지. (현재 Trello는 내용 저장의 용도로만 사용중)
 
 
-## Reference
+## * Reference
 - [Learn about code review in Bitbucket](https://www.atlassian.com/git/tutorials/learn-about-code-review-in-bitbucket-cloud)
