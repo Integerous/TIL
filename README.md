@@ -13,14 +13,15 @@
 - [Servlet & JSP](#m4)
 - [Spring Framework](#m5)
 - [Node.js](#m6)
-- [Go](#m7)
-- [AWS](#m8)
-- [Database](#m9)
-- [SQL](#m10)
-- [Linux](#m11)
-- [Operating System](#m12)
-- [Tools](#m13)
-- [Algorithm](#m14)
+- [Git](#m7)
+- [Go](#m8)
+- [AWS](#m9)
+- [Database](#m10)
+- [SQL](#m11)
+- [Linux](#m12)
+- [Operating System](#m13)
+- [Tools](#m14)
+- [Algorithm](#m15)
 
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -77,41 +78,47 @@
 
 <a name="m7">
 
+## Git
+* [Dev Team 협업 Workflow](https://github.com/Integerous/TIL/blob/master/Git/DevTeam_Workflow.md)
+* [Github을 활용한 코드 리뷰 Workflow](https://github.com/Integerous/TIL/blob/master/Git/WorkFlow.md)
+
+<a name="m8">
+
 ## Go 
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 
-<a name="m8">
+<a name="m9">
 
 ## AWS
 * [AWS VPC 공부내용](https://github.com/Integerous/TIL/blob/master/AWS/VPC.md)
 * [AWS 10,000 Feet Overview](https://github.com/Integerous/TIL/blob/master/AWS/10000_Foot_Overview.md)
 * [AWS 서버에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
-<a name="m9">
+
+<a name="m10">
 
 ## Database 
 
-<a name="m10">
+<a name="m11">
 
 ## SQL 
 * [생소했던 SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
 
-<a name="m11">
+<a name="m12">
 
 ## Linux 
 * [Linux SysAdmin Basics](https://github.com/Integerous/TIL/blob/master/Linux/SysAdminBasics.md)
 * [리눅스 ssh 로그아웃시 프로세스 유지하기](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md)
-<a name="m12">
+
+<a name="m13">
  
 ## Operating System 
 * 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
 
-<a name="m13">
+<a name="m14">
 
 ## Tools
-- **Git**
-  * [Dev Team 협업 Workflow](https://github.com/Integerous/TIL/blob/master/Git/DevTeam_Workflow.md)
-  * [Github을 활용한 코드 리뷰 Workflow](https://github.com/Integerous/TIL/blob/master/Git/WorkFlow.md)
-<a name="m14">
+
+<a name="m15">
 
 ## Algorithm 
 - **영리한 프로그래밍을 위한 알고리즘 강의**
