@@ -1,9 +1,8 @@
 # Dev Team Workflow
-
+>협업 환경 = Bitbucket + Trello + Telegram
 ## 전체 흐름
   ~~~
-  0. 최초 설정
-  -- 작업 흐름 요약
+  0. 최초 설정 (+ Workflow 요약)
   1. Issue 등록
   2. Issue 작업
   3. Pull Request
