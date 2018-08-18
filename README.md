@@ -34,7 +34,7 @@
 <a name="m2">
  
 ## ETC
-* [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Static_Site_Generator.md)
+* [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
 * [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
 * [StringUtils](https://github.com/Integerous/TIL/blob/master/ETC/StringUtils.md)
 * [CDATA](https://github.com/Integerous/TIL/blob/master/ETC/CDATA.md)
