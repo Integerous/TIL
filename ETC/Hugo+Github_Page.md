@@ -123,5 +123,7 @@ Hugo
 ## *Reference
 - [Hosting on Github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
 - [Jekyll, Hexo, Hugo 간단 비교 글](http://tadakichi.tistory.com/188)
+- [Hugo를 활용한 기술 블로그 구축기](http://tech.cloudz-labs.io/posts/hugo/hugo/)
 - [Github Page에 Hugo 올리기](https://github.com/sabzil/blog/blob/master/content/post/tips/hugo.md)
 - [페이스북 댓글을 Utterances로 교체하기](https://blog.outsider.ne.kr/1356?category=1)
+- [Utterances 프로젝트](https://utteranc.es/)
