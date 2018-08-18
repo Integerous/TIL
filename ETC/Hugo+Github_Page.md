@@ -9,7 +9,32 @@
 
 ## 2. Static Site Generator 선택 과정
 [이 곳](https://www.staticgen.com/)에서 모든(?) Static Site Generator들을 한눈에 볼 수 있었다.  
-[이 글](http://tadakichi.tistory.com/188)에서 가장 많이 사용하는 Jekyll , Hexo, Hugo를 비교하여 참고하였다.
+[이 글](http://tadakichi.tistory.com/188)에서 가장 많이 사용하는 Jekyll , Hexo, Hugo를 비교하여 아래 내용을 참고하였다.
+~~~
+Jekyll
+  -루비 기반
+  -현재 가장 인기 있음(깃헙 별 수 제일 많음)
+  -한글 레퍼런스도 제일 많음
+  -느리다는 제보가 많음(몇 십개의 포스팅 뿐인데도 빌드 한번 다시 하는데 5분씩 걸린다고)
+  -윈도우 공식 지원 안됨
+
+Hexo
+  -자바스크립트(Node.js) 기반
+  -한글 레퍼런스 꽤 많음
+  -메인 개발자가 손을 놓은 듯
+  -개발자가 중국인? 이라 구글링하면 중국어 글이 많이 나옴
+
+Hugo
+  -Golang 기반
+  -빌드 빠름
+  -문서화 잘돼있음
+  -깃헙 별 수가 헥소보다 많음
+  -한글 레퍼런스가 거의 없음
+
+출처: http://tadakichi.tistory.com/188
+~~~
+
+
 
 ## 3. Hugo, 너로 정했다!
 Github Page와 환상의 조합인 Jekyll 대신 **Hugo를 선택한 이유**
