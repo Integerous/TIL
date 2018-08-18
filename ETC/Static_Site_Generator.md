@@ -12,9 +12,9 @@
 ## 3. Hugo! 너로 정했다!
 
 
-## 4. Hugo + Github Page 만들어가는 과정
+## 4. Hugo + Github Page 만드는 과정
 
-### 4-1. Hugo 설치
+### 4.1. Hugo 설치
 >나도 멋깔나게 `$ brew install hugo`를 mac 터미널에 입력해서 설치하고 싶었다.  
 >하지만 현실은 WINDOWS...  
 >Giraffe Academy의 [Windows에서 Hugo설치하기](https://gohugo.io/getting-started/installing#windows) 이 영상 하나면 설치는 쉽다. (젊은 형아가 영어로 설명해줌)
@@ -23,21 +23,21 @@
 - 어느 위치에서나 Hugo가 실행될 수 있도록`$ set PATH=%PATH%;C:\Hugo\bin` 명령으로 환경변수에 `C:\Hugo\bin`추가
 - 명령 프롬프트에 `$ hugo version` 혹은 `$ hugo help`로 동작 확인
 
-### 4-2. Github 저장소 2개 만들기
+### 4.2. Github 저장소 2개 만들기
 - 하나는 Hugo의 컨텐츠와 소스파일들을 포함할 `<YOUR-PROJECT>` 저장소 생성 (나의 경우 `blog`라는 이름으로 생성)
 - 다른 하나는 렌더링된 버전의 Hugo 웹사이트를 포함할 `<USERNAME>.github.io` 저장소 생성 (`integerous.github.io`)
 
-### 4-3. Directory Structure 구성
+### 4.3. Directory Structure 구성
 - `$ hugo new site blog` 명령으로 로컬에서 컨텐츠를 관리하기 위한 장소(Hugo/blog) 생성
 - `C:\Hugo\blog`에서 `$ dir`로 directory structure를 확인할 수 있다.
 
-### 4-4. 테마 다운로드 및 설정
+### 4.4. 테마 다운로드 및 설정
 - https://themes.gohugo.io/ 에서 원하는 테마를 선택한다.
 - 선택한 테마의 github에서 저장소 주소를 복사한다.
 - `C:\Hugo\blog\themes`에 선택한 테마를 clone한다. `$ git clone https://github.com/선택한/테마`
 - `config.toml` 파일을 선택한 테마의 설명서에 따라 수정한다.
 
-### 4-5. Remote와 Submodule 설정
+### 4.5. Remote와 Submodule 설정
 - 깃헙에 만든 `blog 저장소`를 local의 blog 디렉토리의 remote로 등록한다.
   - `C:\Hugo\blog` 로 이동
   - `$ git init`
@@ -46,10 +46,10 @@
   - `$ git submodule add -b masater git@github.com:integerous/integerous.github.io.git public`
   - 이렇게 함으로써 `hugo` 명령으로 `public`에 웹사이트를 만들 때, 만들어진 `public` 디렉토리는 다른 remote origin을 가질 것이다.
 
-### 4-6. 컨텐츠 생성
+### 4.6. 컨텐츠 생성
 - `$ hugo new post/test1.md` 명령으로 파일을 생성하면 `\content\post\test1.md`
 
-### 4-7. 컨텐츠 업로드 (블로그에)
+### 4.7. 컨텐츠 업로드 (블로그에)
 - Linux는 http://gohugo.io/tutorials/github-pages-blog/ 의 deploy.sh 파일을 사용
 - `C:\Hugo\blog`로 이동
 - `$ hugo -t 테마이름` 명령을 통해 테마가 적용된 블로그 내용을 public에 생성한다.
@@ -62,9 +62,33 @@
   - `$ git commit -m "커밋메세지"`
   - `$ git push origin master`
 
+# 5. Github 스타일 댓글 기능 추가하기
+>[아웃사이더님의 블로그 글](https://blog.outsider.ne.kr/1356?category=1)을 참고하여 적용했다.  
+
+### 5.1. 작동 원리
+[Utterance 프로젝트](https://utteranc.es/)의 작동 방식을 소개하자면,  
+[Github의 이슈 검색 API](https://developer.github.com/v3/search/#search-issues)를 사용해서 각 글에 해당하는 이슈가 생성되고(최초 댓글 작성 시),  
+댓글들은 해당 글로 생성된 이슈에 대한 댓글로 추가되는 방식이다. 댓글은 [Primer](https://primer.github.io/)를 이용해서 Github 스타일로 보여진다.
+
+### 5.2. 사용 방법
+1. Github에 public 저장소를 만들고(blog-comments 등으로)
+2. [Utterance document](https://utteranc.es/)에서 방금 만든 저장소를 입력하고(나의 경우 Integerous/blog-comments)
+3. 블로그 글과 Github 이슈를 매핑할 방법 6가지 중 한 가지를 선택하면
+4. 밑에 아래와 같은 script를 자동으로 생성해준다.
+    ~~~javascript
+    <script src="https://utteranc.es/client.js"
+            repo="integerous/blog-comments"
+            issue-term="pathname"
+            crossorigin="anonymous"
+            async>
+    </script>
+    ~~~
+5. 위의 script를 본인의 블로그 템플릿중 원하는 위치에 넣으면
+6. 끝!
+
 
 ## *Reference
 - [Hosting on Github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
 - [Jekyll, Hexo, Hugo 간단 비교 글](http://tadakichi.tistory.com/188)
 - [Github Page에 Hugo 올리기](https://github.com/sabzil/blog/blob/master/content/post/tips/hugo.md)
--
+- [페이스북 댓글을 Utterances로 교체하기](https://blog.outsider.ne.kr/1356?category=1)
