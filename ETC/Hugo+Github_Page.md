@@ -1,16 +1,22 @@
-# Static Site Generator (정적 사이트 생성기)
+# 정적 블로그 만들기 (feat. Hugo & Github Page)
 >주소가 github.io인 개발 블로그들이 눈에 많이 띄었다.  
 >그래서 찾아 헤매던 도중 Jekyll, Hexo, Hugo 등 Static Site Generator의 존재를 알게 되었다.  
->놀다 지친 여름휴가 막바지에 집중공략을 시작했다. (블로그도 다시 시작해볼겸)
+>Static Site Generator와 Github Page의 조합으로 Devlog로 사용할 개인 블로그를 만들기로 했다.  
+>놀다 지친 여름휴가 막바지에 집중공략을 시작했다.
 
 ## 1. Static Site Generator 란?
+[이 글](https://blog.nacyot.com/articles/2014-01-15-static-site-generator/)이 정적 웹사이트 생성기와 동적 웹사이트 생성기의 차이를 잘 설명해주고 있다.
 
-## 2. Static Site Generator 종류
-[이 곳](https://www.staticgen.com/)에서 모든(?) Static Site Generator들을 한눈에 볼 수 있었다.
+## 2. Static Site Generator 선택 과정
+[이 곳](https://www.staticgen.com/)에서 모든(?) Static Site Generator들을 한눈에 볼 수 있었다.  
+[이 글](http://tadakichi.tistory.com/188)에서 가장 많이 사용하는 Jekyll , Hexo, Hugo를 비교하여 참고하였다.
 
+## 3. Hugo, 너로 정했다!
+Github Page와 환상의 조합인 Jekyll 대신 **Hugo를 선택한 이유**
 
-## 3. Hugo! 너로 정했다!
-
+1. Go로 제작되었다. (Go를 공부중이다.)
+2. Hugo는 런타임에 다른 의존성이 필요하지 않아 빌드시간이 세계에서 제일 빠르다.("Hugo is the world’s fastest static website engine.")
+3. 한글 Reference가 거의 없는 오픈소스를 사용하며 오픈소스에 기여할 기회를 찾아보고자 선택.
 
 ## 4. Hugo + Github Page 만드는 과정
 
