@@ -30,7 +30,7 @@ AWS SA 예상문제 참조사이트:
 출처: http://svrlove.blogspot.com/2017/07/aws-sa.html
 ~~~
 
-## 기타 학습 자료
+## 추가 학습 자료
 - [AWS 공식 한국 블로그](https://aws.amazon.com/ko/blogs/korea/) - 매일 아침 신문 읽듯이 방문
 - [AWS This is my architecture](https://aws.amazon.com/ko/this-is-my-architecture/) - 실제 AWS 사용 기업들의 아키텍쳐를 8분 이내의 동영상에서 도표를 통해 설명
 - [AWS 용어 알아보기 by DNS전문가님](https://brunch.co.kr/@topasvga/76) - AWS 용어와 기존 인프라 용어를 비교하여 이해하기 쉽다.
@@ -41,12 +41,15 @@ AWS SA 예상문제 참조사이트:
     - [Aio Testking](http://www.aiotestking.com/amazon/)
     - [Simplilearn 무료 모의시험](https://www.simplilearn.com/aws-solutions-architect-exam-free-practice-test)
 - [시험시간 추가 배정 방법](https://blog.naver.com/supertrackedu/221119091699) - 시험 예약시 EXAM DURATION: 110 minutes로 나오면 정상적으로 30분 연장된 것.
-## 합격 후기
-- [A Cloud Guru 수강생들 시험 후기](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-L7uITWGWEI21g2BXL1_/Exam%20Feedback%20-%20SAA%20February%202018%20Edition)
+## 합격 후기 (유용한 순서로 정렬)
+- [A Cloud Guru 수강생들 시험 후기](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-L7uITWGWEI21g2BXL1_/Exam%20Feedback%20-%20SAA%20February%202018%20Edition) - 시험 내용에 대한 후기가 많아서 유용하다.
+- [DNS 전문가님 SA 수험 가이드](https://brunch.co.kr/@topasvga/233) - 블로그 자체에 AWS 관련 도움되는 글들이 많다.
 - [Kyupok's AWS Study 블로그](https://kyupokaws.wordpress.com/2017/01/20/aws-certified-solution-architect-associatesaa-%ED%95%A9%EA%B2%A9-%ED%9B%84%EA%B8%B0/) - 시험에 나오는 AWS 공식 문서 모음이 있다.
 - [곽규복님 SA 자격증 합격 후기 영상](https://www.youtube.com/watch?v=LFP-hObdBhs) - 블로그 내용과 비슷함.
 - [김종선님 SA 자격증 합격 후기 블로그](https://soulsearcher.github.io/blog/2018/04/10/preparing_for_certification/)
 - [카오스랩 SA 자격증 합격 후기 블로그](http://svrlove.blogspot.com/2017/07/aws-sa.html)
+
+## 기타 링크
 - [합격 후 자격증 로고와 인증서 받는 곳](https://www.certmetrics.com/amazon/candidate/cert_summary.aspx)
 
 ## 반드시 학습해야할 주제
