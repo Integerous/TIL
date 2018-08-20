@@ -153,6 +153,4 @@
 
 
 # * Reference
-- [SA 자격증 합격 후기 영상 - 곽규복](https://www.youtube.com/watch?v=LFP-hObdBhs)
-- http://svrlove.blogspot.com/2017/07/aws-sa.html
-- [AWS Certified Solutions Architect - Associate Feb 2018 Exam Learning Path](http://jayendrapatil.com/aws-solutions-architect-associate-feb-2018-exam-learning-path/)
+>본문 각 링크 참조
