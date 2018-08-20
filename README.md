@@ -90,6 +90,7 @@
 <a name="m9">
 
 ## AWS
+* [AWS SAA 자격증 준비 자료/방법](https://github.com/Integerous/TIL/blob/master/AWS/Certificate.md)
 * [AWS VPC 공부내용](https://github.com/Integerous/TIL/blob/master/AWS/VPC.md)
 * [AWS 10,000 Feet Overview](https://github.com/Integerous/TIL/blob/master/AWS/10000_Foot_Overview.md)
 * [AWS 서버에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
