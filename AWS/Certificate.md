@@ -1,36 +1,52 @@
 # AWS SAA 자격증 준비
 >AWS Certified Solution Architect Associate 자격증 준비 방법과 과정을 기록
+>>모든 자료는 중요하고 유용한 순서로 정렬함.
 
+### Index
+~~~
+0. 내가 정한 학습 순서
+1. 필수 학습 자료
+2. 추가 학습 자료
+3. 합격 후기 모음
+4. 기타 링크
+5. 필수 학습 주제
+~~~
 
+## 0. 내가 정한 학습 순서
+### 0.1. 준비
+1. [AWS 용어 알아보기 1](https://brunch.co.kr/@topasvga/76), [AWS 용어 알아보기 2](https://brunch.co.kr/@topasvga/1) 를 통해 AWS 서비스들을 개략적으로 이해
 
+### 0.2. 얕고 빠른 학습
+1. [비공식 AWS SAA 수험가이드](https://github.com/serithemage/AWSCertifiedSolutionsArchitectUnofficialStudyGuide)에 정리된 Domain 별 목차를 보고 학습할 파트 결정
+2. 해당 파트를 [아마존 웹 서비스를 다루는 기술](http://pyrasis.com/private/2014/09/30/publish-the-art-of-amazon-web-services-book)에서 먼저 읽고 이해하기
+3. 해당 파트의 강의를 [A Cloud Guru CSAA 강의](https://www.udemy.com/aws-certified-solutions-architect-associate/)에서 듣기
 
+### 0.3. 시험 대비 학습
+1. [AWS FAQs](https://aws.amazon.com/ko/faqs/)로 빠르게 복습하기
+2. [A Cloud Guru CSAA 강의](https://www.udemy.com/aws-certified-solutions-architect-associate/)의 퀴즈 풀기
+3. [A Cloud Guru CSAA 연습문제 강의](https://www.udemy.com/aws-certified-solutions-architect-associate-amazon-practice-exams/)의 문제 풀기
+4. 덤프 문제집 + [정답체크 사이트](https://www.briefmenow.org/amazon/which-of-the-following-is-the-best-method-to-quickly-and-temporarily-deny-access-from-the-specified-ip-address-block/)로 시험 대비
+5. [Jayendra's Blog](http://jayendrapatil.com/)에서 Cheet Sheet 및 내용 정리보고 부족한 부분 점검하기
 
+### 0.4. 상시 학습
+1. [AWS 공식 한국 블로그](https://aws.amazon.com/ko/blogs/korea/) - 매일 아침 신문 읽듯이 방문
+2. [AWS This is my architecture](https://aws.amazon.com/ko/this-is-my-architecture/) - 실제 AWS 사용 기업들의 아키텍쳐를 8분 이내의 동영상에서 도표를 통해 설명. 공부하다 지칠 때 방문.
+3. [A Cloud Guru 수강생들 시험 후기](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-L7uITWGWEI21g2BXL1_/Exam%20Feedback%20-%20SAA%20February%202018%20Edition) - 시험 내용에 대한 후기가 많으므로 시간 역순으로 참고.
 
-
-## 필수 학습 자료
+## 1. 필수 학습 자료
+- AWS 공식 문서 및 백서들
 - [A Cloud Guru CSAA 강의](https://www.udemy.com/aws-certified-solutions-architect-associate/) - 시험대비의 정석. 필수로 여겨진다.
-- [덤프 문제집](https://www.passleader.com/amazon.html) - 덤프문제집 공부법은 밑에 설명. - [문제 답 참조사이트](https://www.briefmenow.org/amazon/which-of-the-following-is-the-best-method-to-quickly-and-temporarily-deny-access-from-the-specified-ip-address-block/)
+- [AWS FAQs](https://aws.amazon.com/ko/faqs/) - 중요한 토픽들을 읽으면 좋다. 요점을 빠르게 복습할 수 있다.
 - [Jayendra's Blog](http://jayendrapatil.com/) - 학습방법, cheat sheet 등 질 좋은 자료가 많다.
-- [AWS FAQs](https://aws.amazon.com/ko/faqs/)의 중요한 토픽들을 읽으면 좋다. 요점을 빠르게 복습할 수 있다.
+- 덤프 문제집들
+    - [덤프 문제집 1016문항 100불](https://www.passleader.com/amazon.html)
+    - [덤프 문제집 902문항 52불](https://testkingvce.pass4test.net/AWS-Solutions-Associate.html?adhit=hat)
+    - [정답체크 사이트](https://www.briefmenow.org/amazon/which-of-the-following-is-the-best-method-to-quickly-and-temporarily-deny-access-from-the-specified-ip-address-block/)
 - [비공식 AWS SAA 수험가이드](https://github.com/serithemage/AWSCertifiedSolutionsArchitectUnofficialStudyGuide) - 슈퍼트랙 강사가 만들었다는 비공식 수험가이드이다. 도움을 받았다는 사람들이 많다.
 - [아마존 웹 서비스를 다루는 기술](http://pyrasis.com/private/2014/09/30/publish-the-art-of-amazon-web-services-book) - 저자가 책 원고를 공개했다. 영문으로 공부하기 전에 여기서 해당 파트를 먼저 공부하면 수월.
 
-~~~
-400제, 700제는 시중에 $100정도에 구입할 수 있는 AWS SA Dump 중 문항 수가 약 400문제인것과 700문제인 것이 있습니다.  
-둘 다 오답이 많아서 아래 두 사이트를 참고해서 정답을 따로 정리해야 합니다.
 
-AWS SA 예상문제 참조사이트:
-1. https://www.briefmenow.org/amazon/can-i-move-a-reserved-instance-from-one-region-to-another/
-2. http://jayendrapatil.com/aws-solution-architect-associate-exam-learning-path/
-
-참고로, 덤프로 시험 준비하시는 분들께 팁을 드리면, 지문이 긴 문제는 Pro 자격증에서 나올만한 문제들이므로 SA 시험공부에서는 건너뛰시고,  
-덤프 문제들을 외우지 말고 정답을 명확하게 이해하는게 좋습니다. 저는 400제 중 짧은 문제만 한 절반 정도 보고 시험 보았습니다.  
-그리고, 한글시험은 영어시험에 비해 덤프 적중률이 아주 낮습니다.
-
-출처: http://svrlove.blogspot.com/2017/07/aws-sa.html
-~~~
-
-## 추가 학습 자료
+## 2. 추가 학습 자료 
 - [AWS 공식 한국 블로그](https://aws.amazon.com/ko/blogs/korea/) - 매일 아침 신문 읽듯이 방문
 - [AWS This is my architecture](https://aws.amazon.com/ko/this-is-my-architecture/) - 실제 AWS 사용 기업들의 아키텍쳐를 8분 이내의 동영상에서 도표를 통해 설명
 - [AWS 용어 알아보기 by DNS전문가님](https://brunch.co.kr/@topasvga/76) - AWS 용어와 기존 인프라 용어를 비교하여 이해하기 쉽다.
@@ -40,19 +56,22 @@ AWS SA 예상문제 참조사이트:
     - [BrainCert](https://www.braincert.com/)
     - [Aio Testking](http://www.aiotestking.com/amazon/)
     - [Simplilearn 무료 모의시험](https://www.simplilearn.com/aws-solutions-architect-exam-free-practice-test)
-- [시험시간 추가 배정 방법](https://blog.naver.com/supertrackedu/221119091699) - 시험 예약시 EXAM DURATION: 110 minutes로 나오면 정상적으로 30분 연장된 것.
-## 합격 후기 (유용한 순서로 정렬)
+
+
+## 3. 합격 후기 모음 (유용한 순서로 정렬)
 - [A Cloud Guru 수강생들 시험 후기](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-L7uITWGWEI21g2BXL1_/Exam%20Feedback%20-%20SAA%20February%202018%20Edition) - 시험 내용에 대한 후기가 많아서 유용하다.
+- [교재로 공부한 SA 자격증 합격 후기](http://linux.systemv.pe.kr/aws-certified-solutions-architect-associate-exam-%EC%8B%9C%ED%97%98-%ED%9B%84%EA%B8%B0/) - 교재를 사지말아야 하는 이유에 대해 알 수 있고, 시험의 특징에 대해 상세히 설명했다. 종합적인 후기글이다.
 - [DNS 전문가님 SA 수험 가이드](https://brunch.co.kr/@topasvga/233) - 블로그 자체에 AWS 관련 도움되는 글들이 많다.
 - [Kyupok's AWS Study 블로그](https://kyupokaws.wordpress.com/2017/01/20/aws-certified-solution-architect-associatesaa-%ED%95%A9%EA%B2%A9-%ED%9B%84%EA%B8%B0/) - 시험에 나오는 AWS 공식 문서 모음이 있다.
 - [곽규복님 SA 자격증 합격 후기 영상](https://www.youtube.com/watch?v=LFP-hObdBhs) - 블로그 내용과 비슷함.
 - [김종선님 SA 자격증 합격 후기 블로그](https://soulsearcher.github.io/blog/2018/04/10/preparing_for_certification/)
 - [카오스랩 SA 자격증 합격 후기 블로그](http://svrlove.blogspot.com/2017/07/aws-sa.html)
 
-## 기타 링크
+## 4. 기타 링크
+- [시험시간 추가 배정 방법](https://blog.naver.com/supertrackedu/221119091699) - 시험 예약시 EXAM DURATION: 110 minutes로 나오면 정상적으로 30분 연장된 것.
 - [합격 후 자격증 로고와 인증서 받는 곳](https://www.certmetrics.com/amazon/candidate/cert_summary.aspx)
 
-## 반드시 학습해야할 주제
+## 5. 필수 학습 주제
 ### Networking
 1. Be sure to create VPC from scratch. This is mandatory.
     - Create VPC and understand whats an CIDR.
