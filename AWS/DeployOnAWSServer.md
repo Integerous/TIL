@@ -59,7 +59,8 @@
   - `jps`로 프로세스 종료 확인
 - **빌드 및 배포**
   - `./mvnw clean package` 명령으로 수정된 소스코드를 빌드하고,
-  - target 디렉토리로 이동하여 `java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 배포
+  - target 디렉토리로 이동하여 `nohup java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 배포
+    - [`nohup` 명령을 하는 이유](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md) 읽어보기.
 
 ### 10. 쉘 스크립트로 위의 내용 자동화하기
 http://jojoldu.tistory.com/263?category=635883 참고하기
