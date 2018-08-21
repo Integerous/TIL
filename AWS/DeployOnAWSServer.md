@@ -1,6 +1,5 @@
-# AWS 서버에 자바 소스코드 배포 및 재배포
->회사 고객센터용 카카오톡 챗봇을 만들기 위해 [박재성님 유튜브 강의](https://www.youtube.com/watch?v=--bUO7KNFJ4&t=1047s)를 들으며 실습한 내용
-
+# AWS EC2 서버에 자바 소스코드 배포 및 재배포 (Deploying Java project on AWS EC2)
+>회사 고객센터용 카카오톡 챗봇을 만들어 AWS EC2 서버에 배포하기 위해 [박재성님 유튜브 강의](https://www.youtube.com/watch?v=--bUO7KNFJ4&t=1047s)를 들으며 실습한 내용
 
 ## 절차
 ### 1. AWS EC2 인스턴스 생성
