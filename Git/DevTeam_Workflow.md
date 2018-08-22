@@ -25,9 +25,10 @@
 
 ### 0.2. 프로젝트 팀원
 1. `프로젝트 저장소`를 `개인 원격 저장소`로 ***Fork*** (Bitbucket에서)
-2. 각자의 컴퓨터에 `개인 local 저장소`로 사용할 경로 선택 또는 생성
+2. 각자의 컴퓨터에 `개인 local 저장소`로 사용할 폴더(경로) 선택 또는 생성 (repository를 생성하는 것이 아님)
 3. `개인 원격 저장소`에서 `개인 local 저장소`로 `develop` 브랜치만 ***Clone***
     - `$ git clone -b develop --single-branch branchURL(반드시 본인 원격저장소 URL)`
+      - branchURL은 `Clone` 버튼을 눌러서 나오는 URL. 인터넷 주소창의 URL과 다름
 4. 모든 브랜치 확인
     - `$ git branch -a`
     - 현재 `개인 local 저장소`에는 `develop` 브랜치만 존재해야 한다. 
