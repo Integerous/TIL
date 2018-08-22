@@ -95,15 +95,19 @@ Hugo
   - `$ git commit -m "커밋메세지"`
   - `$ git push origin master`
 
-# 5. Github 스타일 댓글 기능 추가하기
->[아웃사이더님의 블로그 글](https://blog.outsider.ne.kr/1356?category=1)을 참고하여 적용했다.  
+# 5. Utterences (Github 댓글 위젯) 추가하기
+>[아웃사이더님의 블로그 글](https://blog.outsider.ne.kr/1356?category=1)에서 Utterences의 존재를 알게 되었다.
+>>Hugo 공식 문서에 소개된 댓글 위젯 중 Utterences는 없길래 생애 처음으로 오픈소스에 PR을 날려봄!!
 
-### 5.1. 작동 원리
+### 5.1. Hugo Docs에서 내 Pull Request 받아줌!!!
+>생애 첫 오픈소스 기여! (매우 소소한 기여지만.. 오픈소스에 기여하기 시작했다는 사실만으로 햄볶!!)
+  ![](https://github.com/Integerous/TIL/blob/master/ETC/images/myfirstPR.png?raw=true)
+### 5.2. 작동 원리
 [Utterance 프로젝트](https://utteranc.es/)의 작동 방식을 소개하자면,  
 [Github의 이슈 검색 API](https://developer.github.com/v3/search/#search-issues)를 사용해서 각 글에 해당하는 이슈가 생성되고(최초 댓글 작성 시),  
 댓글들은 해당 글로 생성된 이슈에 대한 댓글로 추가되는 방식이다. 댓글은 [Primer](https://primer.github.io/)를 이용해서 Github 스타일로 보여진다.
 
-### 5.2. 사용 방법
+### 5.3. 사용 방법
 1. Github에 public 저장소를 만들고(blog-comments 등으로)
 2. [Utterance document](https://utteranc.es/)에서 방금 만든 저장소를 입력하고(나의 경우 Integerous/blog-comments)
 3. 블로그 글과 Github 이슈를 매핑할 방법 6가지 중 한 가지를 선택하면
