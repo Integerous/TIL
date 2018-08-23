@@ -83,7 +83,6 @@ Hugo
 - `$ hugo new post/test1.md` 명령으로 파일을 생성하면 `\content\post\test1.md`
 
 ### 4.7. 컨텐츠 업로드 (블로그에)
-- Linux는 http://gohugo.io/tutorials/github-pages-blog/ 의 deploy.sh 파일을 사용
 - `C:\Hugo\blog`로 이동
 - `$ hugo -t 테마이름` 명령을 통해 테마가 적용된 블로그 내용을 public에 생성한다.
 - `$ cd public` public 디렉토리로 이동하여
@@ -94,6 +93,47 @@ Hugo
   - `$ git add .`
   - `$ git commit -m "커밋메세지"`
   - `$ git push origin master`
+
+### 4.8. 쉘 스크립트로 업로드 자동화하기
+- [Hugo Docs](http://gohugo.io/tutorials/github-pages-blog/)의 deploy.sh 파일을 활용하여 쉘스크립트 작성
+  ~~~sh
+  #!/bin/bash
+
+  echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+
+  # Build the project.
+  hugo -t hugo-theme-geppaku
+
+  # Go To Public folder
+  cd public
+  # Add changes to git.
+  git add .
+
+  # Commit changes.
+  msg="rebuilding site `date`"
+  if [ $# -eq 1 ]
+    then msg="$1"
+  fi
+  git commit -m "$msg"
+
+  # Push source and build repos.
+  git push origin master
+
+  # Come Back up to the Project Root
+  cd ..
+
+
+  # blog 저장소 Commit & Push
+  git add .
+
+  msg="rebuilding site `date`"
+  if [ $# -eq 1 ]
+    then msg="$1"
+  fi
+  git commit -m "$msg"
+
+  git push origin master
+  ~~~
 
 # 5. Utterences (Github 댓글 위젯) 추가하기
 >[아웃사이더님의 블로그 글](https://blog.outsider.ne.kr/1356?category=1)에서 Utterences의 존재를 알게 되었다.
@@ -121,8 +161,10 @@ Hugo
     </script>
     ~~~
 5. 위의 script를 본인의 블로그 템플릿중 원하는 위치에 넣으면
-6. 끝!
+6. 끝!  
 
+## *블로그 주소
+https://ryan-han.com 
 
 ## *Reference
 - [Hosting on Github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
