@@ -60,4 +60,5 @@ $ | 문자열의 끝 | `ryan$`는 문자열이 ryan으로 끝난 경우에 ryan�
 
 
 ## *Reference
+- https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D
 - https://soooprmx.com/archives/7718
