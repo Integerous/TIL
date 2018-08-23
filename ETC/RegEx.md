@@ -56,7 +56,7 @@ $ | 문자열의 끝 | `ryan$`는 문자열이 ryan으로 끝난 경우에 ryan�
 > `*`, `+`는 최대한 매치한다
 >> `There are apples and peaches` 라는 문장에서  
 >>`^.*s`는 `There are apples and peaches` 전체를 매치하고,
->>>>`^.*?s`는 `There are apples`까지만 매치한다.
+>>>`^.*?s`는 `There are apples`까지만 매치한다.
 
 
 ## *Reference
