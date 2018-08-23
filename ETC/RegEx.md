@@ -1,4 +1,4 @@
-# Regular Expression 총정리
+# Regular Expression 정리
 
 ## 1. 정규식 메타 문자
 >메타 문자는 특정한 문자 혹은 문자 계열을 대신하여 표시하는 문자.
