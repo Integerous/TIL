@@ -35,11 +35,11 @@
  
 ## ETC
 - **RegEx**
-  * [정규표현식 총정리]()
+  * [정규표현식 정리](https://github.com/Integerous/TIL/blob/master/ETC/RegEx.md)
 - **Blog**
   * [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
 - **번역**
-  * [Web API Design]()
+  * [Web API Design (작성중)]()
   * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
 - **Security**
   * [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
