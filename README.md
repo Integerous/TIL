@@ -41,8 +41,7 @@
 - **번역**
   * [Web API Design (작성중)]()
   * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
-- **Security**
-  * [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
+* [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
 * [StringUtils](https://github.com/Integerous/TIL/blob/master/ETC/StringUtils.md)
 * [CDATA](https://github.com/Integerous/TIL/blob/master/ETC/CDATA.md)
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
