@@ -34,15 +34,21 @@
 <a name="m2">
  
 ## ETC
-* [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
-* [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
+- **RegEx**
+  * [정규표현식 총정리]()
+- **Blog**
+  * [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
+- **번역**
+  * [Web API Design]()
+  * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
+- **Security**
+  * [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
 * [StringUtils](https://github.com/Integerous/TIL/blob/master/ETC/StringUtils.md)
 * [CDATA](https://github.com/Integerous/TIL/blob/master/ETC/CDATA.md)
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
-* [[번역] Web API Design]()
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
-* [Web의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowTheWebWorks.md)
-* [[번역] Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
+
+
 
 <a name="m3">
  
