@@ -17,7 +17,7 @@
 1. [AWS 용어 알아보기](https://brunch.co.kr/@topasvga/1) 를 통해 AWS 서비스들을 개략적으로 이해
 
 ### 0.2. 얕고 빠른 학습
->'얕고 빠른 학습' 단계에서는 공부한 내용들을 서비스명.md (예를 들어 EC2.md) 파일에 정리하고, 매일 학습 시작 전 복습.
+>'얕고 빠른 학습' 단계에서는 여러 리소스에서 공부한 내용들을 하나의 서비스명.md (예를 들어 EC2.md) 파일에 정리.
 1. [비공식 AWS SAA 수험가이드](https://github.com/serithemage/AWSCertifiedSolutionsArchitectUnofficialStudyGuide)에 정리된 Domain 별 목차를 보고 학습할 파트 결정 (시험은 5개의 Domain으로 나뉘어 있고, 이 Domain 순서에 따라 학습하는 것이 가장 효율적)
 2. 해당 파트를 [아마존 웹 서비스를 다루는 기술](http://pyrasis.com/private/2014/09/30/publish-the-art-of-amazon-web-services-book)에서 먼저 읽고 이해하기
 3. [AWS 공식 설명서](https://aws.amazon.com/ko/documentation/?nc2=h_ql_d&awsm=ql-5)에서 해당 파트 학습
