@@ -18,7 +18,7 @@
 ### 0.1. 프로젝트 관리자
 - Bitbucket에 `프로젝트 저장소` 생성
 - 작업용 `develop` 브랜치 생성 (`master` 브랜치는 배포용)
-  - 프로젝트 저장소의 `Master` 브랜치와 `develop` 브랜치 두 가지를 두고, `master` 브랜치는 아주 안정적인 버전을 릴리즈 할 때 사용하고, `develop` 브랜치는 새로 수정된 코드를 통합할 때 사용한다. 릴리즈 할 수준이 되면 `master` 브랜치를 `develop` 브랜치까지 **fast-forward**시킨다.
+  - 프로젝트 저장소의 `Master` 브랜치와 `develop` 브랜치 두 가지를 두고, `master` 브랜치는 아주 안정적인 버전을 릴리즈 할 때 사용하고, `develop` 브랜치는 새로 수정된 코드를 통합할 때 사용한다. 릴리즈 할 수준이 되면 `master` 브랜치를 `develop` 브랜치까지 **fast-forward** 후 버전을 Tag로 추가한다.
   - 더 나아가 `integrate` 브랜치를 추가할 수 있다. master - develop - integrate - feature 브랜치를 만들어 feature에서 작업한 것을 integrate에 merge하여 feature 브랜치가 검증되면 develop 브랜치에 merge 한다. 그리고 develop 브랜치에서 충분히 안정성이 검증되면 그때 master 브랜치에 merge한다.
   - feature 브랜치는 develop/master 브랜치에 merge되면 저장소에서 삭제한다.
   - 릴리즈 버전은 언제든 돌아갈 수 있도록 태그를 다는 것이 좋다. 그리고 배포할 릴리즈 버전이 준비되었다면, git을 사용하지 않는 사람을 위해 소스코드 스냅샷을 압축한다. `$git archive`명령으로 압축할 수 있다.
