@@ -14,7 +14,7 @@
 
 ## 0. 내가 정한 학습 순서
 ### 0.1. 준비
-1. [AWS 용어 알아보기 1](https://brunch.co.kr/@topasvga/76), [AWS 용어 알아보기 2](https://brunch.co.kr/@topasvga/1) 를 통해 AWS 서비스들을 개략적으로 이해
+1. [AWS 용어 알아보기](https://brunch.co.kr/@topasvga/1) 를 통해 AWS 서비스들을 개략적으로 이해
 
 ### 0.2. 얕고 빠른 학습
 1. [비공식 AWS SAA 수험가이드](https://github.com/serithemage/AWSCertifiedSolutionsArchitectUnofficialStudyGuide)에 정리된 Domain 별 목차를 보고 학습할 파트 결정
@@ -49,8 +49,7 @@
 ## 2. 추가 학습 자료 
 - [AWS 공식 한국 블로그](https://aws.amazon.com/ko/blogs/korea/) - 매일 아침 신문 읽듯이 방문
 - [AWS This is my architecture](https://aws.amazon.com/ko/this-is-my-architecture/) - 실제 AWS 사용 기업들의 아키텍쳐를 8분 이내의 동영상에서 도표를 통해 설명
-- [AWS 용어 알아보기 by DNS전문가님](https://brunch.co.kr/@topasvga/76) - AWS 용어와 기존 인프라 용어를 비교하여 이해하기 쉽다.
-- [AWS 용어 알아보기2 by DNS전문가님](https://brunch.co.kr/@topasvga/1)
+- [AWS 용어 알아보기 by DNS전문가님](https://brunch.co.kr/@topasvga/1) - AWS 용어와 기존 인프라 용어를 비교하여 이해하기 쉽다.
 - 온라인 테스트/문제
     - [예상문제 참조사이트](https://www.briefmenow.org/amazon/which-of-the-following-is-the-best-method-to-quickly-and-temporarily-deny-access-from-the-specified-ip-address-block/)
     - [BrainCert](https://www.braincert.com/)
