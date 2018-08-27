@@ -77,45 +77,45 @@
 >http://jojoldu.tistory.com/263?category=635883 참고하여 Gradle이 아닌 Maven 버전으로 작성함
 
 1. **EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성**
-  ~~~sh
-  $ nano deploy.sh
-  ~~~
+    ~~~sh
+    $ nano deploy.sh
+    ~~~
 
 2. **`deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성**
-  ~~~sh
-  #!/bin/bash
+    ~~~sh
+    #!/bin/bash
 
-  REPOSITORY=/home/ubuntu/Chat-Bot-Kakao
+    REPOSITORY=/home/ubuntu/Chat-Bot-Kakao
 
-  echo "> 프로젝트 저장소로 이동!"
-  cd $REPOSITORY
+    echo "> 프로젝트 저장소로 이동!"
+    cd $REPOSITORY
 
-  echo "> Git Pull !!!"
-  git pull
+    echo "> Git Pull !!!"
+    git pull
 
-  echo "> 실행중인 프로세스 확인!"
-  CURRENT_PID=$(pgrep -f ChatBotTest)
+    echo "> 실행중인 프로세스 확인!"
+    CURRENT_PID=$(pgrep -f ChatBotTest)
 
-  echo "> 실행중인 프로세스 아이디 : $CURRENT_PID"
-  if [ -z $CURRENT_PID ]; then
-          echo "> 현재 실행중인 어플리케이션이 없으므로 종료하지 않습니다!"
-  else
-          echo "> 현재 실행중인 어플리케이션 종료! Kill -9 $CURRENT_PID"
-          kill -9 $CURRENT_PID
-          sleep 5
-  fi
+    echo "> 실행중인 프로세스 아이디 : $CURRENT_PID"
+    if [ -z $CURRENT_PID ]; then
+            echo "> 현재 실행중인 어플리케이션이 없으므로 종료하지 않습니다!"
+    else
+            echo "> 현재 실행중인 어플리케이션 종료! Kill -9 $CURRENT_PID"
+            kill -9 $CURRENT_PID
+            sleep 5
+    fi
 
-  echo "> 프로젝트 Build 시작! (이전 배포 버전 삭제 안함)"
-  ./mvnw package
+    echo "> 프로젝트 Build 시작! (이전 배포 버전 삭제 안함)"
+    ./mvnw package
 
-  echo "> 새 배포 버전의 이름은 ??"
-  JAR_NAME=$(ls $REPOSITORY/target |grep 'ChatBotTest' |grep -v 'original' | tail -n 1)
-  echo "> JAR Name: $JAR_NAME"
+    echo "> 새 배포 버전의 이름은 ??"
+    JAR_NAME=$(ls $REPOSITORY/target |grep 'ChatBotTest' |grep -v 'original' | tail -n 1)
+    echo "> JAR Name: $JAR_NAME"
 
-  echo "> 새 어플리케이션 배포 !!!"
-  nohup java -jar $REPOSITORY/target/$JAR_NAME &
-  ~~~
+    echo "> 새 어플리케이션 배포 !!!"
+    nohup java -jar $REPOSITORY/target/$JAR_NAME &
+    ~~~
 3. **./deploy.sh 실행 권한 설정**
-  ~~~sh
-  $ chmod 755 ./deploy.sh
-  ~~~
+    ~~~sh
+    $ chmod 755 ./deploy.sh
+    ~~~
