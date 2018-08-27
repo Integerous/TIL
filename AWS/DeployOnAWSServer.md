@@ -76,16 +76,11 @@
 
   REPOSITORY=/home/ubuntu/Chat-Bot-Kakao
 
+  echo "> 프로젝트 저장소로 이동!"
   cd $REPOSITORY
 
   echo "> Git Pull !!!"
   git pull
-
-  echo "> 프로젝트 Build 시작! (이전 배포 버전 삭제 안함)"
-  ./mvnw package
-  
-  echo "> Build 파일 복사"
-  cp ./target/*.jar $REPOSITORY/
 
   echo "> 실행중인 프로세스 확인!"
   CURRENT_PID=$(pgrep -f ChatBotTest)
@@ -99,10 +94,13 @@
           sleep 5
   fi
 
-  echo ">새 배포 버전의 이름은 ??"
-  JAR_NAME=$(ls $REPOSITORY/ |grep 'ChatBotTest' | tail -n 1)
+  echo "> 프로젝트 Build 시작! (이전 배포 버전 삭제 안함)"
+  ./mvnw package
+
+  echo "> 새 배포 버전의 이름은 ??"
+  JAR_NAME=$(ls $REPOSITORY/target |grep 'ChatBotTest' |grep -v 'original' | tail -n 1)
   echo "> JAR Name: $JAR_NAME"
-  
+
   echo "> 새 어플리케이션 배포 !!!"
-  nohup java -jar $REPOSITORY/JAR_NAME &
+  nohup java -jar $REPOSITORY/target/$JAR_NAME &
   ~~~
