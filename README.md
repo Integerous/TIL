@@ -137,7 +137,8 @@
   * [Recursion 07 - PowerSet](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion07-PowerSet.md)
   
 - **CodeWars 알고리즘 문제풀기**
-  * [CodeWars 017 - Arithmetic Progression](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/017-Arithmetic_progression.md)
+  * [CodeWars 018 - Duplicate Encoder (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/018-Duplicate_Encoder.md)
+  * [CodeWars 017 - Arithmetic Progression (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/017-Arithmetic_progression.md)
   * [CodeWars 016 - Make a Function that does arithmetic! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/016-Make_a_function_that_does_arithmetic.md)
   * [CodeWars 015 - Square Every Digit (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/015-Square_every_digit.md)
   * [CodeWars 014 - Simple Encryption #1 - Alternating Split (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/014-Alternating_split.md)
