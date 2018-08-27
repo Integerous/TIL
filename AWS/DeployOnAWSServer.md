@@ -36,11 +36,12 @@
 - `git clone 저장소 주소` 명령으로 clone
 ### 7. 빌드 및 배포
 - `./mvnw clean package` = 기존의 결과물을 날려버리고(clean) 배포할 수 있는 코드로 다시 빌드하는(package) 명령 입력
-- 빌드의 결과물은 target 디렉토리에 위치하므로 `cd target` 으로 이동하여 `java -jar ChatBotTest-0.0.1-SNAPSHOT.jar` 명령으로 서버에 띄우기
-    - 서버에 띄우는 데에 시간이 너무 오래 걸리면 `java -Djava.security.egd=file:/dev/./urandom -jar ChatBotTest-0.0.1-SNAPSHOT.jar`
-- 터미널을 분리하지 않으면 서버에 올리고나서 `Ctrl+c`로 명령어를 작성하게되면 서버가 같이 종료되므로 터미널을 분리해서 서버에 올려야함
-- 이를 위해 java -jar 명령의 마지막에 `&` 를 넣어서 터미널을 분리해야한다.
-- `java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 실행 후 `Ctrl+c`로 터미널에서 빠져나와서
+  - 만약 각 배포 버전을 남기고 싶다면 clean 없이 `./mvnw package`
+- 빌드의 결과물은 target 디렉토리에 위치하므로 `cd target` 으로 이동하여 `nohup java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 서버에 띄우기
+  - 서버에 띄우는 데에 시간이 너무 오래 걸리면 `java -Djava.security.egd=file:/dev/./urandom -jar ChatBotTest-0.0.1-SNAPSHOT.jar`
+  - 터미널을 분리하지 않으면 서버에 올리고나서 `Ctrl+c`로 명령어를 작성하게되면 서버가 같이 종료되므로 터미널을 분리해서 서버에 올려야한다. 이를 위해 java -jar 명령의 마지막에 `&` 를 넣어서 터미널을 분리해야한다.
+  - [`nohup` 명령을 하는 이유](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md) 읽어보기.
+- `nohup java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 실행 후 `Ctrl+c`로 터미널에서 빠져나와서
 - `curl http://localhost:8080` 명령으로 화면이 뜨는지 확인
 - **배포한 코드 확인**
   - 8080포트는 보통 방화벽에 막혀있기 때문에 EC2의 보안그룹에서 사용자TCP 8080 위치무관을 선택하고 추가한다.
@@ -59,7 +60,49 @@
 - **빌드 및 배포**
   - `./mvnw clean package` 명령으로 수정된 소스코드를 빌드하고,
   - target 디렉토리로 이동하여 `nohup java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 배포
-    - [`nohup` 명령을 하는 이유](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md) 읽어보기.
 
-### 10. 쉘 스크립트로 위의 내용 자동화하기
-http://jojoldu.tistory.com/263?category=635883 참고하기
+
+### 10. 쉘 스크립트로 배포 자동화하기
+>http://jojoldu.tistory.com/263?category=635883 참고하여 Gradle이 아닌 Maven 버전으로 작성함
+
+1. EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성
+  ~~~sh
+  nano deploy.sh
+  ~~~
+
+2. `deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성
+  ~~~sh
+  #!/bin/bash
+
+  REPOSITORY=/home/ubuntu/Chat-Bot-Kakao
+
+  cd $REPOSITORY
+
+  echo "> Git Pull !!!"
+  git pull
+
+  echo "> 프로젝트 Build 시작! (이전 배포 버전 삭제 안함)"
+  ./mvnw package
+  
+  echo "> Build 파일 복사"
+  cp ./target/*.jar $REPOSITORY/
+
+  echo "> 실행중인 프로세스 확인!"
+  CURRENT_PID=$(pgrep -f ChatBotTest)
+
+  echo "> 실행중인 프로세스 아이디 : $CURRENT_PID"
+  if [ -z $CURRENT_PID ]; then
+          echo "> 현재 실행중인 어플리케이션이 없으므로 종료하지 않습니다!"
+  else
+          echo "> 현재 실행중인 어플리케이션 종료! Kill -9 $CURRENT_PID"
+          kill -9 $CURRENT_PID
+          sleep 5
+  fi
+
+  echo ">새 배포 버전의 이름은 ??"
+  JAR_NAME=$(ls $REPOSITORY/ |grep 'ChatBotTest' | tail -n 1)
+  echo "> JAR Name: $JAR_NAME"
+  
+  echo "> 새 어플리케이션 배포 !!!"
+  nohup java -jar $REPOSITORY/JAR_NAME &
+  ~~~
