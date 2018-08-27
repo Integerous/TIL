@@ -1,13 +1,24 @@
 # AWS EC2 서버에 자바 소스코드 배포 및 재배포 (Deploying Java project on AWS EC2)
 >회사 고객센터용 카카오톡 챗봇을 만들어 AWS EC2 서버에 배포하기 위해 [박재성님 유튜브 강의](https://www.youtube.com/watch?v=--bUO7KNFJ4&t=1047s)를 들으며 실습한 내용
 
-## 절차
-### 1. AWS EC2 인스턴스 생성
-### 2. 생성한 인스턴스(서버)에 접속
+## 목록
+~~~
+1. AWS EC2 인스턴스 생성
+2. 생성한 인스턴스(서버)에 접속
+3. Java 설치
+4. Symbolic Link 추가
+5. 환경변수에 PATH 설정
+6. Git 설치 및 프로젝트 Clone
+7. 빌드 및 배포
+8. 수정된 소스코드 반영
+9. 쉘스크립트로 배포 자동화
+~~~
+## 1. AWS EC2 인스턴스 생성
+## 2. 생성한 인스턴스(서버)에 접속
 - 퍼블릭 DNS를 사용하여 인스턴스에 연결 `ssh -i "chatbot-kakao.pem" ubuntu@ec2~~~~~~~~.ap-northeast-2.compute.amazonaws.com`
 - Private Key 파일이 공개적으로 표시되어 있을 경우 `chmod 400 chatbot-kakao.pem` 명령 입력
 - `sudo locale-gen ko_KR.UTF-8` 혹은 `sudo apt-get install language-pack-ko` 명령으로 인코딩
-### 3. 자바 설치
+## 3. Java 설치
 - **apt-get으로 설치**
   - `apt-get install openjdk-8-jre-headless`
 - **wget으로 설치할 경우**
@@ -21,20 +32,20 @@
 - `tar -xvf jdk ~~~ tar.gz` 명령으로 압축 해제
 - ~/jdk~~/bin 경로로 이동하여 `./java -version`으로 자바 버전 확인
 - 아무 위치에서나 자바 프로그램에 접근이 안되므로 `심볼링 링크 설정`과 `환경 변수 설정`을 해야 한다.
- ### 4. 심볼릭 링크 추가
+## 4. Symbolic Link 추가
 - `ln -s jdk~~/ java(별칭)`
 - `cd java` 명령으로 경로에 접근 가능
- ### 5. 환경변수에 path 설정
+## 5. 환경변수에 PATH 설정
 - `cd ~`
 - `vi .bash_profile`
 - `PATH=$PATH:~/java/bin` 작성하고 esc - :wq
 - `source .bash_profile` 명령으로 환경변수 파일 리로드
 - java -version
-### 6. Git 설치 및 clone
+## 6. Git 설치 및 프로젝트 Clone
 - `git --version` 으로 git 설치 확인
 - 설치 안되어있을 경우, `sudo apt-get update` 후에 `sudo apt-get install git 명령으로 git 설치
 - `git clone 저장소 주소` 명령으로 clone
-### 7. 빌드 및 배포
+## 7. 빌드 및 배포
 - `./mvnw clean package` = 기존의 결과물을 날려버리고(clean) 배포할 수 있는 코드로 다시 빌드하는(package) 명령 입력
   - 만약 각 배포 버전을 남기고 싶다면 clean 없이 `./mvnw package`
 - 빌드의 결과물은 target 디렉토리에 위치하므로 `cd target` 으로 이동하여 `nohup java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 서버에 띄우기
@@ -46,7 +57,7 @@
 - **배포한 코드 확인**
   - 8080포트는 보통 방화벽에 막혀있기 때문에 EC2의 보안그룹에서 사용자TCP 8080 위치무관을 선택하고 추가한다.
   - 인스턴스의 퍼블릭ip:8080 혹은 퍼블릭DNS:8080 을 주소로 접속하면 접속이 된다.
-### 9. 수정된 소스코드 반영
+## 8. 수정된 소스코드 반영
 - **수정된 코드 push & pull**
   - `Ctrl+d`로 ssh에서 벗어나서 로컬에서 새로 작업한 내용을 github에 푸시
   - 다시 ssh로 우분투에 접속하여 프로젝트가 있는 디렉토리로 이동하여 `git pull`
@@ -62,15 +73,15 @@
   - target 디렉토리로 이동하여 `nohup java -jar ChatBotTest-0.0.1-SNAPSHOT.jar &` 명령으로 배포
 
 
-### 10. 쉘 스크립트로 배포 자동화하기
+## 9. 쉘 스크립트로 배포 자동화하기
 >http://jojoldu.tistory.com/263?category=635883 참고하여 Gradle이 아닌 Maven 버전으로 작성함
 
-1. EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성
+### 9.1. EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성
   ~~~sh
   nano deploy.sh
   ~~~
 
-2. `deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성
+### 9.2. `deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성
   ~~~sh
   #!/bin/bash
 
