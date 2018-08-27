@@ -1,7 +1,7 @@
 # AWS EC2 서버에 자바 소스코드 배포 및 재배포 (Deploying Java project on AWS EC2)
 >회사 고객센터용 카카오톡 챗봇을 만들어 AWS EC2 서버에 배포하기 위해 [박재성님 유튜브 강의](https://www.youtube.com/watch?v=--bUO7KNFJ4&t=1047s)를 들으며 실습한 내용
 
-## 목록
+## 목차
 ~~~
 1. AWS EC2 인스턴스 생성
 2. 생성한 인스턴스(서버)에 접속
@@ -76,12 +76,12 @@
 ## 9. 쉘 스크립트로 배포 자동화하기
 >http://jojoldu.tistory.com/263?category=635883 참고하여 Gradle이 아닌 Maven 버전으로 작성함
 
-### 9.1. EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성
+- **EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성**
   ~~~sh
   nano deploy.sh
   ~~~
 
-### 9.2. `deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성
+- **`deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성**
   ~~~sh
   #!/bin/bash
 
