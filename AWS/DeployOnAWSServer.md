@@ -76,12 +76,12 @@
 ## 9. 쉘 스크립트로 배포 자동화하기
 >http://jojoldu.tistory.com/263?category=635883 참고하여 Gradle이 아닌 Maven 버전으로 작성함
 
-- **EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성**
+1. **EC2 인스턴스의 `/home/ubuntu` 디렉토리에 `deploy.sh' 파일 생성**
   ~~~sh
-  nano deploy.sh
+  $ nano deploy.sh
   ~~~
 
-- **`deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성**
+2. **`deploy.sh` 파일에 배포 자동화를 위한 쉘스크립트 작성**
   ~~~sh
   #!/bin/bash
 
@@ -114,4 +114,8 @@
 
   echo "> 새 어플리케이션 배포 !!!"
   nohup java -jar $REPOSITORY/target/$JAR_NAME &
+  ~~~
+3. **./deploy.sh 실행 권한 설정**
+  ~~~sh
+  $ chmod 755 ./deploy.sh
   ~~~
