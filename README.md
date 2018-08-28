@@ -129,8 +129,8 @@
 ## Algorithm 
 - **영리한 프로그래밍을 위한 알고리즘 강의**
   * [Recursion 01 - Recursion?](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion01-Recursion%3F.md)
-  * [Recursion 02 - Recursive Thinking](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion02.md)
-  * [Recursion 03 - Designing Recursion](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion03.md)
+  * [Recursion 02 - Recursive Thinking](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion02-RecursiveThinking.md)
+  * [Recursion 03 - Designing Recursion](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion03-DesigningRecursion.md)
   * [Recursion 04 - Maze](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion04-Maze.md)
   * [Recursion 05 - Counting Cells in a Blob](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion05-CountingCells.md)
   * [Recursion 06 - N-Queens Problem](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion06-nQueens.md)
