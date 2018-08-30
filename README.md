@@ -96,8 +96,10 @@
 <a name="m9">
 
 ## AWS
-* [AWS SAA 자격증 준비 자료/방법](https://github.com/Integerous/TIL/blob/master/AWS/Certificate.md)
-* [AWS VPC 공부내용](https://github.com/Integerous/TIL/blob/master/AWS/VPC.md)
+* [AWS S3 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/S3.md)
+* [AWS EBS 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/EBS.md)
+* [AWS 자격증 준비 자료/방법](https://github.com/Integerous/TIL/blob/master/AWS/Certificate.md)
+* [AWS VPC 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/VPC.md)
 * [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
 
 <a name="m10">
@@ -137,6 +139,7 @@
   * [Recursion 07 - PowerSet](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion07-PowerSet.md)
   
 - **CodeWars 알고리즘 문제풀기**
+  * [CodeWars 020 - Row Weights](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/020-Row_Weights.md)
   * [CodeWars 019 - Your Order, Please](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/019-Your_order_please.md)
   * [CodeWars 018 - Duplicate Encoder (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/018-Duplicate_Encoder.md)
   * [CodeWars 017 - Arithmetic Progression (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/017-Arithmetic_progression.md)
