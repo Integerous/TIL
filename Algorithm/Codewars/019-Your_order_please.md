@@ -1,4 +1,4 @@
-# Duplicate Encoder
+# Your Order, Please
 >6kyu  
 >passed with java 
 >https://www.codewars.com/kata/your-order-please/java
