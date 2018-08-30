@@ -1,6 +1,6 @@
 # Row Weights
 >7kyu  
->passed with java 
+>passed with java  
 >https://www.codewars.com/kata/5abd66a5ccfd1130b30000a9/java
 
 ## Instructions
