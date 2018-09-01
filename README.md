@@ -139,6 +139,7 @@
   * [Recursion 07 - PowerSet](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion07-PowerSet.md)
   
 - **CodeWars 알고리즘 문제풀기**
+  * [CodeWars 021 - Maximum Product (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/021-Maximum_Product.md)
   * [CodeWars 020 - Row Weights (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/020-Row_Weights.md)
   * [CodeWars 019 - Your Order, Please (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/019-Your_order_please.md)
   * [CodeWars 018 - Duplicate Encoder (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/018-Duplicate_Encoder.md)
