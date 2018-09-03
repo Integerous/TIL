@@ -119,10 +119,8 @@
 ## (번외 #1) CI/CD Tool
 >CI/CD Tool 선택된 후 작성 예정
 
-## (번외 #2) 함께 결정해야 할 사항들
-1. 어떤 CI/CD 툴을 사용할 것인지.
-2. Trello를 Kanban 스타일로 프로젝트 진행과정을 관리 할 것인지. (현재 Trello는 내용 저장의 용도로만 사용중)
-
+## (번외 #2) 이클립스에서 프로젝트 열기
+>[여기](https://github.com/Integerous/TIL/blob/master/Tools/Eclipse.md) 참조
 
 ## * Reference
 - [Learn about code review in Bitbucket](https://www.atlassian.com/git/tutorials/learn-about-code-review-in-bitbucket-cloud)
