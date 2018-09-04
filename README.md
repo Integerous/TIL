@@ -139,6 +139,7 @@
   * [Recursion 07 - PowerSet](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion07-PowerSet.md)
   
 - **CodeWars 알고리즘 문제풀기**
+  * [CodeWars 023 - Form the minimum (7kyu) (failed)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/023-Form_the_minimum.md)
   * [CodeWars 022 - Where is my parent (6kyu) (failed)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/022-Where_is_my_parent.md)
   * [CodeWars 021 - Maximum Product (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/021-Maximum_Product.md)
   * [CodeWars 020 - Row Weights (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/020-Row_Weights.md)
