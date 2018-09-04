@@ -34,20 +34,15 @@
 <a name="m2">
  
 ## ETC
-- **RegEx**
-  * [정규표현식 정리](https://github.com/Integerous/TIL/blob/master/ETC/RegEx.md)
-- **Blog**
-  * [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
-- **번역**
-  * [Web API Design (작성중)]()
-  * [Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
+* [정규표현식 정리](https://github.com/Integerous/TIL/blob/master/ETC/RegEx.md)
+* [정적 사이트 생성기(Hugo)로 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
+* [[번역] Web API Design (작성중)]()
+* [[번역] Browser의 동작 원리](https://github.com/Integerous/TIL/blob/master/ETC/HowBrowsersWork.md)
 * [Bcrypt](https://github.com/Integerous/TIL/blob/master/ETC/Bcrypt.md)
 * [StringUtils](https://github.com/Integerous/TIL/blob/master/ETC/StringUtils.md)
 * [CDATA](https://github.com/Integerous/TIL/blob/master/ETC/CDATA.md)
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
-
-
 
 <a name="m3">
  
