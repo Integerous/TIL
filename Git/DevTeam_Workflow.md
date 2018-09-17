@@ -19,23 +19,25 @@
 # 0. 최초 설정
 ### 0.1. 프로젝트 관리자
 #### 0.1.1. Bitbucket에 `프로젝트 저장소` 생성
-- 프로젝트 저장소 Owner를 관리자 개인으로 하는 경우 : `0.1.4.` 까지
-- 프로젝트 저장소 Owner를 팀 계정으로 하고 개인 저장소를 따로 운영하는 경우 : `0.1.5.` 까지
+- 프로젝트 저장소 Owner를 관리자 개인으로 하는 경우 : `0.1.5.` 까지
+- 프로젝트 저장소 Owner를 팀 계정으로 하고 개인 저장소를 따로 운영하는 경우 : `0.1.6.` 까지
 #### 0.1.2. 작업용 `develop` 브랜치 생성 (`master` 브랜치는 배포용)
 #### 0.1.3. 작업용 브랜치 생성 이유
   - 프로젝트 저장소의 `Master` 브랜치와 `develop` 브랜치 두 가지를 두고, `master` 브랜치는 아주 안정적인 버전을 릴리즈 할 때 사용하고, `develop` 브랜치는 새로 수정된 코드를 통합할 때 사용한다. 릴리즈 할 수준이 되면 `master` 브랜치를 `develop` 브랜치까지 **fast-forward** 후 버전을 Tag로 추가한다.
   - 더 나아가 `integrate` 브랜치를 추가할 수 있다. master - develop - integrate - feature 브랜치를 만들어 feature에서 작업한 것을 integrate에 merge하여 feature 브랜치가 검증되면 develop 브랜치에 merge 한다. 그리고 develop 브랜치에서 충분히 안정성이 검증되면 그때 master 브랜치에 merge한다.
   - feature 브랜치는 develop/master 브랜치에 merge되면 저장소에서 삭제한다.
   - 릴리즈 버전은 언제든 돌아갈 수 있도록 태그를 다는 것이 좋다. 그리고 배포할 릴리즈 버전이 준비되었다면, git을 사용하지 않는 사람을 위해 소스코드 스냅샷을 압축한다. `$git archive`명령으로 압축할 수 있다.
-#### 0.1.4. 프로젝트와 Bitbucket 연결 (Local에 프로젝트가 존재할 경우)
+#### 0.1.4. 프로젝트 디렉토리를 Git 저장소로 만들기 (Local에 프로젝트가 존재하는 경우)
+  - 프로젝트 디렉토리로 이동하여 `$ git init`
+#### 0.1.5. 프로젝트와 Bitbucket 연결 (Local에 프로젝트가 존재하는 경우)
   - Local 프로젝트 위치로 이동 `$ cd /path/to/your/repo`
   - 원격저장소 추가 : `$ git remote add [프로젝트 저장소명/별명] [프로젝트 저장소 주소]`
-    - 여기서 `[프로젝트 저장소 주소]`는 저장소의 주소창에 있는 주소가 아니라 아래 예시와 같은 주소.(github과 bitbucket의 주소 모양 다름)
+    - 여기서 `[프로젝트 저장소 주소]`는 저장소의 주소창에 있는 주소가 아니라 `clone`을 클릭해서 나오는 주소.(github과 bitbucket의 주소 모양 다름)
     - ex) `$ git remote add HJS-SERVER https://Ryan_Han@bitbucket.org/hjskorea/hjs-server.git`
   - 원격저장소에 Local 프로젝트 Push
     - `$ git push [프로젝트 저장소명/별명] [branch명]`
     - ex) `$ git push HJS-SERVER develop`
-#### 0.1.5. 팀 계정의 `프로젝트 저장소`를 관리자 개인 계정의 `개인 원격 저장소`로 Fork
+#### 0.1.6. 팀 계정의 `프로젝트 저장소`를 관리자 개인 계정의 `개인 원격 저장소`로 Fork
   - Fork 기능은 Bitbucket의 `프로젝트 저장소`에서 사용
   - `개인 원격 저장소`를 `개인 local 저장소`의 원격저장소로 지정
     - `$ git remote add origin
