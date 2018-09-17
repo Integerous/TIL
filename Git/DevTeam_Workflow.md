@@ -65,7 +65,7 @@
 - ***브랜치***
   1. `master 브랜치` - develop 브랜치에서 충분히 검증된 버전을 `배포하는 브랜치`
   2. `develop 브랜치` - 각 팀원들의 feature 브랜치를 `통합하고 테스트하는 브랜치`
-  3. `feature 브랜치` - 이슈 기반으로 브랜치명을 생성한 `작업용 브랜치`
+  3. `feature 브랜치`(옵션) - 이슈 기반으로 브랜치명을 생성한 `작업용 브랜치`
 
 -----------------------------------
 -----------------------------------
@@ -84,46 +84,46 @@
 # 1. Issue 등록
 >새로운 추가될 가능, 개선 해야할 기능, 버그 등 모든 활동을 Issue로 등록하고 그 Issue를 기반으로 작업을 진행합니다.  
 
-- Bitbucket에서 Issue 등록
+#### 1.1. Bitbucket에서 Issue 등록
   - 개발 항목, 담당자, 일정, 내용 등 작성
-- Issue 등록시 Telegram, 이메일로 팀원들에게 자동 알림
-  - Telegram의 Bitbucket Bot 활용
+  - Issue 등록시 Telegram, 이메일로 팀원들에게 자동 알림
+    - Telegram의 Bitbucket Bot 활용
 
 # 2. Issue 작업
 >등록된 Issue를 기반으로 branch를 생성하여 개발 작업 실행
 
-1. `개인 local 저장소` 최신화
-    - 다른 팀원에 의해 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull*** 혹은 ***fetch & merge*** 하여 최신화
-    - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
-2. `feature`브랜치 생성
-    - `개인 local 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
-    - `$ git checkout -b ryanwork1`
-    - `feature` 브랜치의 이름은 등록된 Issue 기반으로 생성하여 `브랜치명 = 작업명`이 되도록하여 브랜치에 정체성 부여
-3. 분석/설계 및 개발
-4. 개발 내용 확인
-    - `$ git status`
-5. 개발 내용 ***add, commit, push***
-    - `$ git add .`
-    - `$ git commit -m '커밋내용'`
-    - `$ git push origin ryanwork1` - 반드시 `개인 원격 저장소`(origin)의 작업용 `feature` 브랜치(ryanwork1)에 push 
+#### 2.1. `개인 local 저장소` 최신화
+  - 다른 팀원에 의해 최신화된 `프로젝트 저장소`의 변경 사항을 `개인 local 저장소`에 ***pull*** 혹은 ***fetch & merge*** 하여 최신화
+  - 작업 시작 전 `개인 local 저장소`를 최신화하는 습관 필요
+#### 2.2. `feature`브랜치 생성
+  - `개인 local 저장소`에서는 `develop` 브랜치를 `master` 브랜치라 생각하고 Issue에 기반한 작업용 feature 브랜치를 따로 생성
+  - `$ git checkout -b ryanwork1`
+  - `feature` 브랜치의 이름은 등록된 Issue 기반으로 생성하여 `브랜치명 = 작업명`이 되도록하여 브랜치에 정체성 부여
+#### 2.3. 분석/설계 및 개발
+#### 2.4. 개발 내용 확인
+  - `$ git status`
+#### 2.5. 개발 내용 ***add, commit, push***
+  - `$ git add .`
+  - `$ git commit -m '커밋내용'`
+  - `$ git push origin ryanwork1` - 반드시 `개인 원격 저장소`(origin)의 작업용 `feature` 브랜치(ryanwork1)에 push 
 
 # 3. Pull Request (이하 PR)
-6. `개인 원격 저장소 feature 브랜치`에서 `프로젝트 저장소 develop 브랜치`로 ***Pull Request*** (Bitbucket에서)
-    - Pull Request 시, 어떤 Issue에 대한 PR인지 작성해야한다.
-    - CI/CD 도구 활용
-    - Merge 되면 `feature` 브랜치를 close 하도록 체크
+#### 3.1. `개인 원격 저장소 feature 브랜치`에서 `프로젝트 저장소 develop 브랜치`로 ***Pull Request*** (Bitbucket에서)
+  - Pull Request 시, 어떤 Issue에 대한 PR인지 작성해야한다.
+  - CI/CD 도구 활용
+  - Merge 되면 `feature` 브랜치를 close 하도록 체크
     
 # 4. PR Review
-7. 관리자는 코드 리뷰 후 `프로젝트 저장소`의 `develop` 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
-8. Merge 된 이후에 `feature` 브랜치가 close 되도록 설정 안했다면 직접 브랜치 삭제 
+#### 4.1. 관리자는 코드 리뷰 후 `프로젝트 저장소`의 `develop` 브랜치로 ***Merge*** 혹은 ***Decline*** (Bitbucket에서)
+#### 4.2. Merge 된 이후에 `feature` 브랜치가 close 되도록 설정 안했다면 직접 브랜치 삭제 
     - `$ git branch -d ryanwork1`
 
 # 5. Issue 반영
-- Bitbucket에서 Issue close 혹은 PR과 연동하여 자동으로 Issue close.(Bitbucket에서는 PR과 연동불가)
-- Trello 이슈 카드 이동
+#### 5.1. Bitbucket에서 Issue close 혹은 PR과 연동하여 자동으로 Issue close.(Bitbucket에서는 PR과 연동불가)
+#### 5.2. Trello 이슈 카드 이동
 
 # 6. 저장소 Update
-9. 팀원들에 의해 업데이트된 `프로젝트 저장소`의 `develop` 브랜치로 부터 `개인 local 저장소`의 `develop` 브랜치 동기화. 
+#### 6.1. 팀원들에 의해 업데이트된 `프로젝트 저장소`의 `develop` 브랜치로 부터 `개인 local 저장소`의 `develop` 브랜치 동기화. 
     - 우선 HEAD가 `develop` 브랜치에 위치하도록 `$ git checkout develop`
     - `$ git fetch 프로젝트저장소(별명) develop`
     - `$ git branch -a` 로 브랜치 확인
@@ -131,7 +131,7 @@
     - 또는 merge 대신 `$ git rebase 프로젝트저장소(별명)/develop`
     - 또는 Pull로 한번에 동기화 `$ git pull 프로젝트저장소(별명) develop`
 
-10. 이후 작업은 다시 1번 부터 진행한다.
+#### 6.2. 이후 작업은 다시 `1.1.`부터 진행
 -----------------------------------
     
 ## (번외 #1) CI/CD Tool
