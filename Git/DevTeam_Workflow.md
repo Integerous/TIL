@@ -30,12 +30,15 @@
 #### 0.1.4. 프로젝트와 Bitbucket 연결 (Local에 프로젝트가 존재할 경우)
   - Local 프로젝트 위치로 이동 `$ cd /path/to/your/repo`
   - 원격저장소 추가 : `$ git remote add [프로젝트 저장소명/별명] [프로젝트 저장소 주소]`
+    - 여기서 `[프로젝트 저장소 주소]`는 저장소의 주소창에 있는 주소가 아니라 아래 예시와 같은 주소.(github과 bitbucket의 주소 모양 다름)
     - ex) `$ git remote add HJS-SERVER https://Ryan_Han@bitbucket.org/hjskorea/hjs-server.git`
   - 원격저장소에 Local 프로젝트 Push
     - `$ git push [프로젝트 저장소명/별명] [branch명]`
     - ex) `$ git push HJS-SERVER develop`
 #### 0.1.5. 팀 계정의 `프로젝트 저장소`를 관리자 개인 계정의 `개인 원격 저장소`로 Fork
   - Fork 기능은 Bitbucket의 `프로젝트 저장소`에서 사용
+  - `개인 원격 저장소`를 `개인 local 저장소`의 원격저장소로 지정
+    - `$ git remote add origin
   
 ### 0.2. 프로젝트 팀원
 1. `프로젝트 저장소`를 `개인 원격 저장소`로 ***Fork*** (Bitbucket 에서)
@@ -46,7 +49,7 @@
     - `$ git branch -a`
     - 현재 `개인 local 저장소`에는 `develop` 브랜치만 존재해야 한다. 
 5. `프로젝트 저장소`의 최신화된 `develop` 브랜치와 `개인 local 저장소`의 `develop` 브랜치를 동기화하기 위해 ***Remote***(원격저장소) 설정
-    - `$ git remote add cloudcash-ryan(별명) 프로젝트저장소URL` -> 본인 원격저장소URL로 하지 말것.
+    - `$ git remote add [프로젝트 저장소명/별명] [프로젝트 저장소 주소]` -> 본인 원격저장소 주소로 하지 말것.
     - `$ git remote -v` 로 원격저장소 확인
     - 확인 결과 `cashcloud`(프로젝트 저장소)와 `origin`(개인 원격 저장소)만 나와야 한다.
 
