@@ -81,8 +81,8 @@
 
 ## Git
 * [Commit한 파일 삭제하기](https://github.com/Integerous/TIL/blob/master/Git/rm_cached.md)
-* [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/DevTeam_Workflow.md)
-* [Git Tips](https://github.com/Integerous/TIL/blob/master/Git/GitTips.md)
+* [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Workflow.md)
+* [Git Tip 저장소](https://github.com/Integerous/TIL/blob/master/Git/GitTips.md)
 
 <a name="m8">
 
