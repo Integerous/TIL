@@ -6,7 +6,11 @@
 * 한 번에 완벽하게 작성하기보다 꾸준히 업데이트 한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
-# INDEX
+## Featured (정성이 담긴 기록들)
+- [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Workflow.md)
+- [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
+- [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
+## INDEX
 - [Seminar](#m1)
 - [ETC](#m2)
 - [Java](#m3)
