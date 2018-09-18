@@ -1,4 +1,5 @@
 # Git Workflow
+>실무에서 Git을 활용한 협업 workflow를 세팅하기 위해 학습하며 기록한 내용입니다.
 >협업 환경 = Git + Bitbucket + Trello + Telegram
 >>Bitbucket 대신 Github을 사용해도 똑같습니다.
 
