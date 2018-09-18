@@ -30,7 +30,7 @@
   - `wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz`
 - 설치완료 후 `ls -al`로 설치 확인
 - `tar -xvf jdk ~~~ tar.gz` 명령으로 압축 해제
-- ~/jdk~~/bin 경로로 이동하여 `./java -version`으로 자바 버전 확인
+- `/jdk/bin` 경로로 이동하여 `./java -version`으로 자바 버전 확인
 - 아무 위치에서나 자바 프로그램에 접근이 안되므로 `심볼링 링크 설정`과 `환경 변수 설정`을 해야 한다.
 ## 4. Symbolic Link 추가
 - `ln -s jdk~~/ java(별칭)`
