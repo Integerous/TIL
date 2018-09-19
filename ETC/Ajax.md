@@ -1,8 +1,14 @@
 
 >(작성중)
 
-# Ajax
+# Ajax 이 녀석!
+>토이프로젝트(Haru Sketch)에서 Ajax로 댓글을 구현하다가 에러 앞에 막혔다.  
+>Ajax를 제대로 모르고 있다는 확신이 들어 Ajax 이 녀석을 박살내버리기로 했다.(엄근진)
 
+### 한마디로 ?
+
+
+### 작성중
 - 웹을 통해 작업할 때 REST 방식이 가장 많이 쓰이는 형태는 Ajax와 같이 결합된 형태이다.
 - Ajax는 'Asynchronous JavaScript and XML'(비동기화된 JavaScript와 XML)의 약어로 주로 브라우저에서 대화형으로 서버와 데이터를 주고받는 형태의 메세지 전송 방식을 의미한다.
 - Ajax를 가장 쉽게 설명하는 방법은 화면의 전환이나 깜빡임 없이 서버에서 데이터를 받는 방법이다.
@@ -21,4 +27,5 @@
 
 # Reference
 - 구멍가게코딩단,『코드로 배우는 스프링 웹 프로젝트』, 남가람북스, p.366~8
+- https://www.opentutorials.org/course/3281
 - http://krespo.net/55
