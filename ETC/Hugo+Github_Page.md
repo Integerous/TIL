@@ -2,7 +2,7 @@
 >주소가 github.io인 개발 블로그들이 눈에 많이 띄었다.  
 >그래서 찾아 헤매던 도중 Jekyll, Hexo, Hugo 등 Static Site Generator의 존재를 알게 되었다.  
 >Static Site Generator와 Github Page의 조합으로 Devlog로 사용할 개인 블로그를 만들기로 했다.  
->놀다 지친 여름휴가 막바지에 집중공략을 시작했다.
+>놀다 지친 여름휴가 막바지에 집중공략을 시작!
 
 ## 1. Static Site Generator 란?
 [이 글](https://blog.nacyot.com/articles/2014-01-15-static-site-generator/)이 정적 웹사이트 생성기와 동적 웹사이트 생성기의 차이를 잘 설명해주고 있다.
@@ -40,10 +40,10 @@ Hugo
 ### 3.1. 내가 Hugo를 선택한 이유
   - Go로 제작되었다. (Go를 공부중이다.)
   - Hugo는 런타임에 다른 의존성이 필요하지 않아 빌드시간이 세계에서 제일 빠르다. ("Hugo is the world’s fastest static website engine.")
-  - Hugo는 한글 Reference가 거의 없는 오픈소스이며 Jekyll에 비해 기여할 수 있는 여지가 남아있다. 즉, ***오픈소스에 기여할 기회 !!***
+  - ***오픈소스에 기여할 기회 !!*** (Hugo는 한글 Reference가 거의 없는 오픈소스이며 Jekyll에 비해 기여할 수 있는 여지가 남아있다.)
 
 ### 3.2. [CloudZ Labs](http://tech.cloudz-labs.io/posts/hugo/hugo/)에서 Github Page와 환상의 조합인 Jekyll 대신 Hugo를 선택한 이유
-  - Jekyll을 사용할 경우, 별도의 Build 과정 없이 Repository에 Push만으로 작성한 글들이 알아서 Publishing됩니다. 하지만, 글이 많아질 수록 Jekyll의 빌드 성능은 현저하게 저하됩니다. 하지만, Hugo는 Build 과정이 있어도 성능저하 없이, 빠르게 글을 Publishing할 수 있습니다. Go나 기타 종속성 없이, Hugo CLI를 통해서 쉽게 블로그 및 글을 생성할 수 있습니다. 그래서, Hugo로 블로그를 만들게 되었습니다.
+  - "Jekyll을 사용할 경우, 별도의 Build 과정 없이 Repository에 Push만으로 작성한 글들이 알아서 Publishing됩니다. 하지만, 글이 많아질 수록 Jekyll의 빌드 성능은 현저하게 저하됩니다. 하지만, Hugo는 Build 과정이 있어도 성능저하 없이, 빠르게 글을 Publishing할 수 있습니다. Go나 기타 종속성 없이, Hugo CLI를 통해서 쉽게 블로그 및 글을 생성할 수 있습니다. 그래서, Hugo로 블로그를 만들게 되었습니다."
 
 ## 4. Hugo + Github Page 만드는 과정
 
