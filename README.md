@@ -1,10 +1,9 @@
 [![HitCount](http://hits.dwyl.io/integerous/TIL.svg)](http://hits.dwyl.io/integerous/TIL)
 
 # Today I Learned (TIL)
-* 나는 망각의 동물이었다.(금붕어급)
 * 인생은 마라톤! 꾸준한 성장을 위해 개발 경험과 학습 내용을 기록한다.
-* 한 번에 완벽하게 작성하기보다 꾸준히 업데이트 한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
+* [아침공부 기록소](https://github.com/Integerous/TIL/tree/master/Early-Bird)에 출근 전에 학습한 내용을 정리한다.
 
 ### Featured! (정성이 담긴 기록들)
 - [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
@@ -14,6 +13,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------
 ### 목차
+- [아침공부 기록소!](https://github.com/Integerous/TIL/tree/master/Early-Bird)
 - [Seminar](#m1)
 - [ETC](#m2)
 - [Java](#m3)
@@ -30,6 +30,9 @@
 - [Tools](#m14)
 - [Algorithm](#m15)
 ----------------------------------------------------------------------------------------------------------------------
+
+### 아침공부 기록소!
+* 매일 출근 전에 학습한 내용을 기록하는 저장소 => [아침공부 기록소!](https://github.com/Integerous/TIL/tree/master/Early-Bird)
 
 <a name="m1">
  
