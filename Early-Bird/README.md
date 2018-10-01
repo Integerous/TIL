@@ -4,6 +4,7 @@
 >>이 곳은 아침에 공부한 내용을 가볍게 정리하는 기록소가 될 것이다. 
 
 ## 아침공부 목록
+- [181001 아침공부 #9](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10-01.md)
 - [180930 아침공부 #8](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-09-30.md)
 - [180929 아침공부 #7](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-09-29.md)
 - [180928 아침공부 #6](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-09-28.md)
