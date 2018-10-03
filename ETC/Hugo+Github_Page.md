@@ -176,12 +176,8 @@ Hugo
 6. 끝!  
 
 ## 6. 사용 후기 (계속 추가될 예정)
-### 6.1. Syntax Highlight가 마음에 들지 않을 때
->Hugo에서 기본으로 제공하는 Chroma의 스타일들은 코드 가독성이 너무 떨어진다. (java의 경우)  
->그렇다고 Pygments 사용하려면 파이썬 유저가 아닌데도 설치해야 한다.  
->클라이언트 사이드에서 highlighting 하는 highlight.js 등이 있지만 사용법이 조잡하다.  
->그래서 나의 선택은..
->Gist에 코드를 올리고 Hugo의 shortcode 기능을 사용.
+### 6.1. 마크다운 파일에 Gist 삽입하기
+>Gist는 마크다운 파일에 embed 되지 않는다. 하지만 Hugo, Jekyll 에서는 가능하다.
 
 #### 6.1.1. Gist 생성
 - [Gist](https://gist.github.com/)에 코드를 작성
