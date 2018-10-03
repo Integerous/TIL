@@ -3,7 +3,15 @@
 >그래서 찾아 헤매던 도중 Jekyll, Hexo, Hugo 등 Static Site Generator의 존재를 알게 되었다.  
 >Static Site Generator와 Github Page의 조합으로 Devlog로 사용할 개인 블로그를 만들기로 했다.  
 >놀다 지친 여름휴가 막바지에 집중공략을 시작!
-
+## 0. 목차
+~~~
+1. Static Site Generator 란?
+2. Static Site Generator 선택 과정
+3. Hugo, 너로 정했다!
+4. Hugo + Github Page 만드는 과정
+5. 댓글 위젯 추가하기 (Utterances 사용)
+6. 사용 후기 (계속 추가 예정)
+~~~
 ## 1. Static Site Generator 란?
 [이 글](https://blog.nacyot.com/articles/2014-01-15-static-site-generator/)이 정적 웹사이트 생성기와 동적 웹사이트 생성기의 차이를 잘 설명해주고 있다.
 
@@ -85,7 +93,7 @@ Hugo
   - `$ hugo server` 혹은 `$ hugo server -D`로 웹서버 실행
   - `http://localhost:1313/`에 접속해서 확인
   - -D 옵션은 draft 문서들도 보여지는 옵션. 다른 옵션은 [여기](https://gohugo.io/commands/hugo_server/#options)에서 확인
-
+  
 ### 4.7. 컨텐츠 업로드 (블로그에)
 - `C:\Hugo\blog`로 이동
 - `$ hugo -t 테마이름` 명령을 통해 테마가 적용된 블로그 내용을 public에 생성한다.
@@ -167,6 +175,40 @@ Hugo
 5. 위의 script를 본인의 블로그 템플릿중 원하는 위치에 넣으면
 6. 끝!  
 
+## 6. 사용 후기 (계속 추가될 예정)
+### 6.1. Syntax Highlight가 마음에 들지 않을 때
+>Hugo에서 기본으로 제공하는 Chroma의 스타일들은 코드 가독성이 너무 떨어진다. (java의 경우)  
+>그렇다고 Pygments 사용하려면 파이썬 유저가 아닌데도 설치해야 한다.  
+>클라이언트 사이드에서 highlighting 하는 highlight.js 등이 있지만 사용법이 조잡하다.  
+>그래서 나의 선택은..
+>Gist에 코드를 올리고 Hugo의 shortcode 기능을 사용.
+
+#### 6.1.1. Gist 생성
+- [Gist](https://gist.github.com/)에 코드를 작성
+- java 코드면 파일명을 `파일명.java`로 만들고 `Create public gist` 클릭
+- 생성되는 gist의 sha1 hash(url 끝부분)을 복사
+
+#### 6.1.2. Hugo에 커스텀 shorcodes 생성
+>간단한 설명은 [여기](http://blog.cronally.com/embed-gists-with-hugo/) 참고.  
+>자세한 사용법은 [이 튜토리얼 영상](https://www.youtube.com/watch?v=Eu4zSaKOY4A&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3&index=22) 참고
+- `themes/본인테마/layouts` 디렉토리에 `shortcodes` 폴더를 생성
+- `shortcodes` 폴더 내에 `gist.html` 파일 생성 (파일명은 상관없지만 gist로 하는게 정체성이 분명함)
+- `gist.html`에 `<script type="text/javascript" src="http://gist.github.com/{{ .Get 0 }}.js"></script>` 입력
+  - 여기서 `{{ . GET 0 }}`에 들어갈 부분이 위에서 복사해둔 각 gist의 sha1 hash(url 끝부분)이다.
+
+#### 6.1.3. shortcode 삽입
+- 아래와 같이 글 내용 중 코드가 들어갈 부분에 `{{< gist url끝부분 >}}` 을 넣어주면,
+~~~md
+## 3. instanceof 연산자
+- 참조변수가 참조하고 있는 인스턴스의 실제 타입을 알아보기 위해 `instanceof` 연산자를 사용한다.(주로 조건문에 사용)
+- `instanceof`를 이용한 연산 결과로 `true`를 얻었다는 것은 참조변수가 검사한 타입으로 형변환이 가능하다는 뜻이다.
+  {{< gist a5cda350b8a973e3940b2e59a55229ea >}}
+~~~
+![gistExample](https://github.com/Integerous/TIL/blob/master/ETC/images/exampleGist.png?raw=true)
+- 위 처럼 마크다운 파일(.md)에도 gist를 삽입할 수 있다. (행복)
+
+
+
 ## *블로그 주소
 https://ryan-han.com 
 
@@ -177,3 +219,5 @@ https://ryan-han.com
 - [Github Page에 Hugo 올리기](https://github.com/sabzil/blog/blob/master/content/post/tips/hugo.md)
 - [페이스북 댓글을 Utterances로 교체하기](https://blog.outsider.ne.kr/1356?category=1)
 - [Utterances 프로젝트](https://utteranc.es/)
+- [Youtube Hugo 튜토리얼](https://www.youtube.com/watch?v=Eu4zSaKOY4A&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3&index=22)
+- [Hugo에서 gist 사용하기](http://blog.cronally.com/embed-gists-with-hugo/)
