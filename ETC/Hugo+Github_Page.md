@@ -81,6 +81,10 @@ Hugo
 
 ### 4.6. 컨텐츠 생성
 - `$ hugo new post/test1.md` 명령으로 파일을 생성하면 `\content\post\test1.md`
+- 컨텐츠가 어떻게 보여지는지 확인하려면
+  - `$ hugo server` 혹은 `$ hugo server -D`로 웹서버 실행
+  - `http://localhost:1313/`에 접속해서 확인
+  - -D 옵션은 draft 문서들도 보여지는 옵션. 다른 옵션은 [여기](https://gohugo.io/commands/hugo_server/#options)에서 확인
 
 ### 4.7. 컨텐츠 업로드 (블로그에)
 - `C:\Hugo\blog`로 이동
