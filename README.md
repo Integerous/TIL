@@ -5,14 +5,9 @@
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 * [아침공부 기록소](https://github.com/Integerous/TIL/tree/master/Early-Bird)에 출근 전에 학습한 내용을 정리한다.
 
-### Featured! (정성이 담긴 기록들)
-- [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
-- [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Workflow.md)
-- [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
-- [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
-
 ----------------------------------------------------------------------------------------------------------------------
 ### 목차
+- [정성이 담긴 기록들!](#m0)
 - [아침공부 기록소!](https://github.com/Integerous/TIL/tree/master/Early-Bird)
 - [Seminar](#m1)
 - [ETC](#m2)
@@ -30,6 +25,14 @@
 - [Tools](#m14)
 - [Algorithm](#m15)
 ----------------------------------------------------------------------------------------------------------------------
+
+<a name="m0">
+
+### 정성이 담긴 기록들!
+- [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
+- [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Workflow.md)
+- [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
+- [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
 
 ### 아침공부 기록소!
 * 매일 출근 전에 학습한 내용을 기록하는 저장소 => [아침공부 기록소!](https://github.com/Integerous/TIL/tree/master/Early-Bird)
