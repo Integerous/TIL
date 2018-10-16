@@ -5,6 +5,8 @@
 >>나의 [블로그](https://ryan-han.com)에서 편하게 볼 수 있다.
 
 ## 아침공부 목록
+- [181011 아침공부 #18](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-11.md)
+- [181009 아침공부 #17](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-09.md)
 - [181008 아침공부 #16](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-08.md)
 - [181007 아침공부 #15](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-07.md)
 - [181006 아침공부 #14](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-06.md)
