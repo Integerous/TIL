@@ -1,5 +1,5 @@
-# Git Workflow
->실무에서 Git을 활용한 협업 workflow를 세팅하기 위해 학습하며 기록한 내용입니다.
+# Git Flow
+>회사에서 Git을 활용한 협업 workflow를 세팅하기 위해 학습하며 기록한 내용입니다.
 >협업 환경 = Git + Bitbucket + Trello + Telegram
 >>Bitbucket 대신 Github을 사용해도 똑같습니다.
 
@@ -12,8 +12,7 @@
   4. PR Review
   5. Issue 반영
   6. 저장소 Update
-  (번외 #1) CI/CD Tool
-  (번외 #2) Clone 받은 프로젝트 Eclipes에서 열기
+  (번외) Clone 받은 프로젝트 Eclipes에서 열기
   ~~~
 -----------------------------------
 # 0. 최초 설정
@@ -132,11 +131,8 @@
 #### 6.2. 이후 작업은 다시 `1.1.`부터 진행
 -----------------------------------
     
-## (번외 #1) CI/CD Tool
->CI/CD Tool 선택된 후 작성 예정
-
-## (번외 #2) Clone 받은 프로젝트 Eclipes에서 열기
->[여기](https://github.com/Integerous/TIL/blob/master/Tools/Eclipse.md) 참조
+## (번외) Clone 받은 프로젝트 Eclipes에서 열기
+>[이 글](https://github.com/Integerous/TIL/blob/master/Tools/Eclipse.md) 참고.
 
 ## * Reference
 - [Learn about code review in Bitbucket](https://www.atlassian.com/git/tutorials/learn-about-code-review-in-bitbucket-cloud)
