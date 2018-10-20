@@ -30,7 +30,7 @@
 
 ### 정성이 담긴 기록들!
 - [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
-- [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Workflow.md)
+- [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Flow.md)
 - [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
 - [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
 
@@ -93,7 +93,7 @@
 
 ### Git
 * [Commit한 파일 삭제하기](https://github.com/Integerous/TIL/blob/master/Git/rm_cached.md)
-* [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Workflow.md)
+* [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Flow.md)
 * [Git Tip 저장소](https://github.com/Integerous/TIL/blob/master/Git/GitTips.md)
 
 <a name="m8">
