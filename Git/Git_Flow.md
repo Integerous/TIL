@@ -143,12 +143,12 @@
 # 6. 저장소 Update
 
 ### 6.1. 팀원들에 의해 업데이트된 `프로젝트 저장소`의 `develop` 브랜치로 부터 `개인 local 저장소`의 `develop` 브랜치 동기화. 
-    - 우선 HEAD가 `develop` 브랜치에 위치하도록 `$ git checkout develop`
-    - `$ git fetch 프로젝트저장소(별명) develop`
-    - `$ git branch -a` 로 브랜치 확인
-    - `$ git merge 프로젝트저장소(별명)/develop`
-    - 또는 merge 대신 `$ git rebase 프로젝트저장소(별명)/develop`
-    - 또는 Pull로 한번에 동기화 `$ git pull 프로젝트저장소(별명) develop`
+  - 우선 HEAD가 `develop` 브랜치에 위치하도록 `$ git checkout develop`
+  - `$ git fetch 프로젝트저장소(별명) develop`
+  - `$ git branch -a` 로 브랜치 확인
+  - `$ git merge 프로젝트저장소(별명)/develop`
+  - 또는 merge 대신 `$ git rebase 프로젝트저장소(별명)/develop`
+  - 또는 Pull로 한번에 동기화 `$ git pull 프로젝트저장소(별명) develop`
 
 ### 6.2. 이후 작업은 다시 `1.1.`부터 진행
 
