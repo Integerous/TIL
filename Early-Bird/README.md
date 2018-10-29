@@ -5,6 +5,7 @@
 >>나의 [블로그](https://ryan-han.com)에서 편하게 볼 수 있다.
 
 ## 아침공부 목록
+- [181027 아침공부 #27 - 쓰레드(Thread)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-27.md)
 - [181025 아침공부 #26 - 열거형(Enums)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-25.md)
 - [181023 아침공부 #25 - 지네릭스(Generic)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-23.md)
 - [181020 아침공부 #24 - 컬렉션(TreeMap, Properties)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-20.md)
