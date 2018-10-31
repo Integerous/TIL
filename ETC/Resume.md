@@ -4,8 +4,8 @@
 
 # JEONGSU HAN
 A junior back-end developer who loves to make things what people need.  
-It hasn't been a year yet since I tried to see my first "Hello World".  
-I'm doing my best to become a solid back-end developer who can make things happen.  
+It hasn't been a year yet since I tried to see my first "Hello World", but  
+I'm doing my best to become a solid back-end developer who can make things happen together.  
 
 - Github : https://github.com/Integerous
 - Blog : https://ryan-han.com
@@ -21,7 +21,7 @@ I'm doing my best to become a solid back-end developer who can make things happe
   >- Developed back office boards for admin.
   >- Made code review system with Git-flow using Bitbucket, Trello(bot) and Telegram(bot)
   >- Developed KakaoTalk chat bot for customer service.
-  >- Set initial project structure with Spring boot, Gradle, PostgreSQL, AWS EC2, Thymele.
+  >- Set initial project structure with Spring boot, Gradle, PostgreSQL, AWS EC2.
 
 - ### ***HYUNDAI GLOVIS***
   >- **Bulk Carrier Operator**
@@ -36,40 +36,40 @@ I'm doing my best to become a solid back-end developer who can make things happe
 ## :mortar_board: EDUCATION
 - ### SIST (SSangyong Institute of System Technology)
   - Dec 2017 - Jun 2018
-  - Boot Camp for Java Web developer
+  - Boot Camp for Java web developer
   
-- ### Seoul National University
+- ### SEOUL NATIONAL UNIVERSITY
   - Mar 2009 - Feb 2017
   - College of Education, Dept. of Physical Education
   - Bachelor of Sports Science
   
 ## :books: PROJECTS
   - ### goQuality Dev Contents
-    - https://github.com/Integerous/goQuality-dev-contents
     - Open source project for archiving high-quality develop-related contents(blog posts, videos and slides).
     - Planning to make it as a contents delivery service via email(or SNS).
+    - https://github.com/Integerous/goQuality-dev-contents
   - ### Integerous Devlog
-    - https://ryan-han.com
     - A personal blog made with Hugo and Github Page.
-  - ### PSA KOREA
-    - Set the initial project structure with Spring boot, Gradle, PostgreSQL, AWS EC2
-    - Developed back office API
-  - ### Haru Sketch (Unfinished)
-    - Spring boot version https://github.com/Integerous/haru-sketch
-    - Spring framework version https://github.com/Integerous/HaruSketch-ver.1
-    - A portfolio site for hand-made art designer(my wife:])
-  - ### Kakao Talk Chat Bot for CS (Unfinished)
-    - http://pf.kakao.com/_xoEBQC
+    - https://ryan-han.com
+  - ### Haru Sketch
+    - Unfinished
+    - A webapp for portfolio of hand-made art designer.
+    - https://github.com/Integerous/haru-sketch (Spring boot version)
+    - https://github.com/Integerous/HaruSketch-ver.1 (Spring framework version)
+  - ### Kakao Talk Chat Bot for CS
+    - Unfinished
+    - Chat bot - http://pf.kakao.com/_xoEBQC
+    - Source code - https://github.com/Integerous/Kakao-ChatBot-Java
     - A chat bot for CS of Cloud Cash
     
-## :zap: SKILLS & ENDORSEMENTS
-- Java
-- Spring Freamwork & Spring Boot
-- Gradle & Maven
-- JPA & MyBatis
-- MySQL, PostgreSQL
+## :zap: SKILLS
+- Java 8
+- Spring Freamwork / Spring Boot
+- Gradle / Maven
+- JPA / MyBatis
+- MySQL / PostgreSQL
 - AWS (EC2, S3, CodeDeploy, EBS, VPC)
-- JSP, Mustache, Thymleaf
+- JSP / Mustache / Thymleaf
 - Linux
 - Shell Script
 - Nginx
