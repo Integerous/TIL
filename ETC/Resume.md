@@ -64,12 +64,12 @@ I'm doing my best to become a solid back-end developer who can make things happe
     
 ## :zap: SKILLS
 - Java 8
-- Spring Freamwork / Spring Boot
+- Spring Framework / Spring Boot
 - Gradle / Maven
 - JPA / MyBatis
 - MySQL / PostgreSQL
 - AWS (EC2, S3, CodeDeploy, EBS, VPC)
-- JSP / Mustache / Thymleaf
+- JSP / Mustache / Thymeleaf
 - Linux
 - Shell Script
 - Nginx
