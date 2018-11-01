@@ -1,16 +1,15 @@
-<div align=center>
 <img src="https://github.com/Integerous/TIL/blob/master/ETC/images/ryanjs.png?raw=true" width="200" height="200">
-</div>
+
 
 # JEONGSU HAN
 A junior back-end developer who loves to make things what people need.  
 It hasn't been a year yet since I tried to see my first "Hello World", but  
 I'm doing my best to become a solid back-end developer who can make things happen together.  
 
->- Github : https://github.com/Integerous
->- Blog : https://ryan-han.com
->- Email : rhep0820@gmail.com
->- Tel : 010 9189 1441
+>Github - https://github.com/Integerous  
+>Blog - https://ryan-han.com  
+>Email - rhep0820@gmail.com  
+>Tel - 010 9189 1441
 
 ## :briefcase: WORK EXPERIENCE
 
