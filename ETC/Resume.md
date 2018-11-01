@@ -7,10 +7,10 @@ A junior back-end developer who loves to make things what people need.
 It hasn't been a year yet since I tried to see my first "Hello World", but  
 I'm doing my best to become a solid back-end developer who can make things happen together.  
 
-- Github : https://github.com/Integerous
-- Blog : https://ryan-han.com
-- Email : rhep0820@gmail.com
-- Tel : 010 9189 1441
+>- Github : https://github.com/Integerous
+>- Blog : https://ryan-han.com
+>- Email : rhep0820@gmail.com
+>- Tel : 010 9189 1441
 
 ## :briefcase: WORK EXPERIENCE
 
@@ -19,8 +19,8 @@ I'm doing my best to become a solid back-end developer who can make things happe
   >- **Jun 2018 - Present**
   >- Developed mail sender module on Spring Boot environment.
   >- Developed back office boards for admin.
-  >- Made code review system with Git-flow using Bitbucket, Trello(bot) and Telegram(bot)
   >- Developed KakaoTalk chat bot for customer service.
+  >- Set workflow for code review with Git-flow using Bitbucket, Trello(bot) and Telegram(bot)
   >- Set initial project structure with Spring boot, Gradle, PostgreSQL, AWS EC2.
 
 - ### ***HYUNDAI GLOVIS***
@@ -54,13 +54,13 @@ I'm doing my best to become a solid back-end developer who can make things happe
   - ### ***Haru Sketch***
     - Unfinished
     - A webapp for portfolio of hand-made art designer.
-    - https://github.com/Integerous/haru-sketch (Spring boot version)
-    - https://github.com/Integerous/HaruSketch-ver.1 (Spring framework version)
+    - Source code (Spring boot version) - https://github.com/Integerous/haru-sketch
+    - Source code (Spring framework version) - https://github.com/Integerous/HaruSketch-ver.1
   - ### ***Kakao Talk Chat Bot for CS***
     - Unfinished
+    - A chat bot for CS of Cloud Cash
     - Chat bot - http://pf.kakao.com/_xoEBQC
     - Source code - https://github.com/Integerous/Kakao-ChatBot-Java
-    - A chat bot for CS of Cloud Cash
     
 ## :zap: SKILLS
 - Java 8
