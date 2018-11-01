@@ -50,13 +50,11 @@ I'm doing my best to become a solid back-end developer who can make things happe
   - ### ***Integerous Devlog***
     >- A personal blog made with Hugo and Github Page.
     >- https://ryan-han.com
-  - ### ***Haru Sketch***
-    >- Unfinished
+  - ### ***Haru Sketch*** (Unfinished)
     >- A webapp for portfolio of hand-made art designer.
     >- Source code (Spring boot version) - https://github.com/Integerous/haru-sketch
     >- Source code (Spring framework version) - https://github.com/Integerous/HaruSketch-ver.1
-  - ### ***Kakao Talk Chat Bot for CS***
-    >- Unfinished
+  - ### ***Kakao Talk Chat Bot for CS*** (Unfinished)
     >- A chat bot for CS of Cloud Cash
     >- Chat bot - http://pf.kakao.com/_xoEBQC
     >- Source code - https://github.com/Integerous/Kakao-ChatBot-Java
