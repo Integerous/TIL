@@ -34,32 +34,32 @@ I'm doing my best to become a solid back-end developer who can make things happe
   
 ## :mortar_board: EDUCATION
 - ### ***SIST (Ssangyong Institute of System Technology)***
-  - Dec 2017 - Jun 2018
-  - Boot Camp for Java web developer
+  >- Dec 2017 - Jun 2018
+  >- Boot Camp for Java web developer
   
 - ### ***SEOUL NATIONAL UNIVERSITY***
-  - Mar 2009 - Feb 2017
-  - College of Education, Dept. of Physical Education
-  - Bachelor of Sports Science
+  >- Mar 2009 - Feb 2017
+  >- College of Education, Dept. of Physical Education
+  >- Bachelor of Sports Science
   
 ## :books: PROJECTS
   - ### ***goQuality Dev Contents***
-    - Open source project for archiving high-quality develop-related contents(blog posts, videos and slides).
-    - Planning to make it as a contents delivery service via email(or SNS).
-    - https://github.com/Integerous/goQuality-dev-contents
+    >- Open source project for archiving high-quality develop-related contents(blog posts, videos and slides).
+    >- Planning to make it as a contents delivery service via email(or SNS).
+    >- https://github.com/Integerous/goQuality-dev-contents
   - ### ***Integerous Devlog***
-    - A personal blog made with Hugo and Github Page.
-    - https://ryan-han.com
+    >- A personal blog made with Hugo and Github Page.
+    >- https://ryan-han.com
   - ### ***Haru Sketch***
-    - Unfinished
-    - A webapp for portfolio of hand-made art designer.
-    - Source code (Spring boot version) - https://github.com/Integerous/haru-sketch
-    - Source code (Spring framework version) - https://github.com/Integerous/HaruSketch-ver.1
+    >- Unfinished
+    >- A webapp for portfolio of hand-made art designer.
+    >- Source code (Spring boot version) - https://github.com/Integerous/haru-sketch
+    >- Source code (Spring framework version) - https://github.com/Integerous/HaruSketch-ver.1
   - ### ***Kakao Talk Chat Bot for CS***
-    - Unfinished
-    - A chat bot for CS of Cloud Cash
-    - Chat bot - http://pf.kakao.com/_xoEBQC
-    - Source code - https://github.com/Integerous/Kakao-ChatBot-Java
+    >- Unfinished
+    >- A chat bot for CS of Cloud Cash
+    >- Chat bot - http://pf.kakao.com/_xoEBQC
+    >- Source code - https://github.com/Integerous/Kakao-ChatBot-Java
     
 ## :zap: SKILLS
 - Java 8
