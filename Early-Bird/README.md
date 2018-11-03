@@ -5,6 +5,7 @@
 >>나의 [블로그](https://ryan-han.com)에서 편하게 볼 수 있다.
 
 ## 아침공부 목록
+- [181031 아침공부 #29 - 쓰레드(Thread의 동기화)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-31.md)
 - [181030 아침공부 #28 - 쓰레드(Thread의 실행제어)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-30.md)
 - [181027 아침공부 #27 - 쓰레드(Thread의 구현과 실행)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-27.md)
 - [181025 아침공부 #26 - 열거형(Enums)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-10/2018-10-25.md)
