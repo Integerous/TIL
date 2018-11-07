@@ -1,3 +1,80 @@
+# 설정
+
+JavaMailSender의 구현체 JavaMailSenderImpl 객체를 생성해서 host, port, protocol, encoding, username, password, smtp auth, smtp starttls enable 등의 설정을 아래와 같이 한다.
+
+~~~java
+@Configuration
+public class MailConfig {
+
+	@Bean
+	public JavaMailSender getJavaMailSenderGmail() {
+
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		mailSender.setProtocol("smtp");
+		mailSender.setDefaultEncoding("UTF-8");
+		mailSender.setUsername(""); // 메일 주소
+		mailSender.setPassword(""); // 메일 비번
+
+		Properties prop = new Properties();
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.debug", "true");
+
+		mailSender.setJavaMailProperties(prop);
+
+		return mailSender;
+	}
+	
+	
+	@Bean
+	public JavaMailSender getJavaMailSenderNaver() {
+		
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		
+		mailSender.setHost("smtp.naver.com");
+		mailSender.setPort(587);
+		mailSender.setProtocol("smtp");
+		mailSender.setDefaultEncoding("UTF-8");
+		mailSender.setUsername(""); // 메일 주소
+		mailSender.setPassword(""); // 메일 비번
+		
+		Properties prop = new Properties();
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.debug", "true");
+		
+		mailSender.setJavaMailProperties(prop);
+
+		return mailSender;
+	}
+}
+~~~
+
+
+스프링부트에서는 이 설정을 application.yml에 (혹은 application.property 에) 아래와 같이 설정할 수 있다.
+다만 여러 계정을 사용하려면 Google mail에서 외부메일 사용에 메일을 추가하거나  
+위에서 처럼 java config 파일을 생성해서 설정해야 한다. (yml 파일에 host 여러개 설정하는 법이 있다면 알려주세요.)
+
+~~~yml
+spring:
+    mail:
+      host: smtp.gmail.com
+      username: medicc900@gmail.com #클라우드캐시 계정은 도메인관리자(Ken?)가 보안설정해줘야 사용가능
+      password: 
+      port: 587
+      protocol: smtp
+      default-encoding: UTF-8
+      properties:
+        mail:
+          smtp:
+            auth: true
+            starttls:
+              enable: true
+~~~
+
+
 
 The spring-boot-starter-mail adds the following dependent libraries to your project,
 
