@@ -61,8 +61,8 @@ public class MailConfig {
 spring:
     mail:
       host: smtp.gmail.com
-      username: medicc900@gmail.com #클라우드캐시 계정은 도메인관리자(Ken?)가 보안설정해줘야 사용가능
-      password: 
+      username: # 메일주소
+      password: # 비밀번호
       port: 587
       protocol: smtp
       default-encoding: UTF-8
