@@ -53,15 +53,15 @@
   - ### **카카오톡 챗봇 (공식 API 사용)**
     >- 카카오톡 플러스친구 API를 사용하여 만든 고객 응대용 챗봇
     >- Chat bot - http://pf.kakao.com/_xoEBQC
-    >- Source code - https://github.com/Integerous/Kakao-ChatBot-Java
+    >- Code - https://github.com/Integerous/Kakao-ChatBot-Java
   - ### **카카오톡 챗봇 (비공식 어플 사용)**
     >- 비공식 카카오톡 챗봇 어플을 사용하여 만든 개인용 챗봇
     >- 지인들과의 단톡방에서 유용하게 사용중입니다.
-    >- Source code - https://github.com/Integerous/Kakao-ChatBot-Javascript
+    >- Code - https://github.com/Integerous/Kakao-ChatBot-Javascript
   - ### **하루스케치 (Haru Sketch)** (미완성)
     >- 수공예품 디자이너(와이프)를 위한 포트폴리오 겸 쇼핑몰 프로젝트
-    >- Source code (Spring boot version) - https://github.com/Integerous/haru-sketch
-    >- Source code (Spring framework version) - https://github.com/Integerous/HaruSketch-ver.1
+    >- Code (Spring boot version) - https://github.com/Integerous/haru-sketch
+    >- Code (Spring framework version) - https://github.com/Integerous/HaruSketch-ver.1
 
 ## :zap: SKILLS
 - Java
