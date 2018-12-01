@@ -5,6 +5,7 @@
 >>나의 [블로그](https://ryan-han.com)에서 편하게 볼 수 있다.
 
 ## 아침공부 목록
+- [181129 아침공부 #42 - 직렬화(Serialization)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-11/2018-11-29.md)
 - [181126 아침공부 #41 - 스트림(변환)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-11/2018-11-26.md)
 - [181124 아침공부 #40 - 스트림(collect())(2)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-11/2018-11-24.md)
 - [181123 아침공부 #39 - 스트림(collect())(1)](https://github.com/Integerous/TIL/blob/master/Early-Bird/2018-11/2018-11-23.md)
