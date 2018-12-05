@@ -1,6 +1,6 @@
 
 # DWR (Direct Web Remoting)
-> ajax를 기반으로 Client side의 javascript로 Server side의 Java Beans를 interative하게 조작할 수 있는 framework
+> ajax를 기반으로 Client side의 javascript로 Server side의 Java Beans를 interative하게 조작할 수 있는 framework  
 > 실제 사용해본 느낌은, Controller를 추가로 생성하지 않고 jsp파일의 script에서 바로 service.메소드()를 호출할 수 있어서 편리함.  
 > 단점은 좀 더 알아보고 이 곳에 정리할 예정..
 
