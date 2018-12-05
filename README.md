@@ -137,38 +137,3 @@
 * Eclipse - [프로젝트 초기 설정](https://github.com/Integerous/TIL/blob/master/Tools/Eclipse.md)
 <a name="m15">
 
-### Algorithm 
-- **영리한 프로그래밍을 위한 알고리즘 강의**
-  * [Recursion 01 - Recursion?](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion01-Recursion%3F.md)
-  * [Recursion 02 - Recursive Thinking](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion02-RecursiveThinking.md)
-  * [Recursion 03 - Designing Recursion](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion03-DesigningRecursion.md)
-  * [Recursion 04 - Maze](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion04-Maze.md)
-  * [Recursion 05 - Counting Cells in a Blob](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion05-CountingCells.md)
-  * [Recursion 06 - N-Queens Problem](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion06-nQueens.md)
-  * [Recursion 07 - PowerSet](https://github.com/Integerous/TIL/blob/master/Algorithm/AlgorithmForSmartProgramming/Recursion07-PowerSet.md)
-  
-- **CodeWars 알고리즘 문제풀기**
-  * [CodeWars 023 - Form the minimum (7kyu) (failed)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/023-Form_the_minimum.md)
-  * [CodeWars 022 - Where is my parent (6kyu) (failed)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/022-Where_is_my_parent.md)
-  * [CodeWars 021 - Maximum Product (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/021-Maximum_Product.md)
-  * [CodeWars 020 - Row Weights (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/020-Row_Weights.md)
-  * [CodeWars 019 - Your Order, Please (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/019-Your_order_please.md)
-  * [CodeWars 018 - Duplicate Encoder (6kyu) (failed)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/018-Duplicate_Encoder.md)
-  * [CodeWars 017 - Arithmetic Progression (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/017-Arithmetic_progression.md)
-  * [CodeWars 016 - Make a Function that does arithmetic! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/016-Make_a_function_that_does_arithmetic.md)
-  * [CodeWars 015 - Square Every Digit (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/015-Square_every_digit.md)
-  * [CodeWars 014 - Simple Encryption #1 - Alternating Split (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/014-Alternating_split.md)
-  * [CodeWars 013 - Count All the Sheep (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/013-Count_all_the_sheep.md)
-  * [CodeWars 012 - Isograms (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/012-Isograms.md)
-  * [CodeWars 011 - Find the Odd (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/011-Find_the_odd_int.md)
-  * [CodeWars 010 - Two Fighters, One Winner (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/010-TwoFighters_OneWinner.md)
-  * [CodeWars 009 - Odd or Even? (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/009-Odd_or_even%3F.md)
-  * [CodeWars 008 - The Highest Profit Wins! (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/008-The_highest_profit_wins.md)
-  * [CodeWars 007 - Highest Scoring Word (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/007-Highest_scoring_word.md)
-  * [CodeWars 006 - Most Digits (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/006-Most_digits.md)
-  * [CodeWars 005 - Redex Validate PIN Code (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/005-Regex_validate_PIN_code.md)
-  * [CodeWars 004 - Tribonacci Sequence (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/004-Tribonacci_sequence.md)
-  * [CodeWars 003 - String Repeat (8kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/003-String_repeat.md)
-  * [CodeWars 002 - Get The Middle Character (7kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/002-Get_the_middle_character.md)
-  * [CodeWars 001 - Multiples of 3 or 5 (6kyu)](https://github.com/Integerous/TIL/blob/master/Algorithm/Codewars/001-Multiples_of_3or5.md)
-
