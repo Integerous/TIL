@@ -27,3 +27,8 @@
 
 ### Status 짧게 확인하기
     $ git status -s
+
+### 변경사항 확인하기
+    $ git diff  //(커밋 전)변경사항 모두 확인
+    $ git diff [filename]  //특정 파일 변경사항 확인
+    $ git diff --cached  //(커밋 후) 변경사항 확인
