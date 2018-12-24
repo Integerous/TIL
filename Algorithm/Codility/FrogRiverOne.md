@@ -26,7 +26,7 @@ class Solution {
 ~~~
 
 ### 다른사람 풀이
->출처: https://stackoverflow.com/questions/19459197/java-codility-frog-river-one  
+>https://stackoverflow.com/questions/19459197/java-codility-frog-river-one  
 >Set은 유일한 값만 추가할 수 있는 성질 활용
 ~~~java
 import java.util.HashSet;
