@@ -1,11 +1,8 @@
 # OddOccurrencesInArray
->원소가 홀수개인 배열에서 같은 원소값들이 짝수로 있고,  
->단 하나의 원소만 다른 값인 배열이 주어질 때 외톨이 원소의 값을 반환.  
->배열 길이의 범위는 1-1,000,000  
->원소 값의 범위는 1-1,000,000,000
+>https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
 
 
-### 내 풀이 = 0점(기본테스트만 통과)
+### 내 풀이 0%
 
 ~~~java
 import java.util.*;
@@ -29,7 +26,8 @@ class Solution {
 }
 ~~~
 
-### XOR 이용
+### 다른사람 풀이 1
+>XOR 이용
 
 ~~~java
 class Solution {
@@ -46,7 +44,8 @@ class Solution {
 }
 ~~~
 
-### HashSet 이용
+### 다른사람 풀이 2
+>HashSet 이용
 
 ~~~java
 class Solution {
