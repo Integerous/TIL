@@ -1,8 +1,7 @@
-## PermMissingElem
->1..N+1 범위의 유일한 원소들이 담긴 길이 N의 배열이 주어질 때, 배열에 1..N+1 범위 중 없는 값 반환  
->N의 범위는 0..100,000
+## Perm Missing Elem
+>https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/
 
-### 내 풀이
+### 내 풀이 100%
 ~~~java
 import java.util.*;
 
