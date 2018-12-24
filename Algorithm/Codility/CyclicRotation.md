@@ -1,9 +1,7 @@
 ## CyclicRotation
->1-100 길이의 정수 배열 A가 주어졌을 때,  
->1-100사이의 정수 K만큼 배열 각 요소를 오른쪽으로 한 칸씩 이동한 결과 배열 반환  
->성능보다 정확도가 중요
+>https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
 
-### 내 풀이
+### 내 풀이 100%
 
 ~~~java
 class Solution {
@@ -35,8 +33,8 @@ class Solution {
 }
 ~~~
 
-### 다른사람 풀이
->출처 http://blog.naver.com/PostView.nhn?blogId=netrance&logNo=220690184441
+### 다른사람 풀이 100%
+>http://blog.naver.com/PostView.nhn?blogId=netrance&logNo=220690184441
 ~~~java
 class Solution {
     public int[] solution(int[] A, int K) {
