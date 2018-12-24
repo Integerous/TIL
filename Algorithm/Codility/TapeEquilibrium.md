@@ -1,7 +1,7 @@
 ## TapeEquilibrium
->문제: https://app.codility.com/programmers/lessons/3-time_complexity/
+>https://app.codility.com/programmers/lessons/3-time_complexity/
 
-### 내 풀이
+### 내 풀이 100%
 ~~~java
 class Solution {
     public int solution(int[] A) {
