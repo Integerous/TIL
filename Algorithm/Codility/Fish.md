@@ -2,7 +2,7 @@
 >https://app.codility.com/programmers/lessons/7-stacks_and_queues/fish/
 
 ### 내 풀이 37%
->위로 올라가는 생선이 더 잡아먹을 수 있다는 점을 간과하고 작성했다.  
+>위로 올라가는 생선이 더 잡아먹을 수 있다는 점을 풀어내지 못했다.    
 >다시 풀어볼 예정
 
 ~~~java
@@ -53,6 +53,100 @@ class Solution {
         }
         
         return survivor;
+    }
+}
+~~~
+
+### 다른사람 풀이 1 100%
+>http://stroot.tistory.com/105  
+>위의 내 풀이에서는 올라가는 생선을 처리하지 못했는데, 이 코드는 while을 활용해서 풀어냈다.  
+>스택에 A배열과 B배열의 값이 아닌 인덱스를 넣어서 스택을 2개 구현할 필요가 없었다.  
+>continue와 break가 헷갈려서 찾아봤다.  
+>continue는 반복문의 끝으로 이동, break는 가장 가까운 반복문 벗어나기
+
+
+~~~java
+public int solution(int[] A, int[] B) {
+    int aliveCount = 0;
+    Stack<Integer> downFishes = new Stack<>();
+    
+    for (int i = 0; i < A.length; i++) {
+        if (B[i] == 0) {    // up fish
+            aliveCount++;
+            
+            if (downFishes.isEmpty()) {
+                continue;
+            }
+            
+            int downFish = downFishes.peek();
+            
+            while (true) {
+                aliveCount--;
+                
+                if (A[downFish] < A[i]) {
+                    downFishes.pop();
+                    
+                    if (downFishes.isEmpty()) {
+                        break;
+                    }
+                    
+                    downFish = downFishes.peek();
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        else {    // down fish
+            downFishes.add(i);
+            aliveCount++;
+        }
+    }
+    
+    return aliveCount;
+}
+~~~
+
+
+### 다른사람 풀이 2 100%
+>http://reddeco.tistory.com/entry/Fish  
+>내려가는 생선을 Stack에 담고 올라오는 생선과 while문으로 비교한다.  
+>생선은 올라가는데 Stack이 비어있을때만 올라가는 생선 숫자를 ++하여 살아서 올라가는 생선 수와 Stack(살아서내려가는 생선들)의 사이즈를 합하여 반환한다.  
+>위의 코드보다는 직관적이어서 보는 입장에서 이해하기가 더 쉽다.
+
+~~~java
+import java.util.*;
+ 
+class Solution {
+    public int solution(int[] A, int[] B) {
+        // A : fish size
+        // B : direction (0-up, 1-down)
+         
+        int count = 0;
+        Stack<integer> down = new Stack<integer>();
+         
+        for (int i = 0; i < A.length; i++) {
+            if (B[i] == 0) { // up
+                if (down.empty()) {
+                    count++;
+                } else {
+                    while (!down.empty()) {
+                        if (down.peek() > A[i]) {
+                            break;
+                        } else {
+                            down.pop();
+                        }
+                    }
+                    if (down.empty()) {
+                        count++;
+                    }
+                }
+            } else { // down
+                down.push(A[i]);
+            }
+        }
+         
+        return count + down.size();
     }
 }
 ~~~
