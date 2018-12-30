@@ -3,7 +3,6 @@
 # Today I Learned (TIL)
 * 인생은 마라톤! 꾸준한 성장을 위해 개발 경험과 학습 내용을 기록한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
-* [아침공부 기록소](https://github.com/Integerous/TIL/tree/master/Early-Bird)에 출근 전에 학습한 내용을 정리한다.
 
 ----------------------------------------------------------------------------------------------------------------------
 ### 목차
@@ -32,9 +31,6 @@
 - [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Flow.md)
 - [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
 - [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
-
-### 아침공부 기록소!
-* 매일 출근 전에 학습한 내용을 기록하는 저장소 => [아침공부 기록소!](https://github.com/Integerous/TIL/tree/master/Early-Bird)
 
 <a name="m1">
  
