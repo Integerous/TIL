@@ -167,5 +167,154 @@ public class BootSpringBootApplication {
 - @Value vs @ConfigurationProperties
 - AOP
 
+## setting.gradle
+>프로젝트의 구성을 정의하는 스크립트
 
+`rootProject.name = 'spring-boot'`  
+프로젝트를 import하면 위의 설정에 따라 spring-boot라는 프로젝트 이름으로 선언된다.
+
+- 멀티 프로젝트 구성시 사용
+- 프로젝트 이름 설정
+- 하위 프로젝트 정의
+- 하위 프로젝트 설명(주석으로)
+
+
+## Gradle Wrapper
+>Wrapper가 나오기 전에는 Gradle을 사용하기 위해서는 사용자가 수동으로 다운로드 받아야했다.  
+>그래서 Gradle 버전의 차이가 발생했었는데, Wrapper가 도입되어 이런 문제가 줄어들었다.
+
+### 동작 방식
+프로젝트 생성하고 Gradle 빌드를 실행하면 (`./gradlew build`)  
+Gradle에서 지정된 위치에 Gradle Wrapper가 gradle-wrapper.jar파일과 gradle-wrapper.properties가 있는지 확인하고  
+없으면 Gradle 스크립트에 의해서 배포서버에 가서 gradle-wrapper.jar를 내려받고  
+압축을 풀어서 특정 위치에 설치하고 jar파일을 기준으로 빌드를 실행한다.
+
+
+## @Bean vs @Component
+
+@Bean은 개발자가 제어할 수 없는 외부에서 작성된 클래스들을 스프링 Bean으로 등록할 때 사용.    
+@Component는 내가 작성한 컴포넌트 클래스에 사용.
+
+### @Component vs @Service
+트랜잭션(데이터를 불러와서 조작을 하고 데이터를 저장하는 하나의 큰 흐름)안에서 관리를 할 경우에는 @Service 사용.  
+트랜잭션 처리가 필요 없는 경우에는 @Component 사용.
+
+### 스프링 빈(Bean)객체 vs @Bean
+스프링 IoC 컨테이너에서 생성하고 호출하고 소멸되기까지 생명주기를 관리하는 객체를 스프링 Bean 객체라 하고,
+그러한 객체 중에 하나가 @Bean 애너테이션이 붙어있는 클래스다.
+
+
+## 의존성 주입(DI)
+>개발자가 인스턴스를 호출해서 쓰는 것이 아니라, 프레임워크에 등록을 해놓고 가져다 쓰는 것.
+
+
+### 라이브러리 사용 (인스턴스 생성해서 사용)
+~~~java
+public class ObjectMapperTest {
+
+    @Test
+    public void test() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        Book book =
+            new Book("test-book", "test-isbn13", "test-isbn10");
+
+        String strBook = objectMapper.writeValueAsString(book);
+        // 검증 생략
+    }
+}
+~~~
+
+### 프레임워크 사용
+>스프링과 같은 IoC컨테이너에서는 위의 예시처럼 ObjectMapper 인스턴스를 선언해서 사용할 필요가 없다.  
+>application-context가 구동되는 상황에서 이미 어딘가에서 ObjectMapper를 스프링 빈으로 선언해서 구성해놨기 때문에 아래와 같이 @Autowired를 필드에 정의해놓으면 스프링컨테이너가 @Autowired를 인식하고 ObjectMapper를 주입해준다.
+
+~~~java
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
+public class ObjectMapperTest2 {
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @Test
+    public void test() throws JsonProcessingException {
+        Book book =
+            new Book("test-book", "test-isbn13", "teset-isbn10");
+
+        String strBook = objectMapper.writeValueAsString(book);
+        // 검증 생략
+    }
+}
+~~~
+
+### 의존성 주입 방법 3가지
+
+1. 생성자 주입 방식(권장)
+>생성자가 1개만 있어야 사용 가능
+~~~java
+@Service //이 애노테이션을 스프링이 확인하고 관리해야 할 컴포넌트로 인식하여 가지고 있는 것을 주입해준다.
+public class BookServiceImpl implements BookService {
+    private final BookRepository repository;
+
+    public BookServiceImpl(BookRepository repository) {
+        this.repository = repository;
+    }
+    // 코드 생략
+}
+~~~
+
+2. 설정자 주입 방식(Setter)
+~~~java
+@Service
+public class BookServiceImpl implements BookService {
+    private BookRepository repository;
+
+    @Autowired
+    public void setRepository(BookRepository repository) {
+        this.repository = repository;
+    }
+    // 코드 생략
+}
+~~~
+
+3. 필드에 @Autowired 선언
+>처음에는 이 방식을 많이 사용하지만, 점차 테스트나 확장성을 고려하기 시작하면  
+>생성자 주입방식과 설정자 주입방식을 사용하게 된다.
+
+~~~java
+@Service
+public class BookServiceImpl implements BookService {
+    
+    @Autowired
+    private BookRepository repository;
+    // 코드 생략
+}
+~~~
+
+## 일반적인 개발 방향
+1. 영속화(Persistence) - @Repository
+    - Entity와 Repository 작성
+2. 서비스(Service) - @Service
+    - Repository를 이용하는 Service 작성
+3. 표현(Presentation) - @Controller
+    - Service를 이용하는 Controller 작성
+4. 계층(Layer) - @Component
+
+## Spring Data JPA
+>JPA를 구현한 구현체 중에 Hibernate가 있고, 이를 쉽게 추상화한 라이브러리가 Spring Data JPA
+>[김영한님의 JPA 소개 [슬라이드]](https://www.slideshare.net/zipkyh/ksug2015-jpa1-jpa-51213397)  
+>[김영한님의 Spring Data JPA [슬라이드]](https://www.slideshare.net/zipkyh/spring-datajpa)
+
+- ORM(Object-Relational Mapping)
+ - 대부분 개발언어 플랫폼마다 제공
+ - 객체로 관계형 데이터베이스(RDBS)를 관리
+- JPA(Java Persistence API)
+ - Java 객체 정보를 영속화하는 중간 과정을 처리한다.
+ - Entity 객체를 저장하고 변경하고 삭제하면 그에 대응하는 쿼리(Query)를 생성하고 실행한다.
+
+## 비즈니스 로직 구현에만 집중해라!
+- 영속화 계층(@Repository)에서는 Entity 관리만
+- 비즈니스 로직 구현은 도메인 영역에서
+- 서로 다른 도메인 사이에 연계는 서비스 계층(@Service)에서
+- 외부요청에 대한 처리는 컨트롤러 계층(@Controller)에서
 
