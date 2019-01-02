@@ -33,3 +33,25 @@ alter table tbl_reply add constraint fk_board foreign key (bno) references tbl_b
 - on delete **set null** - 부모테이블 컬럼 삭제 -> 자식테이블 컬럼이 모두 NULL 된다.
 - on delete **no action** - 부모테이블 컬럼 삭제 -> 무시
 - on delete **set default** - 부모테이블 컬럼 삭제 -> 지정된 값으로 대체
+
+## 4.
+
+~~~sql
+<select id="listWithOption" parameterType="kr.cloudcash.jetsurf.model.Product" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	, t.prod_option_json
+  	from t_product p
+  		, (select t."prodSeq" prod_seq, array_to_json(array_agg(row_to_json(t))) prod_option_json
+  			from (select po.prod_seq "prodSeq", po.opt_seq "optSeq", po.opt_name "optName", po.prod_opt_img "prodOptImg", po.color "color"
+  					from t_prod_opt po
+  						, t_product p
+  					where po.prod_seq = p.prod_seq
+  						and po.sale_cond = '01'
+  						and p.sale_cond = '01'
+  					) t
+  			group by prod_seq
+  			) t
+  	where p.prod_seq = t.prod_seq;	
+  </select>
+~~~
