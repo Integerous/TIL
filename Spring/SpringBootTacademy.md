@@ -603,3 +603,57 @@ public class LocalApiConfig {
   
 5. 프로그래밍적 코드 구현
 
+
+# bookstore24 프로젝트 구현해보기
+
+## 프로젝트 모듈 구성
+- common : 프로젝트에서 공통으로 사용하는 유틸리티 (예외 등)
+- core : 프로젝트 도메인(@Entity, @Repository)
+- api : 외부에 정보를 제공하는 REST API 모듈
+- admin : 서비스를 관리하기 위한 백오피스
+- batch : 정기적으로 실행될 배치 프로그램 모음
+- message : 알림톡, SMS, 메일 발송 등 담당
+
+## gitignore.io
+>빌드가 되고나면 바이트코드(.class 파일)로 변환된 것들은 버전 관리가 필요없다.
+
+## 프로파일 구성
+- local : 개발자 로컬 실행환경
+  - 개발자가 자유롭게 초기화 및 구성을 수행할 수 있다.
+- test : 통합테스트 환경(주로 빌드 전 실행된다)
+  - 테스트 실행때마다 초기화된다.
+- dev : 개발서버 실행환경
+  - 운영서버와 동일한 환경을 가지며 개발 기능을 확인하는 용도로 사용된다.
+- beta : (준)운영서버 실행환경
+  - 운영서버와 동일한 환경으로 큰 배포에 앞서서 운영서버의 데이터를 복제하여 정상동작확인
+- prod :  운영서버 실행환경
+  - 가급적 손대지 않아야 할 환경
+  
+### application-api.yml
+
+~~~yml
+google:
+  map:
+    api-key: 00000-0000-00000
+
+--- //문서 구분자(---)
+spring.profile: dev
+google:
+  map:
+    api-key: 12341-1234-12345
+    
+---
+spring.profile: beta
+google:
+  map:
+    api-key: 12341-1234-41321
+
+---
+...
+~~~
+
+### application-datasource.yml
+
+~~~yml
+
+~~~
