@@ -511,7 +511,7 @@ public class BookController {
 }
 ~~~
 
-### REST API
+## REST API
 - 시스템의 자원(Resource)에 대한 접근 및 제어를 제공하는 API
 - 자원(ex: book)에 대한 접근 및 제어
   - GET /books
@@ -521,4 +521,85 @@ public class BookController {
   - DELETE /books/{booksId}
 - 스프링에서는 요청에 따라 등록되어 있는 적절한 HttpMessageConverter를 통해서 응답데이터를 반환한다.
 
+## Spring REST DOCs
+>컨트롤러와 관련된 테스트코드를 작성하면서 API문서를 만드는 기능
+- https://spring.io/projects/spring-restdocs
+- Spring MVC test와 Asciidoctor 조합을 통해서 RESTful 서비스에 대한 문서화 지원
+- 작성된 테스트코드에 대한 아스키독 조각 생성
+- 개발자가 아스키독 조각을 모아 `아스키독 문서`를 작성한다.
+- 코드에 침투적이지 않은 노력에 따라 고품질의 코드가 될 수 있음
+
+## @Profile
+>@Profile 어노테이션을 이용해서 어플리케이션이 실행되는 환경에 따라서 bean을 등록하거나 제외시킬 수 있다.
+
+### 예시 1 - 클래스에 선언
+~~~java
+@Profile("local") //local 프로파일이 활성화 되었을 때만 이 구성이 활성화 된다.
+@Configuration
+public class LocalApiConfig {
+
+    @Autowired
+    private RestTemplateBuilder restTemplateBuilder;
+    
+    @Bean
+    public RestTemplate restTemplate() {
+        return restTemplateBuilder.build();
+    }
+}
+~~~
+
+### 예시 2 - 메소드에 선언
+~~~java
+@Configuration
+public class LocalApiConfig {
+
+    @Autowired
+    private RestTemplateBuilder restTemplateBuilder;
+    
+    @Profile("local")
+    @Bean
+    public RestTemplate restTemplate() {
+        return restTemplateBuilder.build();
+    }
+    
+    @Profile("!local")
+    @Bean
+    public RestTemplate restTemplate() {
+        return restTemplateBuilder.rootUri("http://test.honeymon.io").build();
+    }
+}
+~~~
+
+## @Profile - application-{profile}.yml
+- application-datasource.yml = @Profile("datasource")
+- application-api.yml = @Profile("api")
+- application.yml
+
+
+## 스프링부트 어플리케이션 속성 정의
+1. 테스트 속성정의
+    ~~~java
+    @RunWith(SpringRunner.class)
+    @SpringBootTest(webEnvironment = DEFINED_PORT, properties = {"server.port=9090"})
+    public class BookControllerTest {}
+    ~~~
+      
+2. 실행인자 지정
+    ~~~
+    $ java -jar spring-boot.0.0.1SNAPSHOT.jar \
+      --server.port=9000
+    ~~~
+    
+3. 운영체제 환경변수 지정
+    ~~~
+    $ SERVER_PORT=9000 \
+      SPRING_PROFILES_ACTIVE=local \
+      java -jar api-0.0.1-SNAPSHOT.jar
+    ~~~
+    
+4. 속성파일(application.yml or application.properties) 지정
+  - @EnableConfigurationProperties
+  - @ConfigurationProperties
+  
+5. 프로그래밍적 코드 구현
 
