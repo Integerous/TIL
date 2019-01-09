@@ -318,3 +318,207 @@ public class BookServiceImpl implements BookService {
 - 서로 다른 도메인 사이에 연계는 서비스 계층(@Service)에서
 - 외부요청에 대한 처리는 컨트롤러 계층(@Controller)에서
 
+## 실습
+
+### 1. Book 엔티티 생성
+~~~java
+import org.springframework.data.jpa.domain.AbstractPersistable;
+import javax.persistance.Entity;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+public class Book extends AbstractPersistable<Long> {
+  
+  // @Id
+  // @GeneragedValue
+  // private Long id; // id는 AbstractPersistable<>에 선언되어있기 때문에 선언할 필요가 없다.
+  
+  private String name;
+  private String isbn13;
+  private String isbn10;
+  
+  //빌더 패턴 생략
+}
+~~~
+
+### 2. BookRepository 생성
+~~~java
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+//@Repository 이것은 필요없다. SimpleJpaRepository가 가지고 있다. 때문에 DataJpa가 우리가 가지고 있는 Jpa를 구현체로 바꾸면서 SimpleJpaRepository로 프록시처리를 해주기 때문에 @Repository 선언을 하지 않아도 된다.
+public interface BookRepository extends JpaRepository<Book, Long> {
+  
+  // 이것으로 Book 엔티티를 다루는 repository 작성 끝
+  
+  List<Book> findByNameLike(String name);
+}
+~~~
+
+### 3. BookRepositoryTest 생성
+~~~java
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class BookRepositoryTest {
+
+  @Autowired
+  BookRepository repository; //이렇게하면 이 테스트가 실행될 때 BookRepository가 필드에 자동으로 주입된다.
+  
+  @Test
+  public void testSave() { //이 메소드에서 우클릭하고 RunAs -> JUnit Test 실행
+    
+      Book book = new Book();
+      book.setName("boot-spring-boot");
+      book.setIsbn10("0123456789");
+      book.setIsbn13("012345678912");
+
+      // isNew()는 아직 영속화되지 않은(하이버네이트 엔티티 매니저가 관리하고있지 않은) 것을 확인할 때 많이 사용
+      assertThat(book.isNew()).isTrue(); //id값을 가지고있지 않은 새로운 객체라는 것을 테스트
+
+      repository.save(book);
+
+      assertThat(book.isNew()).isFalse(); //위에서 추가했기 때문에 이제는 새로운 객체가 아님
+    
+    
+  @Test
+  public void testFindByNameLike() {
+      
+      Book book = new Book();
+      book.setName("boot-spring-boot");
+      book.setIsbn10("0123456789");
+      book.setIsbn13("012345678912");
+      
+      repository.save(book);
+      
+      List<Book> books = repository.findByNameLike("boot");
+      assertThat(books).isNotEmpty(); // boot가 들어간 내용이 있으므로 isNotEmpty가 통과
+      
+      books = repository.findByNameLike("book");
+      assertThat(books).isEmpty(); // book으로 저장하지 않았기 때문에 empty가 통과
+  
+}  
+~~~
+
+### @Service
+- 트랜잭션(@Transactional) 관리영역 (exception 발생시 데이터 rollback)
+- 서로 다른 도메인 연계(DI, @Autowired)작업 영역
+- @Controller와 @Repository 사이의 중계
+
+
+### 4. BookService 생성
+>`BookService를 클래스로 생성하냐 vs BookService를 인터페이스로 생성하여 메소드를 작성하고 BookServiceImpl 구현체를 만드냐`의 논쟁이 있음.  
+>정답이 없으나 강사는 후자 선호
+
+~~~java
+public interface BookService {
+    
+    Optional<Book> findById(Long Id);
+}
+~~~
+
+
+~~~java
+@Service  
+@Transactional //이 서비스 안의 메소드가 호출될 때 트랜잭션을 관리하겠다. //조회만 할때는 @Transactional 필요없음
+public class BookServiceImpl implements BookService {
+
+    private final BookRepository bookRepository; //생성자 주입방식으로 쓰기 위해
+    
+    public BookServiceImpl(BookRepository bookRepository) { // 생성자 주입방식으로 BookRepository를 빈으로 등록
+        this.bookRepository = bookRepository;
+    }
+    
+    //아래 2개의 오버라이드는 BookService에 선언된 메서드 
+    @Override
+    public Optional<Book> findById(Long id) {
+        return bookRepository.findById(id);
+    }
+    
+    @Override
+    public List<Book> findAll(OffSetPageRequest request) {
+        return bookRepository.findAll(request.getPageRequest()).getContent();
+    }
+}
+~~~
+
+### 5. BookServiceTest 생성
+
+~~~java
+@RunWith(SpringRunner.class) //@RunWith는 테스트가 실행될 환경을 선언
+@SpringBootTest(webEnvironment=WebEnvironment.NONE) //서비스계층은 웹어플리케이션 컨텍스트까지 띄울 필요가 없어서 None으로 지정
+public class BookServiceTest {
+
+    @Autowired
+    BookService bookService;
+    
+    @Test(expectd=RuntimeException.class) //이 테스트에서 런타임에러가 생길 것이라 가정하고 테스트.(그럼 예외 발생해도 테스트 통과)
+    public void testFindById() {
+        Long id = 1L;
+        bookService.findById(id)
+                      .orElseThrow() -> new RuntimeException("Not found")); //id값을 찾지 못하면 예외를 던지겠다.
+~~~
+
+### @Controller
+- DispatcherServlet에 등록된 @RequestMapping 호출됨
+- 템플릿 엔진이 렌더링할 view 페이지를 지정
+- 호출된 API에서 처리한 응답을 반환
+
+### @Controller 예외처리
+- @ControllerAdvice를 이용한 처리
+
+~~~java
+
+//@RestController 선언한 컨트롤러에서 예외 발생했을 때 GlobalRestControllerAdvice 클래스가 전담
+
+@ControllerAdvice(annotations = {RestController.class})
+@ResponseBody
+public class GlobalRestControllerAdvice {
+
+    @ExceptionHandler(BookNotFoundException.class)
+    public ApiResponse<Void> handleException(Exception e) { 
+        Log.error("Occurred Exception: {}", e);
+        return ApiResponse.error(e.getMessage());
+~~~
+
+
+### 6. BookController 생성
+
+~~~java
+@RestController
+@RequestMapping("/books")
+public class BookController {
+    
+    // Controller에서는 서비스를 여러 개 사용하는 경우가 많아서
+    // 생성자 주입 방식보다는 @Autowired 로 스프링빈을 주입받는 방식을 많이 사용한다.
+    @Autowired
+    BookService bookService;
+    
+          // 생성자 주입 방식
+          //private final BookService service;
+          //public BookController(BookService service) {
+          //    this.service = service;
+          //}
+    
+    @GetMapping("/{bookId}")
+    public ResponseEntity<Book> findAll(Long bookId) {
+        Book book = bookService.findById(bookId)
+                    .orElseThrow(() -> new RuntimeException("Not found: "+ bookId));
+       
+        return ResponseEntity.ok(book); //요청에 따라 상태값을 줌
+    }
+}
+~~~
+
+### REST API
+- 시스템의 자원(Resource)에 대한 접근 및 제어를 제공하는 API
+- 자원(ex: book)에 대한 접근 및 제어
+  - GET /books
+  - GET /books/{books}
+  - POST /books
+  - PUT /books/{bookId}
+  - DELETE /books/{booksId}
+- 스프링에서는 요청에 따라 등록되어 있는 적절한 HttpMessageConverter를 통해서 응답데이터를 반환한다.
+
+
