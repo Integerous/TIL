@@ -1,12 +1,11 @@
 # 스프링 부트를 이용한 웹 서비스 개발
->작성중  
 >[Tacademy 강의](https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=145#sec2)  
 >강사: 김지헌(Honeymon, 현 우아한형제들 개발자)
 
 스프링부트는 톰캣과 같은 WAS가 설치된 곳에 WAR파일을 배포하는 것이 아니라  
 자기 자신을 배포하고 실행할 수 있는 아키텍쳐를 가지게 되었다.
 
-## 스프링 부트 특징
+## 1. 스프링 부트 특징
 >스프링부트 프로젝트에 명시된 [Spring boot feature](https://spring.io/projects/spring-boot)
 - 단독실행 가능한 스프링 어플리케이션 생성
 - 내장 컨테이너로 Tomcat, Jetty, Undertow 중에서 선택가능 (WAR파일로 배포할 필요 없음)
@@ -15,10 +14,10 @@
 - 제품출시(realease) 후, 운영에 필요한 다양한 기능(metrics, health check, externalized configuration) 제공
 - XML 구성 필요없음
 
-## 스프링 부트를 한마디로?
+### 1.1. 스프링 부트를 한마디로?
 >스프링 프레임워크를 기반으로한 개발플랫폼
 
-## 스프링 부트 구성 요소
+## 2. 스프링 부트 구성 요소
 >아래 4가지 요소가 스프링 부트 개발 플랫폼을 이룬다.
 
 1. 빌드도구 (Gradle vs Maven)
@@ -26,7 +25,7 @@
 3. 스프링 부트(v1.5 vs v2.0)
 4. 스프링 부트 스타터(spring-boot-starter)
 
-## 빌드
+## 3. 빌드
 Spring Initializr(https://start.spring.io)에서 시작
 
 Eclipes 나 IntelliJ에서 스프링 부트를 사용하는 것도  
@@ -37,15 +36,15 @@ Eclipes 나 IntelliJ에서 스프링 부트를 사용하는 것도
 Gradle이 Groovy를 DSL(Domain Specification Language)로 자체언어로 사용하고 있지만 
 그 외적인 부분에서는 Groovy의 유저는 많지 않다.
 
-## Gradle
+## 4. Gradle
 
 Gradle와 Maven은 각각 프로젝트의 의존성과 기본적인 빌드 동작을 선언하는 스크립트가 있다.  
 Gralde은 build.gradle , Maven은 pom.xml  
 build.gradle 스크립트 안에는 buildscript 라는 선언부에서 스프링 부트 Gradle 플러그인을 선언한다.
 
-## 프로젝트 기본 코드구조
+## 5. 프로젝트 기본 코드구조
 
-### Gradle
+### 5.1. Gradle
 
 - build.gradle
 - gradle
@@ -75,7 +74,7 @@ build.gradle 스크립트 안에는 buildscript 라는 선언부에서 스프링
 
 >빌드가 실행되면 컴파일 단계에서는 `src-main-java`와 `src-main-resources` 영역만 컴파일되고 패키징되어 배포된다.
 
-## (Excecutable) JAR vs WAR
+## 6. (Excecutable) JAR vs WAR
 
 기존의 배포 형태는 서버에 톰캣과 같은 WAS가 설치되어 있고, WAS의 특정 위치에 springboot.war라는 배포본을 업로드하면 톰캣이 파일을 읽어들여서 실행하는 형태였다면,  
 
@@ -83,13 +82,13 @@ build.gradle 스크립트 안에는 buildscript 라는 선언부에서 스프링
 
 Docker 같은 컨테이너 안에서도 실행가능한 jar파일을 배포하고 java 빌드팩을 설치해서 작은 단위의 컨테이너 안에서도 어플리케이션을 실행할 수 있다.
 
-## 스프링 부트 v1.5 vs v2.0
+### 6.1. 스프링 부트 v1.5 vs v2.0
 >스프링 프레임워크 4를 쓰느냐 5를 쓰느냐의 차이  
 >2019년 8월 1일부로 스프링부트 v1.5 버전은 끝날 예정이기 때문에 2.0 사용 권장
 
-## 스프링 부트는 Annotation 기반 동작
+## 7. 스프링 부트는 Annotation 기반 동작
 
-### 스프링 부트를 구성하는 Annotation
+### 7.1. 스프링 부트를 구성하는 Annotation
 - @SpringBootApplication
 - @ComponentScan
 - @EnableAutoConfiguration
@@ -100,7 +99,7 @@ Docker 같은 컨테이너 안에서도 실행가능한 jar파일을 배포하�
 - @ConfigurationProperties
 
 
-### @SpringBootApplication
+### 7.2. @SpringBootApplication
 
 ~~~java
 @SpringBootApplication
@@ -115,7 +114,7 @@ public class BootSpringBootApplication {
 2. `SpringApplication.run(BootSpringBootApplication.class, args);`이라는 클래스가 실행되면서, 이 안에서 Spring IoC Container라는 객체를 관리하는 컨테이너를 실행시키고,
 3. `@SpringBootApplication` 어노테이션이 붙은 위치를 기준으로 하향식으로 밑에 있는 패키지를 탐색하는 것이 스프링 부트의 기본적인 동작 방식이다.
 
-## Spring boot starter
+## 8. Spring boot starter
 
 스프링 부트 스타터는 `spring-boot-autoconfigure`와 `spring-boot-dependencies` 두 개의 모듈이 합쳐져서 기본 동작을 한다.
 
@@ -130,7 +129,7 @@ public class BootSpringBootApplication {
 
 스프링 부트 개발팀에서 공식적으로 지원하는 스타터의 목록과 커뮤니티에서 제공하는 스타터 목록을 [스프링 프로젝트 깃헙](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-starters)에서 확인 가능하다.
 
-## 자동구성(Auto-configuration)
+## 9. 자동구성(Auto-configuration)
 - 스프링 부트가 기술흐름에 따라 제공하는 관례(Convention)적인 구성
 - 자동구성이 어떻게 되는지 살펴보려면 스프링 프로젝트 깃헙의 [spring-boot-autoconfigure](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure)이라는 모듈을 보면 된다.
 - 동작 선언
@@ -140,10 +139,10 @@ public class BootSpringBootApplication {
     - @Configuration
     - @ConditionalOn
 
-## 외부구성(External Configuration)
+## 10. 외부구성(External Configuration)
 >스프링 부트는 어플리케이션 속성을 외부로부터 주입받아서 적용할 수 있다.
 
-### 적용 우선순위 (원래는 13단계)
+### 10.1. 적용 우선순위 (원래는 13단계)
 >1번부터 적용하고 뒤로 갈수록 덮어쓰는 형태
 
 1. 실행 인자 (터미널 상에서 실행하거나 AWS에서 환경변수로 전달하는 경우)
@@ -153,7 +152,7 @@ public class BootSpringBootApplication {
 5. application.yml 또는 application.properties
 6. application-{defaultprofiles}.yml 또는 application-{defaultprofiles}.properties
 
-## Programming in Spring Environment
+## 11. Programming in Spring Environment
 
 - @ComponentScan을 통해 아래의 어노테이션들이 붙은 클래스들을 탐색해서 스프링 빈으로 등록하고 ApplicationContext에 적재
   - @Repository
@@ -167,7 +166,7 @@ public class BootSpringBootApplication {
 - @Value vs @ConfigurationProperties
 - AOP
 
-## setting.gradle
+## 12. setting.gradle
 >프로젝트의 구성을 정의하는 스크립트
 
 `rootProject.name = 'spring-boot'`  
@@ -179,36 +178,36 @@ public class BootSpringBootApplication {
 - 하위 프로젝트 설명(주석으로)
 
 
-## Gradle Wrapper
+## 13. Gradle Wrapper
 >Wrapper가 나오기 전에는 Gradle을 사용하기 위해서는 사용자가 수동으로 다운로드 받아야했다.  
 >그래서 Gradle 버전의 차이가 발생했었는데, Wrapper가 도입되어 이런 문제가 줄어들었다.
 
-### 동작 방식
+### 13.1. 동작 방식
 프로젝트 생성하고 Gradle 빌드를 실행하면 (`./gradlew build`)  
 Gradle에서 지정된 위치에 Gradle Wrapper가 gradle-wrapper.jar파일과 gradle-wrapper.properties가 있는지 확인하고  
 없으면 Gradle 스크립트에 의해서 배포서버에 가서 gradle-wrapper.jar를 내려받고  
 압축을 풀어서 특정 위치에 설치하고 jar파일을 기준으로 빌드를 실행한다.
 
 
-## @Bean vs @Component
+## 14. @Bean vs @Component
 
 @Bean은 개발자가 제어할 수 없는 외부에서 작성된 클래스들을 스프링 Bean으로 등록할 때 사용.    
 @Component는 내가 작성한 컴포넌트 클래스에 사용.
 
-### @Component vs @Service
+### 14.1. @Component vs @Service
 트랜잭션(데이터를 불러와서 조작을 하고 데이터를 저장하는 하나의 큰 흐름)안에서 관리를 할 경우에는 @Service 사용.  
 트랜잭션 처리가 필요 없는 경우에는 @Component 사용.
 
-### 스프링 빈(Bean)객체 vs @Bean
+### 14.2. 스프링 빈(Bean)객체 vs @Bean
 스프링 IoC 컨테이너에서 생성하고 호출하고 소멸되기까지 생명주기를 관리하는 객체를 스프링 Bean 객체라 하고,
 그러한 객체 중에 하나가 @Bean 애너테이션이 붙어있는 클래스다.
 
 
-## 의존성 주입(DI)
+## 15. 의존성 주입(DI)
 >개발자가 인스턴스를 호출해서 쓰는 것이 아니라, 프레임워크에 등록을 해놓고 가져다 쓰는 것.
 
 
-### 라이브러리 사용 (인스턴스 생성해서 사용)
+### 15.1. 라이브러리 사용 (인스턴스 생성해서 사용)
 ~~~java
 public class ObjectMapperTest {
 
@@ -225,7 +224,7 @@ public class ObjectMapperTest {
 }
 ~~~
 
-### 프레임워크 사용
+### 15.2. 프레임워크 사용
 >스프링과 같은 IoC컨테이너에서는 위의 예시처럼 ObjectMapper 인스턴스를 선언해서 사용할 필요가 없다.  
 >application-context가 구동되는 상황에서 이미 어딘가에서 ObjectMapper를 스프링 빈으로 선언해서 구성해놨기 때문에 아래와 같이 @Autowired를 필드에 정의해놓으면 스프링컨테이너가 @Autowired를 인식하고 ObjectMapper를 주입해준다.
 
@@ -247,7 +246,7 @@ public class ObjectMapperTest2 {
 }
 ~~~
 
-### 의존성 주입 방법 3가지
+### 15.3. 의존성 주입 방법 3가지
 
 1. 생성자 주입 방식(권장)
 >생성자가 1개만 있어야 사용 가능
@@ -291,7 +290,7 @@ public class BookServiceImpl implements BookService {
 }
 ~~~
 
-## 일반적인 개발 방향
+## 16. 일반적인 개발 방향
 1. 영속화(Persistence) - @Repository
     - Entity와 Repository 작성
 2. 서비스(Service) - @Service
@@ -300,7 +299,7 @@ public class BookServiceImpl implements BookService {
     - Service를 이용하는 Controller 작성
 4. 계층(Layer) - @Component
 
-## Spring Data JPA
+## 17. Spring Data JPA
 >JPA를 구현한 구현체 중에 Hibernate가 있고, 이를 쉽게 추상화한 라이브러리가 Spring Data JPA
 >[김영한님의 JPA 소개 [슬라이드]](https://www.slideshare.net/zipkyh/ksug2015-jpa1-jpa-51213397)  
 >[김영한님의 Spring Data JPA [슬라이드]](https://www.slideshare.net/zipkyh/spring-datajpa)
@@ -312,15 +311,15 @@ public class BookServiceImpl implements BookService {
  - Java 객체 정보를 영속화하는 중간 과정을 처리한다.
  - Entity 객체를 저장하고 변경하고 삭제하면 그에 대응하는 쿼리(Query)를 생성하고 실행한다.
 
-## 비즈니스 로직 구현에만 집중해라!
+## 18. 비즈니스 로직 구현에만 집중해라!
 - 영속화 계층(@Repository)에서는 Entity 관리만
 - 비즈니스 로직 구현은 도메인 영역에서
 - 서로 다른 도메인 사이에 연계는 서비스 계층(@Service)에서
 - 외부요청에 대한 처리는 컨트롤러 계층(@Controller)에서
 
-## 실습
+## 19. 실습
 
-### 1. Book 엔티티 생성
+### 19.1. Book 엔티티 생성
 ~~~java
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistance.Entity;
@@ -343,7 +342,7 @@ public class Book extends AbstractPersistable<Long> {
 }
 ~~~
 
-### 2. BookRepository 생성
+### 19.2. BookRepository 생성
 ~~~java
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -357,7 +356,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 }
 ~~~
 
-### 3. BookRepositoryTest 생성
+### 19.3. BookRepositoryTest 생성
 ~~~java
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -401,13 +400,13 @@ public class BookRepositoryTest {
 }  
 ~~~
 
-### @Service
+### 19.4. @Service
 - 트랜잭션(@Transactional) 관리영역 (exception 발생시 데이터 rollback)
 - 서로 다른 도메인 연계(DI, @Autowired)작업 영역
 - @Controller와 @Repository 사이의 중계
 
 
-### 4. BookService 생성
+### 19.5. BookService 생성
 >`BookService를 클래스로 생성하냐 vs BookService를 인터페이스로 생성하여 메소드를 작성하고 BookServiceImpl 구현체를 만드냐`의 논쟁이 있음.  
 >정답이 없으나 강사는 후자 선호
 
@@ -443,7 +442,7 @@ public class BookServiceImpl implements BookService {
 }
 ~~~
 
-### 5. BookServiceTest 생성
+### 19.6. BookServiceTest 생성
 
 ~~~java
 @RunWith(SpringRunner.class) //@RunWith는 테스트가 실행될 환경을 선언
@@ -460,12 +459,12 @@ public class BookServiceTest {
                       .orElseThrow() -> new RuntimeException("Not found")); //id값을 찾지 못하면 예외를 던지겠다.
 ~~~
 
-### @Controller
+### 19.7. @Controller
 - DispatcherServlet에 등록된 @RequestMapping 호출됨
 - 템플릿 엔진이 렌더링할 view 페이지를 지정
 - 호출된 API에서 처리한 응답을 반환
 
-### @Controller 예외처리
+### 19.8. @Controller 예외처리
 - @ControllerAdvice를 이용한 처리
 
 ~~~java
@@ -483,7 +482,7 @@ public class GlobalRestControllerAdvice {
 ~~~
 
 
-### 6. BookController 생성
+### 19.9. BookController 생성
 
 ~~~java
 @RestController
@@ -511,7 +510,7 @@ public class BookController {
 }
 ~~~
 
-## REST API
+## 20. REST API
 - 시스템의 자원(Resource)에 대한 접근 및 제어를 제공하는 API
 - 자원(ex: book)에 대한 접근 및 제어
   - GET /books
@@ -521,7 +520,7 @@ public class BookController {
   - DELETE /books/{booksId}
 - 스프링에서는 요청에 따라 등록되어 있는 적절한 HttpMessageConverter를 통해서 응답데이터를 반환한다.
 
-## Spring REST DOCs
+## 21. Spring REST DOCs
 >컨트롤러와 관련된 테스트코드를 작성하면서 API문서를 만드는 기능
 - https://spring.io/projects/spring-restdocs
 - Spring MVC test와 Asciidoctor 조합을 통해서 RESTful 서비스에 대한 문서화 지원
@@ -529,10 +528,10 @@ public class BookController {
 - 개발자가 아스키독 조각을 모아 `아스키독 문서`를 작성한다.
 - 코드에 침투적이지 않은 노력에 따라 고품질의 코드가 될 수 있음
 
-## @Profile
+## 22. @Profile
 >@Profile 어노테이션을 이용해서 어플리케이션이 실행되는 환경에 따라서 bean을 등록하거나 제외시킬 수 있다.
 
-### 예시 1 - 클래스에 선언
+### 22.1. 예시 1 - 클래스에 선언
 ~~~java
 @Profile("local") //local 프로파일이 활성화 되었을 때만 이 구성이 활성화 된다.
 @Configuration
@@ -548,7 +547,7 @@ public class LocalApiConfig {
 }
 ~~~
 
-### 예시 2 - 메소드에 선언
+### 22.2. 예시 2 - 메소드에 선언
 ~~~java
 @Configuration
 public class LocalApiConfig {
@@ -570,43 +569,43 @@ public class LocalApiConfig {
 }
 ~~~
 
-## @Profile - application-{profile}.yml
+## 23. @Profile - application-{profile}.yml
 - application-datasource.yml = @Profile("datasource")
 - application-api.yml = @Profile("api")
 - application.yml
 
 
-## 스프링부트 어플리케이션 속성 정의
-1. 테스트 속성정의
+## 24. 스프링부트 어플리케이션 속성 정의
+### 24.1. 테스트 속성정의
     ~~~java
     @RunWith(SpringRunner.class)
     @SpringBootTest(webEnvironment = DEFINED_PORT, properties = {"server.port=9090"})
     public class BookControllerTest {}
     ~~~
       
-2. 실행인자 지정
+### 24.2. 실행인자 지정
     ~~~
     $ java -jar spring-boot.0.0.1SNAPSHOT.jar \
       --server.port=9000
     ~~~
     
-3. 운영체제 환경변수 지정
+### 24.3. 운영체제 환경변수 지정
     ~~~
     $ SERVER_PORT=9000 \
       SPRING_PROFILES_ACTIVE=local \
       java -jar api-0.0.1-SNAPSHOT.jar
     ~~~
     
-4. 속성파일(application.yml or application.properties) 지정
+### 24.4. 속성파일(application.yml or application.properties) 지정
   - @EnableConfigurationProperties
   - @ConfigurationProperties
   
-5. 프로그래밍적 코드 구현
+### 24.5. 프로그래밍적 코드 구현
 
 
 # bookstore24 프로젝트 구현해보기
 
-## 프로젝트 모듈 구성
+## 25. 프로젝트 모듈 구성
 - common : 프로젝트에서 공통으로 사용하는 유틸리티 (예외 등)
 - core : 프로젝트 도메인(@Entity, @Repository)
 - api : 외부에 정보를 제공하는 REST API 모듈
@@ -614,10 +613,10 @@ public class LocalApiConfig {
 - batch : 정기적으로 실행될 배치 프로그램 모음
 - message : 알림톡, SMS, 메일 발송 등 담당
 
-## gitignore.io
+## 26. gitignore.io
 >빌드가 되고나면 바이트코드(.class 파일)로 변환된 것들은 버전 관리가 필요없다.
 
-## 프로파일 구성
+## 27. 프로파일 구성
 - local : 개발자 로컬 실행환경
   - 개발자가 자유롭게 초기화 및 구성을 수행할 수 있다.
 - test : 통합테스트 환경(주로 빌드 전 실행된다)
@@ -629,7 +628,7 @@ public class LocalApiConfig {
 - prod :  운영서버 실행환경
   - 가급적 손대지 않아야 할 환경
   
-### application-api.yml
+### 27.1. application-api.yml
 
 ~~~yml
 google:
@@ -652,7 +651,7 @@ google:
 ...
 ~~~
 
-### application-datasource.yml
+### 27.2. application-datasource.yml
 >local과 test에서는 h2 데이터베이스를 사용하고, dev, beta, prod는 정의하지 않았다.  
 >AWS beanstalk에 실행변수를 지정하는 부분이 있어서 거기서 정의한다.  
 >왜냐하면 소스코드가 노출이 되었을 때 AWS에 접근할 수 있기 때문에 Spring boot가 제공하는 외부구성을 이용한 나름의 보안적용이다.  
@@ -709,7 +708,7 @@ spring:
   profiles: prod
 ~~~
 
-### application.yml
+### 27.3. application.yml
 >datasource와 api 모듈에 대한 profiles를 쓰겠다고 선언했다.
 
 ~~~yml
@@ -720,7 +719,7 @@ spring:
       - api
 ~~~
 
-## CI/CD: 코드를 푸시하면 배포가 일어난다!
+## 28. CI/CD: 코드를 푸시하면 배포가 일어난다!
 >git-flow라는 git 버전관리 전략이 있다.  
 
 1. 기능을 정의하고 이를 관리하기 위한 이슈 발급
@@ -733,16 +732,17 @@ spring:
 8. 운영서버 배포
 9. 운영서버 적용
 
-## 이제 코딩을 해봅시다.
-1. 기본적인 개발방식은 도메인 계층을 먼저 개발
+## 29. 이제 코딩을 해봅시다.
+>https://github.com/ihoneymon/tacademy-spring-boot
+
+### 29.1. 기본적인 개발방식은 도메인 계층을 먼저 개발
   - @Repository
   - @Entity
-2. 그리고 도메인간 서로 연계되는 부분이 있는 경우 서비스 계층에서 개발
+### 29.2. 도메인간 서로 연계되는 부분이 있는 경우 서비스 계층에서 개발
   - @Service
   - @Transaction 트랜잭션 관리도 이 영역에서
-3. 외부에 노출되는 부분에서는 표현 계층에서 개발
+### 29.3. 외부에 노출되는 부분은 표현 계층에서 개발
   - @Controller, @RestController + @ViewController
   - @RequestMapping
   - ModelAndView
   
-https://github.com/ihoneymon/tacademy-spring-boot
