@@ -1,4 +1,4 @@
-# 스프링 부트를 이용한 웹 서비스 개발
+# <스프링 부트를 이용한 웹 서비스 개발> 강의내용 정리
 >[Tacademy 강의](https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=145#sec2)  
 >강사: 김지헌(Honeymon, 현 우아한형제들 개발자)
 
@@ -735,13 +735,13 @@ spring:
 ## 29. 이제 코딩을 해봅시다.
 >https://github.com/ihoneymon/tacademy-spring-boot
 
-### 29.1. 기본적인 개발방식은 도메인 계층을 먼저 개발
+1. 기본적인 개발방식은 도메인 계층을 먼저 개발
   - @Repository
   - @Entity
-### 29.2. 도메인간 서로 연계되는 부분이 있는 경우 서비스 계층에서 개발
+2. 도메인간 서로 연계되는 부분이 있는 경우 서비스 계층에서 개발
   - @Service
   - @Transaction 트랜잭션 관리도 이 영역에서
-### 29.3. 외부에 노출되는 부분은 표현 계층에서 개발
+3. 외부에 노출되는 부분은 표현 계층에서 개발
   - @Controller, @RestController + @ViewController
   - @RequestMapping
   - ModelAndView
