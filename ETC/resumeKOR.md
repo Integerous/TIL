@@ -15,12 +15,10 @@
 
 - ### **클라우드 캐시 (CLOUD CASH)**
   >- **주니어 백엔드 개발자**
-  >- **Jun 2018 - Present**
-  >- Developed mail sender module on Spring Boot environment.
-  >- Developed back office boards for admin.
-  >- Developed KakaoTalk chat bot for customer service.
-  >- Set workflow for code review with Git-flow using Bitbucket, Trello(bot) and Telegram(bot)
-  >- Set initial project structure with Spring boot, Gradle, PostgreSQL, AWS EC2.
+  >- **Jun 2018 - Jan 2019**
+  >- Back Office 관리자 페이지 개발
+  >- 카카오톡 챗봇 프로토타입 개발
+  >- Git-flow를 활용한 코드 리뷰 환경 구성
 
 - ### **현대 글로비스 (HYUNDAI GLOVIS)**
   >- **Bulk Carrier Operator**
