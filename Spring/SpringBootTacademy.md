@@ -653,7 +653,96 @@ google:
 ~~~
 
 ### application-datasource.yml
+>local과 test에서는 h2 데이터베이스를 사용하고, dev, beta, prod는 정의하지 않았다.  
+>AWS beanstalk에 실행변수를 지정하는 부분이 있어서 거기서 정의한다.  
+>왜냐하면 소스코드가 노출이 되었을 때 AWS에 접근할 수 있기 때문에 Spring boot가 제공하는 외부구성을 이용한 나름의 보안적용이다.  
+>중요한 정보와 소스코드 사이의 관계를 끊는 것이다.
 
 ~~~yml
+spring:
+  flyway:
+    enabled: false
+jpa:
+  hibernate:
+    ddl-auto: validate
+  show-sql: false
 
+---
+spring:
+  profiles: local
+  datasource:
+    url:
+jdbc:h2:file:~/ .bookstore24;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=mysql
+  h2:
+    console:
+      enabled: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/{vendor}
+    baseline-on-migrate: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+---
+spring:
+  profiles: test
+  datasource:
+    url:
+jdbc:h2:mem:bookstore24;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=mysql
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: beta
+
+---
+spring:
+  profiles: prod
 ~~~
+
+### application.yml
+>datasource와 api 모듈에 대한 profiles를 쓰겠다고 선언했다.
+
+~~~yml
+spring:
+  profiles:
+    include:
+      - datasource
+      - api
+~~~
+
+## CI/CD: 코드를 푸시하면 배포가 일어난다!
+>git-flow라는 git 버전관리 전략이 있다.  
+
+1. 기능을 정의하고 이를 관리하기 위한 이슈 발급
+2. 기능(feature)개발 하고 리뷰 받고 OK하면 develop 브랜치에 푸시
+3. 개발서버에 배포
+4. 개발서버에서 기능확인
+5. 베타서버에 배포
+6. 베타서버에서 기능관련자(기획자)의 기능확인
+7. develop 브랜치 코드를 master에 머지하고 푸시
+8. 운영서버 배포
+9. 운영서버 적용
+
+## 이제 코딩을 해봅시다.
+1. 기본적인 개발방식은 도메인 계층을 먼저 개발
+  - @Repository
+  - @Entity
+2. 그리고 도메인간 서로 연계되는 부분이 있는 경우 서비스 계층에서 개발
+  - @Service
+  - @Transaction 트랜잭션 관리도 이 영역에서
+3. 외부에 노출되는 부분에서는 표현 계층에서 개발
+  - @Controller, @RestController + @ViewController
+  - @RequestMapping
+  - ModelAndView
+  
+https://github.com/ihoneymon/tacademy-spring-boot
