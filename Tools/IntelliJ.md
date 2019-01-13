@@ -100,3 +100,25 @@
 ### 19. 프로젝트 전체에서 검색(F), 교체(R)
 - `Cmd + Shift + F(R)`
 - `Ctrl + Shift + F(R)`
+
+### 20. 파일 검색
+- `Cmd + Shift + O`
+- `Ctrl + Shift + N`
+
+### 21. 메소드 검색
+- `Cmd + Alt + O`
+- `Ctrl + Shift + Alt + N`
+
+### 22. 액션 검색
+>IntelliJ의 모든 이벤트와 옵션 검색 가능
+- `Cmd + Shift + A`
+- `Ctrl + Shift + A`
+
+### 23. 최근 열었던 파일 목록
+- `Cmd + E`
+- `Ctrl + E`
+
+### 24. 최근 수정한 파일 목록
+- `Cmd + Shift + E`
+- `Ctrl + Shift + E`
+- `Ctrl + Shift + A`
