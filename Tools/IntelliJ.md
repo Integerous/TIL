@@ -121,4 +121,24 @@
 ### 24. 최근 수정한 파일 목록
 - `Cmd + Shift + E`
 - `Ctrl + Shift + E`
-- `Ctrl + Shift + A`
+
+### 25. 자동완성
+- `Ctrl + Space`
+
+### 26. 스마트 자동완성
+- `Ctrl + Shift + Space`
+
+### 27. Static 메소드 자동완성
+- `Ctrl + Space 두 번`
+
+### 28. Getter/Setter, 생성자 등 자동생성
+- `Cmd + N`
+- `Alt + Insert`
+
+### 29. Override 메소드 자동생성
+- `Ctrl + I`
+
+### 30. Live Template 목록 확인
+>포커스 되어있는 위치 기준으로 사용 가능한 목록 반환
+- `Cmd + J`
+- `Ctrl + J`
