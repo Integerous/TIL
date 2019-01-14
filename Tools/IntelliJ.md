@@ -203,3 +203,7 @@
 ### 46. Evaluate Expression (브레이크 된 상태에서 코드 사용)
 - `Opt + F8`
 - `Alt + F8`
+
+### 47. 터미널 실행
+- `Opt + F12`
+- `Alt + F12`
