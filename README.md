@@ -6,8 +6,6 @@
 
 ----------------------------------------------------------------------------------------------------------------------
 ### 목차
-- [정성이 담긴 기록들!](#m0)
-- [Seminar](#m1)
 - [ETC](#m2)
 - [Java](#m3)
 - [Servlet & JSP](#m4)
@@ -23,23 +21,10 @@
 - [Tools](#m14)
 ----------------------------------------------------------------------------------------------------------------------
 
-<a name="m0">
-
-### 정성이 담긴 기록들!
-- [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
-- [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Flow.md)
-- [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
-- [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
-
-<a name="m1">
- 
-### Seminar 
-* [2018.06.25 - Google for Mobile 2018 I/O Recap](https://github.com/Integerous/TIL/blob/master/Seminar/Google_Mobile_IO_2018.md)
-* [2018.07.06 - 공개SW Grand Challenge](https://github.com/Integerous/TIL/blob/master/Seminar/OpenSWGrandChallenge2018.md)
-* [2018.07.19 - Red Hat API 2.0 Best Practices Workshop](https://github.com/Integerous/TIL/blob/master/Seminar/RedHat_API2.0_BestPractices_Workshop.md)
 <a name="m2">
  
 ### ETC
+* [지뢰찾기 과제](https://github.com/Integerous/TIL/blob/master/ETC/mineSweeper.md)
 * [정규표현식 정리](https://github.com/Integerous/TIL/blob/master/ETC/RegEx.md)
 * [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
 * [[번역] Web API Design (작성중)]()
