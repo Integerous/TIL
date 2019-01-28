@@ -13,7 +13,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans">
        
   <bean id="bookService"
-        class="me.whiteship.springapplicationcontext.BookService"> //1.여기까지만 하면 BookService 만들고 끝.
+        class="me.whiteship.springapplicationcontext.BookService"> //1.여기까지만 하면 BookService bean 만들고 끝.
           //2.그러므로 아래와 같이 property를 생성해서 주입해줘야 한다.
         <property name="bookRepository" ref="bookRepository" />
           //3. name은 setter에서 가져온 것이고, ref는 레퍼런스로 다른 bean을 참조한다는 것
@@ -134,7 +134,7 @@ public class ApplicationConfig {
          } */
  ~~~
  
- 위와 같이 java 설정 파일로 만든 것을 application context로 사용하기 위한 방법은 아래와 같다.
+위와 같이 java 설정 파일로 만든 것을 application context로 사용하기 위한 방법은 아래와 같다.
 
 ### 3.2. DemoApplication.java
 
@@ -152,6 +152,7 @@ public class DemoApplication {
 그래서 application.xml에서 처럼 Component scan을 이용하는 방법이 있다.
 
 ## 4. @ComponentScan 애너테이션을 활용한 bean 설정과 의존성 주입
+
 ~~~java
 @Configuration
 @ComponentScan(basePackagesClasses = DemoApplication.class) //1.DemoApplication의 위치에서부터 ComponentScan을 해라
