@@ -467,3 +467,70 @@ public class Single {
 ~~~
 
 이 방법은 코드에 스프링 코드가 들어가기 때문에 선호하지 않는다. 
+
+# Profile
+
+프로파일은 bean들의 묶음이며, 환경이다.
+
+각각의 환경에 따라 bean을 다르게 사용해야 할 경우,
+또는 특정 환경에서만 어떠한 bean을 등록해야하는 경우에 사용한다.
+
+프로파일은 ApplicationContext의 Environment를 사용한다.
+ApplicationContext가 bean factory의 역할만 하는 것은 아니다.
+ApllicationContext가 상속받고있는 EnvironmentCapable 인터페이스의 getEnvironment()를 사용하여 Environment를 가져올 수 있다.
+그리고 environment.getActiveProfile()을 통해 현재 활성화된 프로파일을 가져올 수 있다.
+
+~~~java
+@Component
+public class AppRunner implements ApllicationRunner {
+
+    @Autowired
+    ApplicationContext ctx;
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+       Environment environment = ctx.getEnvironment();
+       System.out.println(Arrays.toString(environment.getActiveProfiles());
+       System.out.println(Arrays.toString(environment.getDefaultProfiles()); // Default
+    }
+}
+~~~
+
+
+아래의 예시는 테스트 프로파일일 때만 사용되는 빈 설정 파일이다.  
+test 라는 프로파일로 어플리케이션 실행하기 전까지는 아래의 설정이 적용이 안된다.
+
+~~~java
+@Configuration
+@Profile("test")
+public class TestConfiguration {
+
+    @Bean
+    public BookRepository bookRepository() {
+        return new TestBookRepository();
+    }
+}
+~~~
+
+## 프로파일 정의 예시
+
+~~~java
+@Repository
+@Profile("test")
+public class TestBookRepository implements BookRepository {
+}
+~~~
+
+~~~java
+@Repository
+@Profile("!Prod") //Prod 프로파일이 아닌 프로파일
+public class TestBookRepository implements BookRepository {
+}
+~~~
+
+~~~java
+@Repository
+@Profile("!Prod & test") //Prod 프로파일이 아니면서 test인 프로파일
+public class TestBookRepository implements BookRepository {
+}
+~~~
