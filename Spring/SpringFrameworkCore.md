@@ -534,3 +534,46 @@ public class TestBookRepository implements BookRepository {
 public class TestBookRepository implements BookRepository {
 }
 ~~~
+
+# Property
+
+- 프로퍼티는 다양한 방법으로 정의할 수 있는 설정값
+- Environment의 역할은 프로퍼티 소스 설정 및 프로퍼티 값 가져오기
+
+~~~java
+@Component
+public class AppRunner implements ApplicationRunner {
+
+  @Autowired
+  ApplicationContext ctx;
+  
+  @Autowired
+  BookRepository bookRepository;
+  
+  @Override
+  public void run(ApplicationArguments args) throws Exception {
+       Environment environment = ctx.getEnvironment();
+       System.out.println(environment.getProperty("app.name")); // VM options에 -Dapp.name=spring5 명령
+       System.out.println(environment.getProperty("app.about")); //app.properties에 정의된 app.about
+  }
+}
+~~~
+
+~~~java
+@SpringBootApplication
+@PropertySource("classpath:/app.properties") //Environment를 통해 프로퍼티를 추가하는 방법
+public class Demospring51Application {
+       
+       public static void main(String[] args) {
+            SpringApplication.run(Demospring51Application.class, args);
+       }
+}
+~~~
+
+### Property 우선 순위
+- StandardServletEnvironment의 우선순위
+  - ServletConfig 매개변수
+  - ServletContext 매개변수
+  - JNDI (java:comp/env/)
+  - JVM 시스템 프로퍼티 (-Dkey="value")
+  - JVM 시스템 환경 변수 (운영 체제 환경 변수)
