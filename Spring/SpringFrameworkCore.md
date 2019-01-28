@@ -3,6 +3,10 @@
 
 > 작성중
 
+---
+
+# ApplicationContext와 다양한 bean 설정 방법
+
 ## 1. 고전적인 방법으로 Spring bean 설정 파일 만들고, bean 주입하기
 
 ### 1.1. application.xml
@@ -174,5 +178,136 @@ public class DemoApplication {
  public static void main(String[] args) {
   
   }
+}
+~~~
+
+---
+
+# @Autowired
+
+## 1. 생성자를 통한 의존성 주입
+~~~java
+@Service
+public class BookService {
+       
+    BookRepository bookRepository;
+
+    @Autowired
+    public BookService(BookRepository bookRespository) {
+           this.bookRepository = bookRepository;
+    }
+}
+~~~
+
+이 상태에서 어플리케이션을 실행하면 BookRepository 빈을 찾지 못해서 실행 실패.  
+아래와 같이 @Repository 혹은 @Component 어노테이션을 붙여줘야 한다.
+
+~~~java
+@Repository
+public class BookRepository {
+}
+~~~
+
+## 2. Setter를 통한 의존성 주입
+~~~java
+@Service
+public class BookService {
+       
+    BookRepository bookRepository;
+
+    @Autowired
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+}
+~~~
+
+위의 생성자를 통한 의존성 주입 방식은 빈을 못찾아서 실패했지만,  
+setter의 경우 BookRepository 없이도 BookService의 인스턴스를 생성을 할 수 있다.  
+하지만 @Autowired 때문에 의존성을 주입하려고 시도하기 때문에 실패한다.  
+
+이 때는 `@Autowired(required = false)`를 주면 의존성 주입을 선택적으로 할 수 있다.  
+그러면 BookService의 인스턴스는 만들어져서 빈으로 등록이 되고,  
+BookRepository는 의존성 주입이 안된 상태로 빈으로 등록이 된 것이다.
+
+## 3. 필드를 통한 의존성 주입
+~~~java
+@Service
+public class BookService {
+
+     @Autowired(required = false)
+     BookRepository bookRepository;
+}
+~~~
+
+이 경우 생성자를 사용한 의존성 주입은 빈을 만들때에도 개입이 된다.  
+생성자로 전달받아야 하는 타입의 bean이 없으면 무조건 인스턴스를 만들지 못하고, BookService도 등록이 안된다.
+
+반면, setter나 필드로 의존성을 주입할 때는 @Autowired(required = false)를 사용하여  
+BookService가 BookRepository의 의존성 없이도 bean으로 등록되도록 할 수 있다.
+
+## 4. 해당 타입의 빈이 여러 개인 경우
+
+예를 들어 아래와 같이 2개의 동일한 타입의 Repository가 있을 때,
+
+~~~java
+public interface BookRepository {
+}
+~~~
+
+~~~java
+@Repository
+public class MyBookRepository implements BookRepository {
+}
+~~~
+
+~~~java
+@Repository
+public class KeesunBookRepository implements BookRepository {
+}
+~~~
+
+아래와 같이 bookRepository 의존성을 주입하려 하면, 주입을 못해준다.  
+2개 중에 어떤 것을 주입해야 하는지 모르기 때문에.
+
+~~~java
+@Service
+public class BookService { 
+     
+     @Autowired
+     BookRepository bookRepository;
+}
+~~~
+
+이 경우, 아래와 같이 `@Primary` 와 `@Qualifier` 어노테이션으로 정해줄 수 있다.  
+- `@Primary` - 여러가지 중에 주로 사용할 것이다.
+- `@Qualifier` - bean의 id를 명시해준다. (@Service, @Repository 등의 애노테이션이 붙은 클래스의 bean id는 클래스명과 같고, 앞 글자만 소문자)
+
+~~~java
+@Service
+public class BookService { 
+     
+     @Autowired @Primary
+     BookRepository bookRepository;
+}
+~~~
+
+~~~java
+@Service
+public class BookService { 
+     
+     @Autowired @Qualifier("keesunBookRepository")
+     BookRepository bookRepository;
+}
+~~~
+
+해당 타입의 빈을 모두 주입받을 수도 있다.
+
+~~~java
+@Service
+public class BookService { 
+     
+     @Autowired
+     List<BookRepository> bookRepositories; 
 }
 ~~~
