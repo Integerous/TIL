@@ -5,11 +5,11 @@
 
 ---
 
-# ApplicationContext와 다양한 bean 설정 방법
+# 1. ApplicationContext와 다양한 bean 설정 방법
 
-## 1. 고전적인 방법으로 Spring bean 설정 파일 만들고, bean 주입하기
+### 1.1. 고전적인 방법으로 Spring bean 설정 파일 만들고, bean 주입하기
 
-### 1.1. application.xml
+#### 1.1.1. application.xml
 ~~~java
 <? xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -31,7 +31,7 @@
 
 위 처럼 bean 설정을 하면, 아래와 같이 ApplicationContext를 만들어서 bean 설정을 사용하면 된다.
 
-### 1.2. DemoApplication.java
+#### 1.1.2. DemoApplication.java
 
 ~~~java
 public class DemoApplication {
@@ -51,12 +51,12 @@ public class DemoApplication {
 ~~~
 
 
-하지만, 이 방법의 단점은 일일히 `<bean id=""...>`처럼 bean으로 등록하는 것이 번거롭다.
+하지만, 이 방법의 단점은 일일히 `<bean id=""...>`처럼 bean으로 등록하는 것이 번거롭다.  
 그래서 등장한 것이 `<context:component-scan...>`
 
-## 2. Component Scan로 Spring bean 설정파일 만들고, Annotation으로 bean 주입하기
+### 1.2. Component Scan로 Spring bean 설정파일 만들고, Annotation으로 bean 주입하기
 
-### 2.1. application.xml
+#### 1.2.1. application.xml
 
 ~~~java
 <? xml version="1.0" encoding="UTF-8"?>
@@ -71,7 +71,7 @@ public class DemoApplication {
     // 4.의존성 주입은 @Autowired 나 @Inject를 통해 받을 수 있다.
 ~~~
 
-### 2.2. BookRepository
+#### 1.2.2. BookRepository
 
 ~~~java
 @Repository
@@ -79,7 +79,7 @@ public class BookRepository {
 }
 ~~~
 
-### 2.3. BookService
+#### 1.2.3. BookService
 
 ~~~java
 @Service
@@ -98,9 +98,9 @@ public class BookService {
 application.xml을 읽어들이기는 하지만, xml에 등록되어있는 component-scan 기능을 사용해서  
 bean들을 me.whiteship...패키지 이하에서 애너테이션들을 스캐닝해서 등록해준다.
 
-## 3. xml파일 대신 java파일로 bean 설정하기
+### 1.3. xml파일 대신 java파일로 bean 설정하기
 
-### 3.1. Application.config
+#### 1.3.1. Application.config
 ~~~java
 @Configuration
 public class ApplicationConfig {
@@ -141,7 +141,7 @@ public class ApplicationConfig {
  
 위와 같이 java 설정 파일로 만든 것을 application context로 사용하기 위한 방법은 아래와 같다.
 
-### 3.2. DemoApplication.java
+#### 1.3.2. DemoApplication.java
 
 ~~~java
 public class DemoApplication {
@@ -157,7 +157,7 @@ public class DemoApplication {
 하지만, 이 방식의 경우에도 @Bean을 하나씩 정의해야 하므로 불편하다.
 그래서 application.xml에서 처럼 Component scan을 이용하는 방법이 있다.
 
-## 4. @ComponentScan 애너테이션을 활용한 bean 설정과 의존성 주입
+### 1.4. @ComponentScan 애너테이션을 활용한 bean 설정과 의존성 주입
 
 ~~~java
 @Configuration
@@ -185,9 +185,9 @@ public class DemoApplication {
 
 ---
 
-# @Autowired
+# 2. @Autowired
 
-## 1. 생성자를 통한 의존성 주입
+### 2.1. 생성자를 통한 의존성 주입
 ~~~java
 @Service
 public class BookService {
@@ -210,7 +210,7 @@ public class BookRepository {
 }
 ~~~
 
-## 2. Setter를 통한 의존성 주입
+### 2.2. Setter를 통한 의존성 주입
 ~~~java
 @Service
 public class BookService {
@@ -232,7 +232,7 @@ setter의 경우 BookRepository 없이도 BookService의 인스턴스를 생성�
 그러면 BookService의 인스턴스는 만들어져서 빈으로 등록이 되고,  
 BookRepository는 의존성 주입이 안된 상태로 빈으로 등록이 된 것이다.
 
-## 3. 필드를 통한 의존성 주입
+### 2.3. 필드를 통한 의존성 주입
 ~~~java
 @Service
 public class BookService {
@@ -248,7 +248,7 @@ public class BookService {
 반면, setter나 필드로 의존성을 주입할 때는 @Autowired(required = false)를 사용하여  
 BookService가 BookRepository의 의존성 없이도 bean으로 등록되도록 할 수 있다.
 
-## 4. 해당 타입의 빈이 여러 개인 경우
+### 2.4. 해당 타입의 빈이 여러 개인 경우
 
 예를 들어 아래와 같이 2개의 동일한 타입의 Repository가 있을 때,
 
@@ -314,9 +314,9 @@ public class BookService {
 }
 ~~~
 
-# 빈의 스코프
+# 3. 빈의 스코프
 
-## 1. Singleton
+### 3.1. Singleton
 디폴트는 싱글톤이다.  
 싱글톤은 어플리케이션 전반에 걸쳐서 해당 빈의 인스턴스가 오직 한개 뿐인 것.  
 
@@ -361,7 +361,7 @@ public class Proto {
 또한 모든 싱글톤 스코프의 빈은 기본값이 applicationContext를 만들 때 만들어지게 되어있다.  
 그러므로 어플리케이션이 구동될 때 시간이 더 걸릴 수 있다.
 
-## 2. Prototype
+### 3.2. Prototype
 
 대부분의 경우 싱글톤 스코프를 쓰지만, 그 외의 경우(Request, Session, WebSocket, ...)에는 prototype 스코프와 유사하다.  
 프로토타입은 매번 새로운 인스턴스를 만들어서 사용하는 것이다.
@@ -398,7 +398,7 @@ public class AppRunner implements ApplicationRunner {
 위에서 Proto는 3번 모두 다른 인스턴스 레퍼런스가 찍힐 것이고,  
 Single은 3번 모두 같은 인스턴스 레퍼런스가 찍힐 것이다.
 
-## 3. 싱글톤 빈이 프로토타입 빈을 참조하면?
+### 3.3. 싱글톤 빈이 프로토타입 빈을 참조하면?
 
 만약 아래 처럼 prototype bean이 singleton bean을 참조하면?
 - 아무 문제없다.
@@ -416,13 +416,13 @@ public class Proto {
 - 프로토타입 빈이 업데이트가 안된다.
 
 
-## 4. 싱글톤 빈이 참조하는 프로토타입 빈이 업데이트 되도록 하려면?
+### 3.4. 싱글톤 빈이 참조하는 프로토타입 빈이 업데이트 되도록 하려면?
 세 가지 방법이 있다.
 - scope-proxy
 - Object-Provider
 - Provider (표준)
 
-### 4.1. scope-proxy
+#### 3.4.1. scope-proxy
 아래와 같이 proxyMode를 설정할 경우, 프로토타입 빈은 업데이트 된다.  
 (proxyMode의 디폴트 값은 proxy를 사용하지 않는 것이다.)
 
@@ -453,7 +453,7 @@ CG라이브러리를 이용해서 클래스를 상속받은 프록시를 만들�
 JDK의 인터페이스 기반의 프록시를 만들어 사용
 
 
-### 4.2. Object-Provider
+#### 3.4.2. Object-Provider
 
 ~~~java
 @Component
@@ -468,7 +468,7 @@ public class Single {
 
 이 방법은 코드에 스프링 코드가 들어가기 때문에 선호하지 않는다. 
 
-# Profile
+# 4. Profile
 
 프로파일은 bean들의 묶음이며, 환경이다.
 
@@ -512,7 +512,7 @@ public class TestConfiguration {
 }
 ~~~
 
-## 프로파일 정의 예시
+### 4.1. 프로파일 정의 예시
 
 ~~~java
 @Repository
@@ -535,7 +535,7 @@ public class TestBookRepository implements BookRepository {
 }
 ~~~
 
-# Property
+# 5. Property
 
 - 프로퍼티는 다양한 방법으로 정의할 수 있는 설정값
 - Environment의 역할은 프로퍼티 소스 설정 및 프로퍼티 값 가져오기
@@ -570,10 +570,31 @@ public class Demospring51Application {
 }
 ~~~
 
-### Property 우선 순위
+### 5.1. Property 우선 순위
 - StandardServletEnvironment의 우선순위
   - ServletConfig 매개변수
   - ServletContext 매개변수
   - JNDI (java:comp/env/)
   - JVM 시스템 프로퍼티 (-Dkey="value")
   - JVM 시스템 환경 변수 (운영 체제 환경 변수)
+
+# 6. Resource 추상화
+>org.springframework.core.io.Resource
+
+### 6.1. 특징
+- java.net.URL을 추상화 한 것.
+- 스프링 내부에서 많이 사용하는 인터페이스
+
+### 6.2. 추상화 한 이유
+- 클래스패스 기준으로 리소스 읽어오는 기능 부재
+- ServletContext를 기준으로 상대 경로로 읽어오는 기능 부재
+- 새로운 핸들러를 등록하여 특별한 URL 접미사를 만들어 사용할 수는 있지만 구현이 복잡하고 편의성 메소드가 부족하다.
+
+### 6.3. 리소스 읽어오기
+- Resource의 타입은 location 문자열과 ApplicationContext의 타입에 따라 결정된다.
+	- ClassPathXmlApplicationContext -> ClassPathResource
+	- FileSystemXmlApplicationContext -> FileSystemResource
+  - WebApplicationContext -> ServletContextResource
+- ApplicationContext의 타입에 상관없이 리소스 타입을 강제하려면 java.net.URL 접두어(+classpath:) 중 하나를 사용할 수 있다.
+  - classpath:me/whiteship/config.xml -> ClassPathResource
+  - file:///some/resource/path/config.xml -> FileSystemResource
