@@ -647,3 +647,32 @@ public class AppRunner implements ApplicationRunner {
 		System.out.println(hello);
 		System.out.println(myValue);
 		System.out.println(isMyValue100);
+
+# 8. Spring AOP
+>Spring AOP는 AOP의 구현체 제공  
+>Java의 AOP구현체인 AspectJ와 연동해서 사용할 수 있는 기능 제공  
+
+AOP는 OOP를 보완하는 수단으로, 흩어진 Aspect를 모듈화 할 수 있는 프로그래밍 기법
+
+### 8.1. AOP 주요 개념
+- Aspect : 모듈
+- Target : 적용되는 대상
+- Advice : 해야할 일들
+- Join point : 모듈이 끼어드는 지점
+- Pointcut : 어디에 적용해야 하는지
+- AOP 구현체
+    - Java에서는 AspectJ와 Spring AOP
+
+
+### 8.2. AOP 적용 방법
+- 컴파일 시점 (AspectJ)
+- 로드 타임 시점 (AspectJ)
+- 런타임 시점 (Spring AOP)
+
+### 8.3. Spring AOP 특징
+- 프록시 기반의 AOP 구현체
+- 스프링 bean에만 AOP를 적용할 수 있다.
+- 모든 AOP 기능을 제공하는 것이 목적이 아니라, 스프링 IoC와 연동하여 엔터프라이즈 애플리케이션에서 가장 흔한 문제에 대한 해결책을 제공하는 것이 목적
+
+#### 8.3.1. 프록시 패턴
+- 기존 코드 변경없이 접근 제어 또는 부가 기능 추가
