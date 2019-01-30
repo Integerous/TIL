@@ -1,7 +1,6 @@
 # <스프링 프레임워크 핵심 기술> 강의 내용 정리
->[강의 링크](https://www.inflearn.com/course/spring-framework_core/)
-
-> 작성중
+>[강의 링크](https://www.inflearn.com/course/spring-framework_core/)  
+>모든 내용을 정리하지는 않았다.
 
 ---
 
@@ -619,26 +618,26 @@ public class AppRunner implements ApplicationRunner {
 	
 	@Value("#{1 + 1}")
 	int value;
-	
+
 	@Value("#{'hello ' + 'world'}")
 	String greeting
-	
+
 	@Value("#{1 eq 1}")
 	boolean trueOrFalse;
-	
+
 	@Value("hello")
 	String hello;
-	
+
 	@Value("${my.value}")
 	int myValue;
-	
+
 	@Value("#{${my.value} eq 100}")
 	boolean isMyValue100;
-	
+
 	// bean 참조하기 (sample 이라는 bean의 data)
 	@Value("#{sample.data}")
 	int sampleData;
-	
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println(value);
@@ -647,6 +646,7 @@ public class AppRunner implements ApplicationRunner {
 		System.out.println(hello);
 		System.out.println(myValue);
 		System.out.println(isMyValue100);
+~~~
 
 # 8. Spring AOP
 >Spring AOP는 AOP의 구현체 제공  
@@ -676,3 +676,48 @@ AOP는 OOP를 보완하는 수단으로, 흩어진 Aspect를 모듈화 할 수 �
 
 #### 8.3.1. 프록시 패턴
 - 기존 코드 변경없이 접근 제어 또는 부가 기능 추가
+
+#### 8.3.2. 문제점
+- 매 번 프록시 클래스를 작성해야 하는가?
+- 여러 클래스, 여러 메소드에 적용하려면?
+- 객체들 관계도 복잡하고..
+
+#### 8.3.3. 그래서 등장한 것이 Spring AOP
+- 스프링 IoC 컨테이너가 제공하는 기반 시설과 Dynamic 프록시를 사용하여 여러 복잡한 문제 해결
+- 동적 프록시: 동적으로 프록시 객체를 생성하는 방법
+    - 자바가 제공하는 방법은 인터페이스 기반 프록시 생성
+    - CGlib은 클래스 기반 프록시도 지원
+- 스프링 IoC: 기존 빈을 대체하는 동적 프록시 빈을 만들어 등록 시켜준다.
+    - 클라이언트 코드 변경 없음
+    - AbstractAutoProxyCreator
+
+#### 8.3.4. 예시
+
+~~~java
+@Component
+@Aspect
+public class PerfAspect {
+	
+	@Around("@annotation(PerfLogging)") //@PerfLogging 애노테이션이 붙은 곳에 적용
+	public Object logPerf(ProceedingJoinPoint pjp) throws Throwable {
+		log begin = System.currentTimeMillis();
+		Object retVal = pjp.proceed();
+		System.out.println(System.currentTimeMillis() - begin);
+		return retVal;
+	}
+	
+	@Before("bean(simpleEventService)") //bean의 모든 메서드에 앞서(@Before) 적용
+	public void hello() {
+		System.out.println("hello");
+	}
+}
+~~~
+
+~~~java
+@Documented //javaDoc 만들때 사용 
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.CLASS) //이 어노테이션을 .class 파일까지도 유지
+public @interface PerfLogging {
+}
+~~~
+
