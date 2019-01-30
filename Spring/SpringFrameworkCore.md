@@ -598,3 +598,52 @@ public class Demospring51Application {
 - ApplicationContext의 타입에 상관없이 리소스 타입을 강제하려면 java.net.URL 접두어(+classpath:) 중 하나를 사용할 수 있다.
   - classpath:me/whiteship/config.xml -> ClassPathResource
   - file:///some/resource/path/config.xml -> FileSystemResource
+  
+  
+# 7. SpEL (스프링 Expression Language)
+- 객체 그래프를 조회하고 조작하는 기능 제공
+- Unified EL과 비슷하지만, 메소드 호출을 지원하며, 문자열 템플릿 기능도 제공
+- OGNL, MVEL, JBOss EL 등 자바에서 사용할 수 있는 여러 EL이 있지만, SpEL은 모든 스프링 프로젝트 전반에 걸쳐 사용할 EL로 만들었다.
+- 스프링 3.0부터 지원
+
+### 7.1. 문법
+- #{'표현식'}
+- ${프로퍼티}
+- 표현식은 프로퍼티를 포함할 수 있지만, 프로퍼티는 표현식을 포함할 수 없다.
+	- #{${my.data} + 1}
+
+### 7.2. 예시
+~~~java
+@Component
+public class AppRunner implements ApplicationRunner {
+	
+	@Value("#{1 + 1}")
+	int value;
+	
+	@Value("#{'hello ' + 'world'}")
+	String greeting
+	
+	@Value("#{1 eq 1}")
+	boolean trueOrFalse;
+	
+	@Value("hello")
+	String hello;
+	
+	@Value("${my.value}")
+	int myValue;
+	
+	@Value("#{${my.value} eq 100}")
+	boolean isMyValue100;
+	
+	// bean 참조하기 (sample 이라는 bean의 data)
+	@Value("#{sample.data}")
+	int sampleData;
+	
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		System.out.println(value);
+		System.out.println(greeting);
+		System.out.println(trueOrFalse);
+		System.out.println(hello);
+		System.out.println(myValue);
+		System.out.println(isMyValue100);
