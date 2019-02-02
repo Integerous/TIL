@@ -146,9 +146,181 @@ public class BookControllerTest {
 - MockMvc는 모든 의존성을 로드하지 않고 BookContoller와 관련된 bean만 로드한다.
 	- 여기서는 MockMvc를 주입시켰기 때문에 전체 HTTP서버를 실행하지 않고 테스트 가능
 - BookService를 구현한 구현체는 없지만 @MockBean으로 BookService를 가짜객체로 대체함
-
+- @DataJpaTest 는 JPA 테스트가 끝날 때 마다 자동으로 사용된 데이터를 롤백
+- EntityManager의 대체재로 만들어진 테스트용 TestEntityManager를 사용하여 `persist`, `flush`, `find` 등의 기본적인 JPA 테스트 가능
 
 ## 3. @DataJpaTest
+>JPA 관련 테스트 설정만 로드
+
+- DataSource의 설정이 정상적인지 테스트
+- JPA를 사용하여 데이터를 제대로 생성, 수정, 삭제하는지 테스트
+- 인메모리 임베디드 데이터베이스 사용
+	- 메인 메모리를 데이터 저장소로 하여 DB를 어플리케이션에 내장하여 운용하는 DB
+- @Entity 클래스를 스캔하여 Spring Data JPA Repositories를 구성
+
+### 3.1. 별도의 DataSource 사용하기
+>기본 설정된 DataSource를 사용하지 않도록 아래와 같이 설정
+
+~~~java
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@ActiveProfiles("...")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class JpaTest {
+	...
+}
+~~~
+
+또는 application.yml 파일을 아래와 같이 수정
+
+~~~yml
+spring.test.database.replace: NONE
+~~~
+
+### 3.2. 테스트 데이터베이스 선택
+
+#### 3.2.1. 프로퍼티 설정
+~~~yml
+spring.test.database.connection: H2
+~~~
+
+#### 3.2.2. 어노테이션 설정
+~~~java
+@AutoConfigureTestDatabase(connection = H2)
+...
+~~~
+
+### 3.3. 예시
+
+#### 3.3.1. Book 클래스에 JPA 관련 어노테이션 추가
+~~~java
+@NoArgsConstructor
+@Getter
+@Entity
+@Table
+public class Book {
+
+    @Id
+    @GeneratedValue 
+    private Integer idx;
+    
+    @Column
+    private String title;
+    
+    @Column
+    private LocalDateTime publishedAt;
+
+    @Builder
+    public Book(String title, LocalDateTime publishedAt) {
+        this.title = title;
+        this.publishedAt = publishedAt;
+    }
+}
+~~~
+
+#### 3.3.2. BookRepository 생성
+~~~java
+public interface BookRepository extends JpaRepository<Book, Integer> {
+}
+~~~
+
+#### 3.3.3. @DataJpaTest로 테스트 수행하기
+~~~java
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class BookJpaTest {
+
+    private final static String BOOT_TEST_TITLE = "Spring Boot Test Book";
+
+    @Autowired
+    private TestEntityManager testEntityManager;
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Test
+    public void BookList_Save_Test() {
+        Book book = Book.builder().title(BOOT_TEST_TITLE)
+                        .publishedAt(LocalDateTime.now()).build();
+
+        testEntityManager.persist(book);
+        assertThat(bookRepository.getOne(book.getIdx()), is(book));
+    }
+
+    @Test
+    public void BookList_Save_Search_Test() {
+        Book book1 = Book.builder().title(BOOT_TEST_TITLE + "1")
+                         .publishedAt(LocalDateTime.now()).build();
+        testEntityManager.persist(book1);
+
+        Book book2 = Book.builder().title(BOOT_TEST_TITLE + "2")
+                         .publishedAt(LocalDateTime.now()).build();
+        testEntityManager.persist(book2);
+
+        Book book3 = Book.builder().title(BOOT_TEST_TITLE + "3")
+                         .publishedAt(LocalDateTime.now()).build();
+        testEntityManager.persist(book3);
+
+        List<Book> bookList = bookRepository.findAll();
+        assertThat(bookList, hasSize(3));
+        assertThat(bookList, contains(book1, book2, book3));
+    }
+
+    @Test
+    public void BookList_Save_Delete_Test() {
+        Book book1 = Book.builder().title(BOOT_TEST_TITLE + "1")
+                         .publishedAt(LocalDateTime.now()).build();
+        testEntityManager.persist(book1);
+
+        Book book2 = Book.builder().title(BOOT_TEST_TITLE + "2")
+                         .publishedAt(LocalDateTime.now()).build();
+        testEntityManager.persist(book2);
+
+        bookRepository.deleteAll();
+        assertThat(bookRepository.findAll(), IsEmptyCollection.empty());
+    }
+	
+}
+~~~
+
+## 4. @RestClientTest
+>REST 통신의 데이터형으로 사용되는 JSON 형식이 예상대로 응답을 반환하는지 등을 테스트
+
+### 4.1. 예시
+
+#### 4.1.1. REST 테스트를 위한 BookRestController
+~~~java
+@RestController
+public class BookRestController {
+
+    @Autowired
+    private BookRestService bookRestService;
+
+    @GetMapping(path = "/rest/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Book getRestBooks() {
+        return bookRestService.getRestBook();
+    }
+}
+~~~
+
+`getRestBook()` 메서드의 반환값은 Book 객체이지만 @RestController로 설정되어 있으면 JSON 형식의 String형으로 반환된다.
+
+#### 4.1.2. REST 테스트용 BookRestService 생성
+~~~java
+@Service
+public class BookRestService {
+
+    private final RestTemplate restTemplate;
+
+    public BookRestService(RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplate = restTemplateBuilder.rootUri("/rest/test").build();
+    }
+
+    public Book getRestBook() {
+        return this.restTemplate.getForObject("/rest/test", Book.class);
+    }
+}
+~~~
 
 ## *Reference
 - <처음 배우는 스프링부트 2> [김영재 저](https://github.com/young891221)
