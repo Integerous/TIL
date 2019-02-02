@@ -1,7 +1,6 @@
 # Spring Boot Test 정리
->작성중
 
-## 1. @SpringBootTest
+# 1. @SpringBootTest
 >통합 테스트를 제공
 
 - 실제 구동되는 어플리케이션과 똑같이 ApplicationContext를 로드하여 테스트
@@ -23,11 +22,11 @@ public class DemoApplicationTests {
 }
 ~~~
 
-### 1.1 @RunWith
+## 1.1 @RunWith
 - JUnit에 내장된 Runner를 사용하는 대신 어노테이션에 정의된 Runner 클래스 사용
 - @SpringBootTest 를 사용하려면 JUnit 실행에 필요한 SpringJUnit4ClassRunner 클래스를 상속받은 @RunWith(SpringRunner.class)를 붙여야 한다.
 
-### 1.2. @SpringBootTest 의 파라미터들
+## 1.2. @SpringBootTest 의 파라미터들
 ***value*** : 테스트가 실행되기 전에 적용할 프로퍼티 주입.(기존의 프로퍼티 오버라이드)  
 ***properties*** : 테스트가 실행되기 전에 {key=value} 형식으로 프로퍼티 추가.  
 ***classes*** : ApplicationContext에 로드할 클래스 지정. (지정하지 않으면 @SpringBootConfiguration을 찾아서 로드)  
@@ -56,12 +55,12 @@ public class DemoApplicationTests {
 }
 ~~~
 
-### 1.3. 사용 팁
+## 1.3. 사용 팁
 - 프로파일(개발, QA, 운영) 마다 다른 DataSource를 갖는 경우, `@ActiveProfiles("local")` 을 사용
 - `@Transactional`을 사용하면 테스트를 마치고 나서 수정된 데이터가 롤백된다.
 - @SpringBootTest는 기본적으로 @SpringBootApplication 이나 @SpringBootConfiguration 을 찾는다. (둘 중 하나는 필수)
 
-## 2. @WebMvcTest
+# 2. @WebMvcTest
 >MVC를 위한 테스트
 
 - 웹에서 테스트하기 힘든 Controller를 테스트하는데 적합
@@ -70,10 +69,10 @@ public class DemoApplicationTests {
 - @WebMvcTest 를 사용하면 MVC 관련 설정들만 로드되기 때문에 가볍게 테스트 가능
 	- MVC 관련 설정: `@Controller`, `@ControllerAdvice`, `@JsonComponent`, `Filter`, `WebMvcConfigurer`, `HandlerMethodArgumentResolver`
 
-### 2.1. 예시
+## 2.1. 예시
 >BookController에서 책 리스트를 받아오는 테스트
 
-#### 2.1.1.Book 클래스 생성
+### 2.1.1.Book 클래스 생성
 ~~~java
 @NoArgsConstructor
 @Getter
@@ -91,7 +90,7 @@ public class Book {
 }
 ~~~
 
-#### 2.1.2. BookController 클래스 생성
+### 2.1.2. BookController 클래스 생성
 ~~~java
 @Controller
 public class BookController {
@@ -107,7 +106,7 @@ public class BookController {
 }
 ~~~
 
-#### 2.1.3. BookService 인터페이스 생성
+### 2.1.3. BookService 인터페이스 생성
 이 인터페이스를 구현하는 구현체는 만들지 않고, Mock 데이터를 이용하여 테스트 진행
 ~~~java
 public interface BookService {
@@ -115,7 +114,7 @@ public interface BookService {
 }
 ~~~
 
-#### 2.1.4. BookControllerTest 생성
+### 2.1.4. BookControllerTest 생성
 
 ~~~java
 @RunWith(SpringRunner.class)
@@ -149,7 +148,7 @@ public class BookControllerTest {
 - @DataJpaTest 는 JPA 테스트가 끝날 때 마다 자동으로 사용된 데이터를 롤백
 - EntityManager의 대체재로 만들어진 테스트용 TestEntityManager를 사용하여 `persist`, `flush`, `find` 등의 기본적인 JPA 테스트 가능
 
-## 3. @DataJpaTest
+# 3. @DataJpaTest
 >JPA 관련 테스트 설정만 로드
 
 - DataSource의 설정이 정상적인지 테스트
@@ -158,7 +157,7 @@ public class BookControllerTest {
 	- 메인 메모리를 데이터 저장소로 하여 DB를 어플리케이션에 내장하여 운용하는 DB
 - @Entity 클래스를 스캔하여 Spring Data JPA Repositories를 구성
 
-### 3.1. 별도의 DataSource 사용하기
+## 3.1. 별도의 DataSource 사용하기
 >기본 설정된 DataSource를 사용하지 않도록 아래와 같이 설정
 
 ~~~java
@@ -177,22 +176,22 @@ public class JpaTest {
 spring.test.database.replace: NONE
 ~~~
 
-### 3.2. 테스트 데이터베이스 선택
+## 3.2. 테스트 데이터베이스 선택
 
-#### 3.2.1. 프로퍼티 설정
+### 3.2.1. 프로퍼티 설정
 ~~~yml
 spring.test.database.connection: H2
 ~~~
 
-#### 3.2.2. 어노테이션 설정
+### 3.2.2. 어노테이션 설정
 ~~~java
 @AutoConfigureTestDatabase(connection = H2)
 ...
 ~~~
 
-### 3.3. 예시
+## 3.3. 예시
 
-#### 3.3.1. Book 클래스에 JPA 관련 어노테이션 추가
+### 3.3.1. Book 클래스에 JPA 관련 어노테이션 추가
 ~~~java
 @NoArgsConstructor
 @Getter
@@ -218,13 +217,13 @@ public class Book {
 }
 ~~~
 
-#### 3.3.2. BookRepository 생성
+### 3.3.2. BookRepository 생성
 ~~~java
 public interface BookRepository extends JpaRepository<Book, Integer> {
 }
 ~~~
 
-#### 3.3.3. @DataJpaTest로 테스트 수행하기
+### 3.3.3. @DataJpaTest로 테스트 수행하기
 ~~~java
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -283,12 +282,10 @@ public class BookJpaTest {
 }
 ~~~
 
-## 4. @RestClientTest
+# 4. @RestClientTest
 >REST 통신의 데이터형으로 사용되는 JSON 형식이 예상대로 응답을 반환하는지 등을 테스트
 
-### 4.1. 예시
-
-#### 4.1.1. REST 테스트를 위한 BookRestController
+## 4.1. REST 테스트를 위한 BookRestController
 ~~~java
 @RestController
 public class BookRestController {
@@ -305,7 +302,7 @@ public class BookRestController {
 
 `getRestBook()` 메서드의 반환값은 Book 객체이지만 @RestController로 설정되어 있으면 JSON 형식의 String형으로 반환된다.
 
-#### 4.1.2. REST 테스트용 BookRestService 생성
+## 4.2. REST 테스트용 BookRestService 생성
 ~~~java
 @Service
 public class BookRestService {
@@ -322,5 +319,75 @@ public class BookRestService {
 }
 ~~~
 
+## 4.3. @RestClientTest 를 사용한 REST 테스트 코드
+~~~java
+@RunWith(SpringRunner.class)
+@RestClientTest(BookRestService.class)
+public class BookRestTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Autowired
+    private BookRestService bookRestService;
+
+    @Autowired
+    private MockRestServiceServer server;
+
+    @Test
+    public void rest_test() {
+        this.server.expect(requestTo("/rest/test"))
+                .andRespond(withSuccess(new ClassPathResource("/test.json", getClass())
+                        , MediaType.APPLICATION_JSON));
+
+        Book book = this.bookRestService.getRestBook();
+        assertThat(book.getTitle()).isEqualTo("테스트");
+    }
+
+    @Test
+    public void rest_error_test() {
+        this.server.expect(requestTo("/rest/test"))
+                .andRespond(withServerError());
+        this.thrown.expect(HttpServerErrorException.class);
+        this.bookRestService.getRestBook();
+    }
+}
+~~~
+
+## 4.4. 테스트 코드에 필요한 리소스 파일
+~~~json
+{"idx":null,"title":"테스트","publishedAt":null}
+~~~
+
+# 5. @JsonTest
+>JSON의 직렬화(Serialization)와 역직렬화(Deserialization)를 수행하는 라이브러리인 Gson과 Jackson API의 테스트를 제공
+
+JSON 테스트는 두 가지로 나뉜다. 문자열로 나열된 JSON 데이터를 객체로 변환하여 변환된 객체값을 테스트하거나 그 반대.
+
+## 5.1. 예시
+~~~java
+@RunWith(SpringRunner.class)
+@JsonTest
+public class BookJsonTest {
+
+    @Autowired
+    private JacksonTester<Book> json;
+
+    @Test
+    public void json_test() throws Exception {
+        Book book = Book.builder()
+                        .title("테스트")
+                        .build();
+
+        String content = "{\"title\":\"테스트\"}";
+
+        assertThat(this.json.parseObject(content).getTitle()).isEqualTo(book.getTitle());
+        assertThat(this.json.parseObject(content).getPublishedAt()).isNull();
+        assertThat(this.json.write(book)).isEqualToJson("/test.json");
+        assertThat(this.json.write(book)).hasJsonPathStringValue("title");
+        assertThat(this.json.write(book)).extractingJsonPathStringValue("title").isEqualTo("테스트");
+    }
+}
+~~~
 ## *Reference
 - <처음 배우는 스프링부트 2> [김영재 저](https://github.com/young891221)
