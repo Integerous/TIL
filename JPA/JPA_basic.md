@@ -147,5 +147,29 @@ public class Main {
 - EntityManager는 쓰레드 간에 공유하면 안된다. (사용하고 버려야 한다.)
 - JPA의 모든 데이터 변경은 트랜잭션 안에서 실행 
 
+## 4. 데이터베이스 스키마 자동 생성하기
+- DDL을 어플리케이션 실행 시점에 자동 생성
+- 테이블 중심 -> 객체 중심
+- 데이터베이스 방언(dialect)를 활용해서 데이터베이스에 맞는 적절한 DDL 생성
+- 개발 환경에서만 사용! (운영 환경에서는 다듬어서 사용)
+
+### 4.1 옵션
+>hibernate.hbm2ddl.auto 의 옵션(value)을 아래의 것들로 사용
+- create: 기존 테이블 삭제 후 다시 생성 (DROP + CREATE)
+- create-drop: create와 같으나 종료시점에 테이블 DROP
+- update: 변경된 부분만 반영 (운영 DB에 사용하면 안됌)
+- validate: entity와 table이 정상 매핑되었는지만 확인
+- none: 사용하지 않음
+
+## 5. 매핑 어노테이션
+>데이터베이스에 어떤 식으로 매핑될지에 대한 매핑정보 
+- @Column
+- @Temporal
+- @Enumerated
+- @Lob
+- @Transient
+
+
+
 
 
