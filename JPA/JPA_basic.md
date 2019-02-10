@@ -334,3 +334,97 @@ Team findTeam = findMember.getTeam();
 ~~~
 
 ### 6.4 양방향 매핑
+
+#### 6.4.1 Team 객체에서도 Member 갖도록
+~~~java
+@Entity
+public class Team {
+  
+  @Id @GeneratedValue
+  private Long id;
+  private String name;
+  
+  @OneToMany(mappedBy = "team")
+  List<Member> members = new ArrayList<Member>();
+  ...
+}
+~~~
+
+#### 6.4.2 반대 방향으로 객체 그래프 탐색
+~~~java
+// 조회
+Team findTeam = em.find(Team.class, team.getId());
+
+// 역방향 조회
+int memberSize = findTeam.getMembers().size();
+~~~
+
+#### 6.4.3 객체와 테이블이 관계를 맺는 차이
+- 객체 연관관계
+  - 회원 -> 팀 연관관계 1개 (단방향)
+  - 팀 -> 회원 연관관계 1개 (단방향)
+- 테이블 연관관계 
+  - 회원 <-> 팀 연관관계 1개 (양방향)
+
+#### 6.4.4 객체의 양방향 관계
+- 객체의 양방향 관계는 사실 양방향 관계가 아니라 서로 다른 단방향 관계 2개이다.
+- 객체를 양방향으로 참조하려면 단방향 연관관계를 2개 만들어야 한다.
+
+#### 6.4.5 테이블의 양방향 관계
+- 테이블은 외래키 하나로 두 테이블의 연관관계 관리
+- MEMBER.TEAM_ID 외래키 하나로 양방향 연관관계를 가짐 (양쪽으로 조인할 수 있다.)
+
+~~~sql
+SELECT *
+FROM MEMBER M
+JOIN TEAM T ON M.TEAM_ID = T.TEAM_ID
+
+SELECT *
+FROM TEAM T
+JOIN MEMBER M ON T.TEAM_ID = M.TEAM_ID
+~~~
+
+#### 6.4.6 객체의 양방향 관계에서의 문제점
+예를 들어 Member 객체에서 Team 객체의 값을 변경시키거나,  
+Team 객체에서 members에 member를 추가하는 등의 변화가 양쪽에서 일어난다면 어느쪽을 신뢰해야 하는가?
+
+그래서 둘 중 하나로 외래키를 관리해야 한다.  
+즉, 한 쪽을 `연관관계의 주인`으로 만들어주고 나머지 한쪽을 조회만 하도록 하는 것이다.
+
+#### 6.4.7 양방향 매핑 규칙
+- 객체의 두 관계 중 하나를 연관관계의 주인으로 지정
+- 연관관계의 주인만이 외래키를 관리 (등록, 수정)
+- 주인이 아닌 쪽은 읽기만 가능
+- 주인은 mappedBy 속성 사용 X
+- 주인이 아니면 mappedBy 속성으로 주인 지정
+
+#### 6.4.8 누구를 주인으로?
+- 외래키가 있는 곳을 주인으로 정해라
+- 권장하는 것은 단방향으로 설계를 끝내고 개발하면서 양방향이 필요한 부분이 생기면 코드를 추가하는 방식을 권한다.
+
+#### 6.4.9 양방향 매핑시 가장 많이하는 실수
+- 연관관계의 주인에 값을 입력하지 않는 것.
+
+~~~java
+Team team = new Team();
+team.setName("TeamA");
+em.persist(team);
+
+Member member = new Member();
+member.setName("member1");
+
+//역방향(주인이 아닌 방향)만 연관관계 설정
+team.getMembers().add(member);
+em.persist(member);
+~~~
+
+이 경우, TEAM_ID가 null이 된다.  
+
+현업에서는 그냥 양쪽 모두 값을 입력하면 된다.  
+객체지향 관점에서도 양쪽 모두 값을 입력하는 것이 맞다.
+
+#### 6.4.10 양방향 매핑의 장점
+- 단방향 매핑만으로도 이미 연관관계 매핑은 완료
+- 양방향 매핑은 반대 방향으로 조회(객체 그래프 탐색) 기능이 추가된 것 뿐
+- JPQL에서 역방향으로 탐색할 일이 많음
+- 단방향 매핑을 잘하고 양방향 매핑은 필요할 때 추가하면 됌. (테이블에 영향 없음)
