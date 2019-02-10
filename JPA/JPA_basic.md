@@ -162,14 +162,48 @@ public class Main {
 - none: 사용하지 않음
 
 ## 5. 매핑 어노테이션
->데이터베이스에 어떤 식으로 매핑될지에 대한 매핑정보 
+>데이터베이스에 어떤 식으로 매핑될지에 대한 매핑정보
+
 - @Column
+  - @Column(name="EXAMPLE") 옵션을 주면 필드와 매핑할 DB의 컬럼명을 지정한다.
+  - 그 외에 insertable, updatable, nullable, unique, length 등의 옵션이 있다.
 - @Temporal
-- @Enumerated
+  - 날짜 타입 매핑
+  - @Temporal(TemporalType.DATE) // 날짜
+  - @Temporal(TemporalType.TIME) // 시간
+  - @Temporal(TemporalType.TIMESTAMP) // 날짜와 시간
+- @Enumerated(EnumType.STRING)
+  - 디폴트는 `EnumType.ORDINAL`인데 Enum에 정의된 순서를 숫자로 반환한다.
+  - 그런데 만약 순서가 바뀌면 모든게 꼬여버리므로 운영에서는 절대 사용하면 안된다.
+  - `EnumType.STRING` 옵션을 주면 Enum에 정의된 글자가 그대로 들어가므로, 이 옵션이 권장된다. 
 - @Lob
+  - 컨텐츠의 길이가 너무 길 경우에 binary파일로 DB에 넣을 경우 @Lob을 사용한다.
+  - CLOB과 BLOB이 있다. CLOB은 Character 형태의 긴 컨텐츠를 저장하는 것이고, BLOB은 Binary 형태의 긴 컨텐츠를 저장하는 것이다.
+  - @Lob 어노테이션을 String 타입에 쓰면 CLOB이 되고, Byte 타입에 쓰면 BLOB이 된다.
 - @Transient
+  - 이 컬럼은 매핑하지 않는다.
+  - 컬럼을 DB에는 저장하지 않지만 객체에는 두고 싶을 때 사용 (ex 임시 flag값)
 
+### 5.1 식별자 매핑 어노테이션
+- @Id 직접 매핑
+- @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  - 데이터베이스에 위임 (MySQL의 AUTO INCREMENT)
+- @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  - 데이터베이스 시퀀스 오브젝트 사용 (Oracle)
+  - @SequenceGenerator 필요
+- @Id @GeneratedValue(strategy = GenerationType.TABLE)
+  - 키 생성용 테이블 사용, 모든 DB에서 사용
+  - @TableGenerator 필요
+- @Id @GeneratedValue(strategy = GenerationType.AUTO)
+  - 디폴트
+  - 방언(dialect)에 따라 위의 방법 중 자동 지정
 
+### 5.2 권장하는 식별자 전략
+- 기본키의 제약 조건: null 아니고, 유일하며, 변하지 않는다.
+- 하지만 변하지 않는 것은 없기 때문에(심지어 주민번호도) 대체키를 쓰는 것을 권장한다.
+- 대체키는 데이터베이스의 Sequence, Auto Increment, 키 생성 테이블 등 비즈니스와 전혀 관계없는 것을 쓰는 것이 좋다.
+- int타입은 10억~20억 사이에서 끝나기 때문에 Long을 쓰는 것을 권장한다.
+- 권장: `Long타입 + 대체키 + 키 생성전략` 사용
 
 
 
