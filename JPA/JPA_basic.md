@@ -206,4 +206,131 @@ public class Main {
 - 권장: `Long타입 + 대체키 + 키 생성전략` 사용
 
 
+## 6. 연관관계 매핑
 
+### 6.1 객체를 테이블에 맞추어 모델링 할 경우
+
+#### 6.1.1 참조 대신에 외래키를 그대로 사용
+~~~java
+@Entity
+public class Member {
+  
+  @Id @GeneratedValue
+  private Long id;
+  
+  @Column
+  private String name;
+  private int age;
+  
+  @Column(name = "TEAM_ID")
+  private Long teamID;
+  ...
+}
+
+@Entity
+public class Team {
+  
+  @Id @GeneratedValue
+  private Long id;
+  private String name;
+  ...
+}
+~~~
+
+#### 6.1.2 외래키 식별자를 직접 다룸
+
+~~~java
+// 팀 저장
+Team team = new Team();
+team.setName("TeamA");
+em.persist(team);
+
+// 회원 저장
+Member member = new Member();
+member.setName("member1");
+member.setTeamId(team.getId()); // 이 부분!
+em.persist(member);
+~~~
+
+#### 6.1.3 식별자로 다시 조회.
+~~~java
+// 조회
+Member findMember = em.find(Member.class, member.getId());
+
+//Member와 Team이 연관관계가 없음
+Team findTeam = em.find(Team.class, team.getId());
+~~~
+
+즉, 객체를 테이블에 맞추어 모델링하는 것은 객체지향적인 방법이 아니다.  
+객체를 테이블에 맞추어 데이터 중심으로 모델링하면, 협력관계를 만들 수 없다.
+
+- 테이블은 외래키로 조인을 사용해서 연관된 테이블을 찾는다.
+- 객체는 참조를 사용해서 연관된 객체를 찾는다.
+- 이처럼 테이블과 객체는 큰 격차가 있는데, 위와 같은 방법은 이 격차를 무시한다.
+
+### 6.2 단방향 매핑
+
+#### 6.2.1 객체의 참조(team)와 테이블의 외래키(TEAM_ID)를 매핑 (=연관관계 매핑)
+~~~java
+@Entity
+public class Member {
+  
+  @Id @GeneratedValue
+  private Long id;
+  
+  @Column
+  private String name;
+  private int age;
+  
+  //@Column(name = "TEAM_ID")
+  //private Long teamID;
+  
+  @ManyToOne
+  @JoinColumn(name = "TEAM_ID")
+  private Team team;
+  
+  ...
+}
+
+@Entity
+public class Team {
+  
+  @Id @GeneratedValue
+  private Long id;
+  private String name;
+  ...
+}
+~~~
+
+위의 코드에서 만약 `@ManyToOne(fetch = FetchType.LAZY)` 를 주면,  
+Member 객체만 조회하고 Team 객체는 실제 사용되는 시점에 조회한다. (`지연 로딩`)  
+디폴트는 `(fetch = FetchType.EAGER)`로 같이 조회한다.
+
+권장하는 것은 `LAZY`(지연 로딩)이다.  
+현업에서는 전부 LAZY로 바르고, 꼭 필요한 곳에서는 쿼리를 날리는 시점에 원하는 것을 미리 최적화해서 가져오는 방법을 쓰게 한다.  
+즉, 속단해서 최적화하지 말자는 것이다.
+#### 6.2.2 연관관계 저장
+
+~~~java
+// 팀 저장
+Team team = new Team();
+team.setName("TeamA");
+em.persist(team);
+
+// 회원 저장
+Member member = new Member();
+member.setName("member1");
+member.setTeam(team); // 단방향 연관관계 설정, 참조 저장
+em.persist(member);
+~~~
+
+#### 6.2.3 참조로 연관관계 조회 - 객체 그래프 탐색
+~~~java
+// 조회
+Member findMember = em.find(Member.class, member.getId());
+
+// 참조를 사용해서 연관관계 조회
+Team findTeam = findMember.getTeam();
+~~~
+
+### 6.4 양방향 매핑
