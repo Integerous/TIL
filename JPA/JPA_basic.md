@@ -610,3 +610,121 @@ transaction.commit(); // [트랜잭션] 커밋
 - 즉시 로딩은 JPQL에서 N+1 문제를 일으킨다.
 - @ManyToOne, @OneToOne은 기본이 즉시 로딩 -> LAZY로 설정할 것.
 - @OneToMany, @ManyToMany는 기본이 지연 로딩
+
+## 13. JPQL
+- JPA를 사용하면 Entity 객체 중심으로 개발
+- 문제는 검색 쿼리
+- 검색을 할 때도 테이블이 아닌 Entity 객체를 대상으로 검색
+- 모든 DB 데이터를 객체로 변환해서 검색하는 것은 불가능
+- 어플리케이션이 필요한 데이터만 DB에서 불러내려면, 결국 검색 조건이 포함된 SQL이 필요
+
+그래서 JPA는 SQL을 추상화한 JPQL이라는 객체지향 쿼리 언어 제공.  
+SQL과 문법 유사(SELECT, FROM, WHERE, GROUP BY, HAVING, JOIN).  
+JPQL은 Entity 객체를 대상으로 쿼리. (SQL은 데이터베이스 테이블을 대상으로 쿼리)
+
+~~~java
+// 검색
+String jpql = "select m From Member m where m.name like '%hello%'"; //Member는 객체.
+
+List<Member> result = em.createQuery(jpql, Member.class).getResultList();
+~~~
+
+JPQL은 테이블이 아닌 객체를 대상으로 검색하는 객체 지향 쿼리.  
+SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다.  
+JPQL을 한마디로 정의하면 객체 지향 SQL
+
+### 13.1 JPQL 문법
+- Entity와 속성은 대소문자 구분
+- JPQL 키워드는 대소문자 구분 안함(SELECT, FROM, where)
+- Entity 이름을 사용, 테이블 이름이 아님
+- 별칭은 필수
+- 결과 조회 API
+  - `query.getResultList()` : 결과가 하나 이상, 리스트 반환
+  - `query.getSingleResult()` : 결과가 정확히 하나, 단일 객체 반환(정확히 하나가 아니면 예외 발생)
+- 파라미터 바인딩
+  ~~~java
+  SELECT m FROM Member m where m.username=:username
+  query.setParameter("username", usernameParam); //이름 기준 (권장)
+  
+  SELECT m FROM Member m where m.username=?1
+  query.setParameter(1, usernameParam); //위치 기준
+  ~~~
+- 프로젝션
+  - `SELECT m FROM Member m` -> 엔티티 프로젝션
+  - `SELECT m.team FROM Member m` -> 엔티티 프로젝션
+  - `SELECT username, age FROM Member m` -> 단순 값 프로젝션
+  - new 명령어: 단순 값을 DTO로 바로 조회
+    - `SELECT new jpabook.jpql.UserDTO(m.username,m.age) FROM Member m`
+  - DISTINCT는 중복 제거
+- 페이징 API
+  - JPA는 페이징을 다음 두 API로 추상화
+    - setFirstResult(int startPosition): 조회 시작 위치(0부터 시작)
+    - setMaxResults(int maxResult): 조회할 데이터 수
+  ~~~java
+  //페이징 쿼리
+  String jpql = "select m from Member m order by m.name desc";
+  List<Member> resultList = em.createQuery(jpql, Member.class)
+        .setFirstResult(10)
+        .setMaxResults(20)
+        .getResultList();
+  ~~
+- 집합과 정렬
+~~~sql
+select
+    COUNT(m), //회원수
+    SUM(m.age), //나이 합
+    AVG(m.age), //평균 나이
+    MAX(m.age), //최대 나이
+    MIN(m.age)  //최소 나이
+from Member m
+~~~
+
+- 조인 (일반 조인과 문법이 약간 다름)
+  - 내부 조인
+    - `SELECT m FROM Member m [INNER] JOIN m.team t`
+  - 외부 조인
+    - `SELECT m FROM Member m LEFT [OUTER] JOIN m.team t`
+  - 세타 조인 (= 막 조인. 연관관계 상관 없이 조인)
+    - `select count(m) from Member m, Team t where m.username = t.name`
+    - 하이버네이트 5.1부터 세타 조인도 외부 조인 가능
+  - fetch 조인
+    - Entity 객체 그래프를 한번에 조회하는 방법
+    - 별칭을 사용할 수 없다.
+    - JPQL: `select m from Member m join fetch m.team` - **Member를 조회할 때 Team까지 같이 가지고 오는 것.**
+    - SQL: `SELECT M.*, T.* FROM MEMBER T INNER JOIN TEAM T ON M.TEAM_ID=T.ID`
+  - fetch 조인 예시
+  ~~~java
+  String jpql = "select m from Member m join fetch m.team";
+  
+  List<Member> members = em.createQuery(jpql, Member.class).getResultList();
+  
+  for (Member member : members) {
+      // fetch 조인으로 Member와 Team을 함께 조회해서 지연 로딩 발생 안함
+      System.out.println("username = " + member.getUsername() + ", " + "teamname = " + member.getTeam().name());
+  ~~~
+- 사용자 정의 함수 호출
+  - `select function('group_concat', i.name) from Item i`
+  - 하이버네이트는 사용 전 방언에 추가해야 한다.
+
+- Named 쿼리
+  - 미리 정의해서 이름을 부여해두고 사용하는 JPQL
+  - 어노테이션, XML에 정의
+  - 어플리케이션 로딩 시점에 초기화 후 재사용
+  - **어플리케이션 로딩 시점에 쿼리를 검증**
+  
+  ~~~java
+  @Entity
+  @NamedQuery(
+          name = "Member.findByUsername",
+          query = "select m from Member m where m.username = :username")
+  public class Member {
+      ...
+  }
+  ~~~
+  ~~~java
+  List<Member> resultList =
+    em.createNamedQuery("Member.findByUsername", Member.class)
+          .setParameter("username", "회원1")
+          .getResultList();
+  ~~~
+  
