@@ -477,88 +477,88 @@ JPA에서 가장 중요한 2가지
   - 삭제된 상태
   - `em.remove(member);`
 
-### 9.3 영속성 컨텍스트의 이점
-- 1차 캐시
-  - PersistenceContext에는 내부에 1차 캐시가 있다. 일반적인 캐시가 아니라 영속성컨텍스가 생성되고 없어질 때 까지만 잠깐 존재하는 것.
-  - 1차 캐시에서 조회
-  ~~~java
-  Member member = new Member();
-  member.setId("member1");
-  member.setUsername("회원1");
+## 10. 영속성 컨텍스트의 이점
+
+### 10.1 1차 캐시
+- PersistenceContext에는 내부에 1차 캐시가 있다. 일반적인 캐시가 아니라 영속성컨텍스가 생성되고 없어질 때 까지만 잠깐 존재하는 것.
+- 1차 캐시에서 조회
+~~~java
+Member member = new Member();
+member.setId("member1");
+member.setUsername("회원1");
+
+//1차 캐시에 저장됌
+em.persist(member);
+
+//1차 캐시에서 조회
+Member findMember = em.find(Member.class, "member1");
+~~~
+`em.find()`에서 DB로 바로가는 것이 아니라 1차 캐시를 먼저 탐색한다. (존재하면 바로 반환)
+- 1차 캐시에 없으면
+  - 데이터베이스에서 조회하고
+  - 조회된 내용을 1차 캐시에 저장 후에 반환
   
-  //1차 캐시에 저장됌
-  em.persist(member);
+### 10.2 영속 엔티티의 동일성(identity) 보장
+~~~java
+Member a = em.find(Member.class, "member1");
+Member b = em.find(Member.class, "member2");
+
+System.out.println(a == b); // 동일성 비교 true -> 위에서 보았듯이 1차캐시가 있기 때문에
+~~~
+- 1차 캐시로 반복 가능한 읽기(REPEATABLE READ) 등급의 트랜잭션 격리 수준을 데이터베이스가 아닌 어플리케이션 차원에서 제공
   
-  //1차 캐시에서 조회
-  Member findMember = em.find(Member.class, "member1");
-  ~~~
-  `em.find()`에서 DB로 바로가는 것이 아니라 1차 캐시를 먼저 탐색한다. (존재하면 바로 반환)
-  - 1차 캐시에 없으면
-    - 데이터베이스에서 조회하고
-    - 조회된 내용을 1차 캐시에 저장 후에 반환
+### 10.3 트랜잭션을 지원하는 쓰기 지연(transactional write-behind) - 버퍼 기능
+- 예를 들어 `persist(memberA)` 명령의 경우 memberA를 1차 캐시에 저장하면서 동시에 INSERT SQL을 생성해서 `쓰기 지연 SQL 저장소`에 말아놓는다.
+- 이후에 `persist(memberB)` 명령의 경우도 위와 같이 동작하고, 여전히 DB에 넣지 않는다.
+- 이후에 `commit()` 명령을 해야 쓰기 지연 SQL 저장소에 있던 INSERT SQL 쿼리 2개를 (옵션에 따라 동시에 혹은 하나씩) DB에 넣는다.
+- `쓰기 지연 SQL 저장소`에 있던 쿼리들을 날리는 과정을 `flush`라고 한다.
+  - 하지만 flush를 한다고 1차캐시의 내용들이 지워지는 것이 아니라 쿼리를 보내서 DB와 싱크를 맞추는 역할을 한다.
+  - `commit()` 이 flush와 commit 두 가지 일을 하는 것이다.
+~~~java
+EntityManager em = emf.createEntityManager();
+EntityTransaction transaction = em.getTransaction();
+// 엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
+transaction.begin();
+
+em.persist(memberA);
+em.persist(memberB);
+//여기까지 INSERT SQL을 데이터베이스에 보내지 않는다.
+
+//커밋하는 순간 데이터베이스에 INSERT SQL을 보낸다.
+transaction.commit(); // [트랜잭션] 커밋
+~~~
   
-- 영속 엔티티의 동일성(identity) 보장
-  ~~~java
-  Member a = em.find(Member.class, "member1");
-  Member b = em.find(Member.class, "member2");
-  
-  System.out.println(a == b); // 동일성 비교 true -> 위에서 보았듯이 1차캐시가 있기 때문에
-  ~~~
-  - 1차 캐시로 반복 가능한 읽기(REPEATABLE READ) 등급의 트랜잭션 격리 수준을 데이터베이스가 아닌 어플리케이션 차원에서 제공
-  
-- 트랜잭션을 지원하는 쓰기 지연(transactional write-behind) - 버퍼 기능
-  - 예를 들어 `persist(memberA)` 명령의 경우 memberA를 1차 캐시에 저장하면서 동시에 INSERT SQL을 생성해서 `쓰기 지연 SQL 저장소`에 말아놓는다.
-  - 이후에 `persist(memberB)` 명령의 경우도 위와 같이 동작하고, 여전히 DB에 넣지 않는다.
-  - 이후에 `commit()` 명령을 해야 쓰기 지연 SQL 저장소에 있던 INSERT SQL 쿼리 2개를 (옵션에 따라 동시에 혹은 하나씩) DB에 넣는다.
-  - `쓰기 지연 SQL 저장소`에 있던 쿼리들을 날리는 과정을 `flush`라고 한다.
-    - 하지만 flush를 한다고 1차캐시의 내용들이 지워지는 것이 아니라 쿼리를 보내서 DB와 싱크를 맞추는 역할을 한다.
-    - `commit()` 이 flush와 commit 두 가지 일을 하는 것이다.
-  ~~~java
-  EntityManager em = emf.createEntityManager();
-  EntityTransaction transaction = em.getTransaction();
-  // 엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
-  transaction.begin();
-  
-  em.persist(memberA);
-  em.persist(memberB);
-  //여기까지 INSERT SQL을 데이터베이스에 보내지 않는다.
-  
-  //커밋하는 순간 데이터베이스에 INSERT SQL을 보낸다.
-  transaction.commit(); // [트랜잭션] 커밋
-  ~~~
-  
-- 변경 감지(Dirty Checking)
-  ~~~java
-  EntityManager em = emf.createEntityManager();
-  EntityTransaction transaction = em.getTransaction();
-  // 엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
-  transaction.begin(); // [트랜잭션] 시작
-  
-  // 영속 엔티티 조회
-  Member memberA = em.find(Member.class, "memberA");
-  
-  // 영속 엔티티 데이터 수정
-  memberA.setName("hjs");
-  memberA.setAge(10);
-  
-  // 수정했으니 em.update(member) 이런 코드가 있어야 하지 않을까?
-  
-  // 하지만 필요없다. 커밋하면 자동으로 업데이트 쿼리가 나간다.
-  transaction.commit(); // [트랜잭션] 커밋
-  ~~~
-  - Dirty Checking의 동작 원리
-    - JPA는 트랜잭션이 커밋되는 시점에 1차 캐시 뿐만 아니라 스냅샷도 생성한다.
-    - commit()명령으로 flush를 하면 영속성 컨텍스트에 의해 관리되는 엔티티들을 스냅샷과 비교해서 바뀐 부분이 있으면 UPDATE 쿼리를 만들어서 DB에 보내고 commit을 한다.
-  - 이렇게 하는 이유
-    - Java 컬렉션에서 값을 가져와서 변경해도 다시 컬렉션에 값을 담지 않는다. 그래도 컬렉션의 값이 바뀐다. 그것과 똑같은 컨셉이다.
-    - 마치 Java 컬렉션에서 값을 가져와서 변경하는 것 처럼하기 위해 이런 방식으로 처리한다.
+### 10.4 변경 감지(Dirty Checking)
+~~~java
+EntityManager em = emf.createEntityManager();
+EntityTransaction transaction = em.getTransaction();
+// 엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
+transaction.begin(); // [트랜잭션] 시작
+
+// 영속 엔티티 조회
+Member memberA = em.find(Member.class, "memberA");
+
+// 영속 엔티티 데이터 수정
+memberA.setName("hjs");
+memberA.setAge(10);
+
+// 수정했으니 em.update(member) 이런 코드가 있어야 하지 않을까?
+
+// 하지만 필요없다. 커밋하면 자동으로 업데이트 쿼리가 나간다.
+transaction.commit(); // [트랜잭션] 커밋
+~~~
+- Dirty Checking의 동작 원리
+  - JPA는 트랜잭션이 커밋되는 시점에 1차 캐시 뿐만 아니라 스냅샷도 생성한다.
+  - commit()명령으로 flush를 하면 영속성 컨텍스트에 의해 관리되는 엔티티들을 스냅샷과 비교해서 바뀐 부분이 있으면 UPDATE 쿼리를 만들어서 DB에 보내고 commit을 한다.
+- 이렇게 하는 이유
+  - Java 컬렉션에서 값을 가져와서 변경해도 다시 컬렉션에 값을 담지 않는다. 그래도 컬렉션의 값이 바뀐다. 그것과 똑같은 컨셉이다.
+  - 마치 Java 컬렉션에서 값을 가져와서 변경하는 것 처럼하기 위해 이런 방식으로 처리한다.
     
-- 지연 로딩(Lazy Loading)
+### 10.5 지연 로딩(Lazy Loading)
 
+## 11. Flush
 
-## 10. Flush
-
-### 10.1 영속성 컨텍스트를 flush 하는 방법
+### 11.1 영속성 컨텍스트를 flush 하는 방법
 - em.flush() - 직접 호출
 - 트랜잭션 커밋 - 플러시 자동 호출
 - JPQL 쿼리 실행 - 플러시 자동 호출
@@ -576,22 +576,22 @@ JPA에서 가장 중요한 2가지
     - 이 상황에서는 DB에서 데이터 조회가 하나도 안된다. flush가 안되었기 때문에.
     - 때문에 JPA에서는 JPQL을 실행하면 flush가 자동으로 호출되도록 했다. (MyBatis나 Spring JDBC와 함께 사용할 때는 flush를 직접 해줘야 한다.)
 
-### 10.2 Flush 옵션
+### 11.2 Flush 옵션
 - `em.setFlushMode(FlushModeType.AUTO)` - 디폴트
   - 커밋이나 쿼리를 실행할 때 flush
 - `em.setFlushMode(FlushModeType.COMMIT)`
   - 커밋할 때만 flush
   
-### 10.3 Flush는!
+### 11.3 Flush는!
 - 영속성 컨텍스트를 비우지 않음
 - 영속성 컨텍스트의 변경내용을 데이터베이스에 동기화하는 것이 flush의 목적
 - flush가 가능한 이유는 DB에 트랜잭션이라는 작업 단위가 있기 때문. -> 커밋 직전에만 동기화하면 됨
 
-## 11. 준영속 상태
+## 12. 준영속 상태
 - 영속 상태의 Entity가 영속성 컨텍스트에서 분리(detached)
 - 영속성 컨텍스트가 제공하는 기능을 사용 못함
 
-### 11.1 준영속 상태로 만드는 방법
+### 12.1 준영속 상태로 만드는 방법
 - em.detach(entity)
   - 특정 엔티티만 준영속 상태로 전환
 - em.clear()
@@ -599,12 +599,12 @@ JPA에서 가장 중요한 2가지
 - em.close()
   - 영속성 컨텍스트를 종료
 
-### 11.2 준영속 상태면 지연 로딩을 못쓴다.
+### 12.2 준영속 상태면 지연 로딩을 못쓴다.
 지연 로딩을 쓰려면 영속성 컨텍스트가 살아있어야 한다.  
 영속성 컨텍스트가 죽어있는데 지연 로딩이 적용된 객체를 터치하면 `LazyInitializationException` 에러가 터진다.(현업에서 자주 만난다.)  
 영속성 컨텍스트가 DB커넥션 등을 다 들고있기 때문에 그렇다.
 
-### 11.2 프록시와 즉시로딩(EAGER) 주의
+### 12.3 프록시와 즉시로딩(EAGER) 주의
 - 가급적 지연 로딩(LAZY)을 사용
 - 즉시 로딩을 적용하면 예상하지 못한 SQL이 발생
 - 즉시 로딩은 JPQL에서 N+1 문제를 일으킨다.
