@@ -32,3 +32,15 @@
     $ git diff  //(커밋 전)변경사항 모두 확인
     $ git diff [filename]  //특정 파일 변경사항 확인
     $ git diff --cached  //(커밋 후) 변경사항 확인
+
+### Remote 삭제하기
+    $ git remote -v
+    > origin  https://github.com/OWNER/REPOSITORY.git (fetch)
+    > origin  https://github.com/OWNER/REPOSITORY.git (push)
+    > destination  https://github.com/FORKER/REPOSITORY.git (fetch)
+    > destination  https://github.com/FORKER/REPOSITORY.git (push)
+
+    $ git remote rm destination
+    $ git remote -v
+    > origin  https://github.com/OWNER/REPOSITORY.git (fetch)
+    > origin  https://github.com/OWNER/REPOSITORY.git (push)
