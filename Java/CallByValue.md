@@ -45,8 +45,8 @@ static void swap(int a, int b) {
   }
   ~~~
 
-하지만 Actual parameter인 `swap(data[j], data[j+1])`의 매개변수는  
-`swap(int a, int b)`의 Formal parameter는 완전히 별개의 변수이다.(메모리에서 다른 위치에 있다.)
+하지만 `swap(data[j], data[j+1])`의 매개변수인 Actual parameter는
+`swap(int a, int b)`의 매개변수인 Formal parameter와 완전히 별개의 변수이다.(메모리에서 다른 위치에 있다.)
 
 때문에 swap() 메소드를 호출하는 순간,  
 data[j]와 data[j+1]의 ***값***이 각각 a와 b에 복사될 뿐이다.  
