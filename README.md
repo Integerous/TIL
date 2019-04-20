@@ -24,6 +24,7 @@
 <a name="m2">
  
 ### ETC
+* [Path Variable과 Query Parameter를 언제 사용해야 하는가? [번역]](https://github.com/Integerous/TIL/blob/master/ETC/PathVariable_QueryParameter.md)
 * [지뢰찾기 과제](https://github.com/Integerous/TIL/blob/master/ETC/mineSweeper.md)
 * [정규표현식 정리](https://github.com/Integerous/TIL/blob/master/ETC/RegEx.md)
 * [Hugo로 github.io 블로그 만들기](https://github.com/Integerous/TIL/blob/master/ETC/Hugo%2BGithub_Page.md)
