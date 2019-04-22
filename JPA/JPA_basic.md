@@ -305,7 +305,7 @@ public class Team {
 
 위의 코드에서 만약 `@ManyToOne(fetch = FetchType.LAZY)` 를 주면,  
 Member 객체만 조회하고 Team 객체는 실제 사용되는 시점에 DB를 조회한다. (`지연 로딩`)  
-그렇다고 Team 객체가 null이 되면 에러가 나기 때문에 Team 객체는 `프록시 객체(가짜 객체)`가 들어간다.
+그렇다고 Team 객체가 null이 되면 에러가 나기 때문에 Team 객체는 `프록시 객체(가짜 객체)`가 들어간다.  
 디폴트는 `(fetch = FetchType.EAGER)`로 같이 조회한다.
 
 권장하는 것은 `LAZY`(지연 로딩)이다.  
