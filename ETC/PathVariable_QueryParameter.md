@@ -3,6 +3,12 @@
 >원작자의 허락을 받고 번역한 글입니다.  
 >원문: [When Should You Use Path Variable and Query Parameter?](https://medium.com/@fullsour/when-should-you-use-path-variable-and-query-parameter-a346790e8a6d)
 
+>역자 주:  
+Spring boot와 Vue.js로 파일럿 프로젝트를 개발하던 중,  
+카테고리로 게시물 목록을 필터링할 때 @PathVariable로 카테고리 이름을 전달했더니, '/'가 포함된 카테고리 이름이 문제를 일으켰다.  
+알고 보니, 이 글에서 설명하는 것 처럼 Resource를 가져오는 Get 메소드는 PathVariable을 사용하고,  
+정렬(sort)이나 필터링을 하는 경우 QueryParam을 사용하는 것이 옳은 방법이었다.
+
 이 글을 통해 PathVariable 과 Query Parameter 가 무엇이고, 어떻게 사용해야 하는지 이야기하고자 한다.
 
 ## 1. Query Parameter
