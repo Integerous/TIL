@@ -28,3 +28,37 @@ Primitive 타입이 아닌 모든 변수는 참조 변수다.
 
 -----
 
+### 3. URL 유효성 체크시, 해당 리소스에서 HTTP HEAD 메소드를 막아 둔 경우
+
+URL을 입력하면 해당 컨텐츠의 이미지와 제목을 파싱하는 프로그램 개발 중,  
+아래와 같이 사용자가 입력한 URL의 유효성을 체크하는 코드가 있었다.
+
+~~~java
+...
+
+URL url = new URL(inputUrl);
+
+HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+huc.setRequestMethod("HEAD");
+huc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36");
+huc.connect();
+
+if(huc.getResponseCode() == HttpURLConnection.HTTP_OK) {
+  // 통과
+}else
+  // 유효하지 않은 URL
+~~~ 
+
+위의 코드는 URL이 해당 resource로 제대로 접속되는지 체크하기 위해 HttpURLConnection를 사용했고,  
+Http 응답코드가 200 OK를 반환하는지만 빠르게 확인하기 위해 HEAD 메소드로 접속을 시도했다.  
+
+여러 테스트 케이스에서 잘 동작하는듯 보였지만,  
+정상적인 URL인 https://meetup.toast.com/posts/86 로 테스트 한 결과,  
+접속을 시도해도 403 Forbidden 을 반환하며 접속이 실패했다. 그리고 모든 meetup.toast의 게시물들이 403 Forbidden을 반환했다.
+
+알아 본 결과, **보안상의 이유로 GET메소드나 POST 메소드만 오픈해두는 경우가 있다**는 사실을 알게 되었다.  
+그래서 HEAD 메소드로 접속을 시도했을 때, 응답코드로 403 Forbidden을 반환하는 경우  
+GET 메소드로 다시 접속을 시도하게끔 코드를 수정했고,  정상적인 결과를 얻을 수 있었다.
+
+-----
