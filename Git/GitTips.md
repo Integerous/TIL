@@ -54,8 +54,8 @@ master 브랜치만 가져온다. 그래서 회사에서 사용하는 git-flow�
     $ git branch -r   //원격저장소의 브랜치 확인
     $ git branch -a   //로컬저장소와 원격저장소의 모든 브랜치 확인
     
-    $ git checkout -t [원격저장소의 브랜치 이름]   //로컬에 브랜치 생성하면서 checkout
-    $ git checkout -t [생성할 브랜치 이름] [원격저장소의 브랜치 이름]   //다른 이름으로 브랜치 가져오기
+    $ git checkout -t [원격저장소의 브랜치 이름]   //원격저장소의 브랜치 이름으로 로컬에 브랜치 생성하면서 checkout
+    $ git checkout -b [생성할 브랜치 이름] [원격저장소의 브랜치 이름]   //다른 이름으로 브랜치 생성
     $ git checkout [원격저장소의 브랜치 이름]   //detached HEAD 상태로 소스를 보고 변경 가능
                                                 하지만 commit, push 불가능. 다른 브랜치로 checkout하면 사라짐.
     
