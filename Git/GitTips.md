@@ -11,11 +11,11 @@ https://www.popit.kr/%EA%B0%9C%EB%B0%9C%EB%B0%94%EB%B3%B4%EB%93%A4-git-back-to-t
 ## 3. Git stash 란?
 다른 브랜치로 checkout을 해야하는데 아직 현재 브랜치에서 작업이 끝나지 않은 경우에 커밋을 하기 애매하다. 이런 경우 Stash를 이용하면 작업중이던 파일을 임시로 저장해두고 현재 브랜치의 상태를 마지막 커밋의 상태로 초기화 할 수 있다.그 후에 다른 브랜치로 이동하고 작업을 끝낸 후에 작업중이던 브랜치로 복귀한 후에 이전에 작업하던 내용을 복원할 수 있다. 즉, stash를 사용하여 작업중인 파일을 숨겨둘 수 있다.
 
-    - $ git stash
-    - $ git stash list
-    - $ git stash apply   //최근의 stash 내용으로 다시 복원
-    - $ git stash drop   //최근 stash 삭제
-    - $ git stash pop   //stash 복원 및 삭제
+    $ git stash
+    $ git stash list
+    $ git stash apply   //최근의 stash 내용으로 다시 복원
+    $ git stash drop   //최근 stash 삭제
+    $ git stash pop   //stash 복원 및 삭제
 
 ## 4. 모든 commit에서 특정 파일 제거하기
     $ git filter-branch - -tree-filter 'rm -f passwords.txt' HEAD
@@ -50,13 +50,13 @@ https://www.popit.kr/%EA%B0%9C%EB%B0%9C%EB%B0%94%EB%B3%B4%EB%93%A4-git-back-to-t
 >원격저장소로부터 clone을 받으면 로컬저장소로 모든 브랜치를 다 가져오는 줄 알았는데,  
 master 브랜치만 가져온다. 그래서 회사에서 사용하는 git-flow를 위해 필요한 branch들을 가져와야했다.  
 
-    - $ git branch   //로컬저장소의 브랜치 확인
-    - $ git branch -r   //원격저장소의 브랜치 확인
-    - $ git branch -a   //로컬저장소와 원격저장소의 모든 브랜치 확인
+    $ git branch   //로컬저장소의 브랜치 확인
+    $ git branch -r   //원격저장소의 브랜치 확인
+    $ git branch -a   //로컬저장소와 원격저장소의 모든 브랜치 확인
     
-    - $ git checkout -t [원격저장소의 브랜치 이름]   //로컬에 브랜치 생성하면서 checkout
-    - $ git checkout -t [생성할 브랜치 이름] [원격저장소의 브랜치 이름]   //다른 이름으로 브랜치 가져오기
-    - $ git checkout [원격저장소의 브랜치 이름]   //detached HEAD 상태로 소스를 보고 변경 가능
+    $ git checkout -t [원격저장소의 브랜치 이름]   //로컬에 브랜치 생성하면서 checkout
+    $ git checkout -t [생성할 브랜치 이름] [원격저장소의 브랜치 이름]   //다른 이름으로 브랜치 가져오기
+    $ git checkout [원격저장소의 브랜치 이름]   //detached HEAD 상태로 소스를 보고 변경 가능
                                                 하지만 commit, push 불가능. 다른 브랜치로 checkout하면 사라짐.
     
 >Reference - https://blog.outsider.ne.kr/641   
