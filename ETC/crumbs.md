@@ -62,3 +62,45 @@ Http 응답코드가 200 OK를 반환하는지만 빠르게 확인하기 위해 
 GET 메소드로 다시 접속을 시도하게끔 코드를 수정했고,  정상적인 결과를 얻을 수 있었다.
 
 -----
+
+### 4. 다형성(Polymorphism)과 동적 바인딩(Dynamic binding)
+다형성을 한마디로 정의하면 **'수퍼클래스 타입의 변수가 서브클래스 타입의 객체를 참조할 수 있다.'** 이다.
+
+~~~java
+Computer theComputer = new Notebook(...)
+~~~
+
+위의 코드에서 처럼 수퍼클래스인 Computer 타입의 참조변수가 서브클래스인 Notebook 객체를 참조할 수 있는 것이다.
+
+그런데 만약 Computer 클래스의 toString() 메소드가 있고,  
+그것을 오버라이딩한 toString() 메소드가 서브클래스인 Notebook 클래스에 있다면,  
+아래 코드에서 test.toString()의 toString() 메소드는 어느 메소드일까?
+
+~~~java
+public class Notebook extends Computer  {
+    
+    ...
+    
+    public String toString() {
+        ...
+    }
+    
+    public static void main(String[] args) {
+        Computer test = new Notebook(...);
+        System.out.println( test.toString() );
+    }
+~~~
+
+***Static binding*** 의 경우, Computer 객체의 toString() 메소드이고,  
+***Dynamic binding*** 의 경우, Notebook 객체의 toString() 메소드이다.  
+
+Static binding은 컴파일러가 어떤 메소드일지 결정하는 것이고,  
+Dynamic binding은 런타임에 해당 코드를 실행할 때 어떤 메소드인지 결정하는 방식이다.  
+
+그리고, **Java는 항상 동적 바인딩(Dynamic binding)을 한다.**  
+즉, 위의 코드에서 `test.toString()` 은 Notebook 객체의 toString() 메소드가 호출된다.
+
+- Reference - [Java로 배우는 자료구조 - 권오흠](https://www.inflearn.com/course/java-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/lecture/7458)
+
+-----
+
