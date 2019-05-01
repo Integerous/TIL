@@ -39,6 +39,7 @@
 <a name="m3">
  
 ### Java
+* [추상(abstract) 클래스가 필요한 기본적인 이유](https://github.com/Integerous/TIL/blob/master/Java/abstract_class.md)
 * [Call by value, Call by reference 정리](https://github.com/Integerous/TIL/blob/master/Java/CallByValue.md)
 * [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
 * [입/출력](https://github.com/Integerous/TIL/blob/master/Java/IO.md)
