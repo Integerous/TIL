@@ -104,3 +104,24 @@ Dynamic binding은 런타임에 해당 코드를 실행할 때 어떤 메소드�
 - Reference - [Java로 배우는 자료구조 - 권오흠](https://www.inflearn.com/course/java-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/lecture/7458)
 
 -----
+
+## 5. Type Parameter와 new 연산자
+
+~~~java
+public void addFirst( T item) {
+
+    Node<T> newNode = new Node<T>(item); // possible.
+                                         // T = Type Parameter
+                                         // T를 Type Parameter로 가지는 객체를 new 연산자로 생성할 수 있다. 하지만,
+
+    T t = new T(); // impossible.
+                   // Type Parameter는 가상 클래스이므로 T 타입의 객체를 new 연산자로 생성할 수 없고,
+                   
+    T[] array = new T[100]; // impossible.
+                            // T타입의 배열도 생성할 수 없으며,
+                            
+    Node<T>[] arr = new Node<T>[100]; // impossible.
+                                      // Type Parameter T를 가지는 객체를 new 연산자로 생성할 수도 없다.
+}
+~~~
+    
