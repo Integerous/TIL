@@ -125,3 +125,31 @@ public void addFirst( T item) {
 }
 ~~~
     
+-----
+
+## 6. Spring에서 생성자 주입 방식이 권장되는 이유
+: ***필수적으로 사용해야하는 레퍼런스 없이는 인스턴스를 만들지 못하도록 강제할 수 있다.***  
+
+예를 들어, 아래 코드에서 OwnerController 클래스는 ownerRepository 없이는 제대로 동작할 수 없다.
+
+~~~java
+@Controller
+class OwnerController {
+
+    private OwnerRepository ownerRepository;
+    
+    public OwnerController(OwnerRepository ownerRepository) {
+        this.ownerRepository = ownerRepository;
+    }
+~~~
+}
+
+하지만 @Autowired를 사용하는 Field injection 이나 Setter injection은  
+ownerRepository 없이도 OwnerController 인스턴스를 만들 수 있다.  
+
+이는 단점이 될 수도 있고, 장점이 될 수 있다.  
+예를 들어 순환참조가 일어나면 생성자 주입방식은 양쪽 다 인스턴스를 생성할 수 없게 되지만,  
+Field injection이나 Setter injection은 순환참조와 상관 없이 동작할 수 있다.  
+하지만 순환참조가 일어나지 않게끔 코드를 작성하는 것이 바람직하다.
+
+- Reference - [예제로 배우는 스프링 입문 8. 의존성 주입](https://www.youtube.com/watch?v=IVzYerodIyg&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY&index=8)
