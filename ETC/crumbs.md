@@ -153,3 +153,74 @@ Field injection이나 Setter injection은 순환참조와 상관 없이 동작�
 하지만 순환참조가 일어나지 않게끔 코드를 작성하는 것이 바람직하다.
 
 - Reference - [예제로 배우는 스프링 입문 8. 의존성 주입](https://www.youtube.com/watch?v=IVzYerodIyg&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY&index=8)
+
+-----
+
+## 6. Annotation을 이용한 간단한 Spring AOP 사용 예시
+
+메서드의 실행시간을 측정하는 기능이 여러 메서드에 필요하다고 가정해보자.  
+이 기능이 필요한 모든 메서드에 같은 코드를 붙이는 것은 문제가 많으므로 AOP를 적용할 수 있다.
+
+우선, AOP를 적용할 메서드들에 Annotation을 붙인다. (아직 만들어지지 않은 Annotation)
+
+~~~java
+@LogExecutionTime
+public String someMethod1() {
+    ...
+    return something1;
+}
+
+@LogExecutionTime
+public String someMethod2() {
+    ...
+    return something2;
+}
+~~~
+
+그리고 Annotation(@LogExecutionTime)을 아래와 같이 생성한다.  
+
+~~~java
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface LogExecutionTime {
+}
+~~~
+
+`@Target` 으로 `어디에 사용할 지` 설정.  
+`@Retention` 으로 어노테이션 정보를 `언제까지 유지할 것인지` 설정.
+
+이제 어노테이션이 붙은 메서드에 어떤 기능을 넣을지 작성한다.
+
+~~~java
+@Component
+@Aspect
+public class LogAspect {
+    
+    Logger logger = LoggerFactory.getLogger(LogAspect.class);
+    
+    @Around("@annotation(LogExecutionTime)")
+    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        
+        Object proceed = joinPoint.proceed();
+        
+        stopWatch.stop();
+        logger.info(stopWatch.prettyPrint());
+        
+        return proceed;
+    }
+}
+~~~
+
+위의 코드에서 `joinPoint`가 우리가 생성한 @LogExecutionTime 어노테이션이 붙은 메서드이다.  
+그러므로 `joinPoint.proceed();` 부분에서 메서드를 실행하고 그 결과를 반환하되,  
+메서드 실행 시간을 측정하는 코드를 메서드 위아래로 붙여주는 것이다.
+
+위 코드의 경우, @LogExecutionTime 이 붙은 메서드들이 실행되면 각 실행시간이 콘솔에 찍힌다.  
+Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적용되는 것인지는 토비의 스프링3에 자세히 나와있다.
+
+- Reference - [예제로 배우는 스프링 입문, 11 스프링 @AOP](https://www.youtube.com/watch?v=3750wh1wNuY&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY&index=11)
+
+-----
