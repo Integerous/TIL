@@ -56,9 +56,9 @@ FROM   temp;
 - 숫자형 컬럼이나 변수에 NULL이 들어갈 우려가 있다면 0이나 1등 다른 숫자로 치환 후 연산에 사용한다.
 - 문자형 컬럼이나 변수에 NULL이 들어갈 우려가 있다면 ' '(스페이스)나 다른 특정 문자 값으로 치환하여 조건 절에 이용한다.
 - NULL인지 비교
-  - WHERE a IS NULL
-  - WHERE a IS NOT NULL
-  - 절대 a = NULL 또는 a <> NULL 로 사용하면 안된다.
+  - `WHERE a IS NULL`
+  - `WHERE a IS NOT NULL`
+  - 절대 `a = NULL` 또는 `a <> NULL` 로 사용하면 안된다.
   
 ~~~sql
 SELECT name
@@ -143,6 +143,29 @@ AND    c.id = b.boss_id;
 위의 예시에서 사원번호(id)와 이름(name)을 가져오기 위한 temp와,  
 팀장번호(boss_id)와 일치하는 이름(name)을 가져오기 위한 temp는 같은 테이블이지만  
 Self Join으로 중복 사용되었으므로 위와 같이 Alias를 사용해야 한다.
+
+
+### 5. Concatenation
+
+Concatenation은 함수의 일종이다.  
+복수의 문자열을 연결하여 하나의 문자열을 만들 때 사용한다.  
+`CONCAT` 함수를 사용하거나 `합성연산자(||)`를 사용
+
+#### 문자와 숫자의 자동 변환
+
+temp의 자료 중 NUMBER형인 id와 VARCHAR2형인 name을 합성연산자로 묶으면,  
+
+~~~sql
+SELECT id || name
+FROM temp;
+~~~
+
+결과는 이상 없이 마치 문자열을 묶은 것 처럼 나온다.  
+흔히 숫자형을 문자형으로 바꿀 때는 TO_CHAR라는 함수를 사용하지만 위의 경우처럼 자동변환도 가능하다.
+
+
+### 6. 질의 결과 제한
+#### WHERE
 
 
 
