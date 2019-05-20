@@ -68,7 +68,7 @@ WHERE hobby IS NOT NULL;
 
 ### 4. Alias
 
-Alias는 편하기 때문에 사용하는 경우가 대부분이지만 반드시 사용해야 하는 경우도 있다.
+Alias는 이름 뒤에 한 칸 이상 띄고 Alias명을 주는 방법과 as 뒤에 기술하는 방법이 있다.
 
 ~~~sql
 SELECT id i,
@@ -76,10 +76,73 @@ SELECT id i,
 FROM temp;
 ~~~
 
-Alias는 이름 뒤에 한 칸 이상 띄고 Alias명을 주는 방법과 as 뒤에 기술하는 방법이 있다.
+Alias는 편하기 때문에 사용하는 경우가 대부분이지만 반드시 사용해야 하는 경우도 있다.  
 
+~~~sql
+SELECT id,
+       code,
+       name
+FROM temp,
+     t_dept
+WHERE t_dept.code = temp.code
 
+결과: ERROR (열의 정의가 애매합니다.)
+~~~
 
+위의 예시처럼 동일한 컬럼(code)이 복수의 테이블(temp, t_dept)에 존재할 때,  
+어떤 테이블의 칼럼인지 명시하지 않으면 에러 발생.
+
+~~~sql
+SELECT id,
+       temp.code,
+       name
+FROM temp,
+     t_dept
+WHERE t_dept.code = temp.code
+~~~
+
+그러므로 위와 같이 컬럼 앞에 테이블 명을 명시해야 한다.  
+하지만 테이블명이 길면 컬럼마다 테이블 명을 명시하기가 쉽지 않다.  
+그래서 아래와 같이 테이블에 Alias를 짧게 주고 사용하면 훨씬 편리하다.
+
+~~~sql
+SELECT id,
+       a.code,
+       b.name
+FROM temp a,
+     t_dept b
+WHERE a.code = b.code;
+~~~
+
+#### 테이블 Alias를 반드시 사용해야 하는 경우
+- Self Join의 경우  
+
+Self Join에서 자기 자신의 테이블과 Join이 일어나는 경우 모든 컬럼이 중복된다.  
+이 때, 컬럼 앞에 테이블 명을 명시해도 Self Join에서는 구분되지 않는다.  
+때문에 이러한 경우 테이블 Alias를 반드시 사용해야 한다.
+
+#### 컬럼 Alias를 반드시 사용해야 하는 경우는
+- ROWNUM을 사용하거나
+- TREE 구조의 전개시 LEVEL값 등을 사용하는 경우
+
+이러한 값들이 Inline View 안에서 사용된 후, 다시 이들을 FROM 절로 사용하는 Query에서  
+Rownum이나 Level을 사용하고자 한다면 반드시 컬럼 Alias를 사용해서 SQL을 작성해야 한다.
+
+~~~sql
+SELECT a.id,
+       a.name,
+       b.boss_id,
+       c.name
+FROM   temp a,
+       t_dept b,
+       temp c
+WHERE  b.code = a.code
+AND    c.id = b.boss_id;
+~~~
+
+위의 예시에서 사원번호(id)와 이름(name)을 가져오기 위한 temp와,  
+팀장번호(boss_id)와 일치하는 이름(name)을 가져오기 위한 temp는 같은 테이블이지만  
+Self Join으로 중복 사용되었으므로 위와 같이 Alias를 사용해야 한다.
 
 
 
