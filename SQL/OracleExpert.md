@@ -66,6 +66,21 @@ FROM temp
 WHERE hobby IS NOT NULL;
 ~~~
 
+### 4. Alias
+
+Alias는 편하기 때문에 사용하는 경우가 대부분이지만 반드시 사용해야 하는 경우도 있다.
+
+~~~sql
+SELECT id i,
+       name as n
+FROM temp;
+~~~
+
+Alias는 이름 뒤에 한 칸 이상 띄고 Alias명을 주는 방법과 as 뒤에 기술하는 방법이 있다.
+
+
+
+
 
 
 ## *Reference
