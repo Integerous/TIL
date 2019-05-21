@@ -156,7 +156,7 @@ Field injection이나 Setter injection은 순환참조와 상관 없이 동작�
 
 -----
 
-## 6. Annotation을 이용한 간단한 Spring AOP 사용 예시
+## 7. Annotation을 이용한 간단한 Spring AOP 사용 예시
 
 메서드의 실행시간을 측정하는 기능이 여러 메서드에 필요하다고 가정해보자.  
 이 기능이 필요한 모든 메서드에 같은 코드를 붙이는 것은 문제가 많으므로 AOP를 적용할 수 있다.
@@ -224,3 +224,42 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 - Reference - [예제로 배우는 스프링 입문, 11 스프링 @AOP](https://www.youtube.com/watch?v=3750wh1wNuY&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY&index=11)
 
 -----
+
+## 8. [오늘은 더 이상 보지 않기] 버튼 구현
+
+공고를 팝업으로 띄워야하는 업무가 있었다.  
+마크업을 보니 `하루 동안 열지 않습니다. [ ]` 버튼을 누르면 오늘 하루는 더 이상 팝업이 나타나지 않도록 구현해야 했다.
+
+기존의 팝업창 로직을 보니
+`$.cookie`라는 함수를 사용하여 쿠키값을 변경하는 방법으로 구현했다.  
+하지만 `$.cookie is not a function` 이라는 오류를 맞이했는데, [이 답변](https://stackoverflow.com/questions/18024539/jquery-cookie-is-not-a-function)에서 알 수 있듯이 $.cookie는 일반적인 jQuery의 함수가 아니라 다운받아야 하는 플러그인이었다.
+
+`jquery.cookie.js` 파일을 추가하고,  
+팝업창에는 `display:none` 을 추가한 후에, 
+아래의 스크립트
+
+
+~~~js
+<script type="text/javascript">
+   
+    (function() {
+        if($.cookie('merge_notice_popup') !== "true") {
+            $('#home_layer_wrap').show();
+        }
+
+		var bCheckedNeverOpen = false;
+		$('#check').click(function(){
+			bCheckedNeverOpen = !bCheckedNeverOpen;
+		});
+		$('.btn_close').click(function(){
+            if (bCheckedNeverOpen) {
+                $.cookie('merge_notice_popup', 'true', { expires: 1, path: '/' });
+                $.cookie('merge_notice_popup', 'true', { expires: 1, path: '/index' });
+                $.cookie('merge_notice_popup', 'true', { expires: 1, path: '/Index' });
+            }
+            $('#home_layer_wrap').hide();
+			return false;
+		});
+	})();	
+	</script>
+  ~~~
