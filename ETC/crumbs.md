@@ -232,12 +232,11 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 
 기존의 팝업창 로직을 보니
 `$.cookie`라는 함수를 사용하여 쿠키값을 변경하는 방법으로 구현했다.  
-하지만 `$.cookie is not a function` 이라는 오류를 맞이했는데, [이 답변](https://stackoverflow.com/questions/18024539/jquery-cookie-is-not-a-function)에서 알 수 있듯이 $.cookie는 일반적인 jQuery의 함수가 아니라 다운받아야 하는 플러그인이었다.
+하지만 `$.cookie is not a function` 이라는 오류를 맞이했는데,  
+[이 답변](https://stackoverflow.com/questions/18024539/jquery-cookie-is-not-a-function)에서 알 수 있듯이 $.cookie는 일반적인 jQuery의 함수가 아니라 다운받아야 하는 플러그인이었다.
 
 `jquery.cookie.js` 파일을 추가하고,  
-팝업창에는 `display:none` 을 추가한 후에, 
-아래의 스크립트
-
+팝업창의 스타일 속성에 `display:none` 을 추가한 후에, 아래와 같은 코드로 팝업창을 제어했다.  
 
 ~~~js
 <script type="text/javascript">
@@ -247,11 +246,12 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
             $('#home_layer_wrap').show();
         }
 
-		var bCheckedNeverOpen = false;
-		$('#check').click(function(){
-			bCheckedNeverOpen = !bCheckedNeverOpen;
-		});
-		$('.btn_close').click(function(){
+	var bCheckedNeverOpen = false;
+	$('#check').click(function(){
+		bCheckedNeverOpen = !bCheckedNeverOpen;
+	});
+	
+	$('.btn_close').click(function(){
             if (bCheckedNeverOpen) {
                 $.cookie('merge_notice_popup', 'true', { expires: 1, path: '/' });
                 $.cookie('merge_notice_popup', 'true', { expires: 1, path: '/index' });
@@ -259,7 +259,19 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
             }
             $('#home_layer_wrap').hide();
 			return false;
-		});
-	})();	
-	</script>
-  ~~~
+	});
+    })();	
+</script>
+~~~
+
+우선, 즉시 실행 함수 `(function(){...})();`로 구현하여 해당 페이지가 호출되면,  
+즉시 실행되어 쿠키 유무를 확인하여 팝업창을 보이거나 숨긴다.
+
+그리고 `하루 동안 열지 않습니다.[]` 버튼에 체크하면 boolean 변수를 true로 바꾸고,  
+체크된 상태로 닫기 버튼이 클릭되었을 때 `merge_notice_popup`이라는 key와 `true`라는 값, 그리고 만료 시간과 경로를 설정하여 쿠키를 생성한다.
+
+즉, `merge_notice_popup`이라는 쿠키가 생성되면,  
+이후 쿠키가 생성된 해당 경로에 접근했을 때 쿠키의 유무에 따라 팝업창이 보이거나 보이지 않는 것이다.
+
+
+-----
