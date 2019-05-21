@@ -13,9 +13,9 @@
 >하지만 책 표지를 보면 학습 의욕이 떨어지기 마련이라 책 표지는 가급적 쳐다보지 않는게 좋을 것 같다.
 
 
-## 1장. 자료의 조회
+# 1장. 자료의 조회
 
-### 1. SELECT 문의 구조
+## 1-1. SELECT 문의 구조
 
 SELECT를 위하여 반드시 기술되어야 하는 절: `SELECT`, `FROM`  
 즉, 어떤 테이블(FROM 절)에서 어떤 컬럼(SELECT 절)을 읽어올 것인가는 필수 사항.
@@ -34,7 +34,7 @@ DDL - Data 정의(CREATE, DROP, ALTER)
 DCL - 사용자에게 부여된 권한을 정의
 
 
-### 2. SELECT 에서의 산술 연산
+## 1-2. SELECT 에서의 산술 연산
 
 ~~~sql
 SELECT name,
@@ -50,7 +50,7 @@ SELECT name,
 FROM   temp;
 ~~~
 
-### 3. NULL의 사용
+## 1-3. NULL의 사용
 - DML을 이용할 때는 항상 NULL을 고려해야 한다.  
 - NUMBER 형 자료를 NULL과 연산(+, -, *, /)하면 결과는 항상 NULL
 - 숫자형 컬럼이나 변수에 NULL이 들어갈 우려가 있다면 0이나 1등 다른 숫자로 치환 후 연산에 사용한다.
@@ -66,7 +66,7 @@ FROM temp
 WHERE hobby IS NOT NULL;
 ~~~
 
-### 4. Alias
+## 1-4. Alias
 
 Alias는 이름 뒤에 한 칸 이상 띄고 Alias명을 주는 방법과 as 뒤에 기술하는 방법이 있다.
 
@@ -114,14 +114,14 @@ FROM temp a,
 WHERE a.code = b.code;
 ~~~
 
-#### 테이블 Alias를 반드시 사용해야 하는 경우
+### 테이블 Alias를 반드시 사용해야 하는 경우
 - Self Join의 경우  
 
 Self Join에서 자기 자신의 테이블과 Join이 일어나는 경우 모든 컬럼이 중복된다.  
 이 때, 컬럼 앞에 테이블 명을 명시해도 Self Join에서는 구분되지 않는다.  
 때문에 이러한 경우 테이블 Alias를 반드시 사용해야 한다.
 
-#### 컬럼 Alias를 반드시 사용해야 하는 경우는
+### 컬럼 Alias를 반드시 사용해야 하는 경우는
 - ROWNUM을 사용하거나
 - TREE 구조의 전개시 LEVEL값 등을 사용하는 경우
 
@@ -145,13 +145,13 @@ AND    c.id = b.boss_id;
 Self Join으로 중복 사용되었으므로 위와 같이 Alias를 사용해야 한다.
 
 
-### 5. Concatenation
+## 1-5. Concatenation
 
 Concatenation은 함수의 일종이다.  
 복수의 문자열을 연결하여 하나의 문자열을 만들 때 사용한다.  
 `CONCAT` 함수를 사용하거나 `합성연산자(||)`를 사용
 
-#### 문자와 숫자의 자동 변환
+### 문자와 숫자의 자동 변환
 
 temp의 자료 중 NUMBER형인 id와 VARCHAR2형인 name을 합성연산자로 묶으면,  
 
@@ -164,9 +164,9 @@ FROM temp;
 흔히 숫자형을 문자형으로 바꿀 때는 TO_CHAR라는 함수를 사용하지만 위의 경우처럼 자동변환도 가능하다.
 
 
-### 6. 질의 결과 제한
+## 1-6. 질의 결과 제한
 
-#### WHERE
+### WHERE
 조건절의 시작을 의미하는 것이 WHERE.  
 조건절은 질의문이 반환해야하는 결과값을 제한하는 역할.
 
@@ -177,16 +177,21 @@ FROM temp;
 단, 컬럼을 함수로 가공하거나 `NOT` 연산자가 쓰이는 경우에는 제외된다.  
 Primary Key로 지정된 컬럼은 자동으로 INDEX가 생성된다.
 
-#### Optimizer
+### Optimizer
 DML(SELECT, DELETE, UPDATE, INSERT)을 수행할 때 OPTIMISER가 관여한다.  
 OPTIMISER는 수행하고자 하는 DML을 가장 효율적으로 처리할 수 있는 최적화 경로를 찾아준다.
 
-OPTIMISER는 최적화 경로를 찾기 위해 다양한 요인을 고려한다.  
+OPTIMISER는 최적화 경로를 찾기 위해 다양한 요인을 고려하여 `실행 계획`을 작성한다.
 - 어떤 테이블을 먼저 읽을 것인가?
 - 테이블을 읽을 때 인덱스를 이용할 것인가?
 - 어떤 인덱스를 이용할 것인가?
-- 조인이 필요한 경우 어떤 방식으로 조
+- Join 이 필요한 경우 어떤 방식으로 Join 할 것인지?
 
+그리고 이 `실행 계획`에 의해 DML이 수행되고,  
+OPTIMISER가 선택한 최적화 경로인 수행 경로를 PLAN을 이용해 확인할 수 있다.
+
+### PLAN
+DML이 어떤 경로를 통해 DB에 ACCESS 했는지 보여주는 일종의 순서도이다.  
 
 
 ## *Reference
