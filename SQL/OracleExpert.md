@@ -193,6 +193,16 @@ OPTIMISER가 선택한 최적화 경로인 수행 경로를 PLAN을 이용해 �
 ### PLAN
 DML이 어떤 경로를 통해 DB에 ACCESS 했는지 보여주는 일종의 순서도이다.  
 
+~~~sql
+EXPLAIN PLAN SET STATEMENT_ID = '임의지정' FOR
+SELECT id, name
+FROM temp
+WHERE id > 0;
+~~~
+
+## ORDER BY
+
+
 
 ## *Reference
 - [저자의 블로그에 공개된 책 내용](http://blog.daum.net/why_i_am/45)
