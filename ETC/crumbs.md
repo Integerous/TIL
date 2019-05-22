@@ -121,7 +121,7 @@ public void addFirst( T item) {
                             // T타입의 배열도 생성할 수 없으며,
                             
     Node<T>[] arr = new Node<T>[100]; // impossible.
-                                      // Type Parameter T를 가지는 객체를 new 연산자로 생성할 수도 없다.
+                                      // Type Parameter T를 가지는 배열을 new 연산자로 생성할 수도 없다.
 }
 ~~~
     
