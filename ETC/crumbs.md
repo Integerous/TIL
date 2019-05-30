@@ -292,30 +292,30 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 public static String getHtml(String url) {
 
     try{
-		URL targetUrl = new URL(url);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(targetUrl.openStream()));
-		StringBuffer html = new StringBuffer();
-		String tmp = "";
+	URL targetUrl = new URL(url);
+	BufferedReader reader = new BufferedReader(new InputStreamReader(targetUrl.openStream()));
+	StringBuffer html = new StringBuffer();
+	String tmp = "";
 
-		while ((tmp = reader.readLine()) != null) {
-		html.append(tmp);
-		}
-		reader.close(); // 이 부분 전에 예외가 발생하면 BufferedReader를 닫지 못하고 catch문으로 빠지는 문제
-		return html.toString();
+	while ((tmp = reader.readLine()) != null) {
+	html.append(tmp);
+	}
+	reader.close(); // 이 부분 전에 예외가 발생하면 BufferedReader를 닫지 못하고 catch문으로 빠지는 문제
+	return html.toString();
 
-		} catch (MalformedURLException e) {
-			reader.close(); // 초기에는 추가하지 않았던 코드
-			e.printStackTrace();
-			throw e;
-		} catch (IOException e) {
-			reader.close(); // 초기에는 추가하지 않았던 코드
-			e.printStackTrace();
-			throw e;
-		} catch (Exception e) {
-			reader.close(); // 초기에는 추가하지 않았던 코드
-			e.printStackTrace();
-			throw e;
-		}
+	} catch (MalformedURLException e) {
+		reader.close(); // 초기에는 추가하지 않았던 코드
+		e.printStackTrace();
+		throw e;
+	} catch (IOException e) {
+		reader.close(); // 초기에는 추가하지 않았던 코드
+		e.printStackTrace();
+		throw e;
+	} catch (Exception e) {
+		reader.close(); // 초기에는 추가하지 않았던 코드
+		e.printStackTrace();
+		throw e;
+	}
 ~~~
 
 공공데이터 API를 사용하기 위해 작성한 나의 ***똥코드***는 보기만해도 지저분했는데,  
@@ -350,8 +350,8 @@ try (SomeResource resource = getResource()) {
 }
 ~~~
 
-위와 같이 try에 자원 객체를 전달하면,  
-finally 블록으로 종료 처리를 하지 않아도 try 코드 블록이 끝나면 자동으로 자원을 종료해주는 기능이다.  
+위와 같이 **try에 자원 객체를 전달하면,  
+finally 블록으로 종료 처리를 하지 않아도 try 코드 블록이 끝나면 자동으로 자원을 종료해주는 기능**이다.  
 
 이 때, `try( 여기 ){...}` 여기에는 `AutoCloseable` 인터페이스의 구현체만 들어갈 수 있으며,  
 `AutoCloseable`은 JDK1.7부터 추가된 인터페이스다.  
