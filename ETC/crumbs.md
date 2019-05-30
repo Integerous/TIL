@@ -298,24 +298,24 @@ public static String getHtml(String url) {
 	String tmp = "";
 
 	while ((tmp = reader.readLine()) != null) {
-	html.append(tmp);
+	    html.append(tmp);
 	}
 	reader.close(); // 이 부분 전에 예외가 발생하면 BufferedReader를 닫지 못하고 catch문으로 빠지는 문제
 	return html.toString();
 
-	} catch (MalformedURLException e) {
-		reader.close(); // 초기에는 추가하지 않았던 코드
-		e.printStackTrace();
-		throw e;
-	} catch (IOException e) {
-		reader.close(); // 초기에는 추가하지 않았던 코드
-		e.printStackTrace();
-		throw e;
-	} catch (Exception e) {
-		reader.close(); // 초기에는 추가하지 않았던 코드
-		e.printStackTrace();
-		throw e;
-	}
+    } catch (MalformedURLException e) {
+	reader.close(); // 초기에는 추가하지 않았던 코드
+	e.printStackTrace();
+	throw e;
+    } catch (IOException e) {
+	reader.close(); // 초기에는 추가하지 않았던 코드
+	e.printStackTrace();
+	throw e;
+    } catch (Exception e) {
+	reader.close(); // 초기에는 추가하지 않았던 코드
+	e.printStackTrace();
+	throw e;
+    }
 ~~~
 
 공공데이터 API를 사용하기 위해 작성한 나의 ***똥코드***는 보기만해도 지저분했는데,  
