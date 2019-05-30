@@ -2,7 +2,7 @@
 
 >개발 관련 학습 중 하나의 글로 작성하기엔 짧고,  
 버리기엔 아까운 부스러기 정보들을 모아두는 곳.
-
+</br>
 
 ## 1. 클래스라는 개념이 등장한 기본적인 이유
 예를 들어, 전화번호부에서 한 사람의 이름과 전화번호는 항상 붙어다녀야 하는 데이터이다.  
@@ -12,6 +12,7 @@
 - Reference - [Java로 배우는 자료구조 - 권오흠](https://www.inflearn.com/course/java-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%8B%A4%EB%A3%A8%EA%B8%B0-3/)
 
 -----
+</br>
 
 ## 2. Primitive Type과 Class의 차이점
 Class도 하나의 Type인데, int 혹은 double 형 변수를 선언하고 사용하는 것 처럼 User 변수를 선언하고 사용한다.
@@ -27,6 +28,7 @@ Primitive 타입이 아닌 모든 변수는 참조 변수다.
 - Reference - [Java로 배우는 자료구조 - 권오흠](https://www.inflearn.com/course/java-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%8B%A4%EB%A3%A8%EA%B8%B0-3/)
 
 -----
+</br>
 
 ## 3. URL 유효성 체크시, 해당 리소스에서 HTTP HEAD 메소드를 막아 둔 경우
 
@@ -62,6 +64,7 @@ Http 응답코드가 200 OK를 반환하는지만 빠르게 확인하기 위해 
 GET 메소드로 다시 접속을 시도하게끔 코드를 수정했고,  정상적인 결과를 얻을 수 있었다.
 
 -----
+</br>
 
 ## 4. 다형성(Polymorphism)과 동적 바인딩(Dynamic binding)
 다형성을 한마디로 정의하면 **'수퍼클래스 타입의 변수가 서브클래스 타입의 객체를 참조할 수 있다.'** 이다.
@@ -104,6 +107,7 @@ Dynamic binding은 런타임에 해당 코드를 실행할 때 어떤 메소드�
 - Reference - [Java로 배우는 자료구조 - 권오흠](https://www.inflearn.com/course/java-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/lecture/7458)
 
 -----
+</br>
 
 ## 5. Type Parameter와 new 연산자
 
@@ -126,6 +130,7 @@ public void addFirst( T item) {
 ~~~
     
 -----
+</br>
 
 ## 6. Spring에서 생성자 주입 방식이 권장되는 이유
 : ***필수적으로 사용해야하는 레퍼런스 없이는 인스턴스를 만들지 못하도록 강제할 수 있다.***  
@@ -155,6 +160,7 @@ Field injection이나 Setter injection은 순환참조와 상관 없이 동작�
 - Reference - [예제로 배우는 스프링 입문 8. 의존성 주입](https://www.youtube.com/watch?v=IVzYerodIyg&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY&index=8)
 
 -----
+</br>
 
 ## 7. Annotation을 이용한 간단한 Spring AOP 사용 예시
 
@@ -224,6 +230,7 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 - Reference - [예제로 배우는 스프링 입문, 11 스프링 @AOP](https://www.youtube.com/watch?v=3750wh1wNuY&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY&index=11)
 
 -----
+</br>
 
 ## 8. [오늘은 더 이상 보지 않기] 버튼 구현
 
@@ -275,7 +282,7 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 
 
 -----
-
+</br>
 
 ## 9. Try-with-resources를 이용한 자원해제 처리
 
@@ -388,3 +395,7 @@ public static String getHtml(String url) throws IOException {
 - [자바7에서 마음에 드는 다섯 가지](https://javacan.tistory.com/entry/my-interesting-java7-five-features)
 - [중첩 Try with resources는 어떻게 동작할까?](https://multifrontgarden.tistory.com/192)
 - [Do I need to close() both FileReader and BufferedReader?](https://stackoverflow.com/questions/1388602/do-i-need-to-close-both-filereader-and-bufferedreader)
+
+-----
+</br>
+
