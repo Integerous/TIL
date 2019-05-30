@@ -275,3 +275,116 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 
 
 -----
+
+
+## 9. Try-with-resources를 이용한 자원해제 처리
+
+> 팀원분에게 코드 리뷰를 받던 중 Try-with-resources를 알게 되어 정리
+
+~~~java
+public static String getHtml(String url) {
+
+    try{
+		URL targetUrl = new URL(url);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(targetUrl.openStream()));
+		StringBuffer html = new StringBuffer();
+		String tmp = "";
+
+		while ((tmp = reader.readLine()) != null) {
+		html.append(tmp);
+		}
+		reader.close(); // 이 부분 전에 예외가 발생하면 BufferedReader를 닫지 못하고 catch문으로 빠지는 문제
+		return html.toString();
+
+		} catch (MalformedURLException e) {
+			reader.close(); // 초기에는 추가하지 않았던 코드
+			e.printStackTrace();
+			throw e;
+		} catch (IOException e) {
+			reader.close(); // 초기에는 추가하지 않았던 코드
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			reader.close(); // 초기에는 추가하지 않았던 코드
+			e.printStackTrace();
+			throw e;
+		}
+~~~
+
+공공데이터 API를 사용하기 위해 작성한 나의 ***똥코드***는 보기만해도 지저분했는데,  
+지저분한 것은 차치하고, `reader.close()`에 도달하기 전에 예외가 발생할 경우를 대비하지 않은 코드였다.  
+
+그래서 위의 코드와 같이 `reader.close()`를 모든 catch문에 추가하거나,  
+아래의 예시와 같이 finally문을 만들어서 처리했어야 했다.
+
+~~~java
+SomeResource resource = null;
+try {
+    resource = getResource();
+    use(resource);
+} catch(...) {
+    ...
+} finally {
+    if (resource != null) {
+        try { resource.close(); } catch(...) { /* 아무것도 안 함 */ }
+    }
+}
+~~~
+
+나의 ***똥코드***를 보신 팀원분께서 JDK7 부터 추가된 `try-with-resources`를 설명해주셨다.
+
+### `Try-with-resources`란?
+
+~~~
+try (SomeResource resource = getResource()) {
+    use(resource);
+} catch(...) {
+    ...
+}
+~~~
+
+위와 같이 try에 자원 객체를 전달하면,  
+finally 블록으로 종료 처리를 하지 않아도 try 코드 블록이 끝나면 자동으로 자원을 종료해주는 기능이다.  
+
+이 때, `try( 여기 ){...}` 여기에는 `AutoCloseable` 인터페이스의 구현체만 들어갈 수 있으며,  
+`AutoCloseable`은 JDK1.7부터 추가된 인터페이스다.  
+
+~~~java
+/**
+ * @author Josh Bloch
+ * @since 1.7
+ */
+public interface AutoCloseable {
+    void close() throws Exception;
+}
+~~~
+
+내가 작성한 코드에서는 `BufferedReader`와 `InputStreamReader`클래스가 추상클래스 `Reader`를 상속받았고,  
+`Reader`는 `Closeable` 인터페이스를 상속받았으며,  
+`Closeable` 인터페이스는 `AutoCloseable`인터페이스를 상속받았다.
+
+
+때문에 `try-with-resources`를 활용하여 아래와 같이 내가 작성했던 코드를 개선할 수 있었다.
+
+~~~java
+public static String getHtml(String url) throws IOException {
+
+	URL targetUrl = new URL(url);
+
+	try (BufferedReader reader = new BufferedReader(new InputStreamReader(targetUrl.openStream()))){
+		StringBuffer html = new StringBuffer();
+		String tmp;
+
+		while ((tmp = reader.readLine()) != null) {
+			html.append(tmp);
+		}
+		return html.toString();
+	}
+}
+~~~
+
+### Reference
+- 최중현 선임님
+- [자바7에서 마음에 드는 다섯 가지](https://javacan.tistory.com/entry/my-interesting-java7-five-features)
+- [중첩 Try with resources는 어떻게 동작할까?](https://multifrontgarden.tistory.com/192)
+- [Do I need to close() both FileReader and BufferedReader?](https://stackoverflow.com/questions/1388602/do-i-need-to-close-both-filereader-and-bufferedreader)
