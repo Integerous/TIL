@@ -166,7 +166,7 @@ FROM temp;
 
 ## 1-6. 질의 결과 제한
 
-### WHERE
+## WHERE
 조건절의 시작을 의미하는 것이 WHERE.  
 조건절은 질의문이 반환해야하는 결과값을 제한하는 역할.
 
@@ -177,7 +177,7 @@ FROM temp;
 단, 컬럼을 함수로 가공하거나 `NOT` 연산자가 쓰이는 경우에는 제외된다.  
 Primary Key로 지정된 컬럼은 자동으로 INDEX가 생성된다.
 
-### Optimizer
+## Optimizer
 DML(SELECT, DELETE, UPDATE, INSERT)을 수행할 때 OPTIMISER가 관여한다.  
 OPTIMISER는 수행하고자 하는 DML을 가장 효율적으로 처리할 수 있는 최적화 경로를 찾아준다.
 
@@ -190,7 +190,7 @@ OPTIMISER는 최적화 경로를 찾기 위해 다양한 요인을 고려하여 
 그리고 이 `실행 계획`에 의해 DML이 수행되고,  
 OPTIMISER가 선택한 최적화 경로인 수행 경로를 PLAN을 이용해 확인할 수 있다.
 
-### PLAN
+## PLAN
 DML이 어떤 경로를 통해 DB에 ACCESS 했는지 보여주는 일종의 순서도이다.  
 
 ~~~sql
@@ -201,6 +201,73 @@ WHERE id > 0;
 ~~~
 
 ## ORDER BY
+RECORD가 테이블에 저장될 때는 순서가 정해져 있지 않다.  
+자료가 DB의 BLOCK 상에 쌓이는 원리는 테이블 CREATE시 지정하는 `PCTFREE`와 `PCTUSED`에 의해 결정된다.  
+
+이렇게 순서없이 저장된 자료를 특정한 순서에 맞게 보기위해 ORDER BY를 사용한다.  
+RECORD가 정렬되는 순서를 결정하는 것은 ORDER BY 외에도  
+QUERY시 내부적으로 SORT가 일어나는 경우와, INDEX가 사용되는 경우 등이 있다.
+
+~~~sql
+SELECT id, name
+FROM   temp
+ORDER BY id DESC;
+~~~
+
+ORDER BY 절은 SELECT 문장의 마지막에 기술한다.  
+기본 값은 ASCENDING(오름차순)이며, 컬럼 뒤에 `DESC`를 붙이면 DESCENDING(내림차순)으로 정렬할 수 있다.
+
+~~~sql
+SELECT level, id, name
+FROM   temp
+ORDER BY 1, 2 DESC;
+
+//결과
+level로 ASC 정렬 후, id로 DESC 정렬
+~~~
+
+위와 같이 ORDER BY에 컬럼명 대신 **컬럼 순서**를 기술해도 된다. (위의 결과를 눈여겨보자)
+
+## DB BLOCK의 구조
+
+BLOCK은 오라클 데이터베이스의 **물리적인 저장 단위**로서 **입출력시의 최소 단위**이다.  
+BLOCK의 구조는 위에서부터 차례대로 다음과 같은 부분으로 나뉜다.
+
+1. HEADER
+2. TABLE DIRECTORY
+3. ROW DIRECTORY
+4. FREE SPACE
+5. ROW DATA
+
+#### 1. HEADER
+- 블록에 대한 일반적인 정보 포함 ex) 블록의 주소
+
+#### 2. TABLE DIRECTORY
+- 블록 안에 존재하는 ROW를 소유하는 테이블에 대한 정보 포함
+
+#### 3. ROW DIRECTORY
+- 각 ROW의 주소 등 블록 안에 존재하는 ROW들에 대한 실제 정보 포함
+
+#### 4. FREE SPACE
+- Null 컬럼의 값이 NOT NULL로 UPDATE 될 때 추가적인 공간을 요구하게 되는데,  
+이때 처럼 ROW의 변경이나 새로운 ROW의 삽입 시 필요로 하게 되는 추가적인 공간을 위해 확보된 영역
+
+#### 5. ROW DATA
+- 테이블이나 인덱스의 데이터를 물리적으로 저장하는 영역
+
+
+## PCTFREE와 PCTUSED
+
+#### PCTFREE
+- 이미 블록에 쓰여진 ROW의 UPDATE나 INSERT를 위해 예약되는 공간  
+예를 들어 `PCTFREE 20`과 같이 값을 잡아주면,  
+블록의 공간 중 20%를 이미 블록에 쓰여진 ROW의 UPDATE나 INSERT를 위해 사용하지 않고 남기겠다는 의미.
+
+#### PCTUSED
+- PCTUSED에서 지정한 영역만큼만 FREE SPACE가 남게 되면 오라클은 더 이상 해당 블록에 새로운 ROW를 삽입하지 않는다.  
+사용 공간이 ROW의 삭제 등으로 PCTUSED에서 지정한 값 아래로 떨어지면,  
+그 때 다시 해당 블록에 새로운 ROW가 삽입될 수 있다.
+
 
 
 
