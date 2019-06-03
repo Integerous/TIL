@@ -81,11 +81,7 @@ JAXB는 Java 클래스를 XML로 변환해주는 `Marshalling`과 XML을 Java �
 </stockprice>
 ~~~
 
-이 중 필요한 데이터는 아래와 같았다.  
-그런데 `<TBL_DailyStock>`과 `<TBL_StockInfo>`는 모양새가 좀 달랐다.  
-
-`<TBL_DailyStock>`는 최근 10일의 DailyStock 을 가지고 있고, 각 DailyStock 은 9개의 Attribute를 가지고 있는 반면,  
-`<TBL_StockInfo>`는 17개의 Attribute만 가지고 있었다.
+이 중 필요한 데이터는 아래와 같았다.
 
 ~~~xml
 <stockprice querytime="2019-05-22 15:19:56">
@@ -125,10 +121,18 @@ JAXB는 Java 클래스를 XML로 변환해주는 `Marshalling`과 XML을 Java �
 </stockprice>
 ~~~
 
-## Java Class 생성
+즉, 필요한 데이터는 `<TBL_DailyStock>`과 `<TBL_StockInfo>` 단 2개의 테이블이기 때문에 간단하다고 생각했다.  
+그런데 이 두 테이블의 모양새가 조금 달랐다.  
 
-**JAXB 사용의 핵심은 이 XML스키마 모양대로 Java 클래스를 생성하면,  
+`<TBL_DailyStock>`는 최근 10일의 DailyStock 을 가지고 있고, 각 DailyStock 은 9개의 Attribute를 가지고 있는 반면,  
+`<TBL_StockInfo>`는 17개의 Attribute만 가지고 있었다.
+
+**JAXB Unmarshalling의 핵심은 이 XML스키마 모양대로 Java 클래스를 생성하면,  
 클래스의 각 필드에 해당하는 XML의 데이터가 바인딩되는 것이다.**
+
+그러므로 XML 스키마의 모양새를 정확하게 파악한 후에 Java Class를 생성해야 한다.
+
+## Java Class 생성
 
 우선, 최상위 태그는 `<stockprice>`이므로 아래와 같이 `StockPrice` 클래스를 생성하고,  
 JAXB 바인딩 런타임 API가 알 수 있도록 `@XmlRootElement(name = "stockprice")` 어노테이션을 붙여 매핑 정보를 생성했다.
@@ -263,6 +267,21 @@ public class DailyStock {
 }
 ~~~
 
+DailyStock은 17개의 Attribute만 내포하고 있으므로, 모든 필드에 @XmlAttribute를 붙인 것을 확인할 수 있다.
+
+## Unmarshalling 실행
+>이 예제의 경우 프로젝트 내에서 Map으로만 반환해야 하는 상황이었기 때문에 Map을 사용했지만 Unmarshalling을 위해 반드시 Map을 사용해야하는 것은 아니다.
+
+XML의 데이터를 바인딩할 Java 클래스를 생성했으니 Unmarshalling을 실행하는 코드를 작성한다.(순서는 상관없다.)  
+
+### Unmarshalling 과정
+1. 데이터를 반환할 Map 생성
+2. 실시간 시세 XML 데이터를 반환하는 URL을 입력하고, XML 데이터를 String으로 저장한다.
+3. `JAXB.newInstance(StockPrice.class)`를 통해 JAXB Context를 생성한다.
+4. 생성된 JAXB Context로 Unmarshaller를 생성한다.
+5. 생성된 Unmarshaller로 unmarshall 메소드를 호출하여 String에 저장한 XML 데이터를 읽어서 Java 객체(StockPrice)에 바인딩한다.
+6. Java 객체를 Map에 담아 화면단에 송출한다.
+
 ~~~java
 @Controller("/ir_stock")
 public Map<String, StockPrice> krxParser(HttpServletRequest request) {
@@ -270,11 +289,11 @@ public Map<String, StockPrice> krxParser(HttpServletRequest request) {
     Map<String, StockPrice> map = new HashMap<>();
 
     try {
-        String html = StockUtil.getHtml("http://asp1.krx.co.kr/servlet/krx.asp.XMLSise?code=035420");
+        String html = StockUtil.getHtml("http://asp1.krx.co.kr/servlet/krx.asp.XMLSise?code=035420"); // 035420 = 네이버의 종목코드
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(StockPrice.class);
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        StockPrice stockPrice = (StockPrice) unmarshaller.unmarshal(new StringReader(html));
+        JAXBContext jaxbContext = JAXBContext.newInstance(StockPrice.class); // JAXB Context 생성
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller(); // Unmarshaller Object 생성
+        StockPrice stockPrice = (StockPrice) unmarshaller.unmarshal(new StringReader(html)); // unmarshall 메소드 호출
 
         stockPrice.validation();
         map.put("stockprice", stockPrice);
@@ -283,16 +302,14 @@ public Map<String, StockPrice> krxParser(HttpServletRequest request) {
 
     } catch (JAXBException | IOException e) {
         logger.error("KRX API 예외 발생", e);
-        map.put("stockprice", StockPrice.emptyStockPrice());
+        map.put("stockprice", StockPrice.emptyStockPrice()); // 예외 발생 시, 빈 객체 반환
         return map;
     }
 }
 ~~~
 
-
-
-
-
+위의 코드에서 XML  `getHtml()` 메소드는 StockUtil이라는 유틸리티 클래스에 아래와 같이 구현했다.  
+해당 url의 페이지를 읽어서 HTML을 String으로 반환해주는 역할을 한다.
 
 ~~~java
 public static String getHtml(String url) throws IOException {
@@ -485,54 +502,6 @@ public class StockPrice {
         }
     }
 }
-
-
-/*
-<stockprice querytime="2019-05-22 15:19:56">
-
-    <TBL_DailyStock>
-        <DailyStock
-            day_Date="19/05/22"
-            day_EndPrice="113,000"
-            day_Dungrak="5"
-            day_getDebi="1,500"
-            day_Start="115,000"
-            day_High="115,000"
-            day_Low="111,000"
-            day_Volume="521,770"
-            day_getAmount="58,887,446,500"/>
-        <DailyStock day_Date="19/05/21" day_EndPrice="114,500" day_Dungrak="5" day_getDebi="4,000" day_Start="117,500" day_High="119,500" day_Low="113,500" day_Volume="603,105" day_getAmount="70,058,497,000"/>
-        <DailyStock day_Date="19/05/20" day_EndPrice="118,500" day_Dungrak="5" day_getDebi="2,500" day_Start="121,500" day_High="121,500" day_Low="118,000" day_Volume="449,916" day_getAmount="53,573,016,000"/>
-        <DailyStock day_Date="19/05/17" day_EndPrice="121,000" day_Dungrak="2" day_getDebi="2,000" day_Start="120,000" day_High="123,500" day_Low="118,500" day_Volume="439,545" day_getAmount="53,184,383,000"/>
-        <DailyStock day_Date="19/05/16" day_EndPrice="119,000" day_Dungrak="5" day_getDebi="1,000" day_Start="120,500" day_High="121,000" day_Low="118,000" day_Volume="484,468" day_getAmount="57,871,810,000"/>
-        <DailyStock day_Date="19/05/15" day_EndPrice="120,000" day_Dungrak="5" day_getDebi="2,000" day_Start="121,500" day_High="123,000" day_Low="120,000" day_Volume="460,936" day_getAmount="55,811,604,000"/>
-        <DailyStock day_Date="19/05/14" day_EndPrice="122,000" day_Dungrak="5" day_getDebi="500" day_Start="121,000" day_High="123,500" day_Low="119,500" day_Volume="532,037" day_getAmount="64,845,489,250"/>
-        <DailyStock day_Date="19/05/13" day_EndPrice="122,500" day_Dungrak="3" day_getDebi="0" day_Start="121,500" day_High="124,000" day_Low="121,500" day_Volume="343,827" day_getAmount="42,101,773,000"/>
-        <DailyStock day_Date="19/05/10" day_EndPrice="122,500" day_Dungrak="2" day_getDebi="3,500" day_Start="120,500" day_High="123,000" day_Low="120,000" day_Volume="474,352" day_getAmount="57,723,276,000"/>
-        <DailyStock day_Date="19/05/09" day_EndPrice="119,000" day_Dungrak="5" day_getDebi="4,500" day_Start="122,500" day_High="124,000" day_Low="119,000" day_Volume="799,208" day_getAmount="95,972,050,550"/>
-    </TBL_DailyStock>
-
-    <TBL_StockInfo
-        JongName="NAVER보통주"
-        CurJuka="113,000"
-        StockDungRak="5"
-        Debi="1,500"
-        PrevJuka="114,500"
-        Volume="521,770"
-        Money="58,887,446,500"
-        StartJuka="115,000"
-        HighJuka="115,000"
-        LowJuka="111,000"
-        High52="782,000"
-        Low52="106,500"
-        UpJuka="148,500"
-        DownJuka="80,500"
-        Per="25.47"
-        Amount="164,813,395"
-        FaceJuka="100" />
-
-</stockprice>
-*/
 ~~~
 
 
@@ -600,15 +569,12 @@ public class DailyStock {
         // 거래대금(백만) 단위 절삭
         Long digit = Long.parseLong(day_getAmount.replaceAll(",", "")) / 1000000;
         this.day_getAmount = String.format("%,d", digit); // "%,d", it tells the method to put comma separator for each 3 digits
-                                                          // 출처 : http://javadevnotes.com/java-integer-to-string-with-commas
     }
 }
 ~~~
         
-        
 ~~~java
 /**
- * KRX(한국거래소) 주가정보 API 용 enum
  *
  * API에서는
  * 상승 = "2"
@@ -621,7 +587,6 @@ public enum StockDungRak {
     UP("up"),
     DOWN("down");
 
-
     private String name;
 
     StockDungRak(String name) {
@@ -633,154 +598,6 @@ public enum StockDungRak {
     }
 }
 ~~~
-
-~~~ftl
-<div class="stock_main_info">
-				<div class="info_type_01">
-					<div class="title">
-						<p class="row">
-							<span class="name">줌인터넷</span>
-							<span class="num">005930</span>
-						</p>
-						<span class="date">${stockprice.querytime} 기준</span>
-					</div>
-					<div class="figure">
-						<span class="num">${stockprice.tbl_stockInfo.curJuka}</span>
-						<span>전일대비</span>
-						<!-- class rate +
-                            1. up, 상승
-                            2. down, 하락
-                            3. (class 없음), 보합
-                        -->
-						<span <#if (stockprice.tbl_stockInfo.dungRak == "up")>class="rate up"
-							  <#elseif (stockprice.tbl_stockInfo.dungRak == "flat")>class="rate"
-							  <#elseif (stockprice.tbl_stockInfo.dungRak == "down")>class="rate down"
-							      </#if>>
-                            ${stockprice.tbl_stockInfo.debi}(${stockprice.tbl_stockInfo.variation}%)
-                            </span>
-					</div>
-				</div>
-
-				<div class="info_type_02">
-					<p>
-						<span class="label">시가(원)</span>
-						<span>${stockprice.tbl_stockInfo.startJuka}</span>
-					</p>
-					<p>
-						<span class="label">고가(원)</span>
-						<span>${stockprice.tbl_stockInfo.highJuka}</span>
-					</p>
-					<p>
-						<span class="label">저가(원)</span>
-						<span>${stockprice.tbl_stockInfo.lowJuka}</span>
-					</p>
-					<p>
-						<span class="label">거래량(주)</span>
-						<span>${stockprice.tbl_stockInfo.volume}</span>
-					</p>
-				</div>
-
-				<div class="info_type_03">
-					<div class="wrap_group">
-						<div class="group g_01">
-							<p class="row r_01">
-								<span class="label">상한가</span>
-								<span>${stockprice.tbl_stockInfo.upJuka}</span>
-							</p>
-							<p class="row r_02">
-								<span class="label">하한가</span>
-								<span>${stockprice.tbl_stockInfo.downJuka}</span>
-							</p>
-						</div>
-						<div class="group g_02">
-							<p class="row r_01">
-								<span class="label">액면가</span>
-								<span>${stockprice.tbl_stockInfo.faceJuka}</span>
-							</p>
-							<p class="row r_02">
-								<span class="label">PER</span>
-								<span>${stockprice.tbl_stockInfo.per}</span>
-							</p>
-						</div>
-						<div class="group g_03">
-							<p class="row r_01">
-								<span class="label">52주<span class="detail">(종가기준)</span> 최고</span>
-								<span>${stockprice.tbl_stockInfo.high52}</span>
-							</p>
-							<p class="row r_02">
-								<span class="label">52주<span class="detail">(종가기준)</span> 최저</span>
-								<span>${stockprice.tbl_stockInfo.low52}</span>
-							</p>
-						</div>
-					</div>
-					<div class="group g_04">
-						<p class="row r_01">
-							<span class="label">거래대금</span>
-							<span>${stockprice.tbl_stockInfo.money}</span>
-						</p>
-						<p class="row r_02">
-							<span class="label">상장주식수</span>
-							<span>${stockprice.tbl_stockInfo.amount}</span>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="stock_table">
-				<table cellspacing="0" cellpadding="0">
-					<caption>줌인터넷 날짜별 주가를 보여주는 표</caption>
-					<colgroup>
-						<col style="width:9%">
-						<col style="width:12%">
-						<col style="width:12%">
-						<col style="width:12%">
-						<col style="width:12%">
-						<col style="width:12%">
-						<col style="width:15%">
-						<col style="width:16%">
-					</colgroup>
-					<thead>
-					<tr>
-						<th class="txt_left">일자</th>
-						<th>종가</th>
-						<th>전일대비</th>
-						<th>시가</th>
-						<th>고가</th>
-						<th>저가</th>
-						<th>거래량</th>
-						<th>거래대금(백만)</th>
-					</tr>
-					</thead>
-					<tbody>
-					<#list stockprice.tbl_dailyStock.dailyStocks as list>
-						<tr>
-							<td class="txt_left">${list.day_Date}</td>
-							<td>${list.day_EndPrice }</td>
-							<!-- class rate +
-                                1. up, 상승
-                                2. down, 하락
-                                3. (class 없음), 보합
-                            -->
-							<td class="point">
-								<i <#if (list.day_Dungrak == "up")>class="icon up"
-								   <#elseif (list.day_Dungrak == "flat")>class="icon"
-								   <#elseif (list.day_Dungrak == "down")>class="icon down"
-										</#if>>
-								</i>
-								${list.day_getDebi }
-							</td>
-							<td>${list.day_Start}</td>
-							<td>${list.day_High}</td>
-							<td>${list.day_Low}</td>
-							<td>${list.day_Volume}</td>
-							<td>${list.day_getAmount }</td>
-						</tr>
-					</#list>
-					</tbody>
-				</table>
-			</div>
-~~~
-
 
 
 ## *Reference
