@@ -1,4 +1,4 @@
-# XML 데이터의 Java 객체 변환 (feat. JAXB)
+# XML 데이터를 Java 객체로 변환하기 (feat. JAXB)
 
 작성중
 
