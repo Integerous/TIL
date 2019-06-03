@@ -270,7 +270,8 @@ public class DailyStock {
 DailyStock은 17개의 Attribute만 내포하고 있으므로, 모든 필드에 @XmlAttribute를 붙인 것을 확인할 수 있다.
 
 ## Unmarshalling 실행
->이 예제의 경우 프로젝트 내에서 Map으로만 반환해야 하는 상황이었기 때문에 Map을 사용했지만 Unmarshalling을 위해 반드시 Map을 사용해야하는 것은 아니다.
+>이 예제의 경우 프로젝트 내에서 Map으로만 반환해야 하는 상황이었기 때문에 Map을 사용했지만  
+Unmarshalling을 위해 반드시 Map을 사용해야하는 것은 아니다.
 
 XML의 데이터를 바인딩할 Java 클래스를 생성했으니 Unmarshalling을 실행하는 코드를 작성한다.(순서는 상관없다.)  
 
@@ -308,8 +309,7 @@ public Map<String, StockPrice> krxParser(HttpServletRequest request) {
 }
 ~~~
 
-위의 코드에서 XML  `getHtml()` 메소드는 StockUtil이라는 유틸리티 클래스에 아래와 같이 구현했다.  
-해당 url의 페이지를 읽어서 HTML을 String으로 반환해주는 역할을 한다.
+위의 코드에서 XML 데이터를 읽어서 String으로 반환해주는 `getHtml()` 메소드는 유틸리티 클래스에 아래와 같이 구현했다.  
 
 ~~~java
 public static String getHtml(String url) throws IOException {
@@ -329,250 +329,10 @@ public static String getHtml(String url) throws IOException {
 }
 ~~~
 
+마지막으로, KRX API에서 제공하는 데이터 중 DungRak(등락)의 경우 상승, 동일, 하락을 '2', '3', '5'로 반환한다.  
+때문에 숫자만 보고는 상승인지 하락인지 판단할 수 없으므로  
+아래와 같이 Enum 클래스를 생성해서 사용하여 의미를 명시했다.
 
-~~~java
-/**
- * KRX(한국거래소) 주가정보 API
- *
- * <stockprice>
- *     <TBL_DailyStock></TBL_DailyStock>
- *     <TBL_StockINfo></TBL_StockINfo>
- * </stockprice>
- */
-@Getter
-@ToString
-@XmlRootElement(name = "stockprice")
-public class StockPrice {
-
-    @XmlAttribute(name = "querytime")
-    private String querytime;
-
-    @XmlElement(name = "TBL_DailyStock")
-    private TBL_DailyStock tbl_dailyStock;
-
-    @XmlElement(name = "TBL_StockInfo")
-    private TBL_StockInfo tbl_stockInfo;
-
-    public StockPrice() {
-        this.querytime = "";
-        this.tbl_dailyStock = new TBL_DailyStock();
-        this.tbl_stockInfo = new TBL_StockInfo();
-    }
-
-    // 빈 객체 반환
-    public static StockPrice emptyStockPrice() {
-        return new StockPrice();
-    }
-
-    // 유효성 검증
-    public void validation() throws ValidationException {
-        if(ObjectUtils.isEmpty(tbl_dailyStock.dailyStocks)
-                || StringUtils.isEmpty(tbl_stockInfo.getJongName())) {
-
-            throw new ValidationException("종목코드 오류");
-        }
-    }
-
-    @Getter
-    @ToString
-    @XmlRootElement(name = "TBL_DailyStock")
-    public static class TBL_DailyStock {
-
-        @XmlElement(name = "DailyStock")
-        private List<DailyStock> dailyStocks;
-
-        // 예외 발생시 빈 객체 반환
-        public TBL_DailyStock() {
-            dailyStocks = new ArrayList<>();
-        }
-    }
-
-    @Getter
-    @ToString
-    @XmlRootElement(name = "TBL_StockInfo")
-    public static class TBL_StockInfo {
-
-        @XmlAttribute(name = "JongName")
-        private String jongName;
-
-        @XmlAttribute(name = "CurJuka")
-        private String curJuka;
-
-        private String dungRak;
-
-        @XmlAttribute(name = "DungRak")
-        public void setDungRak(String dungRak) {
-
-            if("2".equals(dungRak)) {
-                this.dungRak = StockDungRak.UP.getName();
-            } else if("3".equals(dungRak)) {
-                this.dungRak = StockDungRak.FLAT.getName();
-            } else if("5".equals(dungRak)) {
-                this.dungRak = StockDungRak.DOWN.getName();
-            }
-        }
-
-        @XmlAttribute(name = "Debi")
-        private String debi;
-
-        //전일 대비 증감율
-        private String variation;
-
-        private String prevJuka;
-
-        @XmlAttribute(name = "PrevJuka")
-        public void setPrevJuka(String prevJuka) {
-            this.prevJuka = prevJuka;
-
-            // 전일대비 증감율 추가
-            int diff = Integer.parseInt(debi.replaceAll(",",""));
-            int yesterdayJuka = Integer.parseInt(prevJuka.replaceAll(",", ""));
-            double fullDigit = (diff / (double) yesterdayJuka) * 100;
-
-            //소수점 이하 마지막 0 절삭
-//            double result = Math.round(fullDigit * 100) / 100.0;
-            //소수점 이하 0 유지
-            String result = String.format("%.2f", fullDigit);
-
-            // 증감율 앞에 +/- 추가
-            if("up".equals(dungRak)) {
-                this.variation = "+" + result;
-            } else if("flat".equals(dungRak)) {
-                this.variation = "" + result;
-            } else if("down".equals(dungRak)) {
-                this.variation = "-" + result;
-            }
-        }
-
-        @XmlAttribute(name = "Volume")
-        private String volume;
-
-        @XmlAttribute(name = "Money")
-        private String money;
-
-        @XmlAttribute(name = "StartJuka")
-        private String startJuka;
-
-        @XmlAttribute(name = "HighJuka")
-        private String highJuka;
-
-        @XmlAttribute(name = "LowJuka")
-        private String lowJuka;
-
-        @XmlAttribute(name = "High52")
-        private String high52;
-
-        @XmlAttribute(name = "Low52")
-        private String low52;
-
-        @XmlAttribute(name = "UpJuka")
-        private String upJuka;
-
-        @XmlAttribute(name = "DownJuka")
-        private String downJuka;
-
-        @XmlAttribute(name = "Per")
-        private String per;
-
-        @XmlAttribute(name = "Amount")
-        private String amount;
-
-        @XmlAttribute(name = "FaceJuka")
-        private String faceJuka;
-
-        public TBL_StockInfo() {
-            this.jongName = "";
-            this.curJuka = "";
-            this.dungRak = "";
-            this.debi = "";
-            this.variation = "";
-            this.prevJuka = "";
-            this.volume = "";
-            this.money = "";
-            this.startJuka = "";
-            this.highJuka = "";
-            this.lowJuka = "";
-            this.high52 = "";
-            this.low52 = "";
-            this.upJuka = "";
-            this.downJuka = "";
-            this.per = "";
-            this.amount = "";
-            this.faceJuka = "";
-        }
-    }
-}
-~~~
-
-
-~~~java
-/**
- * KRX(한국거래소) 주가정보 API
- *
- * <stockprice>
- *     <TBL_DailyStock>
- *         <DailyStock></DailyStock>
- *         <DailyStock></DailyStock>
- *         ...
- *     </TBL_DailyStock>
- * </stockprice>
- */
-@Getter
-@ToString
-@XmlRootElement(name = "DailyStock")
-public class DailyStock {
-
-    private String day_Date;
-
-    @XmlAttribute(name = "day_Date")
-    public void setDay_Date(String day_Date) {
-        this.day_Date = day_Date.replaceAll("/", ".");
-    }
-
-    @XmlAttribute(name = "day_EndPrice")
-    private String day_EndPrice;
-
-    private String day_Dungrak;
-
-    @XmlAttribute(name = "day_Dungrak")
-    public void setDay_Dungrak(String day_Dungrak) {
-
-        if("2".equals(day_Dungrak)) {
-            this.day_Dungrak = StockDungRak.UP.getName();
-        } else if("3".equals(day_Dungrak)) {
-            this.day_Dungrak = StockDungRak.FLAT.getName();
-        } else if("5".equals(day_Dungrak)) {
-            this.day_Dungrak = StockDungRak.DOWN.getName();
-        }
-    }
-
-    @XmlAttribute(name = "day_getDebi")
-    private String day_getDebi;
-
-    @XmlAttribute(name = "day_Start")
-    private String day_Start;
-
-    @XmlAttribute(name = "day_High")
-    private String day_High;
-
-    @XmlAttribute(name = "day_Low")
-    private String day_Low;
-
-    @XmlAttribute(name = "day_Volume")
-    private String day_Volume;
-
-    private String day_getAmount;
-
-    @XmlAttribute(name = "day_getAmount")
-    public void setDay_getAmount(String day_getAmount) {
-
-        // 거래대금(백만) 단위 절삭
-        Long digit = Long.parseLong(day_getAmount.replaceAll(",", "")) / 1000000;
-        this.day_getAmount = String.format("%,d", digit); // "%,d", it tells the method to put comma separator for each 3 digits
-    }
-}
-~~~
-        
 ~~~java
 /**
  *
@@ -598,6 +358,17 @@ public enum StockDungRak {
     }
 }
 ~~~
+
+## 결과
+
+해당 페이지에 접속하면 아래와 같은 정보를 제공할 수 있게 되었다.  
+
+<p align="center">
+  <img width="700" src="https://github.com/Integerous/TIL/blob/master/ETC/images/StockInfo.png?raw=true">
+</p>
+
+XML 데이터를 Java 객체로 변환하여 사용해보니, (비즈니스 로직이 섞여있어 이 글에는 담지 못했지만)  
+확실히 예외 처리와 데이터 가공을 능동적으로 할 수 있어서 좋았다.
 
 
 ## *Reference
