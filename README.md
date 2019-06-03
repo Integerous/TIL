@@ -25,8 +25,8 @@
 * [입/출력](https://github.com/Integerous/TIL/blob/master/Java/IO.md)
 * [DWR](https://github.com/Integerous/TIL/blob/master/Java/DWR.md)
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
- 
- 
+
+
 ### Servlet & JSP 
 * [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
  
@@ -46,6 +46,10 @@
 * [@Transient](https://github.com/Integerous/TIL/blob/master/Spring/%40Transient.md)
 * [@SessionAttributes 로그인 정보 유지하기](https://github.com/Integerous/TIL/blob/master/Spring/%40SessionAttributes.md)
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
+
+
+### JPA
+* [JPA 프로그래밍 기본다지기 - 강의내용 정리](https://github.com/Integerous/TIL/blob/master/JPA/JPA_basic.md)
 
 
 ### Git
