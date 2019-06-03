@@ -1,7 +1,5 @@
-[![HitCount](http://hits.dwyl.io/integerous/TIL.svg)](http://hits.dwyl.io/integerous/TIL)
 
 # Today I Learned (TIL)
-* 인생은 마라톤! 꾸준한 성장을 위해 개발 경험과 학습 내용을 기록한다.
 * 단순한 복붙 No! 이해 한 만큼만 직접 작성한다.
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -39,6 +37,7 @@
 <a name="m3">
  
 ### Java
+* [Try-with-resources를 이용한 자원해제 처리](https://github.com/Integerous/TIL/blob/master/Java/Try-with-resources.md)
 * [추상(abstract) 클래스가 필요한 기본적인 이유](https://github.com/Integerous/TIL/blob/master/Java/abstract_class.md)
 * [Call by value, Call by reference 정리](https://github.com/Integerous/TIL/blob/master/Java/CallByValue.md)
 * [String Concatenation(문자열 연결방법 비교)](https://github.com/Integerous/TIL/blob/master/Java/String_Concatenation.md)
