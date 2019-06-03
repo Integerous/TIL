@@ -18,6 +18,7 @@
  
  
 ### Java
+* [XML 데이터를 Java 객체로 변환하기 (feat. JAXB)](https://github.com/Integerous/TIL/blob/master/Java/XML_to_Java_Object.md)
 * [Try-with-resources를 이용한 자원해제 처리](https://github.com/Integerous/TIL/blob/master/Java/Try-with-resources.md)
 * [추상(abstract) 클래스가 필요한 기본적인 이유](https://github.com/Integerous/TIL/blob/master/Java/abstract_class.md)
 * [Call by value, Call by reference 정리](https://github.com/Integerous/TIL/blob/master/Java/CallByValue.md)
