@@ -5,13 +5,13 @@
 >XML 데이터를 Java 객체로 변환하여 사용한 경험을 정리해본다.
 
 JSON 데이터만 다루다가 XML을 다루어야 했기 때문에 조금 생소했다. (요즘 같은 세상에 XML 이라니!)  
-그런데 아직 XML을 사용하는 API들이 많다는 사실을 알게되었고, 항공 분야는 거의 모든 API가 XML이라고 한다.  
+그런데 아직 XML을 사용하는 API들이 많다는 사실을 알게 되었고, 항공 분야는 거의 모든 API가 XML이라고 한다.  
 
 처음에는 [한국거래소의 주가정보 가져오기](https://m.blog.naver.com/platinasnow/220730608310)라는 블로그 글을 참고하여  
 API가 제공해주는 XML 데이터를 JSON Object로 변환하고, 이를 다시 Map 형태로 바꾸는 방법으로 개발했다.
 
-그런데 이 경우 개발은 빠르게 진행할 수 있었지만, 예외 처리와 데이터 재가공에 한계가 있었다.  
-그러던 중 부팀장님으로부터 XML 데이터를 Java 객체로 변환하여 다루는 `Unmarshalling`이라는 개념을 듣게 되었고,  
+그런데 이 경우 개발은 빠르게 진행할 수 있었지만, 예외 처리와 데이터 가공에 한계가 있었다.  
+부팀장님으로부터 XML 데이터를 Java 객체로 변환하여 다루는 `Unmarshalling`이라는 개념을 듣게 되었고,  
 이를 지원해주는 Java API인 **JAXB**(Java Architecture for XML Binding)를 알게 되었다.
 
 
@@ -20,7 +20,7 @@ API가 제공해주는 XML 데이터를 JSON Object로 변환하고, 이를 다�
 JAXB는 Java 클래스를 XML로 변환해주는 `Marshalling`과 XML을 Java 객체로 변환해주는 `Unmarshalling` 기능을 제공한다.
 
 >JAXB는 JDK1.6에 번들링되어있기 때문에 JDK 1.6 이상의 버전이면 별다른 설정없이 바로 사용할 수 있다.  
-(JDK 1.6 이하의 경우 [JAXB 공식 Repo](https://github.com/eclipse-ee4j/jaxb-ri)에서 다운받아서 사용해야 한다는데 자세한 방법은 모르겠다.)
+(JDK 1.6 이하의 경우 [JAXB 공식 Repo](https://github.com/eclipse-ee4j/jaxb-ri)에서 다운받아서 사용해야 한다는데 안해봐서 모르겠다.)
 
 
 </br>
@@ -125,10 +125,22 @@ JAXB는 Java 클래스를 XML로 변환해주는 `Marshalling`과 XML을 Java �
 </stockprice>
 ~~~
 
+## Java Class 생성
+
 **JAXB 사용의 핵심은 이 XML스키마 모양대로 Java 클래스를 생성하면,  
 클래스의 각 필드에 해당하는 XML의 데이터가 바인딩되는 것이다.**
 
-우선, 최상위 태그는 `<stockprice>`이므로 아래와 같이 `StockPrice` 클래스를 생성했다.
+우선, 최상위 태그는 `<stockprice>`이므로 아래와 같이 `StockPrice` 클래스를 생성하고,  
+JAXB 바인딩 런타임 API가 알 수 있도록 `@XmlRootElement(name = "stockprice")` 어노테이션을 붙여 매핑 정보를 생성했다.
+
+그런데 `<stockprice>`의 경우 Attribute로 `querytime`을 가지고 있고,  
+2개의 테이블(`<TBL_DailyStock>`, `<TBL_StockInfo>`)을 내포하고 있다.  
+
+그러므로 querytime, TBL_DailyStock, TBL_StockInfo 를 필드로 만들고 각각  
+`@XmlAttribute`와 `@XmlElement` 어노테이션으로 XML 스키마와 모양새를 맞추었다.
+
+그리고 `TBL_DailyStock`과 `TBL_StockInfo`는 내부에 데이터 셋을 가지고 있으므로 Inner Class로 만들고,  
+`@XmlRootElement` 어노테이션을 추가했다.
 
 ~~~java
 /**
@@ -151,7 +163,7 @@ public class StockPrice {
     @XmlElement(name = "TBL_StockInfo")
     private TBL_StockInfo tbl_stockInfo;
     
-    // 예외처리, 유효성 검증 코드 생략
+    // 예외처리, 유효성검증 관련 코드 생략
 
     @Getter
     @ToString
@@ -161,7 +173,7 @@ public class StockPrice {
         @XmlElement(name = "DailyStock")
         private List<DailyStock> dailyStocks;
 	
-	// 예외처리, 유효성 검증 코드 생략
+	// 예외처리, 유효성검증 관련 코드 생략
     }
 
     @Getter
@@ -188,87 +200,68 @@ public class StockPrice {
                 this.dungRak = StockDungRak.DOWN.getName();
             }
         }
+	
+	// 이하 필드 생략
 
-        @XmlAttribute(name = "Debi")
-        private String debi;
-
-        //전일 대비 증감율
-        private String variation;
-
-        private String prevJuka;
-
-        @XmlAttribute(name = "PrevJuka")
-        public void setPrevJuka(String prevJuka) {
-            this.prevJuka = prevJuka;
-
-            // 전일대비 증감율 추가
-            int diff = Integer.parseInt(debi.replaceAll(",",""));
-            int yesterdayJuka = Integer.parseInt(prevJuka.replaceAll(",", ""));
-            double fullDigit = (diff / (double) yesterdayJuka) * 100;
-
-            //소수점 이하 마지막 0 절삭
-//            double result = Math.round(fullDigit * 100) / 100.0;
-            //소수점 이하 0 유지
-            String result = String.format("%.2f", fullDigit);
-
-            // 증감율 앞에 +/- 추가
-            if("up".equals(dungRak)) {
-                this.variation = "+" + result;
-            } else if("flat".equals(dungRak)) {
-                this.variation = "" + result;
-            } else if("down".equals(dungRak)) {
-                this.variation = "-" + result;
-            }
-        }
-
-        @XmlAttribute(name = "Volume")
-        private String volume;
-
-        @XmlAttribute(name = "Money")
-        private String money;
-
-        @XmlAttribute(name = "StartJuka")
-        private String startJuka;
-
-        @XmlAttribute(name = "HighJuka")
-        private String highJuka;
-
-        @XmlAttribute(name = "LowJuka")
-        private String lowJuka;
-
-        @XmlAttribute(name = "High52")
-        private String high52;
-
-        @XmlAttribute(name = "Low52")
-        private String low52;
-
-        @XmlAttribute(name = "UpJuka")
-        private String upJuka;
-
-        @XmlAttribute(name = "DownJuka")
-        private String downJuka;
-
-        @XmlAttribute(name = "Per")
-        private String per;
-
-        @XmlAttribute(name = "Amount")
-        private String amount;
-
-        @XmlAttribute(name = "FaceJuka")
-        private String faceJuka;
-
-        // 예외처리, 유효성 검증 코드 생략
+        // 예외처리, 유효성검증 관련 코드 생략
     }
 }
 ~~~
 
-`<stockprice>`의 경우 Attribute로 `querytime`을 가지고 있고,  
-2개의 테이블(`<TBL_DailyStock>`, `<TBL_StockInfo>`)을 내포하고 있다.  
+이 때, 위의 코드의 dungRak 처럼 Setter를 사용하여 데이터를 재가공해야 하는 경우,  
+필드 대신 Setter에 @XmlAttribute 어노테이션을 붙여야 데이터가 제대로 바인딩된다.
 
-그러므로 querytime, TBL_DailyStock, TBL_StockInfo 를 필드로 만들고 각각  
-`@XmlAttribute`와 `@XmlElement` 어노테이션으로 XML 스키마와 모양새를 맞추었다.
+~~~java
+...
 
-그리고 `TBL_DailyStock`과 `TBL_StockInfo`는 내부에 데이터 셋을 가지고 있으므로 Inner Class로 만들었다.
+@XmlRootElement(name = "TBL_DailyStock")
+    public static class TBL_DailyStock {
+
+        @XmlElement(name = "DailyStock")
+        private List<DailyStock> dailyStocks;
+
+    }
+
+...
+~~~
+
+그런데 위의 코드에서 처럼 DailyStock를 리스트로 가지고 있는 TBL_DailyStock 클래스를 어떻게 생성해야 하는지 조금 헷갈렸었는데,  
+DailyStock은 그 자체로 9개의 Attribute를 가지고 있으므로, 아래와 같이 따로 클래스를 생성해야 했다.
+
+~~~java
+/**
+ * <stockprice>
+ *     <TBL_DailyStock>
+ *         <DailyStock></DailyStock>
+ *         <DailyStock></DailyStock>
+ *         ...
+ *     </TBL_DailyStock>
+ * </stockprice>
+ */
+@Getter
+@ToString
+@XmlRootElement(name = "DailyStock")
+public class DailyStock {
+
+    @XmlAttribute(name = "day_Date")
+    private String day_Date;
+
+    @XmlAttribute(name = "day_EndPrice")
+    private String day_EndPrice;
+
+    private String day_getAmount;
+
+    @XmlAttribute(name = "day_getAmount")
+    public void setDay_getAmount(String day_getAmount) {
+
+        // 거래대금(백만) 단위 절삭
+        Long digit = Long.parseLong(day_getAmount.replaceAll(",", "")) / 1000000;
+        this.day_getAmount = String.format("%,d", digit); // "%,d", it tells the method to put comma separator for each 3 digits
+    }
+    
+    // ... 이하 필드 생략
+}
+~~~
 
 ~~~java
 @Controller("/ir_stock")
