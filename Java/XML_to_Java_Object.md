@@ -150,26 +150,8 @@ public class StockPrice {
 
     @XmlElement(name = "TBL_StockInfo")
     private TBL_StockInfo tbl_stockInfo;
-
-    public StockPrice() {
-        this.querytime = "";
-        this.tbl_dailyStock = new TBL_DailyStock();
-        this.tbl_stockInfo = new TBL_StockInfo();
-    }
-
-    // 빈 객체 반환
-    public static StockPrice emptyStockPrice() {
-        return new StockPrice();
-    }
-
-    // 유효성 검증
-    public void validation() throws ValidationException {
-        if(ObjectUtils.isEmpty(tbl_dailyStock.dailyStocks)
-                || StringUtils.isEmpty(tbl_stockInfo.getJongName())) {
-
-            throw new ValidationException("종목코드 오류");
-        }
-    }
+    
+    // 예외처리, 유효성 검증 코드 생략
 
     @Getter
     @ToString
@@ -178,11 +160,8 @@ public class StockPrice {
 
         @XmlElement(name = "DailyStock")
         private List<DailyStock> dailyStocks;
-
-        // 예외 발생시 빈 객체 반환
-        public TBL_DailyStock() {
-            dailyStocks = new ArrayList<>();
-        }
+	
+	// 예외처리, 유효성 검증 코드 생략
     }
 
     @Getter
@@ -278,28 +257,18 @@ public class StockPrice {
         @XmlAttribute(name = "FaceJuka")
         private String faceJuka;
 
-        public TBL_StockInfo() {
-            this.jongName = "";
-            this.curJuka = "";
-            this.dungRak = "";
-            this.debi = "";
-            this.variation = "";
-            this.prevJuka = "";
-            this.volume = "";
-            this.money = "";
-            this.startJuka = "";
-            this.highJuka = "";
-            this.lowJuka = "";
-            this.high52 = "";
-            this.low52 = "";
-            this.upJuka = "";
-            this.downJuka = "";
-            this.per = "";
-            this.amount = "";
-            this.faceJuka = "";
-        }
+        // 예외처리, 유효성 검증 코드 생략
     }
 }
+~~~
+
+`<stockprice>`의 경우 Attribute로 `querytime`을 가지고 있고,  
+2개의 테이블(`<TBL_DailyStock>`, `<TBL_StockInfo>`)을 내포하고 있다.  
+
+그러므로 querytime, TBL_DailyStock, TBL_StockInfo 를 필드로 만들고 각각  
+`@XmlAttribute`와 `@XmlElement` 어노테이션으로 XML 스키마와 모양새를 맞추었다.
+
+그리고 `TBL_DailyStock`과 `TBL_StockInfo`는 내부에 데이터 셋을 가지고 있으므로 Inner Class로 만들었다.
 
 ~~~java
 @Controller("/ir_stock")
@@ -327,13 +296,7 @@ public Map<String, StockPrice> krxParser(HttpServletRequest request) {
 }
 ~~~
 
-`<stockprice>`의 경우 Attribute로 `querytime`을 가지고 있고,  
-2개의 테이블(`<TBL_DailyStock>`, `<TBL_StockInfo>`)을 내포하고 있다.  
 
-그러므로 querytime, TBL_DailyStock, TBL_StockInfo 를 필드로 만들고 각각  
-`@XmlAttribute`와 `@XmlElement` 어노테이션으로 XML 스키마와 모양새를 맞추었다.
-
-그리고 `TBL_DailyStock`과 `TBL_StockInfo`는 내부에 데이터 셋을 가지고 있으므로 Inner Class로 만들었다.
 
 
 
