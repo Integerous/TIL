@@ -268,6 +268,34 @@ BLOCK의 구조는 위에서부터 차례대로 다음과 같은 부분으로 �
 사용 공간이 ROW의 삭제 등으로 PCTUSED에서 지정한 값 아래로 떨어지면,  
 그 때 다시 해당 블록에 새로운 ROW가 삽입될 수 있다.
 
+## 연산자
+
+### LIKE 연산자
+~~~sql
+WHERE ~~~ LIKE 'A%'; // A로 시작되는 ROW 검색
+WHERE ~~~ LIKE '%A%'; // A가 들어가는 ROW 검색
+WHERE ~~~ LIKE '_A____'; // 6자리 중 2번째 자리에 A가 들어가는 ROW 검색
+~~~
+
+### BETWEEN 연산자
+~~~sql
+WHERE name BETWEEN '가' AND '나' // name이 'ㄱ'으로 시작되는 ROW 검색
+~~~
+
+### IN 연산자
+- OR 조건으로 연결될 조건을 한 번에 기술하는 역할
+
+~~~sql
+WHERE name IN ('홍길동', '김길동');
+~~~
+
+위의 IN 연산자로 기술된 문장은 OPTIMIZER에 의해 실행계획 작성 전에 아래와 같이 변경된다.
+
+~~~sql
+WHERE name = '홍길동'
+OR    name = '김길동';
+~~~
+
 
 
 
