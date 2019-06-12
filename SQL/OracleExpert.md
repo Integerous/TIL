@@ -268,7 +268,7 @@ BLOCK의 구조는 위에서부터 차례대로 다음과 같은 부분으로 �
 사용 공간이 ROW의 삭제 등으로 PCTUSED에서 지정한 값 아래로 떨어지면,  
 그 때 다시 해당 블록에 새로운 ROW가 삽입될 수 있다.
 
-## 연산자
+## 1-7. 연산자
 
 ### LIKE 연산자
 ~~~sql
@@ -296,7 +296,38 @@ WHERE name = '홍길동'
 OR    name = '김길동';
 ~~~
 
+## 1-8. GROUT BY 와 HAVING
 
+### GROUP BY
+- 특정 컬럼이나 값을 기준으로 ROW를 묶어서 자료를 다룰 때 사용
+~~~sql
+// 각 직급별 최고연봉
+SELECT level, MAX(salary) max_sal
+FROM   temp
+GROUP BY level;
+~~~
+- GROUP BY를 하면 검색 대상이 되는 모든 자료를 GROUP BY에 기술된 컬럼 순서로 SORT 영역에서 정렬 작업이 먼저 이루어진다.
+
+### HAVING
+- GROUP BY 된 결과를 제한할 때 사용
+
+~~~sql
+SELECT level, AVG(salary)
+FROM temp
+GROUP BY level
+HAVING AVG(salary) > 50000000;
+~~~
+
+~~~sql
+// 직급별로 사번이 제일 늦은 사람을 구하고, 그 결과 내에서 사번이 1997로 시작하는 결과만 쿼리
+
+SELECT level, MAX(id)
+FROM temp
+GROUP BY level
+HAVING MAX(id) LIKE '1997%';
+~~~
+
+# 2장. 함수
 
 
 ## *Reference
