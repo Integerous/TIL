@@ -283,3 +283,14 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 
 -----
 </br>
+
+## 9. 리버스 프록시
+작성중
+
+-----
+</br>
+
+## 10. 몽키 패치
+몽키 패치란 런타임 중에 프로그램의 메모리를 직접 건드려 소스를 바꾸는 것이다.
+
+- Reference - https://mingrammer.com/writing-unit-test-for-time-dependent-code/
