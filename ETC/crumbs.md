@@ -294,3 +294,17 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 몽키 패치란 런타임 중에 프로그램의 메모리를 직접 건드려 소스를 바꾸는 것이다.
 
 - Reference - https://mingrammer.com/writing-unit-test-for-time-dependent-code/
+
+
+-----
+</br>
+
+## 11. Spring Boot DevTools의 동작 원리
+>DevTools를 사용하면서 어떤 원리로 동작하는 것인지 궁금해서 찾아보았다.
+
+### DevTools가 하는 일
+- 코드가 바뀌면 자동으로 어플리케이션을 재시작한다
+- 
+
+- Reference - Spring in Action (5th Edition)
+
