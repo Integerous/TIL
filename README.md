@@ -74,7 +74,8 @@
 ### Database 
 
 
-### SQL 
+### SQL
+* [전설의 SQL 학습서 내용 정리](https://github.com/Integerous/TIL/blob/master/SQL/OracleExpert.md)
 * [생소했던 SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
 
 
