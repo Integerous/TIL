@@ -59,7 +59,8 @@ master 브랜치만 가져온다. 그래서 회사에서 사용하는 git-flow�
     $ git checkout [원격저장소의 브랜치 이름]   //detached HEAD 상태로 소스를 보고 변경 가능
                                                 하지만 commit, push 불가능. 다른 브랜치로 checkout하면 사라짐.
     
->Reference - https://blog.outsider.ne.kr/641   
+#### Reference
+- https://blog.outsider.ne.kr/641   
 
 ## 10. 원격저장소의 branch 삭제하기
 >원격저장소에 step3라는 브랜치가 존재하는 상황에서, 로컬저장소의 step3 브랜치에서 작업한 내용으로 원격저장소의 step3 브랜치를 최신화하고 싶었다. 
@@ -67,4 +68,20 @@ master 브랜치만 가져온다. 그래서 회사에서 사용하는 git-flow�
 
     $ git push origin --delete {브랜치명}
 
->Reference - https://www.lesstif.com/pages/viewpage.action?pageId=20776547
+#### Reference
+- https://www.lesstif.com/pages/viewpage.action?pageId=20776547
+
+## 11. 서브모듈 사용해서 프로젝트 모아두기
+>TDD 강의에서 만든 4개의 과제 저장소를 [한 곳](https://github.com/Integerous/tdd-practice-in-java)에 모아두기 위해 서브모듈을 사용해보았다.  
+중요한 점은 서브모듈은 브랜치 상에 있는 것이 아니라, 단지 서브모듈 저장소의 **특정 커밋을 가리키는 포인터로서의 역할**을 한다는 것이다.  
+이 점 때문에 혼동되는 점들이 있으므로 사용시에 주의해야 한다.
+
+    (부모 프로젝트 경로에서)
+    $ git submodule add [저장소주소]
+    
+    (특정 브랜치를 서브모듈화)
+    $ git submodule add -b [브랜치명] [저장소주소]
+    
+#### Reference
+- https://github.blog/2016-02-01-working-with-submodules/
+- https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule
