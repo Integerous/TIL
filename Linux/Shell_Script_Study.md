@@ -42,9 +42,8 @@ fi
 
 ~~~shell
 (1) egrep -v '#|localhost' $SERVER_LIST | grep '[a-z]'
-
-## SERVER_LIST 파일에서 주석처리(#)되었거나, localhost가 붙은 문자열을 제외한 문자열을 출력한다.
 ~~~
+>SERVER_LIST 파일에서 주석처리(#)되었거나, localhost가 붙은 문자열을 제외한 문자열을 출력한다.
 
 - ### egrep
   - `grep -E` 혹은 `grep --extended-regexp` 과 완전 같다.(**확장 정규표현식을 사용하기 위해 사용**한다.)
@@ -59,9 +58,8 @@ fi
 
 ~~~shell
 (2) if [ -z "$1" ]; then
-
-## 명령어의 첫번째 인자($1)가 공백인지 검사
 ~~~
+>명령어의 첫번째 인자($1)가 공백인지 검사
 
 - ### -z "$1"
   - 명령어의 첫번째 인자($1)가 공백인지 검사
@@ -69,9 +67,8 @@ fi
 
 ~~~shell
 (3) eval $GREP_STYLE > $FILE_NAME
-
-## 변수 $GREP_STYLE의 값을 변수 $FILE_NAME의 값(파일명)인 파일에 저장 (덮어씌움)
 ~~~
+>변수 $GREP_STYLE의 값을 변수 $FILE_NAME의 값(파일명)인 파일에 저장 (덮어씌움)
 
 - ### eval
   - 변수 치환이 재귀적으로 일어나도록 한다.
