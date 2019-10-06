@@ -80,6 +80,7 @@
 
 
 ### Linux 
+* [실무에서 만난 쉘 스크립트 정리](https://github.com/Integerous/TIL/blob/master/Linux/Shell_Script_Study.md)
 * [Linux SysAdmin Basics](https://github.com/Integerous/TIL/blob/master/Linux/SysAdminBasics.md)
 * [리눅스 ssh 로그아웃시 프로세스 유지하기](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md)
 
