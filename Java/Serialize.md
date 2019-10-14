@@ -1,4 +1,4 @@
-# 자바 직렬화 (Java Serialize)
+# 자바 직렬화 (Java Serialization)
 >새로 맡게 된 레거시 프로젝트의 몇몇 클래스들이 Serializable 인터페이스를 왜 상속받는지 알아보는 과정에서 Java 직렬화 개념 정리
 
 ## 간단하게
