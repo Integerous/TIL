@@ -324,3 +324,44 @@ Spring 내부에서 프록시 패턴을 사용하는 방식인데, 어떻게 적
 
 
 - Reference - Spring in Action (5th Edition)
+
+-----
+</br>
+
+## 12. Getter/Setter 메소드명 차이 (Lombok vs IDE자동생성)
+>레거시 프로젝트의 어느 클래스에서 Getter 메서드들을 지우고,  
+>아무런 고민 없이 Lombok의 @Getter 어노테이션을 붙여놨는데 여기저기서 문제가 발생했다.  
+>Lombok이 생성해주는 메서드명과 IDE에서 자동생성한 메서드명이 달랐기 때문이다. (Setter도 마찬가지)
+
+~~~java
+@Getter
+public class Test {
+
+    private Boolean hasMovie1;
+    private boolean hasMovie2;
+    private Boolean isMovie3;
+    private boolean isMovie4;
+
+    // IDE에서 자동 생성한 Getter 메소드명
+    public Boolean getHasMovie1()
+    public boolean isHasMovie2()
+    public Boolean getMovie3()
+    public boolean isMovie4()
+
+    // Lombok이 생성해주는 Getter 메소드명
+    public Boolean getHasMovie1()
+    public boolean isHasMovie2()
+    public Boolean getIsMovie3()  // 요놈 주목.
+    public boolean isMovie4()
+}
+~~~
+
+### 공통점
+- Primitive 타입인 `boolean hasMovie2`와 `boolean isMovie4`는 필드명 앞에 is만 붙는다. (is가 붙어있으면 더 붙이진 않는다.)
+
+### 차이점
+- Reference 타입인 `Boolean hasMovie1`와 `Boolean isMovie3`의 경우
+  - IDE 자동생성
+    - 필드명 앞에 is가 붙어있으면 제거하고 get을 붙인다.
+  - Lombok
+    - is의 존재여부와 상관없이 필드명 그대로 앞에 get을 붙인다.
