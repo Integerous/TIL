@@ -365,3 +365,23 @@ public class Test {
     - 필드명 앞에 is가 붙어있으면 제거하고 get을 붙인다.
   - Lombok
     - is의 존재여부와 상관없이 필드명 그대로 앞에 get을 붙인다.
+    
+-----
+</br>
+
+## 13. 프로젝트 생성시 groupId, artifactId 설정 방법
+
+### GroupId
+- 프로젝트를 구분짓는 명칭이다.
+- GroupId는 [Java 패키지 네이밍 규칙](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)을 따라야 하므로, 도메인명을 거꾸로 한다.
+- 예를 들어, `org.apache.maven` `org.apache.maven.plugins` `org.apache.maven.reporting` `com.sun.sunsoft.DOE`
+
+### ArtifactId
+- 버전을 제외한 jar파일 명칭이다.
+- 특수문자가 없는 소문자면 어떤 명칭도 상관없다.
+- 만약 third party jar 라면, 배포된 jar파일 이름을 사용해야 한다.
+- 예를 들어, `maven` `commons-math` 
+
+
+### Reference
+- [Guide to naming conventions on groupId, artifactId, and version](https://maven.apache.org/guides/mini/guide-naming-conventions.html)
