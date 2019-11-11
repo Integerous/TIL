@@ -385,3 +385,56 @@ public class Test {
 
 ### Reference
 - [Guide to naming conventions on groupId, artifactId, and version](https://maven.apache.org/guides/mini/guide-naming-conventions.html)
+
+
+-----
+</br>
+
+## 14. Spring Boot CommandLineRunner, ApplicationRunner
+>Spring Boot로 AmazonMQ를 테스트 할 때, 멀티모듈로 구성된 Publisher와 다수의 Subscriber를 실행시키기 위해 알아보던 중 알게 된 CommandLineRunner와 ApplicationRunner에 대해 정리해본다.
+
+### 특징
+- 스프링부트는 두 가지 인터페이스(CommandLineRunner, ApplicationRunner)를 제공해서 어플리케이션이 완전히 시작되는 시점에 특정 코드를 실행할 수 있게 한다.
+- 두 Runner를 사용하면 main()메서드가 있는 클래스가 아닌, @Component로 등록된 어떠한 클래스에서도 사용할 수 있기 때문에 구현 위치가 자유롭다.
+- 또한, static 메서드인 main() 메서드가 아닌 일반 메서드이기 때문에 static에 오염되지 않는다.
+- 여러 개의 Runner를 사용할 수 있는데, 순서가 필요한 경우 각 Runner 클래스에 `@Order(순서)`를 붙여서 순서를 관리할 수 있다.
+
+### CommandLineRunner
+- 어플리케이션 인자들을 String 배열로 제공한다.
+
+~~~java
+@Component
+public class CommandLineAppStartupRunner implements CommandLineRunner {
+    private static final Logger logger = LoggerFactory.getLogger(CommandLineAppStartupRunner.class);
+    
+    @Override
+    public void run(String...args) throws Exception {
+    	// 구현
+        logger.info("Application started with command-line arguments: {}", Arrays.toString(args));
+    }
+}
+~~~
+
+### ApplicationRunner
+- CommandLineRunner와 달리 raw한 어플리케이션 인자들을 래핑해서 ApplicationArguments 인터페이스로 제공한다.
+- ApplicationArguments 인터페이스는 편리한 메서드들을 제공한다.
+  - `getOptionNames()` : 인자들의 이름 반환
+  - `getOptionValues()` : 인자들의 값 반환
+  - `getSourceArgs()` : raw source 인자들 반환
+  
+~~~java
+@Component
+public class AppStartupRunner implements ApplicationRunner {
+    private static final Logger logger = LoggerFactory.getLogger(AppStartupRunner.class);
+    
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+    	// 구현
+        logger.info("Your application started with option names : {}", args.getOptionNames());
+    }
+}
+~~~
+
+### Reference
+- [Spring Boot: ApplicationRunner and CommandLineRunner](https://dzone.com/articles/spring-boot-applicationrunner-and-commandlinerunne)
+- [Spring Boot의 실행과 종료 시 특정 동작을 실행하도록 해보기](https://zepinos.tistory.com/41)
