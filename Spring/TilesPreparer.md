@@ -1,9 +1,9 @@
+# Tiles View Preparer
 >@SessionAttributes를 사용해도 Tiles로 나누어진 header.jsp나 aside.jsp에서는 세션유지가 안되는 문제 발생하여 시작!  
 Tiles의 ViewPreparer를 사용하여 인증된 사용자의 Member 객체를 Model에 저장하여  
 layout이 실행될 때 Preparer가 실행되도록 하여 모든 페이지에서 로그인정보 세션유지 가능 !
 
-# Tiles View Preparer
-## 01. Tiles Configurer 설정
+## 1. Tiles Configurer 설정
 - Member 정보를 모든 페이지에서 유지하기 위해
 - `tilesConfigurer.setPreparerFactoryClass(SimpleSpringPreparerFactory.class);` 추가
 ~~~C
@@ -21,7 +21,7 @@ public class TilesConfig {
 		return tilesConfigurer;
 	}
 ~~~
-## 02. Tiles.xml에 `preparer="com.harusketch.util.MemberPreparer"` 추가
+## 2. Tiles.xml에 `preparer="com.harusketch.util.MemberPreparer"` 추가
 ~~~C
 <!-- member 템플릿 -->
   <definition name="layoutTemplate" template="/WEB-INF/views/inc/layout.jsp" preparer="com.harusketch.util.MemberPreparer">    
@@ -30,7 +30,8 @@ public class TilesConfig {
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
 ~~~
-## 03. MemberPreparer 
+
+## 3. MemberPreparer 
 ~~~C
 @Component
 public class MemberPreparer implements ViewPreparer {
@@ -50,19 +51,19 @@ public class MemberPreparer implements ViewPreparer {
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 		
 		// 인증객체를 통해서 인증에 사용된 id를 얻는다.
-        final UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        final String username = userDetails.getUsername();
-       
-        // 이제 인증 id를 이용해서 Member 객체를 얻어온다.
-        Member member = memberDao.get(username);
-       
-        // 위의 member 객체를 model 저장소에 담는다.
-        Map<String, Object> model = tilesRequest.getContext("request");
-        model.put("member", member);
-		}
+		final UserDetails userDetails = (UserDetails) auth.getPrincipal();
+		final String username = userDetails.getUsername();
+
+		// 이제 인증 id를 이용해서 Member 객체를 얻어온다.
+		Member member = memberDao.get(username);
+
+		// 위의 member 객체를 model 저장소에 담는다.
+		Map<String, Object> model = tilesRequest.getContext("request");
+		model.put("member", member);
+	}
 ~~~
 
-## 04. 해당하는 .jsp 페이지에 EL Member 정보 사용하기
+## 4. 해당하는 .jsp 페이지에 EL Member 정보 사용하기
 `<a href=""> ${member.name} 님 안녕하세요 :)</a>`
 
 # *Reference
