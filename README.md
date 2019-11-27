@@ -35,6 +35,7 @@
  
  
 ### Spring Framework 
+* [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
 * [Spring Boot Test 정리](https://github.com/Integerous/TIL/blob/master/Spring/SpringBootTest.md)
 * [Spring Framework 핵심 기술 - 강의내용 정리](https://github.com/Integerous/TIL/blob/master/Spring/SpringFrameworkCore.md)
 * [Spring Boot를 활용한 웹서비스 개발 - 강의내용 정리](https://github.com/Integerous/TIL/blob/master/Spring/SpringBootTacademy.md)
@@ -66,7 +67,6 @@
 
 
 ### AWS
-* [AmazonMQ 사용 예시](https://github.com/Integerous/TIL/blob/master/AWS/AmazonMQ.md)
 * [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
 * [AWS VPC 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/VPC.md)
 * [AWS EBS 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/EBS.md)
