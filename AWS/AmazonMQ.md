@@ -28,8 +28,17 @@ spring:
       jms:
         pub-sub-domain: true
     ~~~
+## 2. Jms 설정
+~~~java
+@EnableJms
+@SpringBootApplication
+public class SchedulerApplication {
 
-## 2. Jms Listener 설정
+    // 생략
+}
+~~~
+
+## 3. Jms Listener 설정
 ~~~java
 @Configuration
 @EnableJms
@@ -62,7 +71,7 @@ public class AwsMqListenerConfig {
 - 위와 같이 `JmsListenerContainerFactory`를 구현해서 각종 설정을 세팅할 수 있다.
 
 
-## 3. Listener 구현
+## 4. Listener 구현
 ~~~java
 @Slf4j
 @Component
