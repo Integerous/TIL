@@ -18,6 +18,7 @@
 12. Getter/Setter 메소드명 차이 (Lombok vs IDE자동생성)
 13. 프로젝트 생성시 groupId, artifactId 설정 방법
 14. Spring Boot CommandLineRunner, ApplicationRunner
+15. 프로젝트 외부에서 application.yml 설정하기
 
 -----
 
@@ -455,3 +456,31 @@ public class AppStartupRunner implements ApplicationRunner {
 ### Reference
 - [Spring Boot: ApplicationRunner and CommandLineRunner](https://dzone.com/articles/spring-boot-applicationrunner-and-commandlinerunne)
 - [Spring Boot의 실행과 종료 시 특정 동작을 실행하도록 해보기](https://zepinos.tistory.com/41)
+
+
+-----
+</br>
+
+## 15. 프로젝트 외부에서 application.yml 설정하기
+>개발할 때 자주 변경하게 되는 설정들(스케쥴러, 외부 연동 등)을 프로젝트에서 직접 수정해서 배포하지 않고,  
+>프로젝트 외부에 설정 파일(application.yml)을 두고 외부 설정파일로 덮어씌우게끔 하는 방법
+
+~~~java
+@SpringBootApplication
+public class SchedulerApplication {
+
+    private static final String EXTERNAL_PROPERTIES = "file:/data/etc/example.project/application.yml";
+
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(SchedulerApplication.class)
+                .properties("spring.config.additional-location="
+                        + EXTERNAL_PROPERTIES
+                )
+                .run(args);
+    }
+}
+~~~
+- 서버에 `/data/etc/example.project/application.yml` 파일을 생성하고, 이 곳에서 설정값을 변경한다.
+- 이 방식을 사용하면, 자주 변경되는 설정 때문에 매 번 프로젝트를 새로 배포하지 않아도 된다.
+- 서버에 있는 설정파일을 수정하고 jar 파일을 다시 시작하면, 어플리케이션 시작 시점에 서버에 있는 외부 설정파일을 읽어서 프로젝트 내부의 설정파일을 덮어씌운다.
+- 테스트를 위해서 자주 설정 값 변경이 필요한 경우 유용하다.
