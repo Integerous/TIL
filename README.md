@@ -5,7 +5,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------
 ### ETC
-* :bread: [빵 부스러기 저장소](https://github.com/Integerous/TIL/blob/master/ETC/crumbs.md)
+* :bread: [빵 부스러기 저장소](https://github.com/Integerous/TIL/blob/master/ETC/BreadCrumbs.md)
 * [Path Variable과 Query Parameter를 언제 사용해야 하는가? [번역]](https://github.com/Integerous/TIL/blob/master/ETC/PathVariable_QueryParameter.md)
 * [지뢰찾기 과제](https://github.com/Integerous/TIL/blob/master/ETC/mineSweeper.md)
 * [정규표현식 정리](https://github.com/Integerous/TIL/blob/master/ETC/RegEx.md)
