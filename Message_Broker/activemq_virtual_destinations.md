@@ -1,5 +1,6 @@
-# ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱
->실무에서 AmazonMQ(ActiveMQ)로 메세지 브로커를 구성하며 알게 된, `Virtual Destinations` 에 대해 정리해본다.
+# ActiveMQ의 Virtual Destinations를 활용한 메세지 로드밸런싱
+>실무에서 AmazonMQ(ActiveMQ)로 메세지 브로커를 구성하며 알게 된, `Virtual Destinations` 에 대해 정리해본다.  
+>Spring Boot 프로젝트에서 AmazonMQ(ActiveMQ)를 사용한 방법은 [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)를 참고하면 된다.
 
 ## 0. Queue, Topic, Virtual Topic 비교
 
@@ -38,6 +39,8 @@
 
 
 >이미지 출처 - https://tuhrig.de/queues-vs-topics-vs-virtual-topics-in-activemq/
+
+</br>
 
 ## 1. Virtual Topics을 사용한 이유
 - **상황**
@@ -80,15 +83,21 @@
     - Pub-Sub 방식을 사용하기 때문에 Subscriber가 증가해도 Publisher를 수정할 필요가 없다.
     - Scheduler의 서버가 999개로 늘어도 하나의 Queue에서 메세지를 가져가기 때문에 중복처리 문제가 발생하지 않는다.
     
-    
+</br>
+
 ## 2. Virtual Topics 사용 방법 (with Spring Boot)
 >사용 방법은 너무나 간단하다. `out-of-the-box`(꺼내서 바로 쓰는) 기능이기 때문에  
 >기존의 Topic 방식에서 Topic 명만 Convention에 맞게 변경하면 된다.  
->예전에는 `activemq.xml`의 설정도 필수로 변경해야 했지만, 이제는 일반적인 상황에서는 이 마저도 필요 없다. 
+>Topic 방식으로 ActiveMQ를 사용하는 내용은 [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)를 참고하면 된다.
+  
+>예전에는 `activemq.xml`에 `<DestinationInterceptor>` 설정도 해야만,  
+>해당 Topic이름으로 들어온 메세지를 Interceptor가 가로채서 VirtualTopic으로 처리했지만,  
+>이제는 일반적인 상황에서는 이 마저도 필요 없다. 
 
 
 - **Produer(Publisher)**
-  - 기존 Topic 방식으로 Topic을 생성하되, Topic이름 앞에 `VirtualTopic.`을 붙여서 `VirtualTopic.{Topic이름}`으로 생성하면 끝이다.
+  - 기존 Topic 방식으로 Topic을 생성하되, Topic이름 앞에 `VirtualTopic.`을 붙여서  
+  `VirtualTopic.{Topic이름}`으로 생성하면 끝이다.
   ~~~java
   private JmsTemplate jmsTemplate;
   
@@ -109,13 +118,15 @@
 
 - **로드밸런싱이 필요한 Consumer(Subscriber)**
   - N개의 서버가 메세지를 나누어 받아야 하므로, 기존 Topic 방식으로 메세지를 Listening 하되,
-  - 이 때, destination을 Producer가 생성한 Topic이름 앞에 `Consumer.{clientId}.`를 붙여서 `Consumer.{clientId}.VirtualTopic.{Topic이름}`으로 설정하면 끝이다.
+  - 이 때, destination을 Producer가 생성한 Topic이름 앞에 `Consumer.{clientId}.`를 붙여서  
+  `Consumer.{clientId}.VirtualTopic.{Topic이름}`으로 설정하면 끝이다.
   ~~~java
   @JmsListener(destination = "Consumer.{clientId}.VirtualTopic.{Topic이름}")
   public void amazonMqNewsListener(@Payload MessageDto messageDto) {
       // 로직 처리
   }
   ~~~
+  - 만약 clientId를 따로 설정하지 않았다면, 해당 부분에 원하는 이름을 넣어도 무관하다.
 
 - **Topic 이름 생성 규칙을 바꾸고 싶은 경우**
   - 이 경우, `activemq.xml` 파일에 아래 설정을 추가해서, `name`과 `prefix`를 원하는 대로 바꾸면 된다.
@@ -140,6 +151,14 @@
     - `We've changed the way default configurations are created. By default virtual destinations are now enabled (an empty element is no longer present in the default XML configuration).`
   - 즉, Topic 명명규칙을 변경할 생각이 없으면, 아무런 설정이 필요 없다.
 
+</br>
+
+## 3. 맺으며.
+ActiveMQ를 복잡한 환경과 설정으로 사용해 본 것은 아니라서, 나같은 초보에게만 도움이 되었을 내용이다. 하지만 Message Broker 사용 경험과 지식이 1도 없는 상태에서, Virtual Destinations를 이용해서 문제를 해결하기 까지의 과정은 재미있고 유익했다.  
+
+2대의 Scheduler 서버가 Queue에 들어온 메세지를 나누어 가져가는 로그를 확인할 때의 기쁨이 이 내용을 작성하게 한 원동력이 되었다. 언젠가 더 크고 복잡한 서비스에서 Message Broker를 사용할 일이 생긴다면, 이 경험이 큰 도움이 될 것 같다. 
+
+>혹시나 틀린 내용이 있다면, 꼭 지적해주시길 부탁드립니다.
 
 ### Reference
 - [ActiveMQ 공식문서 - Virtual Destinations](http://activemq.apache.org/virtual-destinations.html)
