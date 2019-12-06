@@ -104,62 +104,62 @@
 - **Produer(Publisher)**
   - 기존 Topic 방식으로 Topic을 생성하되, Topic이름 앞에 `VirtualTopic.`을 붙여서  
   `VirtualTopic.{Topic이름}`으로 생성하면 끝이다.
-  ~~~java
-  private JmsTemplate jmsTemplate;
-  
-  // Message 생성
-  
-  jmsTemplate.convertAndSend(new ActiveMQTopic("VirtualTopic.토픽이름", 생성한 Message), 
-  ~~~
+    ~~~java
+    private JmsTemplate jmsTemplate;
+
+    // Message 생성
+
+    jmsTemplate.convertAndSend(new ActiveMQTopic("VirtualTopic.토픽이름", 생성한 Message), 
+    ~~~
 
 - **단일 서버 Consumer(Subscriber)**
   - Topic에서 바로 메세지를 받아도 되므로, 기존 Topic 방식으로 메세지를 Listening 한다.  
   - 이 때, destination을 Producer가 생성한 Topic이름을 설정하면 끝이다.
-  ~~~java
-  @JmsListener(destination = "VirtualTopic.{Topic이름}")
-  public void amazonMqNewsListener(@Payload MessageDto messageDto) {
-      // 로직 처리
-  }
-  ~~~
+    ~~~java
+    @JmsListener(destination = "VirtualTopic.{Topic이름}")
+    public void amazonMqNewsListener(@Payload MessageDto messageDto) {
+        // 로직 처리
+    }
+    ~~~
 
 - **로드밸런싱이 필요한 Consumer(Subscriber)**
   - 반드시 jms의 `pub-sub-domain` 설정을 `false`로 변경해야 한다.
-  ~~~yml
-  # application.yml
-  
-  spring:
-    jms:
-      pub-sub-domain: false
-  ~~~
+    ~~~yml
+    # application.yml
+
+    spring:
+      jms:
+        pub-sub-domain: false
+    ~~~
   - N개의 서버가 메세지를 나누어 받아야 하므로, 기존 Topic 방식으로 메세지를 Listening 하되,
   - 이 때, destination을 Producer가 생성한 Topic이름 앞에 `Consumer.{clientId}.`를 붙여서  
   `Consumer.{clientId}.VirtualTopic.{Topic이름}`으로 설정하면 끝이다.
-  ~~~java
-  @JmsListener(destination = "Consumer.{clientId}.VirtualTopic.{Topic이름}")
-  public void amazonMqNewsListener(@Payload MessageDto messageDto) {
-      // 로직 처리
-  }
-  ~~~
+    ~~~java
+    @JmsListener(destination = "Consumer.{clientId}.VirtualTopic.{Topic이름}")
+    public void amazonMqNewsListener(@Payload MessageDto messageDto) {
+        // 로직 처리
+    }
+    ~~~
   - 만약 clientId를 따로 설정하지 않았다면, 해당 부분에 원하는 이름을 넣어도 무관하다.
 
 - **Topic 이름 생성 규칙을 바꾸고 싶은 경우**
   - 이 경우, `activemq.xml` 파일에 아래 설정을 추가해서, `name`과 `prefix`를 원하는 대로 바꾸면 된다.
-  ~~~xml
-  <destinationInterceptors> 
-    <virtualDestinationInterceptor> 
-      <virtualDestinations> 
-        <virtualTopic name=">" prefix="VirtualTopicConsumers.*." selectorAware="false"/>   
-      </virtualDestinations>
-    </virtualDestinationInterceptor> 
-  </destinationInterceptors>
-  ~~~
+    ~~~xml
+    <destinationInterceptors> 
+      <virtualDestinationInterceptor> 
+        <virtualDestinations> 
+          <virtualTopic name=">" prefix="VirtualTopicConsumers.*." selectorAware="false"/>   
+        </virtualDestinations>
+      </virtualDestinationInterceptor> 
+    </destinationInterceptors>
+    ~~~
   - 위의 내용 중 `virtualTopic name=">"`의 `>`는 모든 설정을 Virtual Topic으로 받겠다는 설정이다.
   - 위의 내용이 Default 설정이며, AmazonMQ에서는 해당 부분이 주석처리된 채로 `activemq.xml`이 생성된다.
 
 - **AmazonMQ의 activemq.xml 설정**
   - 기존에는 AmazonMQ에서 Virtual Destinations를 사용하려면, `activemq.xml` 에 아래에 동그라미 친 부분과 같이 `useVirtualTopics="true"`와 `<destinationInterceptors>...</>`부분의 설정을 추가해야 했다.
   
-  ![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/activemq_xml_2.png?raw=true)
+    ![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/activemq_xml_2.png?raw=true)
   
   - 그런데, [이 대화](https://forums.aws.amazon.com/thread.jspa?threadID=268432)에서 AWS 엔지니어의 말에 의하면 Virtual Destinations가 기본적으로 enabled 된 상태로 activemq.xml이 생성된다.
     - `We've changed the way default configurations are created. By default virtual destinations are now enabled (an empty element is no longer present in the default XML configuration).`
