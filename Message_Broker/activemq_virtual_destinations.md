@@ -1,8 +1,43 @@
 # ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱
->실무에서 ActiveMQ로 메세지브로커를 구성하는 과정에서 습득한 Virtual Destinations 활용 지식을 정리해본다.
+>실무에서 AmazonMQ(ActiveMQ)로 메세지 브로커를 구성하는 과정에서 습득한 Virtual Destinations 활용 지식을 정리해본다.
 
-## 0. Topic, Queue, Virtual Topic 비교
+## 0. Queue, Topic, Virtual Topic 비교
 
+### 1. Queue
+>ActiveMQ의 Queue는 Producer가 보낸 메세지를 1개의 Consumer가 받는다.  
+>1:1 방식
+
+![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/queue.png?raw=true)
+
+### 2. Topic
+>ActiveMQ의 Topic은 Producer(Publisher)가 메세지를 발행(publish)하고,  
+>N개의 Consumer(Subscriber)가 메세지를 구독(subscribe) 한다.  
+>1:N Pub-Sub 방식
+
+![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/topics.png?raw=true)
+
+~~~
+이 때, 모든 Consumer는 같은 메세지를 받는다.
+~~~
+
+### 3. Virtual Topic
+>Virtual Topic은 Topic 방식과 유사하나, Publisher는 가상의(논리적인) Topic에 메세지를 발행하고,  
+>Subscriber가 가상의 Topic을 구독하면, (즉, Listening을 시작하면)  
+>ActiveMQ 브로커에 해당 Subscriber를 위한 물리적인 Queue가 자동으로 생성되고,  
+>Subscriber는 생성된 물리 Queue에 주입된 메세지를 소비한다.
+
+![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/VirtualTopics.png?raw=true)
+
+~~~
+이 때, 각 Consumer는 아래와 같이 Topic에서 직접 메세지를 받을 수도 있고, Queue로부터 받을 수도 있다.  
+
+[producer] --> [VirtualTopic.T] --> [consumerA]
+                                --> [VirtualQueueConsumer.VirtualTopicT] --> [ConsumerB]
+                                                                         --> [ConsumerC]
+~~~
+
+
+>이미지 출처 - https://tuhrig.de/queues-vs-topics-vs-virtual-topics-in-activemq/
 
 ## 1. Virtual Topic을 사용한 이유
 - **상황**
