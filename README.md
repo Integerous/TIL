@@ -1,7 +1,8 @@
 
 # Today I Learned (TIL)
 >오늘 배운, 알게 된, 학습한 내용을 정리해두는 저장소  
->이해한 만큼만 직접 작성
+>이해한 만큼만 직접 작성  
+>찾기 쉽도록 해당 카테고리가 N개면 N개 모두에 추가
 
 ----------------------------------------------------------------------------------------------------------------------
 ### ETC
@@ -17,6 +18,9 @@
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
  
+### Message Broker
+* [ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱](https://github.com/Integerous/TIL/blob/master/Message_Broker/activemq_virtual_destinations.md)
+* [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
  
 ### Java
 * [자바 직렬화 (Java Serialization)](https://github.com/Integerous/TIL/blob/master/Java/Serialize.md)
@@ -67,6 +71,8 @@
 
 
 ### AWS
+* [ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱](https://github.com/Integerous/TIL/blob/master/Message_Broker/activemq_virtual_destinations.md)
+* [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
 * [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
 * [AWS VPC 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/VPC.md)
 * [AWS EBS 내용 정리](https://github.com/Integerous/TIL/blob/master/AWS/EBS.md)
