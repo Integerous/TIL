@@ -168,7 +168,7 @@
 - **AmazonMQ의 activemq.xml 설정**
   - 기존에는 AmazonMQ에서 Virtual Destinations를 사용하려면, `activemq.xml` 에 아래에 동그라미 친 부분과 같이 `useVirtualTopics="true"`와 `<destinationInterceptors>...</>`부분의 설정을 추가해야 했다.
   
-        ![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/activemq_xml_2.png?raw=true)
+    ![](https://github.com/Integerous/TIL/blob/master/ETC/images/activemq/activemq_xml_2.png?raw=true)
   
   - 그런데, [이 대화](https://forums.aws.amazon.com/thread.jspa?threadID=268432)에서 AWS 엔지니어의 말에 의하면 Virtual Destinations가 기본적으로 enabled 된 상태로 activemq.xml이 생성된다.
     - `We've changed the way default configurations are created. By default virtual destinations are now enabled (an empty element is no longer present in the default XML configuration).`
