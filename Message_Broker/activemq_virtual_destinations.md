@@ -1,6 +1,9 @@
 # ActiveMQ의 Virtual Destinations를 활용한 메세지 로드밸런싱
 >실무에서 AmazonMQ(ActiveMQ)로 메세지 브로커를 구성하며 알게 된, `Virtual Destinations` 에 대해 정리해본다.  
+>정확하게는, Topic을 이용한 Pub-sub 방식의 메세지 브로킹 환경에서, `Virtual Destinations`를 활용한 메세지 로드밸런싱이 주요 내용이다.  
 >Spring Boot 프로젝트에서 AmazonMQ(ActiveMQ)를 사용한 방법은 [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)를 참고하면 된다.
+
+</br>
 
 ## 0. Queue, Topic, Virtual Topic 비교
 
@@ -59,7 +62,7 @@
 
 - **해결 방안 1 (1개의 서버만 사용)**
   - TV 서비스 처럼 1개의 서버만 Subscriber로 사용하면 중복처리 문제는 바로 해결된다.
-  - 하지만 추후에 서버 스케일 업이 필요한 상황이 도래하면, 똑같은 문제에 봉착하므로 임시방편일 뿐이었다.  
+  - 하지만 추후에 서버 스케일 아웃이 필요한 상황이 도래하면, 똑같은 문제에 봉착하므로 임시방편일 뿐이었다.  
   - 또한, 각종 Batch 로직이 돌고있는 Scheduler 서버가 2개로 구성된 것으로 보아, 서버가 뻗을 경우 비즈니스에 데미지가 있다는 것이기 때문에, 2대의 서버를 1대로 줄이는 것은 위험했다.  
   - 게다가 클라우드가 아닌 IDC에 구성된 서버들이기 때문에 스케일 변경에 더 많은 작업들이 필요했고, 현재 리소스가 부족한 IDC서버 담당팀에 부담이 되는 상황이었다.
   - 그래서 패스.
@@ -78,11 +81,14 @@
     - `뉴스 (Publisher)는 Topic 방식 그대로 메세지를 publish하고, (topic 이름만 변경)`
     - `단일 서버인 TV (Subscirber)는 Topic 방식 그대로 메세지를 subscribe하고, (topic 이름만 변경)`
     - `N개의 서버인 Hub (Subscriber)는 Topic 방식으로 메세지를 subscribe하되, 논리적 topic을 Listening할 때 자동으로 생성되는 물리적 Queue로 부터 메세지를 subscribe 한다.`
-  - 이 방법을 해결책으로 선택한 이유는,  
-    - 기존의 Topic방식을 그대로 사용하기 때문에 관리포인트가 증가하지 않는다. (topic 이름만 바꾸면 끝)
-    - Pub-Sub 방식을 사용하기 때문에 Subscriber가 증가해도 Publisher를 수정할 필요가 없다.
-    - Scheduler의 서버가 999개로 늘어도 하나의 Queue에서 메세지를 가져가기 때문에 중복처리 문제가 발생하지 않는다.
-    
+  - **이 방법을 해결책으로 선택 !**
+
+- **결과**
+  - 2대의 Scheduler 서버가 하나의 Queue에서 메세지를 꺼내가서 소비하므로 중복처리 문제가 해결되었다.
+  - 기존의 Topic방식을 그대로 사용하기 때문에 관리포인트가 증가하지 않았다. (topic 이름만 바꾸면 끝)
+  - Pub-Sub 방식을 사용하기 때문에 Subscriber가 증가해도 Publisher를 수정할 필요가 없었다.
+  - Scheduler의 서버가 999개로 늘어도 하나의 Queue에서 메세지를 가져가기 때문에 스케일 아웃시에도 중복처리 문제가 발생하지 않는다.
+  
 </br>
 
 ## 2. Virtual Topics 사용 방법 (with Spring Boot)
@@ -156,7 +162,7 @@
 ## 3. 맺으며.
 ActiveMQ를 복잡한 환경과 설정으로 사용해 본 것은 아니라서, 나같은 초보에게만 도움이 되었을 내용이다. 하지만 Message Broker 사용 경험과 지식이 1도 없는 상태에서, Virtual Destinations를 이용해서 문제를 해결하기 까지의 과정은 재미있고 유익했다.  
 
-2대의 Scheduler 서버가 Queue에 들어온 메세지를 나누어 가져가는 로그를 확인할 때의 기쁨이 이 내용을 작성하게 한 원동력이 되었다. 언젠가 더 크고 복잡한 서비스에서 Message Broker를 사용할 일이 생긴다면, 이 경험이 큰 도움이 될 것 같다. 
+2대의 Scheduler 서버가 Queue에 들어온 메세지를 나누어 가져가는 로그를 확인할 때의 그 기쁨이, 이 내용을 작성하게 한 원동력이 되었다. 언젠가 더 크고 복잡한 서비스에서 Message Broker를 사용할 일이 생긴다면, 이 경험이 큰 도움이 될 것 같다. 
 
 >혹시나 틀린 내용이 있다면, 꼭 지적해주시길 부탁드립니다.
 
