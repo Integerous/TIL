@@ -1,7 +1,7 @@
 # ActiveMQ의 Virtual Destinations를 활용한 메세지 로드밸런싱
 >실무에서 AmazonMQ(ActiveMQ)로 메세지 브로커를 구성하며 알게 된, `Virtual Destinations` 에 대해 정리해본다.  
 >정확하게는, Topic을 이용한 Pub-sub 방식의 메세지 브로킹 환경에서, `Virtual Destinations`를 활용한 메세지 로드밸런싱이 주요 내용이다.  
->Spring Boot 프로젝트에서 AmazonMQ(ActiveMQ)를 사용한 방법은 [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)를 참고하면 된다.
+
 
 </br>
 
@@ -100,7 +100,7 @@
 >해당 Topic이름으로 들어온 메세지를 Interceptor가 가로채서 VirtualTopic으로 처리했지만,  
 >이제는 일반적인 상황에서는 이 마저도 필요 없다. 
 
-
+  
 - **Produer(Publisher)**
   - 기존 Topic 방식으로 Topic을 생성하되, Topic이름 앞에 `VirtualTopic.`을 붙여서  
   `VirtualTopic.{Topic이름}`으로 생성하면 끝이다.
@@ -123,6 +123,14 @@
   ~~~
 
 - **로드밸런싱이 필요한 Consumer(Subscriber)**
+  - 반드시 jms의 `pub-sub-domain` 설정을 `false`로 변경해야 한다.
+  ~~~yml
+  # application.yml
+  
+  spring:
+    jms:
+      pub-sub-domain: false
+  ~~~
   - N개의 서버가 메세지를 나누어 받아야 하므로, 기존 Topic 방식으로 메세지를 Listening 하되,
   - 이 때, destination을 Producer가 생성한 Topic이름 앞에 `Consumer.{clientId}.`를 붙여서  
   `Consumer.{clientId}.VirtualTopic.{Topic이름}`으로 설정하면 끝이다.
