@@ -19,7 +19,7 @@
 13. 프로젝트 생성시 groupId, artifactId 설정 방법
 14. Spring Boot CommandLineRunner, ApplicationRunner
 15. 프로젝트 외부에서 application.yml 설정하기
-~~~16. ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱~~~ -> :bread: 되서 나감
+16. ~~ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱~~ -> :bread: 되서 나감
 
 -----
 
