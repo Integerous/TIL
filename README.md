@@ -71,6 +71,7 @@
 
 
 ### AWS
+* [DynamoDB 정리](https://github.com/Integerous/TIL/blob/master/Database/DynamoDB.md)
 * [ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱](https://github.com/Integerous/TIL/blob/master/Message_Broker/activemq_virtual_destinations.md)
 * [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
 * [AWS EC2에 자바 소스코드 배포 및 재배포](https://github.com/Integerous/TIL/blob/master/AWS/DeployOnAWSServer.md)
@@ -81,6 +82,7 @@
 
 
 ### Database 
+* [DynamoDB 정리](https://github.com/Integerous/TIL/blob/master/Database/DynamoDB.md)
 
 
 ### SQL
