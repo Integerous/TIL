@@ -85,3 +85,44 @@ master 브랜치만 가져온다. 그래서 회사에서 사용하는 git-flow�
 #### Reference
 - https://github.blog/2016-02-01-working-with-submodules/
 - https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule
+
+## 12. 브랜치 이름 변경하기
+>개발한 프로젝트의 버전(기존 2.11.7)을 올리기 위해 release/2.11.8 브랜치를 생성했는데,  
+기능이 추가된 버전업이기 때문에 브랜치명을 release/2.12.0 으로 수정해야 했다.  
+(Jenkins에서 브랜치명을 기준으로 빌드를 시작하기 때문에 배포할 브랜치 이름은 중요하다.)
+
+#### 1. 브랜치 이름 변경
+    $ git branch -m {기존 이름} {변경할 이름}
+    
+    만약 현재 변경할 브랜치에 체크아웃한 상태라면, 아래의 명령으로도 가능하다.
+    $ git branch -m {변경할 이름}
+
+#### 2. 원격의 기존 브랜치 삭제
+    $ git push origin :{기존 브랜치 이름}
+    
+#### 3. 상태 확인
+    $ git status
+    
+    On branch release/2.12.0  
+    Your branch is based on 'origin/release/2.11.8', but the upstream is gone.  
+    (use "git branch --unset-upstream" to fixup)
+    
+    상태를 확인하면, 현재 로컬 브랜치가 이미 삭제된 원격 브랜치(origin/release/2.11.8)에 기반되어 있음을 알 수 있다.
+
+#### 3. 변경된 브랜치 원격에 Push
+    $ git push origin {변경된 브랜치 이름}
+
+#### 4. Upstream을 새 이름의 브랜치로 변경
+    $ git push origin -u {변경된 브랜치 이름}
+    
+#### 5. 상태 확인
+    $ git status
+    
+    Upstream을 새로운 이름의 브랜치로 변경하고 상태를 확인해보면,  
+    아래 메세지와 같이 origin/release/2.12.0에 기반을 두고있는 것을 확인할 수 있다. 끝.
+    
+    On branch release/2.12.0  
+    Your branch is up to date with 'origin/release/2.12.0'.
+    
+#### Reference
+- https://stackoverflow.com/a/40034426/8586944
