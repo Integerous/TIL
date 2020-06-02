@@ -20,7 +20,8 @@
 14. Spring Boot CommandLineRunner, ApplicationRunner
 15. 프로젝트 외부에서 application.yml 설정하기
 16. ~~ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱~~ -> :bread: 되서 나감
-
+17. @InitBinder 사용하기
+18. 기본 생성자의 접근 레벨을 Protected/Private로 설정해서 Setter 사용하지 않기
 -----
 </br>
 
@@ -491,7 +492,7 @@ public class SchedulerApplication {
 -----
 </br>
 
-## 16. @InitBinder 사용하기
+## 17. @InitBinder 사용하기
 >작성중
 
 ~~~java
@@ -509,3 +510,28 @@ public class SchedulerApplication {
         });
     }
 ~~~
+
+-----
+</br>
+
+## 18. 기본 생성자의 접근 레벨을 Protected/Private로 설정해서 Setter 사용하지 않기
+>작성중
+
+~~~java
+/**
+ * 기본 생성자를 protected/private 레벨로 막아두면,
+ * 매개변수 있는 생성자로 객체를 생성하기 때문에 Setter 없이도 Get메서드로 으로 넘어오는 RequestParam을 객체에 담을 수 있다.
+ * 즉, @Setter를 사용하지 않아도 된다. (Post 메서드의 경우, Jackson2HttpMessageConverter의
+ * ObjectMapper가 Json으로 넘어온 RequestParam을 객체로 변환해주므로 setter가 필요없다.)
+ */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+public class MediaIdxByHubUrlRequest {
+
+    private String hubUrl;
+}
+~~~
+
+### Reference
+- [@Request Body에서는 Setter가 필요없다?](https://jojoldu.tistory.com/407)
