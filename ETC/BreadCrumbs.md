@@ -487,3 +487,25 @@ public class SchedulerApplication {
 - 서버에 있는 설정파일을 수정하고 jar 파일을 다시 시작하면, 어플리케이션 시작 시점에 서버에 있는 외부 설정파일을 읽어서 프로젝트 내부의 설정파일을 덮어씌운다.
 - 테스트를 위해서 자주 설정 값 변경이 필요한 경우 유용하다.
 
+
+-----
+</br>
+
+## 16. @InitBinder 사용하기
+>작성중
+
+~~~java
+    /**
+     * PathVariable을 String 타입으로 요청해도 Enum 타입으로 받을 수 있도록
+     * string -> Enum 변환
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(HubCategory.class, new PropertyValuesEditor() {
+            @Override
+            public void setAsText(String text) {
+                setValue(HubCategory.valueOf(text.toUpperCase()));
+            }
+        });
+    }
+~~~
