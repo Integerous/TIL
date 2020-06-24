@@ -22,6 +22,7 @@
 16. ~~ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱~~ -> :bread: 되서 나감
 17. @InitBinder 사용하기
 18. 기본 생성자의 접근 레벨을 Protected/Private로 설정해서 Setter 사용하지 않기
+19. OneToMany 관계에서 fetch join 적용할 경우 limit 쿼리가 동작하지 않는 문제
 -----
 </br>
 
@@ -535,3 +536,89 @@ public class MediaIdxByHubUrlRequest {
 
 ### Reference
 - [@Request Body에서는 Setter가 필요없다?](https://jojoldu.tistory.com/407)
+
+-----
+</br>
+
+## 19. OneToMany 관계에서 fetch join 적용할 경우 limit 쿼리가 동작하지 않는 문제
+>N+1 문제를 예방하기 위해 무자비하게 사용한 fetch join으로 인해,  
+OneToMany 관계에서는 fetch join을 사용할 경우 limit 쿼리가 동작하지 않는 문제를 알게되었다.
+
+QueryDsl로 작성된 아래의 쿼리에서 `문제가 된 부분 1`, `문제가 된 부분 2`의 fetchJoin()은  
+N+1 문제를 예방하고자 습관적으로 작성한 것이었다.
+
+~~~java
+public List<HubContent> getBeforeAfterArticleList(Integer categoryIdx, LocalDateTime baseAt, Integer size) {
+        return jpaQueryFactory.selectFrom(hubContent)
+                .innerJoin(hubContent.media, media).fetchJoin()
+                .leftJoin(hubContent.hubContentHasCategories, hubContentHasCategory).fetchJoin() // 문제가 된 부분 1
+                .leftJoin(hubContentHasCategory.category, category).fetchJoin() // 문제가 된 부분 2
+                .where(category.categoryIdx.eq(categoryIdx.longValue())
+                    .and(hubContent.createdAt.loe(baseAt))
+                    .and(hubContent.state.eq(HubContentState.ACTIVE))
+                    .and(media.state.eq(MediaState.ACTIVE)))
+                .orderBy(hubContent.createdAt.desc())
+                .orderBy(hubContent.hubContentIdx.asc())
+                .limit(size)
+                .fetch();
+    }
+~~~
+
+그런데 HubContent와 HubContentHasCategory는 OneToMany 관계였고,  
+fetch join으로 인해 아래와 같이 limit 쿼리가 무시되어 모든 데이터를 스캔하는 쿼리가 되었다.  
+
+정확하게는,  
+OneToMany 관계에서 fetch join시, limit 쿼리를 사용할 경우 모든 데이터를 조회 후 데이터를 limit 개수만큼 반환하고,  
+WHERE절이 존재할경우 WHERE절에 따라 데이터가 먼저 추출되고,  
+추출된 데이터 기반으로 fetch join이 이루어지며, 그 후에 limit 개수만큼 데이터를 반환한다.
+
+~~~sql
+...(생략)
+FROM   hub_content hubcontent0_ 
+       INNER JOIN media media1_ 
+               ON hubcontent0_.media_idx = media1_.media_idx 
+       LEFT OUTER JOIN hub_content_has_category hubcontent2_ 
+                    ON hubcontent0_.hub_content_idx = 
+                       hubcontent2_.hub_content_idx 
+       LEFT OUTER JOIN category category3_ 
+                    ON hubcontent2_.category_idx = category3_.category_idx 
+WHERE  category3_.category_idx = 5 
+       AND hubcontent0_.created_at <= '06/01/2020 10:40:00.222' 
+       AND hubcontent0_.state = 'ACTIVE' 
+       AND media1_.state = 'ACTIVE' 
+ORDER  BY hubcontent0_.created_at DESC, 
+          hubcontent0_.hub_content_idx ASC
+	  
+## limit 쿼리가 나가지 않았다.
+~~~
+
+그런데 이 쿼리를 스케쥴러가 1분 마다 요청하고 있었고,  
+AWS로 프로젝트를 이전하는 과정에서 인스턴스가 죽어버리는 문제를 파악하다가 이 문제를 알게되었다.
+
+fetchJoin()을 제거하니 데이터 풀스캔이 발생하지 않았고, 아래와 같이 limit 쿼리가 정상적으로 동작했다.    
+
+>물론 N+1 문제는 완전히 예방되지 않았지만, 기본적으로 fetch 전략을 LazyLoading으로 사용중이고,  
+추가적인 요청이 발생하는 로직이 아니기 때문에 데이터 풀스캔을 발생시키는 fetch join을 제거하는 것으로 마무리되었다.
+
+~~~sql
+...(생략)
+FROM   hub_content hubcontent0_ 
+       INNER JOIN media media1_ 
+               ON hubcontent0_.media_idx = media1_.media_idx 
+       LEFT OUTER JOIN hub_content_has_category hubcontent2_ 
+                    ON hubcontent0_.hub_content_idx = 
+                       hubcontent2_.hub_content_idx 
+       LEFT OUTER JOIN category category3_ 
+                    ON hubcontent2_.category_idx = category3_.category_idx 
+WHERE  category3_.category_idx = 5 
+       AND hubcontent0_.created_at <= '06/01/2020 10:40:00.222' 
+       AND hubcontent0_.state = 'ACTIVE' 
+       AND media1_.state = 'ACTIVE' 
+ORDER  BY hubcontent0_.created_at DESC, 
+          hubcontent0_.hub_content_idx ASC 
+LIMIT  10  ## limit 쿼리가 나갔다.
+~~~
+
+### Reference
+- [QueryDsl 삽질기 2부](https://dotoridev.tistory.com/3)
+- [JPA Paging 처리 Fetch Join 적용시 limit 동작하지 않는 이슈](https://github.com/cheese10yun/blog-sample/tree/master/jpa-fetch-join)
